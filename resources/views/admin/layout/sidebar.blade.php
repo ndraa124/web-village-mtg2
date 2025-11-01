@@ -1,29 +1,97 @@
-<ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('dashboard') }}">
-    <div class="sidebar-brand-icon rotate-n-15">
-      <i class="fas fa-globe"></i>
-    </div>
-    <div class="sidebar-brand-text mx-3 text-left">Desa Notoling II</div>
-  </a>
-
-  <div class="sidebar-heading mt-4">CORE</div>
-  <li class="nav-item {{ request()->is('dashboard') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ url('dashboard') }}">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span></a>
-  </li>
-
-  <hr class="sidebar-divider" />
-  <div class="sidebar-heading">MASTER DATA</div>
-
-  <li class="nav-item {{ request()->is('education*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ url('education') }}">
-      <i class="fas fa-fw fa-book"></i>
-      <span>Education</span></a>
-  </li>
-
-  <hr class="sidebar-divider d-none d-md-block" />
-  <div class="text-center d-none d-md-inline">
-    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+<div class="sidebar-area" id="sidebar-area">
+  <div class="logo position-relative d-flex align-items-center justify-content-between">
+    <a href="{{ route('dashboard') }}" class="d-block text-decoration-none position-relative">
+      <img src="{{ asset('img/logo.png') }}" alt="logo-icon" width="30px">
+    </a>
+    <div class="logo-text text-secondary fw-semibold" style="margin-left: 18px;">Motoling Dua</div>
   </div>
-</ul>
+
+  <aside id="layout-menu" class="layout-menu menu-vertical menu active" data-simplebar>
+    <ul class="menu-inner">
+      <li class="menu-title small text-uppercase">
+        <span class="menu-title-text">MAIN</span>
+      </li>
+
+      <li class="menu-item {{ request()->routeIs('dashboard') ? 'open' : '' }}">
+        <a href="{{ route('dashboard') }}" class="menu-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">dashboard</span>
+          <span class="title">Dashboard</span>
+        </a>
+      </li>
+
+      <li class="menu-item {{ request()->routeIs('master.*') ? 'open' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+          <span class="material-symbols-outlined menu-icon">database</span>
+          <span class="title">Master Data</span>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="{{ route('master.users.index') }}" class="menu-link {{ request()->routeIs('master.users.*') ? 'active' : '' }}">
+              User
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="compose.html" class="menu-link">
+              Pendidikan
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="read-email.html" class="menu-link">
+              Jenis Kelamin
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="read-email.html" class="menu-link">
+              Dusun
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="read-email.html" class="menu-link">
+              Pekerjaan
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="read-email.html" class="menu-link">
+              Perkawinan
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="read-email.html" class="menu-link">
+              Agama
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="read-email.html" class="menu-link">
+              Pendapatan
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="read-email.html" class="menu-link">
+              Belanja
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="read-email.html" class="menu-link">
+              Pembiayaan
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="read-email.html" class="menu-link">
+              Stunting
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="read-email.html" class="menu-link">
+              Bantuan Sosial
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="read-email.html" class="menu-link">
+              IDM Status
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+</div>

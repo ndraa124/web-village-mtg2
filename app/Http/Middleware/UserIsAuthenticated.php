@@ -17,7 +17,7 @@ class UserIsAuthenticated
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            return redirect()->to('login');
+            return redirect()->route('auth.login');
         }
 
         return $next($request);

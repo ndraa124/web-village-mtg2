@@ -10,7 +10,8 @@ class DashboardController extends Controller
     {
         $data = [
             'title' => 'Dashboard',
-            'main'  => 'admin.dashboard.index'
+            'main' => 'admin.dashboard.index',
+            'breadcrumbs' => [],
         ];
 
         return view('admin.layout.template', $data);

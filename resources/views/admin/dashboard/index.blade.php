@@ -1,22 +1,59 @@
-<div class="container-fluid">
-  <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">{{ $title }}</h1>
+<div class="row" style="--bs-gutter-x: 20px;">
+  <div class="col-md-3">
+    <div class="card bg-white p-20 rounded-10 border border-white mb-20">
+      <div class="d-flex">
+        <div class="flex-grow-1">
+          <h3 class="mb-10">Total Projects</h3>
+          <h2 class="fs-26 fw-medium mb-0 lh-1">705</h2>
+        </div>
+        <div class="flex-shrink-0 ms-3">
+          <div class="bg-primary text-white text-center rounded-circle d-block" style="width: 75px; height: 75px; line-height: 105px;">
+            <i class="material-symbols-outlined fs-40">shopping_basket</i>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="row">
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-primary shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-
-              </div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-book fa-2x text-gray-300"></i>
-            </div>
+  <div class="col-md-3">
+    <div class="card bg-white p-20 rounded-10 border border-white mb-20">
+      <div class="d-flex">
+        <div class="flex-grow-1">
+          <h3 class="mb-10">Active Projects</h3>
+          <h2 class="fs-26 fw-medium mb-0 lh-1">127</h2>
+        </div>
+        <div class="flex-shrink-0 ms-3">
+          <div class="bg-primary text-white text-center rounded-circle d-block" style="width: 75px; height: 75px; line-height: 105px;">
+            <i class="material-symbols-outlined fs-40">shopping_basket</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card bg-white p-20 rounded-10 border border-white mb-20">
+      <div class="d-flex">
+        <div class="flex-grow-1">
+          <h3 class="mb-10">Total Orders</h3>
+          <h2 class="fs-26 fw-medium mb-0 lh-1">20,705</h2>
+        </div>
+        <div class="flex-shrink-0 ms-3">
+          <div class="bg-primary text-white text-center rounded-circle d-block" style="width: 75px; height: 75px; line-height: 105px;">
+            <i class="material-symbols-outlined fs-40">shopping_basket</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card bg-white p-20 rounded-10 border border-white mb-20">
+      <div class="d-flex">
+        <div class="flex-grow-1">
+          <h3 class="mb-10">Total Orders</h3>
+          <h2 class="fs-26 fw-medium mb-0 lh-1">20,705</h2>
+        </div>
+        <div class="flex-shrink-0 ms-3">
+          <div class="bg-primary text-white text-center rounded-circle d-block" style="width: 75px; height: 75px; line-height: 105px;">
+            <i class="material-symbols-outlined fs-40">shopping_basket</i>
           </div>
         </div>
       </div>

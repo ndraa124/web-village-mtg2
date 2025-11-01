@@ -3,45 +3,102 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Desa Motoling II">
-    <meta name="author" content="idprogramming">
+    <meta name="title" content="Desa Motoling Dua | Login" />
+    <meta name="author" content="ID-124" />
+    <meta
+        name="description"
+        content="Desa Motoling Dua." />
+    <meta
+        name="keywords"
+        content="desa, motoling2, motoling dua, motoling, minahasa selatan, minsel" />
+    <meta name="supported-color-schemes" content="light dark" />
 
-    <title>Desa Motoling II - {{ $title }}</title>
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
 
-    <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('admin/css/sidebar-menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/simplebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/prism.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/quill.snow.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/remixicon.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
 
-    <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-
-    <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
+    <title>Desa Motoling Dua | {{ $title }}</title>
 </head>
 
-<body id="page-top">
-    <div id="wrapper">
-        @include('admin.layout.sidebar')
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-                @include('admin.layout.topbar')
+<body class="bg-body-bg">
+    <div class="preloader" id="preloader">
+        <div class="preloader">
+            <div class="waviy position-relative">
+                <span class="d-block mb-4">
+                    <img src="{{ asset('img/logo.png') }}" alt="" class="img" width="90px">
+                </span>
+                <span class="d-inline-block">DESA</span>
+                <span class="d-inline-block">MOTOLING</span>
+                <span class="d-inline-block">DUA</span>
+            </div>
+        </div>
+    </div>
+
+    @include('admin.layout.sidebar')
+
+    <div class="container-fluid">
+        <div class="main-content d-flex flex-column">
+            @include('admin.layout.navbar')
+
+            <div class="main-content-container overflow-hidden">
+                @if($breadcrumbs)
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+                    @if(count($breadcrumbs) > 2)
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                        <a href="{{ route($breadcrumbs[1]['route']) }}" class="d-inline text-decoration-none text-center fs-24" style="height: 30px; line-height: 30px;">
+                            <i class="ri-arrow-left-long-line"></i>
+                        </a>
+                        <h3 class="d-inline mb-0">{{ $title }}</h3>
+                    </div>
+                    @else
+                    <h3 class="d-inline mb-0">{{ $title }}</h3>
+                    @endif
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb align-items-center mb-0 lh-1">
+                            <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+                                <?php if (!array_key_exists('route', $breadcrumb)) { ?>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span class="text-secondary">{{ $breadcrumb['title'] }}</span>
+                                    </li>
+                                <?php } else { ?>
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ route($breadcrumb['route']) }}" class="d-flex align-items-center text-decoration-none">
+                                            <span class="text-body fs-14 hover">{{ $breadcrumb['title'] }}</span>
+                                        </a>
+                                    </li>
+                                <?php }  ?>
+                            <?php } ?>
+                        </ol>
+                    </nav>
+                </div>
+                @endif
+
                 @include($main)
             </div>
+
+            <div class="flex-grow-1"></div>
+
             @include('admin.layout.footer')
         </div>
     </div>
 
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-    <script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
-
-    <script src="{{ asset('admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('admin/js/script.js') }}"></script>
+    <script src="{{ asset('admin/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('admin/js/sidebar-menu.js') }}"></script>
+    <script src="{{ asset('admin/js/quill.min.js') }}"></script>
+    <script src="{{ asset('admin/js/data-table.js') }}"></script>
+    <script src="{{ asset('admin/js/prism.js') }}"></script>
+    <script src="{{ asset('admin/js/clipboard.min.js') }}"></script>
+    <script src="{{ asset('admin/js/simplebar.min.js') }}"></script>
+    <script src="{{ asset('admin/js/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('admin/js/custom/custom.js') }}"></script>
 </body>
 
 </html>

@@ -3,17 +3,16 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
+
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
 
-Route::get('/', [HomeController::class, 'index']);
-
-Route::prefix('/auth')->group(function () {
-    Route::get('/', [LoginController::class, 'index']);
-    Route::post('/', [LoginController::class, 'login']);
-    Route::post('/logout', [LoginController::class, 'logout']);
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['authenticate'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::prefix('/master')->name('master.')->group(function () {
+        Route::resource('users', UserController::class);
+    });
 });

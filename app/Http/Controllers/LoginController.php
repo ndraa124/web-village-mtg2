@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
-use App\Http\Requests\LoginRequest;
+use App\Http\Requests\Auth\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -21,24 +19,15 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $request->validate([
-            'custom' => [
-                'nik' => [
-                    'required' => 'We need to know your email address!',
-                    'number' => 'Your email address is too long!'
-                ],
-            ],
-        ]);
-
-        $validateData = $request->only('nik', 'password');
+        $validateData = $request->validated();
 
         if (Auth::attempt($validateData)) {
+            $request->session()->regenerate();
             return redirect()->intended('dashboard');
         }
 
         return back()
-            ->withErrors(['error' => 'The provide credentials do not match our records!'])
-            ->onlyInput('nik');
+            ->withErrors(['error' => 'NIK atau password anda salah!']);
     }
 
     public function logout()

@@ -1,7 +1,3 @@
-<footer class="sticky-footer bg-white">
-  <div class="container my-auto">
-    <div class="copyright text-center my-auto">
-      <span>Copyright &copy; Library <?= date('Y'); ?></span>
-    </div>
-  </div>
+<footer class="footer-area bg-white text-center rounded-10 rounded-bottom-0">
+  <p class="fs-16 text-body">©<?= date('Y'); ?>. <span class="text-secondary">Desa Motoling Dua</span>. All rights reserved.</p>
 </footer>
