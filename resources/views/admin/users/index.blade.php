@@ -8,7 +8,7 @@
       </button>
     </form>
 
-    <a href="{{ route('users.create') }}" class="text-primary fs-16 text-decoration-none">+ Tambah User Baru</a>
+    <a href="{{ route('users.create') }}" class="text-primary fs-16 text-decoration-none">+ Tambah Baru</a>
   </div>
 
   @if ($message = Session::get('success'))

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\GenderController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -17,5 +18,6 @@ Route::middleware(['authenticate'])->group(function () {
 
     Route::prefix('/master')->name('master.')->group(function () {
         Route::resource('education', EducationController::class);
+        Route::resource('gender', GenderController::class);
     });
 });

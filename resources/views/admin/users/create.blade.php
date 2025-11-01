@@ -58,7 +58,7 @@
 
           <div class="col-lg-12">
             <div class="d-flex gap-2">
-              <button type="submit" class="btn btn-primary fw-normal text-white">Tambah User</button>
+              <button type="submit" class="btn btn-primary fw-normal text-white">Tambah</button>
               <a href="{{ route('users.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>

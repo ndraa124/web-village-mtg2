@@ -1,17 +1,17 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('master.education.store') }}" method="POST">
+      <form action="{{ route('master.gender.store') }}" method="POST">
         @csrf
 
         <div class="row">
           <div class="col-lg-6">
             <div class="mb-20">
-              <label class="label fs-16 mb-2">Nama Pendidikan</label>
+              <label class="label fs-16 mb-2">Nama Jenis Kelamin</label>
               <div class="form-groupo">
-                <input type="text" name="education_name" class="form-control" id="education-name" value="{{ old('education_name') }}" placeholder="Nama Pendidikan">
+                <input type="text" name="gender_name" class="form-control" id="gender-name" value="{{ old('gender_name') }}" placeholder="Nama Jenis Kelamin">
               </div>
-              @error('name')
+              @error('gender_name')
               <div class="text-danger small mt-2">
                 {{ $message }}
               </div>
@@ -22,7 +22,7 @@
           <div class="col-lg-12">
             <div class="d-flex gap-2">
               <button type="submit" class="btn btn-primary fw-normal text-white">Tambah</button>
-              <a href="{{ route('master.education.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('master.gender.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>
