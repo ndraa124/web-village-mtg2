@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\GenderController;
 use App\Http\Controllers\Admin\HamletController;
+use App\Http\Controllers\Admin\JobController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -21,5 +22,6 @@ Route::middleware(['authenticate'])->group(function () {
         Route::resource('education', EducationController::class);
         Route::resource('gender', GenderController::class);
         Route::resource('hamlet', HamletController::class);
+        Route::resource('job', JobController::class);
     });
 });
