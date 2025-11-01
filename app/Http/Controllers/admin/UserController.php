@@ -54,7 +54,7 @@ class UserController extends Controller
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'master.users.index',
+                    'route' => 'users.index',
                     'title' => 'User',
                 ],
                 [
@@ -73,7 +73,7 @@ class UserController extends Controller
         try {
             User::create($validatedData);
 
-            return redirect()->route('master.users.index')
+            return redirect()->route('users.index')
                 ->with('success', 'User berhasil ditambahkan.');
         } catch (\Exception $e) {
             return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -91,7 +91,7 @@ class UserController extends Controller
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'master.users.index',
+                    'route' => 'users.index',
                     'title' => 'Users',
                 ],
                 [
@@ -115,7 +115,7 @@ class UserController extends Controller
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'master.users.index',
+                    'route' => 'users.index',
                     'title' => 'User',
                 ],
                 [
@@ -138,7 +138,7 @@ class UserController extends Controller
 
         $user->update($validatedData);
 
-        return redirect()->route('master.users.index')
+        return redirect()->route('users.index')
             ->with('success', 'User berhasil diperbarui.');
     }
 
@@ -146,7 +146,7 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('master.users.index')
+        return redirect()->route('users.index')
             ->with('success', 'User berhasil dihapus.');
     }
 }

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('master.users.update', $user->id) }}" method="POST">
+      <form action="{{ route('users.update', $user->id) }}" method="POST">
         @csrf @method('PUT')
 
         <div class="row">
@@ -60,7 +60,7 @@
           <div class="col-lg-12">
             <div class="d-flex gap-2">
               <button type="submit" class="btn btn-primary fw-normal text-white">Update</button>
-              <a href="{{ route('master.users.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('users.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>

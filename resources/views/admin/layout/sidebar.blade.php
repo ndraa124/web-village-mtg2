@@ -19,17 +19,19 @@
         </a>
       </li>
 
+      <li class="menu-item {{ request()->routeIs('users.*') ? 'open' : '' }}">
+        <a href="{{ route('users.index') }}" class="menu-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">manage_accounts</span>
+          <span class="title">Management User</span>
+        </a>
+      </li>
+
       <li class="menu-item {{ request()->routeIs('master.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">database</span>
           <span class="title">Master Data</span>
         </a>
         <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="{{ route('master.users.index') }}" class="menu-link {{ request()->routeIs('master.users.*') ? 'active' : '' }}">
-              User
-            </a>
-          </li>
           <li class="menu-item">
             <a href="compose.html" class="menu-link">
               Pendidikan
