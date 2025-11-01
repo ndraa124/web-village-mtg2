@@ -15,7 +15,7 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'nik' => 'required|string|numeric|digits:16|unique:users',
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:100',
             'password' => 'required|string|min:8|confirmed',
         ];
     }
@@ -25,14 +25,14 @@ class StoreUserRequest extends FormRequest
         return [
             'nik.required' => 'NIK wajib diisi.',
             'nik.numeric' => 'NIK harus berupa angka.',
-            'nik.digits' => 'NIK harus terdiri dari 16 digit.',
+            'nik.digits' => 'NIK harus terdiri dari :digits digit.',
             'nik.unique' => 'NIK ini sudah terdaftar.',
 
             'name.required' => 'Nama wajib diisi.',
-            'name.max' => 'Nama tidak boleh lebih dari 255 karakter.',
+            'name.max' => 'Nama tidak boleh lebih dari :max karakter.',
 
             'password.required' => 'Password wajib diisi.',
-            'password.min' => 'Password minimal harus 8 karakter.',
+            'password.min' => 'Password minimal harus :min karakter.',
             'password.confirmed' => 'Konfirmasi password tidak cocok.',
         ];
     }

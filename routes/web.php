@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 
+use App\Http\Controllers\Admin\EducationController;
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['authenticate'])->group(function () {
@@ -14,6 +16,6 @@ Route::middleware(['authenticate'])->group(function () {
     Route::resource('users', UserController::class);
 
     Route::prefix('/master')->name('master.')->group(function () {
-        // Route::resource('', Controller::class);
+        Route::resource('education', EducationController::class);
     });
 });

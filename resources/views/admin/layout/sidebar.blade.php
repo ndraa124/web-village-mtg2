@@ -33,7 +33,7 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="compose.html" class="menu-link">
+            <a href="{{ route('master.education.index') }}" class="menu-link {{ request()->routeIs('master.education.*') ? 'active' : '' }}">
               Pendidikan
             </a>
           </li>
