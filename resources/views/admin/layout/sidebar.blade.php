@@ -43,7 +43,7 @@
             </a>
           </li>
           <li class="menu-item">
-            <a href="read-email.html" class="menu-link">
+            <a href="{{ route('master.hamlet.index') }}" class="menu-link {{ request()->routeIs('master.hamlet.*') ? 'active' : '' }}">
               Dusun
             </a>
           </li>
