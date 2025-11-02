@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\MarriageController;
 use App\Http\Controllers\Admin\ReligionController;
 use App\Http\Controllers\Admin\IncomeController;
 use App\Http\Controllers\Admin\ShoppingController;
+use App\Http\Controllers\Admin\FinancingController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -31,5 +32,6 @@ Route::middleware(['authenticate'])->group(function () {
         Route::resource('religion', ReligionController::class);
         Route::resource('income', IncomeController::class);
         Route::resource('shopping', ShoppingController::class);
+        Route::resource('financing', FinancingController::class);
     });
 });
