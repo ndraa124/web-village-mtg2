@@ -121,12 +121,12 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('infographics.resident.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.*') ? 'active' : '' }}">
+            <a href="{{ route('infographics.resident.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.index') || request()->routeIs('infographics.resident.edit') ? 'active' : '' }}">
               Jumlah Penduduk
             </a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('infographics.resident.age.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.age.*') ? 'active' : '' }}">
               Kelompok Umur
             </a>
           </li>

@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\VisionController;
 use App\Http\Controllers\Admin\MissionController;
 
 use App\Http\Controllers\Admin\InfographicsResidentController;
+use App\Http\Controllers\Admin\InfographicsResidentAgeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -72,12 +73,7 @@ Route::middleware(['authenticate'])->group(function () {
                         Route::put('/update/{resident}', 'update')->name('update');
                     });
 
-                    // Route::prefix('/age')
-                    //     ->name('age.')
-                    //     ->group(function () {
-                    //         Route::get('/', 'index')->name('index');
-                    //         Route::put('/update/{resident}', 'update')->name('update');
-                    //     });
+                    Route::resource('age', InfographicsResidentAgeController::class);
                 });
         });
 });
