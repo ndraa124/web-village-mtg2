@@ -19,11 +19,8 @@
         </a>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('users.*') ? 'open' : '' }}">
-        <a href="{{ route('users.index') }}" class="menu-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
-          <span class="material-symbols-outlined menu-icon">manage_accounts</span>
-          <span class="title">Management User</span>
-        </a>
+      <li class="menu-title small text-uppercase">
+        <span class="menu-title-text">MASTER</span>
       </li>
 
       <li class="menu-item {{ request()->routeIs('master.*') ? 'open' : '' }}">
@@ -93,6 +90,35 @@
             </a>
           </li>
         </ul>
+      </li>
+
+      <li class="menu-title small text-uppercase">
+        <span class="menu-title-text">VISI & MISI</span>
+      </li>
+
+      <li class="menu-item">
+        <a href="{{ route('vision.index') }}" class="menu-link {{ request()->routeIs('vision.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">infrared</span>
+          <span class="title">Visi</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a href="#" class="menu-link">
+          <span class="material-symbols-outlined menu-icon">rocket_launch</span>
+          <span class="title">Misi</span>
+        </a>
+      </li>
+
+      <li class="menu-title small text-uppercase">
+        <span class="menu-title-text">USERS</span>
+      </li>
+
+      <li class="menu-item {{ request()->routeIs('users.*') ? 'open' : '' }}">
+        <a href="{{ route('users.index') }}" class="menu-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">manage_accounts</span>
+          <span class="title">Management User</span>
+        </a>
       </li>
     </ul>
   </aside>

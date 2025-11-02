@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\SocialAssistanceController;
 use App\Http\Controllers\Admin\IdmStatusController;
 
 use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\VisionController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -47,4 +48,6 @@ Route::middleware(['authenticate'])->group(function () {
         Route::get('/', 'index')->name('index');
         Route::put('/update/{village}', 'update')->name('update');
     });
+
+    Route::resource('vision', VisionController::class);
 });

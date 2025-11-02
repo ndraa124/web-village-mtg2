@@ -13,6 +13,15 @@
   </div>
   @endif
 
+  @if ($message = Session::get('error'))
+  <div class="col-12">
+    <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+      {{ $message }}
+      <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+  @endif
+
   <form action="{{ route('settings.update', $village->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
