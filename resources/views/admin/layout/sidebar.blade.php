@@ -111,6 +111,29 @@
       </li>
 
       <li class="menu-title small text-uppercase">
+        <span class="menu-title-text">INFOGRAFIS</span>
+      </li>
+
+      <li class="menu-item {{ request()->routeIs('infographics.resident.*') ? 'open' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+          <span class="material-symbols-outlined menu-icon">groups</span>
+          <span class="title">Penduduk</span>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="{{ route('infographics.resident.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.*') ? 'active' : '' }}">
+              Jumlah Penduduk
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Kelompok Umur
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="menu-title small text-uppercase">
         <span class="menu-title-text">USERS</span>
       </li>
 
