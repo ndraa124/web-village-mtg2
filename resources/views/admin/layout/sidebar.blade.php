@@ -83,7 +83,7 @@
             </a>
           </li>
           <li class="menu-item">
-            <a href="read-email.html" class="menu-link">
+            <a href="{{ route('master.social_assistance.index') }}" class="menu-link {{ request()->routeIs('master.social_assistance.*') ? 'active' : '' }}">
               Bantuan Sosial
             </a>
           </li>

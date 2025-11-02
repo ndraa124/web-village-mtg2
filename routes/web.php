@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\IncomeController;
 use App\Http\Controllers\Admin\ShoppingController;
 use App\Http\Controllers\Admin\FinancingController;
 use App\Http\Controllers\Admin\StuntingController;
+use App\Http\Controllers\Admin\SocialAssistanceController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -35,5 +36,6 @@ Route::middleware(['authenticate'])->group(function () {
         Route::resource('shopping', ShoppingController::class);
         Route::resource('financing', FinancingController::class);
         Route::resource('stunting', StuntingController::class);
+        Route::resource('social_assistance', SocialAssistanceController::class);
     });
 });
