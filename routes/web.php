@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\GenderController;
 use App\Http\Controllers\Admin\HamletController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\MarriageController;
+use App\Http\Controllers\Admin\ReligionController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -25,5 +26,6 @@ Route::middleware(['authenticate'])->group(function () {
         Route::resource('hamlet', HamletController::class);
         Route::resource('job', JobController::class);
         Route::resource('marriage', MarriageController::class);
+        Route::resource('religion', ReligionController::class);
     });
 });
