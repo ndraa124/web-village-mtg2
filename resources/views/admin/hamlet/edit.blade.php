@@ -1,5 +1,14 @@
 <div class="row">
   <div class="col-lg-12">
+    @if ($message = Session::get('error'))
+    <div class="col-12">
+      <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+        {{ $message }}
+        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+    @endif
+
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
       <form action="{{ route('master.hamlet.update', $hamlet->id) }}" method="POST">
         @csrf @method('PUT')

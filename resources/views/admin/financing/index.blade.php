@@ -20,6 +20,15 @@
   </div>
   @endif
 
+  @if ($message = Session::get('error'))
+  <div class="col-12">
+    <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+      {{ $message }}
+      <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+  @endif
+
   <div class="default-table-area mx-minus-1 mb-2">
     <div class="table-responsive">
       <table class="table align-middle">

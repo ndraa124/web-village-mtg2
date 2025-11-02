@@ -10,17 +10,17 @@
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('master.job.store') }}" method="POST">
+      <form action="{{ route('mission.store') }}" method="POST">
         @csrf
 
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-12">
             <div class="mb-20">
-              <label class="label fs-16 mb-2">Nama Pekerjaan</label>
+              <label class="label fs-16 mb-2">Deskripsi Misi</label>
               <div class="form-groupo">
-                <input type="text" name="job_name" class="form-control" id="job-name" value="{{ old('job_name') }}" placeholder="Nama Pekerjaan">
+                <textarea name="description" class="form-control" id="mission-description" rows="5" placeholder="Tuliskan misi di sini...">{{ old('description') }}</textarea>
               </div>
-              @error('job_name')
+              @error('description')
               <div class="text-danger small mt-2">
                 {{ $message }}
               </div>
@@ -30,8 +30,8 @@
 
           <div class="col-lg-12">
             <div class="d-flex gap-2">
-              <button type="submit" class="btn btn-primary fw-normal text-white">Tambah</button>
-              <a href="{{ route('master.job.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <button type="submit" class="btn btn-primary fw-normal text-white">Tambah Misi</button>
+              <a href="{{ route('mission.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>

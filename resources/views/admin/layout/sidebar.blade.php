@@ -96,15 +96,15 @@
         <span class="menu-title-text">VISI & MISI</span>
       </li>
 
-      <li class="menu-item">
+      <li class="menu-item {{ request()->routeIs('vision.*') ? 'open' : '' }}">
         <a href="{{ route('vision.index') }}" class="menu-link {{ request()->routeIs('vision.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">infrared</span>
           <span class="title">Visi</span>
         </a>
       </li>
 
-      <li class="menu-item">
-        <a href="#" class="menu-link">
+      <li class="menu-item {{ request()->routeIs('mission.*') ? 'open' : '' }}">
+        <a href="{{ route('mission.index') }}" class="menu-link {{ request()->routeIs('mission.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">rocket_launch</span>
           <span class="title">Misi</span>
         </a>

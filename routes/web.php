@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\IdmStatusController;
 
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\VisionController;
+use App\Http\Controllers\Admin\MissionController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -50,4 +51,5 @@ Route::middleware(['authenticate'])->group(function () {
     });
 
     Route::resource('vision', VisionController::class);
+    Route::resource('mission', MissionController::class);
 });

@@ -3,42 +3,42 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Vision;
-use App\Http\Requests\Vision\StoreVisionRequest;
-use App\Http\Requests\Vision\UpdateVisionRequest;
+use App\Models\Mission;
+use App\Http\Requests\Mission\StoreMissionRequest;
+use App\Http\Requests\Mission\UpdateMissionRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class VisionController extends Controller
+class MissionController extends Controller
 {
   public function index(Request $request)
   {
     $search = $request->input('search');
 
-    $query = Vision::query();
+    $query = Mission::query();
 
     $query->when($search, function ($q, $search) {
       return $q->where('description', 'like', "%{$search}%");
     });
 
-    $visions = $query->orderByDesc('is_active')
+    $missions = $query->orderByDesc('is_active')
       ->latest()
       ->paginate(10)
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Visi',
-      'main' => 'admin.vision.index',
+      'title' => 'Daftar Misi',
+      'main' => 'admin.mission.index',
       'breadcrumbs' => [
         [
           'route' => 'dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'title' => 'Visi',
+          'title' => 'Misi',
         ]
       ],
-      'visions' => $visions
+      'missions' => $missions
     ];
 
     return view('admin.layout.template', $data);
@@ -47,19 +47,19 @@ class VisionController extends Controller
   public function create()
   {
     $data = [
-      'title' => 'Tambah Visi',
-      'main' => 'admin.vision.create',
+      'title' => 'Tambah Misi',
+      'main' => 'admin.mission.create',
       'breadcrumbs' => [
         [
           'route' => 'dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'vision.index',
-          'title' => 'Visi',
+          'route' => 'mission.index',
+          'title' => 'Misi',
         ],
         [
-          'title' => 'Tambah Visi',
+          'title' => 'Tambah Misi',
         ]
       ]
     ];
@@ -67,88 +67,88 @@ class VisionController extends Controller
     return view('admin.layout.template', $data);
   }
 
-  public function store(StoreVisionRequest $request)
+  public function store(StoreMissionRequest $request)
   {
     $validatedData = $request->validated();
 
     DB::beginTransaction();
 
     try {
-      Vision::where('is_active', true)->update(['is_active' => false]);
+      Mission::where('is_active', true)->update(['is_active' => false]);
 
       $validatedData['is_active'] = true;
-      Vision::create($validatedData);
+      Mission::create($validatedData);
 
       DB::commit();
 
-      return redirect()->route('vision.index')
-        ->with('success', 'Visi baru berhasil ditambahkan dan diaktifkan.');
+      return redirect()->route('mission.index')
+        ->with('success', 'Misi baru berhasil ditambahkan dan diaktifkan.');
     } catch (\Exception $e) {
       DB::rollBack();
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
   }
 
-  public function show(Vision $vision)
+  public function show(Mission $mission)
   {
     $data = [
-      'title' => 'Detail Visi',
-      'main' => 'admin.vision.show',
+      'title' => 'Detail Misi',
+      'main' => 'admin.mission.show',
       'breadcrumbs' => [
         [
           'route' => 'dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'vision.index',
-          'title' => 'Visi',
+          'route' => 'mission.index',
+          'title' => 'Misi',
         ],
         [
-          'title' => 'Detail Visi',
+          'title' => 'Detail Misi',
         ]
       ],
-      'vision' => $vision
+      'mission' => $mission
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function edit(Vision $vision)
+  public function edit(Mission $mission)
   {
     $data = [
-      'title' => 'Edit Visi',
-      'main' => 'admin.vision.edit',
+      'title' => 'Edit Misi',
+      'main' => 'admin.mission.edit',
       'breadcrumbs' => [
         [
           'route' => 'dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'vision.index',
-          'title' => 'Visi',
+          'route' => 'mission.index',
+          'title' => 'Misi',
         ],
         [
-          'title' => 'Edit Visi',
+          'title' => 'Edit Misi',
         ]
       ],
-      'vision' => $vision
+      'mission' => $mission
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function update(UpdateVisionRequest $request, Vision $vision)
+  public function update(UpdateMissionRequest $request, Mission $mission)
   {
     $validatedData = $request->validated();
     $newIsActiveState = $request->has('is_active');
 
-    if ($newIsActiveState == false && $vision->is_active == true) {
-      $activeCount = Vision::where('is_active', true)->count();
+    if ($newIsActiveState == false && $mission->is_active == true) {
+      $activeCount = Mission::where('is_active', true)->count();
 
       if ($activeCount == 1) {
         return back()->withInput()->with(
           'error',
-          'Gagal update. Tidak dapat menonaktifkan satu-satunya Visi yang aktif.'
+          'Gagal update. Tidak dapat menonaktifkan satu-satunya Misi yang aktif.'
         );
       }
     }
@@ -156,35 +156,35 @@ class VisionController extends Controller
     DB::beginTransaction();
 
     try {
-      $vision->description = $validatedData['description'];
+      $mission->description = $validatedData['description'];
 
-      if ($newIsActiveState == true && $vision->is_active == false) {
-        Vision::where('id', '!=', $vision->id)
+      if ($newIsActiveState == true && $mission->is_active == false) {
+        Mission::where('id', '!=', $mission->id)
           ->where('is_active', true)
           ->update(['is_active' => false]);
 
-        $vision->is_active = true;
+        $mission->is_active = true;
       } else {
-        $vision->is_active = $newIsActiveState;
+        $mission->is_active = $newIsActiveState;
       }
 
-      $vision->save();
+      $mission->save();
 
       DB::commit();
 
-      return redirect()->route('vision.index')
-        ->with('success', 'Visi berhasil diperbarui.');
+      return redirect()->route('mission.index')
+        ->with('success', 'Misi berhasil diperbarui.');
     } catch (\Exception $e) {
       DB::rollBack();
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
   }
 
-  public function destroy(Vision $vision)
+  public function destroy(Mission $mission)
   {
-    $vision->delete();
+    $mission->delete();
 
-    return redirect()->route('vision.index')
-      ->with('success', 'Visi berhasil dihapus.');
+    return redirect()->route('mission.index')
+      ->with('success', 'Misi berhasil dihapus.');
   }
 }
