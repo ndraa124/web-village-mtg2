@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             MStuntingSeeder::class,
             MSocialAssistanceSeeder::class,
             MIDMStatusSeeder::class,
+            VillagesSeeder::class,
+            UserSeeder::class
         ]);
     }
 }

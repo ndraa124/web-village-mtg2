@@ -20,6 +20,8 @@ use App\Http\Controllers\Admin\StuntingController;
 use App\Http\Controllers\Admin\SocialAssistanceController;
 use App\Http\Controllers\Admin\IdmStatusController;
 
+use App\Http\Controllers\Admin\SettingsController;
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['authenticate'])->group(function () {
@@ -39,5 +41,10 @@ Route::middleware(['authenticate'])->group(function () {
         Route::resource('stunting', StuntingController::class);
         Route::resource('social_assistance', SocialAssistanceController::class);
         Route::resource('idm_status', IdmStatusController::class);
+    });
+
+    Route::prefix('/settings')->controller(SettingsController::class)->name('settings.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::put('/update/{village}', 'update')->name('update');
     });
 });

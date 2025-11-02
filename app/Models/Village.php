@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Village extends Model
+{
+  use HasFactory;
+
+  protected $table = 'villages';
+
+  protected $fillable = [
+    'name',
+    'description',
+    'village_head',
+    'subdistrict',
+    'regency',
+    'province',
+    'address',
+    'phone',
+    'email',
+    'facebook',
+    'instagram',
+    'twitter',
+    'logo',
+    'is_active',
+  ];
+
+  protected $casts = [
+    'is_active' => 'boolean',
+  ];
+}
