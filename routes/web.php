@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\MissionController;
 
 use App\Http\Controllers\Admin\InfographicsResidentController;
 use App\Http\Controllers\Admin\InfographicsResidentAgeController;
+use App\Http\Controllers\Admin\InfographicsResidentHamletController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -74,6 +75,8 @@ Route::middleware(['authenticate'])->group(function () {
                     });
 
                     Route::resource('age', InfographicsResidentAgeController::class);
+                    Route::resource('hamlet', InfographicsResidentHamletController::class)
+                        ->parameter('hamlet', 'residentHamlet');
                 });
         });
 });

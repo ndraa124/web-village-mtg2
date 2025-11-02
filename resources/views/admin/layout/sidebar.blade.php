@@ -130,6 +130,11 @@
               Kelompok Umur
             </a>
           </li>
+          <li class="menu-item">
+            <a href="{{ route('infographics.resident.hamlet.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.hamlet.*') ? 'active' : '' }}">
+              Dusun
+            </a>
+          </li>
         </ul>
       </li>
 
