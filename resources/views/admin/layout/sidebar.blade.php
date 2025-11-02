@@ -63,7 +63,7 @@
             </a>
           </li>
           <li class="menu-item">
-            <a href="read-email.html" class="menu-link">
+            <a href="{{ route('master.income.index') }}" class="menu-link {{ request()->routeIs('master.income.*') ? 'active' : '' }}">
               Pendapatan
             </a>
           </li>
