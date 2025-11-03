@@ -146,17 +146,25 @@ class InfographicsResidentHamletController extends Controller
   {
     $validatedData = $request->validated();
 
-    $residentHamlet->update($validatedData);
+    try {
+      $residentHamlet->update($validatedData);
 
-    return redirect()->route('infographics.resident.hamlet.index')
-      ->with('success', 'Data penduduk per dusun berhasil diperbarui.');
+      return redirect()->route('infographics.resident.hamlet.index')
+        ->with('success', 'Data penduduk per dusun berhasil diperbarui.');
+    } catch (\Exception $e) {
+      return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
+    }
   }
 
   public function destroy(InfographicsResidentHamlet $residentHamlet)
   {
-    $residentHamlet->delete();
+    try {
+      $residentHamlet->delete();
 
-    return redirect()->route('infographics.resident.hamlet.index')
-      ->with('success', 'Data penduduk per dusun berhasil dihapus.');
+      return redirect()->route('infographics.resident.hamlet.index')
+        ->with('success', 'Data penduduk per dusun berhasil dihapus.');
+    } catch (\Exception $e) {
+      return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());
+    }
   }
 }

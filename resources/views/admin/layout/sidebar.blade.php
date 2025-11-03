@@ -127,12 +127,17 @@
           </li>
           <li class="menu-item">
             <a href="{{ route('infographics.resident.age.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.age.*') ? 'active' : '' }}">
-              Kelompok Umur
+              Jumlah Umur
             </a>
           </li>
           <li class="menu-item">
             <a href="{{ route('infographics.resident.hamlet.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.hamlet.*') ? 'active' : '' }}">
-              Dusun
+              Jumlah Dusun
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('infographics.resident.education.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.education.*') ? 'active' : '' }}">
+              Jumlah Pendidikan
             </a>
           </li>
         </ul>
