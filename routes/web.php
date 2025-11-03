@@ -32,7 +32,9 @@ use App\Http\Controllers\Admin\InfographicsResidentJobController;
 use App\Http\Controllers\Admin\InfographicsResidentMustSelectController;
 use App\Http\Controllers\Admin\InfographicsResidentMarriageController;
 use App\Http\Controllers\Admin\InfographicsResidentReligionController;
+
 use App\Http\Controllers\Admin\InfographicsApbdController;
+use App\Http\Controllers\Admin\InfographicsApbdYearController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -96,7 +98,21 @@ Route::middleware(['authenticate'])->group(function () {
                         ->parameters(['religion' => 'residentReligion']);
                 });
 
-            Route::resource('apbd', InfographicsApbdController::class)
-                ->parameters(['apbd' => 'apbd']);
+            Route::prefix('/apbd')
+                ->name('apbd.')
+                ->group(function () {
+                    Route::controller(InfographicsApbdController::class)->group(function () {
+                        Route::get('/', 'index')->name('index');
+                        Route::get('/create', 'create')->name('create');
+                        Route::post('/store', 'store')->name('store');
+                        Route::get('/show/{apbd}', 'show')->name('show');
+                        Route::get('/edit/{apbd}', 'edit')->name('edit');
+                        Route::put('/update/{apbd}', 'update')->name('update');
+                        Route::delete('/destroy/{apbd}', 'destroy')->name('destroy');
+                    });
+
+                    Route::resource('apbd_year', InfographicsApbdYearController::class)
+                        ->parameters(['apbd_year' => 'apbdYear']);
+                });
         });
 });
