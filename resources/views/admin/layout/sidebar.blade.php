@@ -141,7 +141,7 @@
             </a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('infographics.resident.job.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.job.*') ? 'active' : '' }}">
               Jumlah Pekerjaan
             </a>
           </li>

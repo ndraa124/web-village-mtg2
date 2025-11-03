@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\InfographicsResidentController;
 use App\Http\Controllers\Admin\InfographicsResidentAgeController;
 use App\Http\Controllers\Admin\InfographicsResidentHamletController;
 use App\Http\Controllers\Admin\InfographicsResidentEducationController;
+use App\Http\Controllers\Admin\InfographicsResidentJobController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -75,11 +76,14 @@ Route::middleware(['authenticate'])->group(function () {
                         Route::put('/update/{resident}', 'update')->name('update');
                     });
 
-                    Route::resource('age', InfographicsResidentAgeController::class);
+                    Route::resource('age', InfographicsResidentAgeController::class)
+                        ->parameter('age', 'residentAge');
                     Route::resource('hamlet', InfographicsResidentHamletController::class)
                         ->parameter('hamlet', 'residentHamlet');
                     Route::resource('education', InfographicsResidentEducationController::class)
                         ->parameters(['education' => 'residentEducation']);
+                    Route::resource('job', InfographicsResidentJobController::class)
+                        ->parameters(['job' => 'residentJob']);
                 });
         });
 });

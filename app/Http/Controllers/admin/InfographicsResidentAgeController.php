@@ -83,9 +83,9 @@ class InfographicsResidentAgeController extends Controller
     }
   }
 
-  public function show(InfographicsResidentAge $age)
+  public function show(InfographicsResidentAge $residentAge)
   {
-    $age->load('gender');
+    $residentAge->load('gender');
 
     $data = [
       'title' => 'Detail Kelompok Umur',
@@ -103,15 +103,15 @@ class InfographicsResidentAgeController extends Controller
           'title' => 'Detail Kelompok Umur',
         ]
       ],
-      'age' => $age
+      'age' => $residentAge
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function edit(InfographicsResidentAge $age)
+  public function edit(InfographicsResidentAge $residentAge)
   {
-    $age->load('gender');
+    $residentAge->load('gender');
 
     $data = [
       'title' => 'Edit Kelompok Umur',
@@ -129,26 +129,26 @@ class InfographicsResidentAgeController extends Controller
           'title' => 'Edit Kelompok Umur',
         ]
       ],
-      'age' => $age,
+      'age' => $residentAge,
       'genders' => Gender::all()
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function update(StoreResidentAgeRequest $request, InfographicsResidentAge $age)
+  public function update(StoreResidentAgeRequest $request, InfographicsResidentAge $residentAge)
   {
     $validatedData = $request->validated();
 
-    $age->update($validatedData);
+    $residentAge->update($validatedData);
 
     return redirect()->route('infographics.resident.age.index')
       ->with('success', 'Data kelompok umur berhasil diperbarui.');
   }
 
-  public function destroy(InfographicsResidentAge $age)
+  public function destroy(InfographicsResidentAge $residentAge)
   {
-    $age->delete();
+    $residentAge->delete();
 
     return redirect()->route('infographics.resident.age.index')
       ->with('success', 'Data kelompok umur berhasil dihapus.');
