@@ -140,6 +140,131 @@
               Jumlah Pendidikan
             </a>
           </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Jumlah Pekerjaan
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Jumlah Wajib Pilih
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Jumlah Perkawinan
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Jumlah Agama
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+          <span class="material-symbols-outlined menu-icon">attach_money</span>
+          <span class="title">APBD</span>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Jumlah Semua APBD
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Jumlah APBD per Tahun
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Jumlah Pendapatan
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Jumlah Belanja
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Jumlah Pembiayaan
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+          <span class="material-symbols-outlined menu-icon">stacked_bar_chart</span>
+          <span class="title">Stunting</span>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Jumlah Stunting
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+          <span class="material-symbols-outlined menu-icon">volunteer_activism</span>
+          <span class="title">Bantuan Sosial</span>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Jumlah Bantual Sosial
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+          <span class="material-symbols-outlined menu-icon">leaderboard</span>
+          <span class="title">IDM</span>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Jumlah Skor IDM
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Indikator IKS
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Indikator IKE
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Indikator IKL
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+          <span class="material-symbols-outlined menu-icon">target</span>
+          <span class="title">SDGs</span>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              Jumlah SDGs
+            </a>
+          </li>
         </ul>
       </li>
 
