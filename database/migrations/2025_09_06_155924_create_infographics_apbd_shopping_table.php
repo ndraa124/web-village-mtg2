@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('infographics_apbd_shopping', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('year')->length(4);
+            $table->integer('year')->length(4);
             $table->bigInteger('shopping_id')->length(20)->index();
             $table->bigInteger('budget')->length(20);
             $table->tinyInteger('percent')->length(3)->default(0);

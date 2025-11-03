@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('infographics_resident_must_select', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('year')->length(4);
+            $table->integer('year')->length(4);
             $table->integer('total')->length(20);
             $table->timestamps();
         });

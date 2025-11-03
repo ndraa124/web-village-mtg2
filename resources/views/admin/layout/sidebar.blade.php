@@ -146,7 +146,7 @@
             </a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('infographics.resident.must_select.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.must_select.*') ? 'active' : '' }}">
               Jumlah Wajib Pilih
             </a>
           </li>

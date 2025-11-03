@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('infographics_apbd_year', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('year')->length(4);
+            $table->integer('year')->length(4);
             $table->bigInteger('income')->length(20);
             $table->bigInteger('shopping')->length(20);
             $table->timestamps();

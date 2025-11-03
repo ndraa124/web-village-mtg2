@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('infographics_idm', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('year')->length(4);
+            $table->integer('year')->length(4);
             $table->bigInteger('idm_status_id')->length(20)->index();
             $table->decimal('min_score', 6, 4)->default(0.0000);
             $table->decimal('iks_score', 6, 4)->default(0.0000);
