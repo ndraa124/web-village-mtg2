@@ -35,6 +35,7 @@ use App\Http\Controllers\Admin\InfographicsResidentReligionController;
 
 use App\Http\Controllers\Admin\InfographicsApbdController;
 use App\Http\Controllers\Admin\InfographicsApbdYearController;
+use App\Http\Controllers\Admin\InfographicsApbdIncomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -111,8 +112,10 @@ Route::middleware(['authenticate'])->group(function () {
                         Route::delete('/destroy/{apbd}', 'destroy')->name('destroy');
                     });
 
-                    Route::resource('apbd_year', InfographicsApbdYearController::class)
-                        ->parameters(['apbd_year' => 'apbdYear']);
+                    Route::resource('year', InfographicsApbdYearController::class)
+                        ->parameters(['year' => 'apbdYear']);
+                    Route::resource('income', InfographicsApbdIncomeController::class)
+                        ->parameters(['income' => 'apbdIncome']);
                 });
         });
 });

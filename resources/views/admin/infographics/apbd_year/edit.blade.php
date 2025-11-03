@@ -10,7 +10,7 @@
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('infographics.apbd.apbd_year.update', $apbdYear->id) }}" method="POST">
+      <form action="{{ route('infographics.apbd.year.update', $apbdYear->id) }}" method="POST">
         @csrf @method('PUT')
 
         <div class="row">
@@ -61,7 +61,7 @@
           <div class="col-lg-12">
             <div class="d-flex gap-2">
               <button type="submit" class="btn btn-primary fw-normal text-white">Ubah</button>
-              <a href="{{ route('infographics.apbd.apbd_year.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('infographics.apbd.year.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>

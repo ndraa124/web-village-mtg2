@@ -25,7 +25,7 @@ class InfographicsApbdYearController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar APBD Pendapatan & Belanja',
+      'title' => 'Daftar APBD per Tahun',
       'main' => 'admin.infographics.apbd_year.index',
       'breadcrumbs' => [
         [
@@ -33,7 +33,7 @@ class InfographicsApbdYearController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar APBD Pendapatan & Belanja'
+          'title' => 'Daftar APBD per Tahun'
         ],
       ],
       'apbdYears' => $apbdYears
@@ -45,7 +45,7 @@ class InfographicsApbdYearController extends Controller
   public function create()
   {
     $data = [
-      'title' => 'Tambah Data Pendapatan & Belanja',
+      'title' => 'Tambah Data APBN per Tahun',
       'main' => 'admin.infographics.apbd_year.create',
       'breadcrumbs' => [
         [
@@ -53,8 +53,8 @@ class InfographicsApbdYearController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.apbd_year.index',
-          'title' => 'Daftar APBD Pendapatan & Belanja'
+          'route' => 'infographics.apbd.year.index',
+          'title' => 'Daftar APBD per Tahun'
         ],
         ['title' => 'Tambah Data'],
       ],
@@ -70,8 +70,8 @@ class InfographicsApbdYearController extends Controller
     try {
       InfographicsApbdYear::create($validatedData);
 
-      return redirect()->route('infographics.apbd.apbd_year.index')
-        ->with('success', 'Data Pendapatan & Belanja berhasil ditambahkan.');
+      return redirect()->route('infographics.apbd.year.index')
+        ->with('success', 'Data APBD berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
@@ -80,7 +80,7 @@ class InfographicsApbdYearController extends Controller
   public function show(InfographicsApbdYear $apbdYear)
   {
     $data = [
-      'title' => 'Detail Pendapatan & Belanja',
+      'title' => 'Detail APBD ' . $apbdYear->year,
       'main' => 'admin.infographics.apbd_year.show',
       'breadcrumbs' => [
         [
@@ -88,8 +88,8 @@ class InfographicsApbdYearController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.apbd_year.index',
-          'title' => 'Daftar APBD Pendapatan & Belanja'
+          'route' => 'infographics.apbd.year.index',
+          'title' => 'Daftar APBD per Tahun'
         ],
         [
           'title' => 'Detail Data'
@@ -104,7 +104,7 @@ class InfographicsApbdYearController extends Controller
   public function edit(InfographicsApbdYear $apbdYear)
   {
     $data = [
-      'title' => 'Edit Pendapatan & Belanja',
+      'title' => 'Edit APBD ' . $apbdYear->year,
       'main' => 'admin.infographics.apbd_year.edit',
       'breadcrumbs' => [
         [
@@ -112,8 +112,8 @@ class InfographicsApbdYearController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.apbd_year.index',
-          'title' => 'Daftar APBD Pendapatan & Belanja'
+          'route' => 'infographics.apbd.year.index',
+          'title' => 'Daftar APBD per Tahun'
         ],
         [
           'title' => 'Edit Data'
@@ -132,8 +132,8 @@ class InfographicsApbdYearController extends Controller
     try {
       $apbdYear->update($validatedData);
 
-      return redirect()->route('infographics.apbd.apbd_year.index')
-        ->with('success', 'Data Pendapatan & Belanja berhasil diperbarui.');
+      return redirect()->route('infographics.apbd.year.index')
+        ->with('success', 'Data APBD berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
     }
@@ -144,8 +144,8 @@ class InfographicsApbdYearController extends Controller
     try {
       $apbdYear->delete();
 
-      return redirect()->route('infographics.apbd.apbd_year.index')
-        ->with('success', 'Data Pendapatan & Belanja berhasil dihapus.');
+      return redirect()->route('infographics.apbd.year.index')
+        ->with('success', 'Data APBD berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());
     }

@@ -175,12 +175,12 @@
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.apbd.apbd_year.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.apbd_year.*') ? 'active' : '' }}">
+            <a href="{{ route('infographics.apbd.year.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.year.*') ? 'active' : '' }}">
               Jumlah APBD per Tahun
             </a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('infographics.apbd.income.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.income.*') ? 'active' : '' }}">
               Jumlah Pendapatan
             </a>
           </li>
