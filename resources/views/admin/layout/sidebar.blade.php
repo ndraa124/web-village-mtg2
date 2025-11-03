@@ -151,7 +151,7 @@
             </a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('infographics.resident.marriage.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.marriage.*') ? 'active' : '' }}">
               Jumlah Perkawinan
             </a>
           </li>
