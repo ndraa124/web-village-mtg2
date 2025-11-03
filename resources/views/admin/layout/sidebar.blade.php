@@ -211,14 +211,14 @@
         </ul>
       </li>
 
-      <li class="menu-item">
+      <li class="menu-item {{ request()->routeIs('infographics.social_assistance.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">volunteer_activism</span>
           <span class="title">Bantuan Sosial</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('infographics.social_assistance.index') }}" class="menu-link {{ request()->routeIs('infographics.social_assistance.*') ? 'active' : '' }}">
               Penerima Bantual Sosial
             </a>
           </li>
