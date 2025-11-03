@@ -254,14 +254,14 @@
         </ul>
       </li>
 
-      <li class="menu-item">
+      <li class="menu-item {{ request()->routeIs('infographics.sdgs.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">target</span>
           <span class="title">SDGs</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('infographics.sdgs.*') ? 'active' : '' }}">
               Jumlah SDGs
             </a>
           </li>
