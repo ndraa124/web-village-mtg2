@@ -225,15 +225,15 @@
         </ul>
       </li>
 
-      <li class="menu-item">
+      <li class="menu-item {{ request()->routeIs('infographics.idm.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">leaderboard</span>
           <span class="title">IDM</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="#" class="menu-link">
-              Jumlah Skor IDM
+            <a href="{{ route('infographics.idm.index') }}" class="menu-link {{ request()->routeIs('infographics.idm.index') || request()->routeIs('infographics.idm.create') || request()->routeIs('infographics.idm.show') || request()->routeIs('infographics.idm.edit') ? 'active' : '' }}">
+              Skor IDM
             </a>
           </li>
           <li class="menu-item">

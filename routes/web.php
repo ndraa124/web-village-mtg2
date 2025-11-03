@@ -42,6 +42,8 @@ use App\Http\Controllers\Admin\InfographicsApbdFinancingController;
 use App\Http\Controllers\Admin\InfographicsStuntingController;
 use App\Http\Controllers\Admin\InfographicsSocialAssistanceController;
 
+use App\Http\Controllers\Admin\InfographicsIdmController;
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['authenticate'])->group(function () {
@@ -131,5 +133,19 @@ Route::middleware(['authenticate'])->group(function () {
                 ->parameters(['stunting' => 'stunting']);
             Route::resource('social_assistance', InfographicsSocialAssistanceController::class)
                 ->parameters(['social_assistance' => 'socialAssistance']);
+
+            Route::prefix('/idm')
+                ->name('idm.')
+                ->group(function () {
+                    Route::controller(InfographicsIdmController::class)->group(function () {
+                        Route::get('/', 'index')->name('index');
+                        Route::get('/create', 'create')->name('create');
+                        Route::post('/store', 'store')->name('store');
+                        Route::get('/show/{idm}', 'show')->name('show');
+                        Route::get('/edit/{idm}', 'edit')->name('edit');
+                        Route::put('/update/{idm}', 'update')->name('update');
+                        Route::delete('/destroy/{idm}', 'destroy')->name('destroy');
+                    });
+                });
         });
 });
