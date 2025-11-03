@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\VisionMissionController;
+use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\InfographicsController;
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
@@ -50,6 +54,11 @@ use App\Http\Controllers\Admin\InfographicsIdmIklController;
 use App\Http\Controllers\Admin\InfographicsSdgsController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/history', [HistoryController::class, 'index'])->name('history');
+Route::get('/vision-mission', [VisionMissionController::class, 'index'])->name('vision');
+Route::get('/organization', [OrganizationController::class, 'index'])->name('organization');
+Route::get('/infographics', [InfographicsController::class, 'index'])->name('infographics');
+Route::get('/infographics-apbdes', [InfographicsController::class, 'apbdes'])->name('infographics.apbdes');
 
 Route::middleware(['authenticate'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
