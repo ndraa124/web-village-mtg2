@@ -37,6 +37,7 @@ use App\Http\Controllers\Admin\InfographicsApbdController;
 use App\Http\Controllers\Admin\InfographicsApbdYearController;
 use App\Http\Controllers\Admin\InfographicsApbdIncomeController;
 use App\Http\Controllers\Admin\InfographicsApbdShoppingController;
+use App\Http\Controllers\Admin\InfographicsApbdFinancingController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -119,6 +120,8 @@ Route::middleware(['authenticate'])->group(function () {
                         ->parameters(['income' => 'apbdIncome']);
                     Route::resource('shopping', InfographicsApbdShoppingController::class)
                         ->parameters(['shopping' => 'apbdShopping']);
+                    Route::resource('financing', InfographicsApbdFinancingController::class)
+                        ->parameters(['financing' => 'apbdFinancing']);
                 });
         });
 });
