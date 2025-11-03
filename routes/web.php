@@ -43,6 +43,7 @@ use App\Http\Controllers\Admin\InfographicsStuntingController;
 use App\Http\Controllers\Admin\InfographicsSocialAssistanceController;
 
 use App\Http\Controllers\Admin\InfographicsIdmController;
+use App\Http\Controllers\Admin\InfographicsIdmIksController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -146,6 +147,9 @@ Route::middleware(['authenticate'])->group(function () {
                         Route::put('/update/{idm}', 'update')->name('update');
                         Route::delete('/destroy/{idm}', 'destroy')->name('destroy');
                     });
+
+                    Route::resource('iks', InfographicsIdmIksController::class)
+                        ->parameters(['iks' => 'idmIks']);
                 });
         });
 });

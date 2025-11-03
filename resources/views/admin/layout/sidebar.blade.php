@@ -237,7 +237,7 @@
             </a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('infographics.idm.iks.index') }}" class="menu-link {{ request()->routeIs('infographics.idm.iks.*') ? 'active' : '' }}">
               Indikator IKS
             </a>
           </li>

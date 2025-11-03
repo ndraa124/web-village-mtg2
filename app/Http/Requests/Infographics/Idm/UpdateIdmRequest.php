@@ -14,7 +14,6 @@ class UpdateIdmRequest extends FormRequest
 
     public function rules(): array
     {
-        // 'idm' harus sesuai dengan parameter di route
         $idmId = $this->route('idm')->id;
 
         return [
