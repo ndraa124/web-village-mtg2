@@ -44,6 +44,7 @@ use App\Http\Controllers\Admin\InfographicsSocialAssistanceController;
 
 use App\Http\Controllers\Admin\InfographicsIdmController;
 use App\Http\Controllers\Admin\InfographicsIdmIksController;
+use App\Http\Controllers\Admin\InfographicsIdmIkeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -150,6 +151,8 @@ Route::middleware(['authenticate'])->group(function () {
 
                     Route::resource('iks', InfographicsIdmIksController::class)
                         ->parameters(['iks' => 'idmIks']);
+                    Route::resource('ike', InfographicsIdmIkeController::class)
+                        ->parameters(['ike' => 'idmIke']);
                 });
         });
 });
