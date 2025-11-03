@@ -197,15 +197,15 @@
         </ul>
       </li>
 
-      <li class="menu-item">
+      <li class="menu-item {{ request()->routeIs('infographics.stunting.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">stacked_bar_chart</span>
           <span class="title">Stunting</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="#" class="menu-link">
-              Jumlah Stunting
+            <a href="{{ route('infographics.stunting.index') }}" class="menu-link {{ request()->routeIs('infographics.stunting.*') ? 'active' : '' }}">
+              Data Stunting
             </a>
           </li>
         </ul>
@@ -219,7 +219,7 @@
         <ul class="menu-sub">
           <li class="menu-item">
             <a href="#" class="menu-link">
-              Jumlah Bantual Sosial
+              Penerima Bantual Sosial
             </a>
           </li>
         </ul>
