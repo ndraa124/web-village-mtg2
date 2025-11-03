@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\InfographicsResidentEducationController;
 use App\Http\Controllers\Admin\InfographicsResidentJobController;
 use App\Http\Controllers\Admin\InfographicsResidentMustSelectController;
 use App\Http\Controllers\Admin\InfographicsResidentMarriageController;
+use App\Http\Controllers\Admin\InfographicsResidentReligionController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -90,6 +91,8 @@ Route::middleware(['authenticate'])->group(function () {
                         ->parameters(['must_select' => 'residentMustSelect']);
                     Route::resource('marriage', InfographicsResidentMarriageController::class)
                         ->parameters(['marriage' => 'residentMarriage']);
+                    Route::resource('religion', InfographicsResidentReligionController::class)
+                        ->parameters(['religion' => 'residentReligion']);
                 });
         });
 });
