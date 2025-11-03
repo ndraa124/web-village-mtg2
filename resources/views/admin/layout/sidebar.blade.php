@@ -171,27 +171,27 @@
         <ul class="menu-sub">
           <li class="menu-item">
             <a href="{{ route('infographics.apbd.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.index') || request()->routeIs('infographics.apbd.create') || request()->routeIs('infographics.apbd.show') || request()->routeIs('infographics.apbd.edit') ? 'active' : '' }}">
-              Jumlah Semua APBD
+              Semua APBD
             </a>
           </li>
           <li class="menu-item">
             <a href="{{ route('infographics.apbd.year.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.year.*') ? 'active' : '' }}">
-              Jumlah APBD per Tahun
+              APBD per Tahun
             </a>
           </li>
           <li class="menu-item">
             <a href="{{ route('infographics.apbd.income.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.income.*') ? 'active' : '' }}">
-              Jumlah Pendapatan
+              Pendapatan
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('infographics.apbd.shopping.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.shopping.*') ? 'active' : '' }}">
+              Belanja
             </a>
           </li>
           <li class="menu-item">
             <a href="#" class="menu-link">
-              Jumlah Belanja
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="#" class="menu-link">
-              Jumlah Pembiayaan
+              Pembiayaan
             </a>
           </li>
         </ul>
