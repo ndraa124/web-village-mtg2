@@ -163,14 +163,14 @@
         </ul>
       </li>
 
-      <li class="menu-item">
+      <li class="menu-item {{ request()->routeIs('infographics.apbd.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">attach_money</span>
           <span class="title">APBD</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('infographics.apbd.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.*') ? 'active' : '' }}">
               Jumlah Semua APBD
             </a>
           </li>
