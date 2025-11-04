@@ -62,7 +62,7 @@ class InfographicsSocialAssistanceController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.social_assistance.index',
+          'route' => 'infographics.social-assistance.index',
           'title' => 'Daftar Bantuan Sosial'
         ],
         ['title' => 'Tambah Data'],
@@ -80,7 +80,7 @@ class InfographicsSocialAssistanceController extends Controller
     try {
       InfographicsSocialAssistance::create($validatedData);
 
-      return redirect()->route('infographics.social_assistance.index')
+      return redirect()->route('infographics.social-assistance.index')
         ->with('success', 'Data Bantuan Sosial berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -100,7 +100,7 @@ class InfographicsSocialAssistanceController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.social_assistance.index',
+          'route' => 'infographics.social-assistance.index',
           'title' => 'Daftar Bantuan Sosial'
         ],
         [
@@ -131,7 +131,7 @@ class InfographicsSocialAssistanceController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.social_assistance.index',
+          'route' => 'infographics.social-assistance.index',
           'title' => 'Daftar Bantuan Sosial'
         ],
         [
@@ -152,7 +152,7 @@ class InfographicsSocialAssistanceController extends Controller
     try {
       $socialAssistance->update($validatedData);
 
-      return redirect()->route('infographics.social_assistance.index')
+      return redirect()->route('infographics.social-assistance.index')
         ->with('success', 'Data Bantuan Sosial berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -164,7 +164,7 @@ class InfographicsSocialAssistanceController extends Controller
     try {
       $socialAssistance->delete();
 
-      return redirect()->route('infographics.social_assistance.index')
+      return redirect()->route('infographics.social-assistance.index')
         ->with('success', 'Data Bantuan Sosial berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

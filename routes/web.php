@@ -57,6 +57,7 @@ use App\Http\Controllers\Admin\InfographicsIdmIkeController;
 use App\Http\Controllers\Admin\InfographicsIdmIklController;
 
 use App\Http\Controllers\Admin\InfographicsSdgsController;
+use App\Http\Controllers\Admin\ManageNewsController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -176,7 +177,7 @@ Route::middleware(['authenticate'])->group(function () {
 
             Route::resource('stunting', InfographicsStuntingController::class)
                 ->parameters(['stunting' => 'stunting']);
-            Route::resource('social_assistance', InfographicsSocialAssistanceController::class)
+            Route::resource('social-assistance', InfographicsSocialAssistanceController::class)
                 ->parameters(['social_assistance' => 'socialAssistance']);
 
             Route::prefix('/idm')
@@ -203,4 +204,7 @@ Route::middleware(['authenticate'])->group(function () {
             Route::resource('sdgs', InfographicsSdgsController::class)
                 ->parameters(['sdgs' => 'sdg']);
         });
+
+    Route::resource('manage-news', ManageNewsController::class)
+        ->parameters(['manage_news' => 'manageNews']);
 });

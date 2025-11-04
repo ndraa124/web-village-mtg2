@@ -56,13 +56,9 @@
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-      <a href="/infografis/penduduk"
-        class="group relative block rounded-lg overflow-hidden shadow-lg h-42 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
-
+      <a href="{{ route('public.infographics.index') }}" class="group relative block rounded-lg overflow-hidden shadow-lg h-42 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
         <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800"></div>
-
         <i class="fas fa-users absolute right-6 bottom-6 text-9xl text-white opacity-10 transform -rotate-12 transition-transform duration-300 group-hover:scale-110"></i>
-
         <div class="relative h-full flex flex-col justify-end p-6 text-white">
           <h3 class="text-2xl font-bold mb-2">Infografis Kependudukan</h3>
           <p class="text-sm mb-4">Lihat data demografi, kelompok umur, dan pekerjaan warga.</p>
@@ -72,13 +68,9 @@
         </div>
       </a>
 
-      <a href="/infografis/apbdes"
-        class="group relative block rounded-lg overflow-hidden shadow-lg h-42 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
-
+      <a href="{{ route('public.infographics.apbdes') }}" class="group relative block rounded-lg overflow-hidden shadow-lg h-42 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
         <div class="absolute inset-0 bg-gradient-to-br from-green-600 to-green-800"></div>
-
         <i class="fas fa-balance-scale absolute right-6 bottom-6 text-9xl text-white opacity-10 transform -rotate-12 transition-transform duration-300 group-hover:scale-110"></i>
-
         <div class="relative h-full flex flex-col justify-end p-6 text-white">
           <h3 class="text-2xl font-bold mb-2">Transparansi Anggaran</h3>
           <p class="text-sm mb-4">Akses rincian Anggaran Pendapatan dan Belanja Desa (APBDes).</p>
@@ -88,13 +80,9 @@
         </div>
       </a>
 
-      <a href="/infografis/idm"
-        class="group relative block rounded-lg overflow-hidden shadow-lg h-42 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
-
+      <a href="{{ route('public.infographics.idm') }}" class="group relative block rounded-lg overflow-hidden shadow-lg h-42 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
         <div class="absolute inset-0 bg-gradient-to-br from-red-600 to-red-800"></div>
-
         <i class="fas fa-chart-line absolute right-6 bottom-6 text-9xl text-white opacity-10 transform -rotate-12 transition-transform duration-300 group-hover:scale-110"></i>
-
         <div class="relative h-full flex flex-col justify-end p-6 text-white">
           <h3 class="text-2xl font-bold mb-2">Status Pembangunan</h3>
           <p class="text-sm mb-4">Lihat pencapaian Indeks Desa Membangun (IDM) & SDGs Desa.</p>

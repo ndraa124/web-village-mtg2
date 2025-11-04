@@ -211,14 +211,14 @@
         </ul>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('infographics.social_assistance.*') ? 'open' : '' }}">
+      <li class="menu-item {{ request()->routeIs('infographics.social-assistance.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">volunteer_activism</span>
           <span class="title">Bantuan Sosial</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('infographics.social_assistance.index') }}" class="menu-link {{ request()->routeIs('infographics.social_assistance.*') ? 'active' : '' }}">
+            <a href="{{ route('infographics.social-assistance.index') }}" class="menu-link {{ request()->routeIs('infographics.social-assistance.*') ? 'active' : '' }}">
               Penerima Bantual Sosial
             </a>
           </li>
@@ -269,15 +269,28 @@
       </li>
 
       <li class="menu-title small text-uppercase">
+        <span class="menu-title-text">KONTEN</span>
+      </li>
+
+      <li class="menu-item {{ request()->routeIs('manage-news.*') ? 'open' : '' }}">
+        <a href="{{ route('manage-news.index') }}" class="menu-link {{ request()->routeIs('manage-news.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">feed</span>
+          <span class="title">Berita</span>
+        </a>
+      </li>
+
+      @if(Auth::user()->role == 'superadmin')
+      <li class="menu-title small text-uppercase">
         <span class="menu-title-text">USERS</span>
       </li>
 
       <li class="menu-item {{ request()->routeIs('users.*') ? 'open' : '' }}">
         <a href="{{ route('users.index') }}" class="menu-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">manage_accounts</span>
-          <span class="title">Management User</span>
+          <span class="title">Manajemen User</span>
         </a>
       </li>
+      @endif
     </ul>
   </aside>
 </div>
