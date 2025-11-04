@@ -7,6 +7,11 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\VisionMissionController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\InfographicsController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\PotentialController;
+use App\Http\Controllers\LayoutController;
+use App\Http\Controllers\SupervisionController;
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
@@ -54,11 +59,37 @@ use App\Http\Controllers\Admin\InfographicsIdmIklController;
 use App\Http\Controllers\Admin\InfographicsSdgsController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/history', [HistoryController::class, 'index'])->name('history');
-Route::get('/vision-mission', [VisionMissionController::class, 'index'])->name('vision');
-Route::get('/organization', [OrganizationController::class, 'index'])->name('organization');
-Route::get('/infographics', [InfographicsController::class, 'index'])->name('infographics');
-Route::get('/infographics-apbdes', [InfographicsController::class, 'apbdes'])->name('infographics.apbdes');
+
+Route::prefix('/profile')
+    ->name('profile.')
+    ->group(function () {
+        Route::get('/history', [HistoryController::class, 'index'])->name('history');
+        Route::get('/vision-mission', [VisionMissionController::class, 'index'])->name('vision');
+        Route::get('/organization', [OrganizationController::class, 'index'])->name('organization');
+    });
+
+Route::prefix('/public/infographics')
+    ->name('public.infographics.')
+    ->group(function () {
+        Route::get('/', [InfographicsController::class, 'index'])->name('index');
+
+        Route::get('/apbdes', [InfographicsController::class, 'apbdes'])->name('apbdes');
+        Route::get('/stunting', [InfographicsController::class, 'stunting'])->name('stunting');
+        Route::get('/social-assistance', [InfographicsController::class, 'socialAssistance'])->name('social_assistance');
+        Route::get('/idm', [InfographicsController::class, 'idm'])->name('idm');
+        Route::get('/sdgs', [InfographicsController::class, 'sdgs'])->name('sdgs');
+    });
+
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
+Route::get('/potential', [PotentialController::class, 'index'])->name('potential.index');
+
+Route::prefix('/anti-corruption')
+    ->name('anti.')
+    ->group(function () {
+        Route::get('/layout', [LayoutController::class, 'index'])->name('layout.index');
+        Route::get('/supervision', [SupervisionController::class, 'index'])->name('supervision.index');
+    });
 
 Route::middleware(['authenticate'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

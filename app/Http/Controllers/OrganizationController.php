@@ -11,6 +11,6 @@ class OrganizationController extends Controller
       'main'  => 'main.organization.index',
     ];
 
-    return view('main.organization.index', $data);
+    return view('main.layout.template', $data);
   }
 }

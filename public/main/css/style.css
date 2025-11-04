@@ -365,3 +365,71 @@ select:focus {
         font-size: 1.25rem;
     }
 }
+
+/* Kustomisasi Navigasi Swiper */
+.hero-slider-main .swiper-button-prev,
+.hero-slider-main .swiper-button-next {
+    color: white; /* Warna panah */
+    background-color: rgba(
+        220,
+        38,
+        38,
+        0.5
+    ); /* Merah transparan (sesuai tema) */
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.hero-slider-main .swiper-button-prev:hover,
+.hero-slider-main .swiper-button-next:hover {
+    background-color: rgba(
+        220,
+        38,
+        38,
+        0.8
+    ); /* Merah lebih pekat saat di-hover */
+}
+
+/* Ukuran ikon panah di dalam */
+.hero-slider-main .swiper-button-prev::after,
+.hero-slider-main .swiper-button-next::after {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Kustomisasi Paginasi Swiper (Titik-titik) */
+.hero-slider-main .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5); /* Titik non-aktif */
+    opacity: 1;
+    transition: background-color 0.3s ease, width 0.3s ease;
+}
+
+.hero-slider-main .swiper-pagination-bullet-active {
+    background: #dc2626; /* Warna merah (sesuai tema) */
+    width: 20px;
+    border-radius: 5px;
+}
+
+/* Animasi teks masuk (jika belum ada di style.css) */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-up {
+    /* Menerapkan animasi HANYA saat slide aktif */
+    .swiper-slide-active & {
+        animation: slideUp 0.6s ease-out forwards;
+    }
+
+    /* Sembunyikan elemen di slide non-aktif */
+    opacity: 0;
+}

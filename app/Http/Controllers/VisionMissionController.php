@@ -11,6 +11,6 @@ class VisionMissionController extends Controller
       'main'  => 'main.vision_mission.index',
     ];
 
-    return view('main.vision_mission.index', $data);
+    return view('main.layout.template', $data);
   }
 }

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-class HistoryController extends Controller
+class LayoutController extends Controller
 {
   public function index()
   {
     $data = [
-      'title' => 'Sejarah',
-      'main'  => 'main.history.index',
+      'title' => 'Tata Letak',
+      'main'  => 'main.anti_corruption.layout.index',
     ];
 
     return view('main.layout.template', $data);

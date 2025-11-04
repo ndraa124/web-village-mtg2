@@ -1,8 +1,19 @@
-// Main JavaScript File for Desa Website
-
-// Wait for DOM to be ready
 document.addEventListener("DOMContentLoaded", function () {
-    // Initialize all functions
+    // Inisialisasi Slider Latar Belakang Hero
+    const heroBackgroundSlider = new Swiper(".hero-background-slider", {
+        loop: true,
+        effect: "fade", // Efek 'fade' adalah yang terbaik untuk transisi background
+        fadeEffect: {
+            crossFade: true,
+        },
+        autoplay: {
+            delay: 5000, // Ganti gambar setiap 5 detik
+            disableOnInteraction: false,
+        },
+        allowTouchMove: false, // Mencegah pengguna menggeser background
+        speed: 1000, // Kecepatan transisi fade (1 detik)
+    });
+
     initMobileMenu();
     initBackToTop();
     initCounterAnimation();
@@ -12,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
     initGallery();
     initProgressBars();
 
-    // Mobile Menu Toggle
     function initMobileMenu() {
         const mobileMenuBtn = document.getElementById("mobile-menu-btn");
         const mobileMenu = document.getElementById("mobile-menu");
@@ -121,41 +131,25 @@ document.addEventListener("DOMContentLoaded", function () {
         const mapElement = document.getElementById("map");
 
         if (mapElement && typeof L !== "undefined") {
-            // Initialize map centered on example coordinates (adjust to your village)
-            const map = L.map("map").setView([-6.35, 107.1], 13);
+            const map = L.map("map").setView([1.0390953, 124.4720575], 16);
 
-            // Add OpenStreetMap tiles
             L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
                 attribution: "© OpenStreetMap contributors",
             }).addTo(map);
 
-            // Add marker for village office
-            const villageOffice = L.marker([-6.35, 107.1]).addTo(map);
+            const villageOffice = L.marker([1.0390953, 124.4720575]).addTo(map);
             villageOffice
                 .bindPopup(
-                    "<b>Kantor Desa Mekarjaya</b><br>Jl. Raya Desa No. 123"
+                    "<b>Kantor Desa Motoling Dua</b><br>Jl. Sam Ratulangi Jaga IV Motoling Dua"
                 )
                 .openPopup();
 
-            // Add other points of interest
             const poi = [
                 {
-                    lat: -6.348,
-                    lng: 107.098,
-                    title: "Balai Desa",
-                    desc: "Tempat pertemuan warga",
-                },
-                {
-                    lat: -6.352,
-                    lng: 107.102,
-                    title: "Puskesmas",
-                    desc: "Pusat kesehatan masyarakat",
-                },
-                {
-                    lat: -6.349,
-                    lng: 107.099,
-                    title: "Pasar Desa",
-                    desc: "Pusat ekonomi desa",
+                    lat: 1.0392061,
+                    lng: 124.4719322,
+                    title: "Lapangan Sam Ratulangi",
+                    desc: "Tempat kegiatan",
                 },
             ];
 
@@ -166,7 +160,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Contact Form Handler
     function initContactForm() {
         const contactForm = document.getElementById("contact-form");
 
@@ -174,14 +167,11 @@ document.addEventListener("DOMContentLoaded", function () {
             contactForm.addEventListener("submit", function (e) {
                 e.preventDefault();
 
-                // Get form data
                 const formData = new FormData(this);
                 const data = Object.fromEntries(formData);
 
-                // Here you would normally send the data to a server
                 console.log("Form Data:", data);
 
-                // Show success message
                 showNotification(
                     "Pesan berhasil dikirim! Kami akan segera menanggapi.",
                     "success"
@@ -193,7 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Smooth Scroll for Navigation Links
     function initSmoothScroll() {
         const links = document.querySelectorAll('a[href^="#"]');
 
@@ -280,7 +269,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Animate Progress Bars
     function initProgressBars() {
         const progressBars = document.querySelectorAll(".progress-bar");
 

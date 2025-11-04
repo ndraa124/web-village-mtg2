@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-class HistoryController extends Controller
+class NewsController extends Controller
 {
   public function index()
   {
     $data = [
       'title' => 'Sejarah',
-      'main'  => 'main.history.index',
+      'main'  => 'main.news.index',
     ];
 
     return view('main.layout.template', $data);
