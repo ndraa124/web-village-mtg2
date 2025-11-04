@@ -93,24 +93,6 @@
       </li>
 
       <li class="menu-title small text-uppercase">
-        <span class="menu-title-text">VISI & MISI</span>
-      </li>
-
-      <li class="menu-item {{ request()->routeIs('vision.*') ? 'open' : '' }}">
-        <a href="{{ route('vision.index') }}" class="menu-link {{ request()->routeIs('vision.*') ? 'active' : '' }}">
-          <span class="material-symbols-outlined menu-icon">infrared</span>
-          <span class="title">Visi</span>
-        </a>
-      </li>
-
-      <li class="menu-item {{ request()->routeIs('mission.*') ? 'open' : '' }}">
-        <a href="{{ route('mission.index') }}" class="menu-link {{ request()->routeIs('mission.*') ? 'active' : '' }}">
-          <span class="material-symbols-outlined menu-icon">rocket_launch</span>
-          <span class="title">Misi</span>
-        </a>
-      </li>
-
-      <li class="menu-title small text-uppercase">
         <span class="menu-title-text">INFOGRAFIS</span>
       </li>
 
@@ -272,11 +254,59 @@
         <span class="menu-title-text">KONTEN</span>
       </li>
 
+      <li class="menu-item {{ request()->routeIs('vision.*') ? 'open' : '' }}">
+        <a href="{{ route('vision.index') }}" class="menu-link {{ request()->routeIs('vision.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">infrared</span>
+          <span class="title">Visi</span>
+        </a>
+      </li>
+
+      <li class="menu-item {{ request()->routeIs('mission.*') ? 'open' : '' }}">
+        <a href="{{ route('mission.index') }}" class="menu-link {{ request()->routeIs('mission.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">rocket_launch</span>
+          <span class="title">Misi</span>
+        </a>
+      </li>
+
       <li class="menu-item {{ request()->routeIs('manage-news.*') ? 'open' : '' }}">
         <a href="{{ route('manage-news.index') }}" class="menu-link {{ request()->routeIs('manage-news.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">feed</span>
           <span class="title">Berita</span>
         </a>
+      </li>
+
+      <li class="menu-item {{ request()->routeIs('infographics.sdgs.*') ? 'open' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+          <span class="material-symbols-outlined menu-icon">target</span>
+          <span class="title">Anti Korupsi</span>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="{{ route('infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('infographics.sdgs.*') ? 'active' : '' }}">
+              Tata Letak
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('infographics.sdgs.*') ? 'active' : '' }}">
+              Pengawasan
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('infographics.sdgs.*') ? 'active' : '' }}">
+              Kualitas Pelayanan Publik
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('infographics.sdgs.*') ? 'active' : '' }}">
+              Partisipasi Masyarakat
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('infographics.sdgs.*') ? 'active' : '' }}">
+              Kearifan Lokal
+            </a>
+          </li>
+        </ul>
       </li>
 
       @if(Auth::user()->role == 'superadmin')
