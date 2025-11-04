@@ -1,8 +1,6 @@
-{{-- Menambahkan library Chart.js --}}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-  /* Menambahkan style untuk text-shadow agar mirip dengan sumber */
   .text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   }
@@ -34,25 +32,24 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
       <div class="stat-card bg-white rounded-lg shadow-lg p-8 border-t-4 border-red-600 text-center">
         <i class="fas fa-star text-4xl text-red-600 mb-4"></i>
-        <h3 class="text-5xl font-bold text-gray-800 text-shadow">0.7161</h3>
+        <h3 class="text-4xl font-bold text-gray-800 text-shadow">0.8583</h3>
         <p class="text-gray-600 font-semibold mt-2 text-lg">SKOR IDM</p>
       </div>
 
       <div class="stat-card bg-white rounded-lg shadow-lg p-8 border-t-4 border-blue-600 text-center">
         <i class="fas fa-trophy text-4xl text-blue-600 mb-4"></i>
-        <h3 class="text-5xl font-bold text-gray-800 text-shadow">Berkembang</h3>
+        <h3 class="text-4xl font-bold text-gray-800 text-shadow">MANDIRI</h3>
         <p class="text-gray-600 font-semibold mt-2 text-lg">STATUS IDM</p>
       </div>
 
       <div class="stat-card bg-white rounded-lg shadow-lg p-8 border-t-4 border-green-600 text-center">
         <i class="fas fa-bullseye text-4xl text-green-600 mb-4"></i>
-        <h3 class="text-5xl font-bold text-gray-800 text-shadow">Mandiri</h3>
+        <h3 class="text-4xl font-bold text-gray-800 text-shadow">MANDIRI</h3>
         <p class="text-gray-600 font-semibold mt-2 text-lg">TARGET STATUS</p>
       </div>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8 mb-12">
-      {{-- Grafik Radar Indeks --}}
       <div class="bg-white rounded-lg shadow-lg p-8">
         <h3 class="text-2xl font-bold text-gray-800 mb-6">
           <i class="fas fa-chart-area text-red-600 mr-2"></i>
@@ -64,7 +61,6 @@
         <canvas id="idmRadarChart" class="w-full h-auto"></canvas>
       </div>
 
-      {{-- Grafik Bar Indikator --}}
       <div class="bg-white rounded-lg shadow-lg p-8">
         <h3 class="text-2xl font-bold text-gray-800 mb-6">
           <i class="fas fa-chart-bar text-red-600 mr-2"></i>
@@ -77,7 +73,6 @@
       </div>
     </div>
 
-    {{-- Penjelasan IDM --}}
     <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg shadow-md">
       <div class="flex items-start">
         <i class="fas fa-info-circle text-yellow-600 text-2xl mr-4 mt-1"></i>
@@ -86,7 +81,7 @@
           <p class="text-gray-700">
             IDM adalah indeks komposit yang mengukur tingkat kemajuan dan kemandirian desa.
             Status desa diklasifikasikan menjadi: Sangat Tertinggal, Tertinggal, Berkembang, Maju, dan Mandiri.
-            Skor 0.7161 menempatkan Desa Motoling Dua dalam status <strong>Berkembang</strong>, yang berarti desa ini memiliki potensi besar untuk ditingkatkan menjadi desa Maju.
+            Skor 0.8583 menempatkan Desa Motoling Dua dalam status <strong>Mandiri</strong>.
           </p>
         </div>
       </div>
@@ -113,7 +108,7 @@
           labels: ['IKS (Sosial)', 'IKE (Ekonomi)', 'IKL (Lingkungan)'],
           datasets: [{
             label: 'Skor Indeks',
-            data: [0.7500, 0.5000, 0.8983], // Data dari web
+            data: [0.8914, 0.8833, 0.8000], // Data dari web
             backgroundColor: 'rgba(220, 38, 38, 0.2)',
             borderColor: 'rgba(220, 38, 38, 1)',
             pointBackgroundColor: 'rgba(220, 38, 38, 1)',
@@ -171,7 +166,7 @@
           ],
           datasets: [{
             label: 'Skor Indikator',
-            data: [1.0000, 0.8167, 0.7083, 0.6000, 0.5000, 0.8983], // Data dari web
+            data: [1.0000, 0.8167, 0.7083, 0.6000, 0.5000, 0.8983],
             backgroundColor: [
               'rgba(59, 130, 246, 0.8)', // Biru
               'rgba(236, 72, 153, 0.8)', // Pink

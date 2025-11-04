@@ -14,6 +14,8 @@
         content="desa, motoling2, motoling dua, motoling, minahasa selatan, minsel" />
     <meta name="supported-color-schemes" content="light dark" />
 
+    <title>Desa Motoling Dua | {{ $title }}</title>
+
     <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
 
     <link rel="stylesheet" href="{{ asset('admin/css/sidebar-menu.css') }}">
@@ -23,8 +25,6 @@
     <link rel="stylesheet" href="{{ asset('admin/css/remixicon.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/swiper-bundle.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
-
-    <title>Desa Motoling Dua | {{ $title }}</title>
 </head>
 
 <body class="bg-body-bg">

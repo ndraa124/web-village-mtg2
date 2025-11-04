@@ -14,16 +14,14 @@
     content="desa, motoling2, motoling dua, motoling, minahasa selatan, minsel" />
   <meta name="supported-color-schemes" content="light dark" />
 
+  <title>Desa Motoling Dua | {{ $title }}</title>
+
   <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="{{ asset('main/css/styles.css') }}">
-
-  <title>Desa Motoling Dua | {{ $title }}</title>
-
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
 <body class="bg-gray-50">
