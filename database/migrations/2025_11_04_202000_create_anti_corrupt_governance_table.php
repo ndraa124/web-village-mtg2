@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('anti_corrupt_layout', function (Blueprint $table) {
+        Schema::create('anti_corrupt_governance', function (Blueprint $table) {
             $table->id();
             $table->longText('content');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('anti_corrupt_layout');
+        Schema::dropIfExists('anti_corrupt_governance');
     }
 };

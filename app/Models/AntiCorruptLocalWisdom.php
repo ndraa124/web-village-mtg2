@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class AntiCorruptLayout extends Model
+class AntiCorruptLocalWisdom extends Model
 {
   use HasFactory;
 
-  protected $table = 'anti_corrupt_layout';
+  protected $table = 'anti_corrupt_local_wisdom';
 
   protected $fillable = [
     'content',

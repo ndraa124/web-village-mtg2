@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\AntiCorruptLayout;
+use App\Models\AntiCorruptGovernance;
 use App\Http\Requests\AntiCorrupt\StoreAntiCorruptRequest;
 use Illuminate\Support\Facades\Auth;
-use Mews\Purifier\Facades\Purifier;
 
-class AntiCorruptLayoutController extends Controller
+class AntiCorruptGovernanceController extends Controller
 {
   public function index()
   {
-    $antiCorrupt = AntiCorruptLayout::find(1);
+    $antiCorrupt = AntiCorruptGovernance::find(1);
 
     if (!$antiCorrupt) {
-      $antiCorrupt = new AntiCorruptLayout();
+      $antiCorrupt = new AntiCorruptGovernance();
       $antiCorrupt->id = 1;
       $antiCorrupt->content = "";
       $antiCorrupt->user_id = Auth::id();
@@ -23,15 +22,15 @@ class AntiCorruptLayoutController extends Controller
     }
 
     $data = [
-      'title' => 'Anti Korupsi - Tata Letak',
-      'main' => 'admin.anti_corrupt.layout.index',
+      'title' => 'Anti Korupsi - Tata Laksana',
+      'main' => 'admin.anti_corrupt.governance.index',
       'breadcrumbs' => [
         [
           'route' => 'dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Tata Letak'
+          'title' => 'Tata Laksana'
         ],
       ],
       'antiCorrupt' => $antiCorrupt
@@ -40,19 +39,19 @@ class AntiCorruptLayoutController extends Controller
     return view('admin.layout.template', $data);
   }
 
-  public function edit(AntiCorruptLayout $antiCorrupt)
+  public function edit(AntiCorruptGovernance $antiCorrupt)
   {
     $data = [
-      'title' => 'Edit Anti Korupsi - Tata Letak',
-      'main' => 'admin.anti_corrupt.layout.edit',
+      'title' => 'Edit Anti Korupsi - Tata Laksana',
+      'main' => 'admin.anti_corrupt.governance.edit',
       'breadcrumbs' => [
         [
           'route' => 'dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'manage.anti.layout.index',
-          'title' => 'Anti Korupsi - Tata Letak'
+          'route' => 'manage.anti.governance.index',
+          'title' => 'Anti Korupsi - Tata Laksana'
         ],
         [
           'title' => 'Edit'
@@ -64,15 +63,15 @@ class AntiCorruptLayoutController extends Controller
     return view('admin.layout.template', $data);
   }
 
-  public function update(StoreAntiCorruptRequest $request, AntiCorruptLayout $antiCorrupt)
+  public function update(StoreAntiCorruptRequest $request, AntiCorruptGovernance $antiCorrupt)
   {
     $validatedData = $request->validated();
 
     try {
       $antiCorrupt->update($validatedData);
 
-      return redirect()->route('manage.anti.layout.index')
-        ->with('success', 'Tata letak berhasil diperbarui.');
+      return redirect()->route('manage.anti.governance.index')
+        ->with('success', 'Tata laksana berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
     }

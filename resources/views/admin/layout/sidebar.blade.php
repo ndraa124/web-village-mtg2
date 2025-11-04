@@ -282,27 +282,27 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('manage.anti.layout.index') }}" class="menu-link {{ request()->routeIs('manage.anti.layout.*') ? 'active' : '' }}">
-              Tata Letak
+            <a href="{{ route('manage.anti.governance.index') }}" class="menu-link {{ request()->routeIs('manage.anti.governance.*') ? 'active' : '' }}">
+              Tata Laksana
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('infographics.sdgs.*') ? 'active' : '' }}">
+            <a href="{{ route('manage.anti.supervision.index') }}" class="menu-link {{ request()->routeIs('manage.anti.supervision.*') ? 'active' : '' }}">
               Pengawasan
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('infographics.sdgs.*') ? 'active' : '' }}">
+            <a href="{{ route('manage.anti.service-quality.index') }}" class="menu-link {{ request()->routeIs('manage.anti.service-quality.*') ? 'active' : '' }}">
               Kualitas Pelayanan Publik
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('infographics.sdgs.*') ? 'active' : '' }}">
+            <a href="{{ route('manage.anti.participate.index') }}" class="menu-link {{ request()->routeIs('manage.anti.participate.*') ? 'active' : '' }}">
               Partisipasi Masyarakat
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('infographics.sdgs.*') ? 'active' : '' }}">
+            <a href="{{ route('manage.anti.local-wisdom.index') }}" class="menu-link {{ request()->routeIs('manage.anti.local-wisdom.*') ? 'active' : '' }}">
               Kearifan Lokal
             </a>
           </li>

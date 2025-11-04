@@ -79,7 +79,7 @@
       </div>
 
       <div class="border-top p-20">
-        <a href="{{ route('manage.anti.layout.edit', $antiCorrupt->id) }}" class="btn btn-warning fw-normal text-white">Edit</a>
+        <a href="{{ route('manage.anti.supervision.edit', $antiCorrupt->id) }}" class="btn btn-warning fw-normal text-white">Edit</a>
       </div>
 
     </div>

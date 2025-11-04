@@ -59,7 +59,11 @@ use App\Http\Controllers\Admin\InfographicsIdmIklController;
 use App\Http\Controllers\Admin\InfographicsSdgsController;
 
 use App\Http\Controllers\Admin\ManageNewsController;
-use App\Http\Controllers\Admin\AntiCorruptLayoutController;
+use App\Http\Controllers\Admin\AntiCorruptGovernanceController;
+use App\Http\Controllers\Admin\AntiCorruptSupervisionController;
+use App\Http\Controllers\Admin\AntiCorruptServiceQualityController;
+use App\Http\Controllers\Admin\AntiCorruptParticipateController;
+use App\Http\Controllers\Admin\AntiCorruptLocalWisdomController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -208,12 +212,20 @@ Route::middleware(['authenticate'])->group(function () {
         });
 
     Route::resource('manage-news', ManageNewsController::class)
-        ->parameters(['manage_news' => 'manageNews']);
+        ->parameters(['manage-news' => 'manageNews']);
 
     Route::prefix('/manage-anti-corruption')
         ->name('manage.anti.')
         ->group(function () {
-            Route::resource('layout', AntiCorruptLayoutController::class)
-                ->parameters(['layout' => 'antiCorrupt']);
+            Route::resource('governance', AntiCorruptGovernanceController::class)
+                ->parameters(['governance' => 'antiCorrupt']);
+            Route::resource('supervision', AntiCorruptSupervisionController::class)
+                ->parameters(['supervision' => 'antiCorrupt']);
+            Route::resource('service-quality', AntiCorruptServiceQualityController::class)
+                ->parameters(['service-quality' => 'antiCorrupt']);
+            Route::resource('participate', AntiCorruptParticipateController::class)
+                ->parameters(['participate' => 'antiCorrupt']);
+            Route::resource('local-wisdom', AntiCorruptLocalWisdomController::class)
+                ->parameters(['local-wisdom' => 'antiCorrupt']);
         });
 });
