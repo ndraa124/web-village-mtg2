@@ -57,7 +57,9 @@ use App\Http\Controllers\Admin\InfographicsIdmIkeController;
 use App\Http\Controllers\Admin\InfographicsIdmIklController;
 
 use App\Http\Controllers\Admin\InfographicsSdgsController;
+
 use App\Http\Controllers\Admin\ManageNewsController;
+use App\Http\Controllers\Admin\AntiCorruptLayoutController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -207,4 +209,11 @@ Route::middleware(['authenticate'])->group(function () {
 
     Route::resource('manage-news', ManageNewsController::class)
         ->parameters(['manage_news' => 'manageNews']);
+
+    Route::prefix('/manage-anti-corruption')
+        ->name('manage.anti.')
+        ->group(function () {
+            Route::resource('layout', AntiCorruptLayoutController::class)
+                ->parameters(['layout' => 'antiCorrupt']);
+        });
 });

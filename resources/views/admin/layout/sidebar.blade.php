@@ -275,14 +275,14 @@
         </a>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('infographics.sdgs.*') ? 'open' : '' }}">
+      <li class="menu-item {{ request()->routeIs('manage.anti.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">target</span>
           <span class="title">Anti Korupsi</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('infographics.sdgs.*') ? 'active' : '' }}">
+            <a href="{{ route('manage.anti.layout.index') }}" class="menu-link {{ request()->routeIs('manage.anti.layout.*') ? 'active' : '' }}">
               Tata Letak
             </a>
           </li>
