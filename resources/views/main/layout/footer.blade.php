@@ -2,7 +2,7 @@
   <div class="container mx-auto px-4">
     <div class="grid md:grid-cols-4 gap-8">
       <div>
-        <h3 class="text-xl font-bold mb-4">Desa Mekarjaya</h3>
+        <h3 class="text-xl font-bold mb-4">Desa Motoling Dua</h3>
         <p class="text-gray-400">Membangun desa yang maju, mandiri, dan sejahtera untuk kesejahteraan bersama.</p>
       </div>
 
