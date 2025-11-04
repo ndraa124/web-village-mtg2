@@ -22,13 +22,13 @@
 
 <section class="bg-gradient-to-r from-red-600 to-red-800 py-8">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-white mb-2">Pengawasan</h2>
+    <h2 class="text-3xl font-bold text-white mb-2">Kualitas Pelayanan Publik</h2>
     <nav class="text-white/90">
       <a href="index.html" class="hover:text-white">Beranda</a>
       <span class="mx-2">/</span>
       <a href="#" class="hover:text-white">Desa Anti Korupsi</a>
       <span class="mx-2">/</span>
-      <span>Pengawasan</span>
+      <span>Kualitas Pelayanan Publik</span>
     </nav>
   </div>
 </section>
@@ -38,7 +38,7 @@
 
     <div class="text-center mb-12">
       <i class="fas fa-landmark text-5xl text-red-600 mb-4"></i>
-      <h3 class="text-3xl font-bold text-gray-800 mb-4">Pengawasan</h3>
+      <h3 class="text-3xl font-bold text-gray-800 mb-4">Kualitas Pelayanan Publik</h3>
     </div>
 
     <article class="prose prose-lg max-w-none text-gray-700 space-y-6">

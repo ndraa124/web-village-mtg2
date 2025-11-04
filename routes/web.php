@@ -10,8 +10,11 @@ use App\Http\Controllers\InfographicsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PotentialController;
-use App\Http\Controllers\LayoutController;
+use App\Http\Controllers\GovernanceController;
 use App\Http\Controllers\SupervisionController;
+use App\Http\Controllers\ServiceQualityController;
+use App\Http\Controllers\ParticipateController;
+use App\Http\Controllers\LocalWisdomController;
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
@@ -94,8 +97,11 @@ Route::get('/potential', [PotentialController::class, 'index'])->name('potential
 Route::prefix('/anti-corruption')
     ->name('anti.')
     ->group(function () {
-        Route::get('/layout', [LayoutController::class, 'index'])->name('layout.index');
+        Route::get('/governance', [GovernanceController::class, 'index'])->name('governance.index');
         Route::get('/supervision', [SupervisionController::class, 'index'])->name('supervision.index');
+        Route::get('/service-quality', [ServiceQualityController::class, 'index'])->name('service-quality.index');
+        Route::get('/participate', [ParticipateController::class, 'index'])->name('participate.index');
+        Route::get('/local-wisdom', [LocalWisdomController::class, 'index'])->name('local-wisdom.index');
     });
 
 Route::middleware(['authenticate'])->group(function () {
