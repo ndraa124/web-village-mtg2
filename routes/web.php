@@ -105,7 +105,7 @@ Route::prefix('/anti-corruption')
     });
 
 Route::middleware(['authenticate'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::resource('users', UserController::class);
 
     Route::prefix('/master')

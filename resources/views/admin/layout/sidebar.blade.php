@@ -1,6 +1,6 @@
 <div class="sidebar-area" id="sidebar-area">
   <div class="logo position-relative d-flex align-items-center justify-content-between">
-    <a href="{{ route('dashboard') }}" class="d-block text-decoration-none position-relative">
+    <a href="{{ route('dashboard.index') }}" class="d-block text-decoration-none position-relative">
       <img src="{{ asset('img/logo.png') }}" alt="logo-icon" width="30px">
     </a>
     <div class="logo-text text-secondary fw-semibold" style="margin-left: 18px;">Motoling Dua</div>
@@ -12,8 +12,8 @@
         <span class="menu-title-text">MAIN</span>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('dashboard') ? 'open' : '' }}">
-        <a href="{{ route('dashboard') }}" class="menu-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+      <li class="menu-item {{ request()->routeIs('dashboard.*') ? 'open' : '' }}">
+        <a href="{{ route('dashboard.index') }}" class="menu-link {{ request()->routeIs('dashboard.index') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">dashboard</span>
           <span class="title">Dashboard</span>
         </a>
