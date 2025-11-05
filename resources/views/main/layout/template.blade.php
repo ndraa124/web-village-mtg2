@@ -25,6 +25,12 @@
 </head>
 
 <body class="bg-gray-50">
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v19.0&appId=1466563291076472&autoLogAppEvents=1"
+    nonce="BuatNonceAcakDiSiniJikaBisa">
+  </script>
+
   @include('main.layout.navbar')
   @include($main)
   @include('main.layout.footer')

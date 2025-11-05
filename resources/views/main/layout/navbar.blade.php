@@ -58,7 +58,7 @@
           Layanan
         </a>
         <a href="{{ route('news.index') }}" class="text-gray-700 hover:text-red-600 transition {{ request()->routeIs('news.*') ? 'text-red-600 font-semibold' : '' }}">
-          Berita
+          Berita & Informasi
         </a>
         <a href="{{ route('potential.index') }}" class="text-gray-700 hover:text-red-600 transition {{ request()->routeIs('potential.*') ? 'text-red-600 font-semibold' : '' }}">
           Potensi

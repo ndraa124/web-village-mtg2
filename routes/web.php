@@ -90,7 +90,14 @@ Route::prefix('/public/infographics')
         Route::get('/sdgs', [InfographicsController::class, 'sdgs'])->name('sdgs');
     });
 
-Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::prefix('/news')
+    ->controller(NewsController::class)
+    ->name('news.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{news:slug}', 'show')->name('show');
+    });
+
 Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
 Route::get('/potential', [PotentialController::class, 'index'])->name('potential.index');
 
