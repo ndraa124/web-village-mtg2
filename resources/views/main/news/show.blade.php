@@ -110,13 +110,12 @@
                 <i class="far fa-clock mr-2"></i>
                 {{ $news->published_at->format('H:i') }} WIB
               </span>
-              {{-- <span>
-                  <i class="far fa-eye mr-2"></i>
-                  1,234 views
-                </span> --}}
+              <span>
+                <i class="far fa-eye mr-2"></i>
+                {{ $news->views_count }} views
+              </span>
             </div>
 
-            <!-- Share Buttons -->
             <div class="flex items-center gap-3 mb-6">
               <span class="text-gray-700 font-semibold">Bagikan:</span>
               <button class="share-button bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700">
@@ -202,11 +201,10 @@
         </div>
         @endif
 
-        <!-- Comments Section -->
         <div class="bg-white rounded-lg shadow-lg p-6 mt-8">
           <h3 class="text-xl font-bold text-gray-800 mb-6">
             <i class="fas fa-comments text-red-600 mr-2"></i>
-            Komentar (15)
+            Komentar
           </h3>
 
           <div class="fb-comments"
