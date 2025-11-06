@@ -143,9 +143,7 @@
         <div class="mb-20">
           <label class="label fs-16 mb-2">Deskripsi Desa</label>
           <div class="form-group">
-            <textarea class="form-control" placeholder="Tulis deskripsi di sini...." id="description" name="description" style="height: 152px">
-            {{ old('description', $village->description ?? '') }}
-            </textarea>
+            <textarea class="form-control" placeholder="Tulis deskripsi di sini...." id="description" name="description" style="height: 152px">{{ old('description', $village->description ?? '') }}</textarea>
           </div>
           @error('description')
           <div class="text-danger small mt-2">

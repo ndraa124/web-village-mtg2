@@ -227,6 +227,13 @@
       <p class="text-center text-gray-500 col-span-4">Layanan belum tersedia.</p>
       @endforelse
     </div>
+
+    <div class="text-center mt-8">
+      <a href="{{ route('service.index') }}" class="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition">
+        <i class="fas fa-arrow-right mr-2"></i>
+        Lihat Semua Layanan
+      </a>
+    </div>
   </div>
 </section>
 
