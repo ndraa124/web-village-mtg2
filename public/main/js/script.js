@@ -1,17 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Inisialisasi Slider Latar Belakang Hero
     const heroBackgroundSlider = new Swiper(".hero-background-slider", {
         loop: true,
-        effect: "fade", // Efek 'fade' adalah yang terbaik untuk transisi background
+        effect: "fade",
         fadeEffect: {
             crossFade: true,
         },
         autoplay: {
-            delay: 5000, // Ganti gambar setiap 5 detik
+            delay: 5000,
             disableOnInteraction: false,
         },
-        allowTouchMove: false, // Mencegah pengguna menggeser background
-        speed: 1000, // Kecepatan transisi fade (1 detik)
+        allowTouchMove: false,
+        speed: 1000,
     });
 
     initMobileMenu();
@@ -32,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 mobileMenu.classList.toggle("hidden");
                 mobileMenu.classList.add("mobile-menu-enter");
 
-                // Toggle icon
                 const icon = this.querySelector("i");
                 if (icon) {
                     icon.classList.toggle("fa-bars");
@@ -40,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
 
-            // Close mobile menu when clicking on a link
             const mobileLinks = mobileMenu.querySelectorAll("a");
             mobileLinks.forEach((link) => {
                 link.addEventListener("click", function () {
@@ -55,12 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Back to Top Button
     function initBackToTop() {
         const backToTopBtn = document.getElementById("back-to-top");
 
         if (backToTopBtn) {
-            // Show/hide button based on scroll position
             window.addEventListener("scroll", function () {
                 if (window.pageYOffset > 300) {
                     backToTopBtn.classList.remove("hidden");
@@ -69,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
 
-            // Scroll to top when clicked
             backToTopBtn.addEventListener("click", function () {
                 window.scrollTo({
                     top: 0,
@@ -79,10 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Counter Animation
     function initCounterAnimation() {
         const counters = document.querySelectorAll(".counter");
-        const speed = 200; // Animation speed
+        const speed = 200;
 
         const animateCounters = () => {
             counters.forEach((counter) => {
@@ -103,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         };
 
-        // Use Intersection Observer to trigger animation when visible
         if (counters.length > 0) {
             const observerOptions = {
                 threshold: 0.5,
@@ -118,7 +110,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             }, observerOptions);
 
-            // Observe the first counter's parent section
             const statsSection = counters[0].closest("section");
             if (statsSection) {
                 observer.observe(statsSection);
@@ -126,37 +117,26 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Initialize Map
     function initMap() {
         const mapElement = document.getElementById("map");
-
         if (mapElement && typeof L !== "undefined") {
-            const map = L.map("map").setView([1.0390953, 124.4720575], 16);
+            const lat = parseFloat(mapElement.dataset.latitude) || -0.0;
+            const lng = parseFloat(mapElement.dataset.longitude) || 0.0;
+            const zoom = parseInt(mapElement.dataset.zoom) || 14;
+
+            const map = L.map("map").setView([lat, lng], zoom);
 
             L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
                 attribution: "© OpenStreetMap contributors",
             }).addTo(map);
 
-            const villageOffice = L.marker([1.0390953, 124.4720575]).addTo(map);
+            const villageOffice = L.marker([lat, lng]).addTo(map);
+
             villageOffice
                 .bindPopup(
                     "<b>Kantor Desa Motoling Dua</b><br>Jl. Sam Ratulangi Jaga IV Motoling Dua"
                 )
                 .openPopup();
-
-            const poi = [
-                {
-                    lat: 1.0392061,
-                    lng: 124.4719322,
-                    title: "Lapangan Sam Ratulangi",
-                    desc: "Tempat kegiatan",
-                },
-            ];
-
-            poi.forEach((point) => {
-                const marker = L.marker([point.lat, point.lng]).addTo(map);
-                marker.bindPopup(`<b>${point.title}</b><br>${point.desc}`);
-            });
         }
     }
 
@@ -177,7 +157,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     "success"
                 );
 
-                // Reset form
                 this.reset();
             });
         }
@@ -190,14 +169,13 @@ document.addEventListener("DOMContentLoaded", function () {
             link.addEventListener("click", function (e) {
                 const href = this.getAttribute("href");
 
-                // Skip if it's just "#"
                 if (href === "#") return;
 
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
 
-                    const headerOffset = 80; // Account for fixed header
+                    const headerOffset = 80;
                     const elementPosition = target.getBoundingClientRect().top;
                     const offsetPosition =
                         elementPosition + window.pageYOffset - headerOffset;
@@ -211,12 +189,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Gallery Lightbox
     function initGallery() {
         const galleryItems = document.querySelectorAll(".gallery-item");
 
         if (galleryItems.length > 0) {
-            // Create lightbox elements
             const lightbox = document.createElement("div");
             lightbox.id = "lightbox";
             lightbox.className =
@@ -229,7 +205,6 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
             document.body.appendChild(lightbox);
 
-            // Add click handlers to gallery items
             galleryItems.forEach((item) => {
                 item.addEventListener("click", function () {
                     const img = this.querySelector("img");
@@ -243,21 +218,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             });
 
-            // Close lightbox
             document
                 .getElementById("lightbox-close")
                 .addEventListener("click", function () {
                     lightbox.classList.add("hidden");
                 });
 
-            // Close on background click
             lightbox.addEventListener("click", function (e) {
                 if (e.target === this) {
                     this.classList.add("hidden");
                 }
             });
 
-            // Close on escape key
             document.addEventListener("keydown", function (e) {
                 if (
                     e.key === "Escape" &&
@@ -298,12 +270,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Show Notification Function
     function showNotification(message, type = "info") {
         const notification = document.createElement("div");
         notification.className = `fixed top-20 right-4 px-6 py-4 rounded-lg shadow-lg z-50 animate-slide-left`;
 
-        // Set color based on type
         switch (type) {
             case "success":
                 notification.className += " bg-green-500 text-white";
@@ -333,7 +303,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.body.appendChild(notification);
 
-        // Remove notification after 5 seconds
         setTimeout(() => {
             notification.style.animation = "slide-right 0.3s ease-out";
             setTimeout(() => {
@@ -342,7 +311,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 5000);
     }
 
-    // Add animation styles dynamically
     const style = document.createElement("style");
     style.textContent = `
         @keyframes slide-left {
@@ -373,7 +341,6 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     document.head.appendChild(style);
 
-    // Handle Service Card Clicks
     const serviceCards = document.querySelectorAll(
         '[class*="bg-gradient-to-br"]'
     );
@@ -391,7 +358,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Lazy Loading for Images (if needed)
     const images = document.querySelectorAll("img[data-src]");
     if (images.length > 0) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -408,14 +374,12 @@ document.addEventListener("DOMContentLoaded", function () {
         images.forEach((img) => imageObserver.observe(img));
     }
 
-    // Add current year to copyright
     const currentYear = new Date().getFullYear();
     const copyrightElements = document.querySelectorAll("[data-year]");
     copyrightElements.forEach((el) => {
         el.textContent = currentYear;
     });
 
-    // Handle dropdown menus accessibility
     const dropdownButtons = document.querySelectorAll(".group button");
     dropdownButtons.forEach((button) => {
         button.setAttribute("aria-haspopup", "true");
@@ -431,7 +395,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Utility function to format currency
 function formatCurrency(amount) {
     return new Intl.NumberFormat("id-ID", {
         style: "currency",
@@ -440,7 +403,6 @@ function formatCurrency(amount) {
     }).format(amount);
 }
 
-// Utility function to format date
 function formatDate(dateString) {
     const options = {
         year: "numeric",
@@ -450,12 +412,10 @@ function formatDate(dateString) {
     return new Date(dateString).toLocaleDateString("id-ID", options);
 }
 
-// Export functions for use in other scripts if needed
 window.desaUtils = {
     formatCurrency,
     formatDate,
     showNotification: function (message, type) {
-        // Access the showNotification function from global scope
         document.dispatchEvent(
             new CustomEvent("showNotification", {
                 detail: { message, type },
