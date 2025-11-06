@@ -55,7 +55,6 @@
 <section class="py-12">
   <div class="container mx-auto px-4">
     <div class="flex flex-col lg:flex-row gap-8">
-
       <div class="lg:w-2/3">
 
         @if($featuredNews)
@@ -71,14 +70,20 @@
               <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">
                 {{ $featuredNews->title }}
               </h2>
+
               <div class="flex items-center text-white/90 text-sm">
                 <i class="far fa-calendar mr-2"></i>
                 <span>{{ $featuredNews->published_at->format('d F Y') }}</span>
+
                 <i class="far fa-user ml-4 mr-2"></i>
                 <span>{{ $featuredNews->user->name ?? 'Admin' }}</span>
-                {{-- Jika Anda punya kategori, tambahkan di sini --}}
-                {{-- <i class="far fa-folder ml-4 mr-2"></i> --}}
-                {{-- <span>Pembangunan</span> --}}
+
+                @if($featuredNews->category)
+                <i class="far fa-folder ml-4 mr-2"></i>
+                <a href="{{ route('news.category', $featuredNews->category->slug) }}">
+                  <span>{{ $featuredNews->category->name }}</span>
+                </a>
+                @endif
               </div>
             </div>
           </div>
@@ -96,24 +101,24 @@
 
         <div class="bg-white rounded-lg shadow-md p-4 mb-6">
           <div class="flex flex-wrap gap-2">
-            <button class="px-4 py-2 bg-red-600 text-white rounded-full text-sm font-semibold hover:bg-red-700 transition">
+            @php
+            $isSemuaActive = request()->routeIs('news.index') && !request('search') && !request('year');
+            @endphp
+
+            <a href="{{ route('news.index') }}" class="px-4 py-2 rounded-full text-sm font-semibold transition {{ $isSemuaActive ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-gray-200 text-gray-700 hover:bg-gray-300' }}">
               <i class="fas fa-list mr-1"></i> Semua
-            </button>
-            <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-semibold hover:bg-gray-300 transition">
-              <i class="fas fa-building mr-1"></i> Pemerintahan
-            </button>
-            <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-semibold hover:bg-gray-300 transition">
-              <i class="fas fa-hammer mr-1"></i> Pembangunan
-            </button>
-            <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-semibold hover:bg-gray-300 transition">
-              <i class="fas fa-users mr-1"></i> Kemasyarakatan
-            </button>
-            <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-semibold hover:bg-gray-300 transition">
-              <i class="fas fa-heartbeat mr-1"></i> Kesehatan
-            </button>
-            <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-semibold hover:bg-gray-300 transition">
-              <i class="fas fa-graduation-cap mr-1"></i> Pendidikan
-            </button>
+            </a>
+
+            @foreach($categories as $cat)
+            @php
+            $isCategoryActive = request()->routeIs('news.category') && request()->route('category')->slug == $cat->slug;
+            @endphp
+
+            <a href="{{ route('news.category', $cat->slug) }}" class="px-4 py-2 rounded-full text-sm font-semibold transition {{ $isCategoryActive  ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-gray-200 text-gray-700 hover:bg-gray-300' }}">
+              <i class="fas fa-folder mr-1"></i>
+              {{ $cat->name }}
+            </a>
+            @endforeach
           </div>
         </div>
 
@@ -122,16 +127,20 @@
           <article class="news-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl">
             <div class="relative overflow-hidden h-48">
               <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="news-image w-full h-full object-cover">
-              {{-- <span class="category-badge bg-blue-600 text-white px-2 py-1 rounded text-xs font-semibold">
-                Kesehatan
-              </span> --}}
+              @if($item->category)
+              <a href="{{ route('news.category', $item->category->slug) }}">
+                <span class="category-badge bg-blue-600 text-white px-2 py-1 rounded text-xs font-semibold">
+                  {{ $item->category->name }}
+                </span>
+              </a>
+              @endif
             </div>
             <div class="p-5">
               <div class="flex items-center text-sm text-gray-500 mb-2">
                 <i class="far fa-calendar mr-2"></i>
                 <span>{{ $item->published_at->format('d F Y') }}</span>
-                {{-- <i class="far fa-eye ml-auto mr-2"></i> --}}
-                {{-- <span>234 views</span> --}}
+                <i class="far fa-eye ml-auto mr-2"></i>
+                <span>{{ $item->views_count }} views</span>
               </div>
               <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">
                 {{ $item->title }}
@@ -154,9 +163,7 @@
         {{ $news->links('pagination::tailwind') }}
       </div>
 
-      <!-- Sidebar -->
       <aside class="lg:w-1/3">
-        <!-- Search -->
         <div class="bg-white rounded-lg shadow-md p-6 mb-6">
           <h3 class="text-lg font-bold text-gray-800 mb-4">
             <i class="fas fa-search text-red-600 mr-2"></i>
@@ -204,8 +211,7 @@
           <ul class="space-y-2">
             @forelse($categories as $category)
             <li>
-              {{-- TODO: Buat route untuk filter kategori --}}
-              <a href="#" class="flex items-center justify-between text-gray-700 hover:text-red-600 transition">
+              <a href="{{ route('news.category', $category->slug) }}" class="flex items-center justify-between text-gray-700 hover:text-red-600 transition">
                 <span><i class="fas fa-chevron-right text-xs mr-2"></i> {{ $category->name }}</span>
                 <span class="bg-gray-200 px-2 py-1 rounded text-xs">({{ $category->news_count }})</span>
               </a>
@@ -216,17 +222,20 @@
           </ul>
         </div>
 
-        <!-- Archive -->
         <div class="bg-white rounded-lg shadow-md p-6 mb-6">
           <h3 class="text-lg font-bold text-gray-800 mb-4">
             <i class="fas fa-archive text-red-600 mr-2"></i>
             Arsip Berita
           </h3>
-          <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
-            <option value="">Pilih Bulan</option>
+          <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" onchange="if (this.value) window.location.href = this.value;">
+            <option value="{{ route('news.index') }}">Pilih Bulan</option>
             @foreach($archives as $archive)
-            {{-- TODO: Buat route untuk filter arsip --}}
-            <option value="#">
+            @php
+            $archiveUrl = route('news.index', ['year' => $archive->year, 'month' => $archive->month_num]);
+            $isSelected = (request('year') == $archive->year && request('month') == $archive->month_num);
+            @endphp
+
+            <option value="{{ $archiveUrl }}" {{ $isSelected ? 'selected' : '' }}>
               {{ $archive->month_name }} {{ $archive->year }} ({{ $archive->post_count }})
             </option>
             @endforeach
@@ -240,7 +249,7 @@
           </h3>
           <div class="flex flex-wrap gap-2">
             @forelse($popularTags as $tag)
-            <a href="#" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-red-600 hover:text-white transition">
+            <a href="{{ route('news.tag', $tag->slug) }}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-red-600 hover:text-white transition">
               #{{ $tag->name }}
             </a>
             @empty

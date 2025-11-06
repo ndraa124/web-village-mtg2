@@ -76,9 +76,12 @@
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
           <div class="p-8">
             <div class="flex items-center gap-3 mb-4">
-              {{-- <span class="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  <i class="fas fa-hammer mr-1"></i> Pembangunan
-                </span> --}}
+              @if($news->category)
+              <a href="{{ route('news.category', $news->category->slug) }}" class="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold hover:bg-red-700 transition">
+                <i class="fas fa-folder mr-1"></i> {{ $news->category->name }}
+              </a>
+              @endif
+
               @if($news->status == 'published')
               <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                 <i class="fas fa-check-circle mr-1"></i> Dipublikasi
@@ -131,34 +134,25 @@
             </div>
 
             <img src="{{ $news->image_url }}" alt="{{ $news->title }}" class="w-full rounded-lg mb-6">
-            <p class="text-center text-sm text-gray-600 italic mb-6">
-              Foto: Jembatan penghubung antar dusun yang telah selesai dibangun
-            </p>
+            <p class="text-center text-sm text-gray-600 italic mb-6"></p>
 
             <div class="article-content text-gray-700">
               {!! $news->content !!}
             </div>
 
-            <!-- Article Tags -->
+            @if($news->tags->isNotEmpty())
             <div class="mt-8 pt-6 border-t">
               <div class="flex flex-wrap items-center gap-2">
                 <span class="font-semibold text-gray-700">Tags:</span>
-                <a href="#" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-red-600 hover:text-white transition">
-                  #pembangunan
+                @foreach($news->tags as $tag)
+                <a href="{{ route('news.tag', $tag->slug) }}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-red-600 hover:text-white transition">
+                  #{{ $tag->name }}
                 </a>
-                <a href="#" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-red-600 hover:text-white transition">
-                  #jembatan
-                </a>
-                <a href="#" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-red-600 hover:text-white transition">
-                  #infrastruktur
-                </a>
-                <a href="#" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-red-600 hover:text-white transition">
-                  #danadesa
-                </a>
+                @endforeach
               </div>
             </div>
+            @endif
 
-            <!-- Author Info -->
             <div class="mt-8 p-6 bg-gray-50 rounded-lg">
               <div class="flex items-center gap-4">
                 <img src="https://via.placeholder.com/80" alt="Author" class="w-20 h-20 rounded-full">

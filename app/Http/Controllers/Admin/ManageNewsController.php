@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use App\Models\Category;
+use App\Models\Tag;
 use App\Http\Requests\News\StoreNewsRequest;
 use App\Http\Requests\News\UpdateNewsRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Mews\Purifier\Facades\Purifier;
+use Illuminate\Support\Str;
 
 class ManageNewsController extends Controller
 {
@@ -17,7 +20,7 @@ class ManageNewsController extends Controller
   {
     $search = $request->input('search');
 
-    $query = News::with('user');
+    $query = News::with('user', 'category');
 
     $query->when($search, function ($q, $search) {
       return $q->where('title', 'like', "%{$search}%");
@@ -47,6 +50,9 @@ class ManageNewsController extends Controller
 
   public function create()
   {
+    $categories = Category::orderBy('name')->get();
+    $tags = Tag::orderBy('name')->get();
+
     $data = [
       'title' => 'Tambah Berita Baru',
       'main' => 'admin.news.create',
@@ -62,7 +68,9 @@ class ManageNewsController extends Controller
         [
           'title' => 'Tambah Baru'
         ],
-      ]
+      ],
+      'categories' => $categories,
+      'tags' => $tags,
     ];
 
     return view('admin.layout.template', $data);
@@ -86,7 +94,25 @@ class ManageNewsController extends Controller
         $validatedData['published_at'] = now();
       }
 
-      News::create($validatedData);
+      $news = News::create($validatedData);
+
+      if ($request->has('tags')) {
+        $tagIds = [];
+
+        foreach ($validatedData['tags'] as $tagInput) {
+          if (is_numeric($tagInput)) {
+            $tagIds[] = (int) $tagInput;
+          } else {
+            $newTag = Tag::firstOrCreate(
+              ['name' => $tagInput],
+              ['slug' => Str::slug($tagInput)]
+            );
+            $tagIds[] = $newTag->id;
+          }
+        }
+
+        $news->tags()->attach($tagIds);
+      }
 
       return redirect()->route('manage-news.index')
         ->with('success', 'Berita berhasil ditambahkan.');
@@ -97,6 +123,8 @@ class ManageNewsController extends Controller
 
   public function show(News $manageNews)
   {
+    $manageNews->load('user', 'category', 'tags');
+
     $data = [
       'title' => 'Detail Berita',
       'main' => 'admin.news.show',
@@ -121,6 +149,11 @@ class ManageNewsController extends Controller
 
   public function edit(News $manageNews)
   {
+    $categories = Category::orderBy('name')->get();
+    $tags = Tag::orderBy('name')->get();
+
+    $manageNews->load('tags');
+
     $data = [
       'title' => 'Edit Berita',
       'main' => 'admin.news.edit',
@@ -137,7 +170,9 @@ class ManageNewsController extends Controller
           'title' => 'Edit'
         ],
       ],
-      'news' => $manageNews
+      'news' => $manageNews,
+      'categories' => $categories,
+      'tags' => $tags,
     ];
 
     return view('admin.layout.template', $data);
@@ -169,6 +204,26 @@ class ManageNewsController extends Controller
 
       $manageNews->update($validatedData);
 
+      if ($request->has('tags')) {
+        $tagIds = [];
+
+        foreach ($validatedData['tags'] as $tagInput) {
+          if (is_numeric($tagInput)) {
+            $tagIds[] = (int) $tagInput;
+          } else {
+            $newTag = Tag::firstOrCreate(
+              ['name' => $tagInput],
+              ['slug' => Str::slug($tagInput)]
+            );
+            $tagIds[] = $newTag->id;
+          }
+        }
+
+        $manageNews->tags()->sync($tagIds);
+      } else {
+        $manageNews->tags()->detach();
+      }
+
       return redirect()->route('manage-news.index')
         ->with('success', 'Berita berhasil diperbarui.');
     } catch (\Exception $e) {
@@ -183,6 +238,7 @@ class ManageNewsController extends Controller
         Storage::disk('public')->delete($manageNews->image);
       }
 
+      $manageNews->tags()->detach();
       $manageNews->delete();
 
       return redirect()->route('manage-news.index')

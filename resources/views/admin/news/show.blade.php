@@ -26,7 +26,6 @@
     margin-bottom: 1em;
   }
 
-  /* Ini akan men-style button yang Anda masukkan di editor */
   .news-content .btn {
     margin: 5px 0;
   }
@@ -56,7 +55,23 @@
             <i class="material-symbols-outlined fs-16" style="vertical-align: middle; margin-top: -3px;">label</i>
             Status: {{ ucfirst($news->status) }}
           </span>
+          <span>
+            <i class="material-symbols-outlined fs-16" style="vertical-align: middle; margin-top: -3px;">folder</i>
+            Kategori: {{ $news->category->name ?? '-' }}
+          </span>
         </div>
+
+        @if($news->tags->isNotEmpty())
+        <div class="d-flex flex-wrap gap-2 fs-14 text-secondary mb-3 border-top pt-3">
+          <span class="fw-medium">
+            <i class="material-symbols-outlined fs-16" style="vertical-align: middle; margin-top: -3px;">sell</i>
+            Tags:
+          </span>
+          @foreach($news->tags as $tag)
+          <span class="badge bg-primary-light text-primary">{{ $tag->name }}</span>
+          @endforeach
+        </div>
+        @endif
 
         <hr>
 

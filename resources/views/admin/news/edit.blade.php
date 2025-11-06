@@ -1,4 +1,6 @@
 <style>
+  @import "https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.css";
+
   .card .ck-editor__editable_inline {
     min-height: 300px;
     background: #ffffff !important;
@@ -12,6 +14,7 @@
 </style>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
 
 <div class="row">
   <div class="col-lg-12">
@@ -51,6 +54,51 @@
                 <textarea id="ckeditor-editor" name="content" class="form-control" rows="10" placeholder="Masukkan konten berita...">{{ old('content', $news->content) }}</textarea>
               </div>
               @error('content')
+              <div class="text-danger small mt-2">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+          </div>
+
+          @php
+          $selectedTagIds = old('tags', $news->tags->pluck('id')->toArray());
+          @endphp
+
+          <div class="col-lg-6">
+            <div class="mb-20">
+              <label class="label fs-16 mb-2">Kategori</label>
+              <div class="form-group">
+                <select name="category_id" class="form-select form-control" aria-label="Kategori">
+                  <option value="">Pilih Kategori...</option>
+                  @foreach ($categories as $category)
+                  <option value="{{ $category->id }}" {{ old('category_id', $news->category_id) == $category->id ? 'selected' : '' }}>
+                    {{ $category->name }}
+                  </option>
+                  @endforeach
+                </select>
+              </div>
+              @error('category_id')
+              <div class="text-danger small mt-2">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="mb-20">
+              <label class="label fs-16 mb-2">Tags (Opsional)</label>
+              <div class="form-group">
+                <select id="select-tags" name="tags[]" multiple placeholder="Pilih atau tambah tags..." autocomplete="off">
+                  @foreach ($tags as $tag)
+                  <option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedTagIds) ? 'selected' : '' }}>
+                    {{ $tag->name }}
+                  </option>
+                  @endforeach
+                </select>
+              </div>
+              @error('tags')
               <div class="text-danger small mt-2">
                 {{ $message }}
               </div>
@@ -134,4 +182,12 @@
     .catch(error => {
       console.error('Error saat memuat CKEditor 5:', error);
     });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    new TomSelect("#select-tags", {
+      plugins: ['remove_button'],
+      create: true,
+      maxItems: 10
+    });
+  });
 </script>

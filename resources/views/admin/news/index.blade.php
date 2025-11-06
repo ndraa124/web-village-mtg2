@@ -37,6 +37,7 @@
             <th scope="col" class="fw-medium text-center">#</th>
             <th scope="col" class="fw-medium">Judul Berita</th>
             <th scope="col" class="fw-medium">Author</th>
+            <th scope="col" class="fw-medium">Kategori</th>
             <th scope="col" class="fw-medium text-center">Status</th>
             <th scope="col" class="fw-medium text-center">Tgl Publikasi</th>
             <th scope="col" class="fw-medium text-center">Aksi</th>
@@ -50,6 +51,7 @@
               {{ \Illuminate\Support\Str::limit($row->title, 70) }}
             </td>
             <td class="text-body">{{ $row->user->name ?? 'N/A' }}</td>
+            <td class="text-body">{{ $row->category->name ?? '-' }}</td>
             <td class="text-body text-center">
               @if ($row->status == 'published')
               <span class="badge bg-success">Published</span>
@@ -80,7 +82,7 @@
           </tr>
           @empty
           <tr>
-            <td colspan="6" class="text-center text-secondary p-20">
+            <td colspan="7" class="text-center text-secondary p-20">
               Tidak ada data berita yang ditemukan.
             </td>
           </tr>

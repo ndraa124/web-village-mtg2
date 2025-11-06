@@ -5,24 +5,59 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use App\Models\Category;
 use App\Models\Tag;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
-  public function index()
+  public function index(Request $request, ?Category $category = null, ?Tag $tag = null)
   {
+    $pageTitle = 'Berita & Informasi';
+
+    $search = $request->input('search');
+    $year = $request->input('year');
+    $month = $request->input('month');
+
+    if ($category) {
+      $pageTitle = 'Kategori Berita: ' . $category->name;
+    }
+
+    if ($tag) {
+      $pageTitle = 'Tag Berita: ' . $tag->name;
+    }
+
+    if ($search) {
+      $pageTitle = 'Hasil Pencarian: ' . $search;
+    }
+
+    if ($year && $month) {
+      $monthName = Carbon::create()->month((int) $month)->locale('id')->isoFormat('MMMM');
+      $pageTitle = "Arsip Berita: $monthName $year";
+    }
+
     $query = News::with('user', 'category')
       ->where('status', 'published')
-      ->latest('published_at');
+      ->when($category, fn($q) => $q->where('category_id', $category->id))
+      ->when($tag, fn($q) => $q->whereHas('tags', fn($subQ) => $subQ->where('tags.id', $tag->id)))
+      ->when($search, fn($q) => $q->where('title', 'like', "%{$search}%"))
+      ->when($year, fn($q) => $q->whereYear('published_at', $year))
+      ->when($month, fn($q) => $q->whereMonth('published_at', $month));
+
+    $query->latest('published_at');
 
     $featuredNews = $query->first();
 
-    $news = News::with('user')
+    $news = News::with('user', 'category')
       ->where('status', 'published')
+      ->when($category, fn($q) => $q->where('category_id', $category->id))
+      ->when($tag, fn($q) => $q->whereHas('tags', fn($subQ) => $subQ->where('tags.id', $tag->id)))
+      ->when($search, fn($q) => $q->where('title', 'like', "%{$search}%"))
+      ->when($year, fn($q) => $q->whereYear('published_at', $year))
+      ->when($month, fn($q) => $q->whereMonth('published_at', $month))
       ->where('id', '!=', $featuredNews->id ?? null)
       ->latest('published_at')
-      ->paginate(6);
+      ->paginate(6)
+      ->appends($request->query());
 
     $popularNews = News::where('status', 'published')
       ->orderBy('views_count', 'desc')
@@ -47,7 +82,7 @@ class NewsController extends Controller
       ->get();
 
     $data = [
-      'title' => 'Berita & Informasi',
+      'title' => $pageTitle,
       'main'  => 'main.news.index',
       'breadcrumbs' => [
         [
@@ -55,7 +90,7 @@ class NewsController extends Controller
           'title' => 'Beranda',
         ],
         [
-          'title' => 'Berita & Informasi',
+          'title' => $pageTitle,
         ]
       ],
       'featuredNews'  => $featuredNews,
@@ -76,10 +111,12 @@ class NewsController extends Controller
     }
 
     $news->increment('views_count');
+    $news->load('user', 'category', 'tags');
 
     $relatedNews = News::with('user')
       ->where('status', 'published')
       ->where('id', '!=', $news->id)
+      ->where('category_id', $news->category_id)
       ->latest('published_at')
       ->limit(2)
       ->get();
@@ -92,7 +129,7 @@ class NewsController extends Controller
 
     $data = [
       'title' => 'Detail Berita',
-      'main'  => 'main.news.detail',
+      'main'  => 'main.news.show',
       'breadcrumbs' => [
         [
           'route' => 'home',

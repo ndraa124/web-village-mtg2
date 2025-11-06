@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\FinancingController;
 use App\Http\Controllers\Admin\StuntingController;
 use App\Http\Controllers\Admin\SocialAssistanceController;
 use App\Http\Controllers\Admin\IdmStatusController;
+use App\Http\Controllers\Admin\CategoryController;
 
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\VisionController;
@@ -95,6 +96,8 @@ Route::prefix('/news')
     ->name('news.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/category/{category:slug}', 'index')->name('category');
+        Route::get('/tag/{tag:slug}', 'index')->name('tag');
         Route::get('/{news:slug}', 'show')->name('show');
     });
 
@@ -130,6 +133,7 @@ Route::middleware(['authenticate'])->group(function () {
             Route::resource('stunting', StuntingController::class);
             Route::resource('social_assistance', SocialAssistanceController::class);
             Route::resource('idm_status', IdmStatusController::class);
+            Route::resource('category', CategoryController::class)->except(['show']);
         });
 
     Route::prefix('/settings')

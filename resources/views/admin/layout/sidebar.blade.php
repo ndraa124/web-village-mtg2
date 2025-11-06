@@ -89,6 +89,11 @@
               IDM Status
             </a>
           </li>
+          <li class="menu-item">
+            <a href="{{ route('master.category.index') }}" class="menu-link {{ request()->routeIs('master.category.*') ? 'active' : '' }}">
+              Kategori Berita
+            </a>
+          </li>
         </ul>
       </li>
 
