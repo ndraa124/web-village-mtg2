@@ -319,6 +319,13 @@
         </ul>
       </li>
 
+      <li class="menu-item {{ request()->routeIs('manage-legal-product.*') ? 'open' : '' }}">
+        <a href="{{ route('manage-legal-product.index') }}" class="menu-link {{ request()->routeIs('manage-legal-product.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">gavel</span>
+          <span class="title">Produk Hukum</span>
+        </a>
+      </li>
+
       @if(Auth::user()->role == 'superadmin')
       <li class="menu-title small text-uppercase">
         <span class="menu-title-text">USERS</span>

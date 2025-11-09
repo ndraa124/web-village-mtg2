@@ -77,7 +77,7 @@ class LegalProductsCategoryController extends Controller
     }
   }
 
-  public function edit(LegalProductsCategories $legal_product_category)
+  public function edit(LegalProductsCategories $category)
   {
     $data = [
       'title' => 'Edit Kategori Produk Hukum',
@@ -95,16 +95,16 @@ class LegalProductsCategoryController extends Controller
           'title' => 'Edit'
         ],
       ],
-      'category' => $legal_product_category
+      'category' => $category
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function update(UpdateLegalProductCategoryRequest $request, LegalProductsCategories $legal_product_category)
+  public function update(UpdateLegalProductCategoryRequest $request, LegalProductsCategories $category)
   {
     try {
-      $legal_product_category->update($request->validated());
+      $category->update($request->validated());
 
       return redirect()->route('master.legal-product-category.index')
         ->with('success', 'Kategori berhasil diperbarui.');
@@ -113,10 +113,10 @@ class LegalProductsCategoryController extends Controller
     }
   }
 
-  public function destroy(LegalProductsCategories $legal_product_category)
+  public function destroy(LegalProductsCategories $category)
   {
     try {
-      $legal_product_category->delete();
+      $category->delete();
 
       return redirect()->route('master.legal-product-category.index')
         ->with('success', 'Kategori berhasil dihapus.');

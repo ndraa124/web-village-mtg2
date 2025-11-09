@@ -10,6 +10,8 @@ class LegalProducts extends Model
 {
     use HasFactory;
 
+    protected $table = 'legal_products';
+
     protected $fillable = [
         'title',
         'category_id',
