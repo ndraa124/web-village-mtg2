@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\Contact\StoreContactRequest;
+use App\Mail\ContactFormMail;
+
 use App\Models\News;
 use App\Models\Services;
 use App\Models\Gallery;
@@ -57,5 +61,24 @@ class HomeController extends Controller
         ];
 
         return view('main.layout.template', $data);
+    }
+
+    public function sendContactEmail(StoreContactRequest $request)
+    {
+        $validatedData = $request->validated();
+        $recipientEmail = env('MAIL_USERNAME');
+
+        try {
+            Mail::to($recipientEmail)->send(new ContactFormMail($validatedData));
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+
+            return redirect(url()->previous() . '#kontak')
+                ->with('error', 'Terjadi kesalahan. Pesan Anda tidak dapat dikirim.')
+                ->withInput();
+        }
+
+        return redirect(url()->previous() . '#kontak')
+            ->with('success', 'Pesan Anda telah berhasil terkirim!');
     }
 }

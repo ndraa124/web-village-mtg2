@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initBackToTop();
     initCounterAnimation();
     initMap();
-    initContactForm();
+    // initContactForm();
     initSmoothScroll();
     initGallery();
     initProgressBars();
@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
             mobileMenuBtn.addEventListener("click", function () {
                 mobileMenu.classList.toggle("hidden");
                 mobileMenu.classList.add("mobile-menu-enter");
+
+                document.body.classList.toggle("mobile-menu-open");
 
                 const icon = this.querySelector("i");
                 if (icon) {
@@ -53,6 +55,25 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     }
                 });
+            });
+
+            document.addEventListener("click", function (event) {
+                const isClickInside =
+                    mobileMenu.contains(event.target) ||
+                    mobileMenuBtn.contains(event.target);
+
+                if (
+                    !isClickInside &&
+                    !mobileMenu.classList.contains("hidden")
+                ) {
+                    mobileMenu.classList.add("hidden");
+                    document.body.classList.remove("mobile-menu-open");
+                    const icon = mobileMenuBtn.querySelector("i");
+                    if (icon) {
+                        icon.classList.add("fa-bars");
+                        icon.classList.remove("fa-times");
+                    }
+                }
             });
         }
     }

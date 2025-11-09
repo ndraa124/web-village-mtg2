@@ -1,22 +1,17 @@
 <section class="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
   <div class="absolute inset-0 swiper hero-background-slider">
     <div class="swiper-wrapper">
-
-      {{-- Slide 1: Pemandangan Desa Asri --}}
-      <div class="swiper-slide" style="background-image: url('/images/illustrations/pemandangan.svg'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 z-10 bg-black opacity-30"></div>
+      <div class="swiper-slide" style="background-image: url('https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 z-10 bg-black opacity-40"></div>
       </div>
 
-      {{-- Slide 2: Aktivitas Pertanian --}}
-      <div class="swiper-slide" style="background-image: url('/images/illustrations/pertanian.svg'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 z-10 bg-black opacity-30"></div>
+      <div class="swiper-slide" style="background-image: url('https://images.pexels.com/photos/1146708/pexels-photo-1146708.jpeg'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 z-10 bg-black opacity-40"></div>
       </div>
 
-      {{-- Slide 3: Bangunan Publik Desa --}}
-      <div class="swiper-slide" style="background-image: url('/images/illustrations/gedung.svg'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 z-10 bg-black opacity-30"></div>
+      <div class="swiper-slide" style="background-image: url('https://images.pexels.com/photos/1855416/pexels-photo-1855416.jpeg'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 z-10 bg-black opacity-40"></div>
       </div>
-
     </div>
   </div>
 
@@ -416,25 +411,50 @@
       <div class="bg-white rounded-lg shadow-lg p-8">
         <h3 class="text-xl font-bold text-gray-800 mb-6">Kirim Pesan</h3>
 
-        <form id="contact-form">
+        @if(session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+          <span class="block sm:inline">{{ session('success') }}</span>
+        </div>
+        @endif
+        @if(session('error'))
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+          <span class="block sm:inline">{{ session('error') }}</span>
+        </div>
+        @endif
+
+        <form id="contact-form" action="{{ route('contact.send') }}" method="POST">
+          @csrf
+
           <div class="mb-4">
             <label class="block text-gray-700 font-semibold mb-2" for="name">Nama Lengkap</label>
-            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 @error('name') @enderror" value="{{ old('name') }}">
+            @error('name')
+            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
           </div>
 
           <div class="mb-4">
             <label class="block text-gray-700 font-semibold mb-2" for="email">Email</label>
-            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 @error('email') @enderror" value="{{ old('email') }}">
+            @error('email')
+            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
           </div>
 
           <div class="mb-4">
             <label class="block text-gray-700 font-semibold mb-2" for="subject">Subjek</label>
-            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" required>
+            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 @error('subject') @enderror" value="{{ old('subject') }}">
+            @error('subject')
+            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
           </div>
 
           <div class="mb-4">
             <label class="block text-gray-700 font-semibold mb-2" for="message">Pesan</label>
-            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" required></textarea>
+            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 @error('message') @enderror">{{ old('message') }}</textarea>
+            @error('message')
+            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
           </div>
 
           <button type="submit" class="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition">

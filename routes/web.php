@@ -74,6 +74,7 @@ use App\Http\Controllers\Admin\AntiCorruptParticipateController;
 use App\Http\Controllers\Admin\AntiCorruptLocalWisdomController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/contact/send', [HomeController::class, 'sendContactEmail'])->name('contact.send');
 
 Route::prefix('/profile')
     ->name('profile.')

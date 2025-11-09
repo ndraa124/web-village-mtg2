@@ -149,7 +149,11 @@
           @endforelse
         </div>
 
-        {{ $news->links('pagination::tailwind') }}
+        @if($news->hasPages())
+        <div class="bg-white rounded-lg shadow-md p-4">
+          {{ $news->links('pagination::tailwind') }}
+        </div>
+        @endif
       </div>
 
       <aside class="lg:w-1/3">

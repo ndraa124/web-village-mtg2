@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="h-full">
 
 <head>
   <meta charset="UTF-8">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="{{ asset('main/css/style.css') }}">
 </head>
 
-<body class="bg-gray-50">
+<body class="flex flex-col min-h-screen bg-gray-50 overflow-x-hidden">
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous"
     src="https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v19.0&appId=1466563291076472&autoLogAppEvents=1"
@@ -33,33 +33,36 @@
 
   @include('main.layout.navbar')
 
-  @if(!empty($breadcrumbs))
-  <section class="bg-gradient-to-r from-red-600 to-red-800 py-8">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-white mb-2">{{ $title }}</h2>
-      <nav class="text-white/90">
-        <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-          <?php if (!array_key_exists('route', $breadcrumb)) { ?>
-            <span class="mx-2">/</span>
-            <span>{{ $breadcrumb['title'] }}</span>
-          <?php } else { ?>
-            @if($breadcrumb['title'] == 'Beranda')
-            <a href="{{ route($breadcrumb['route']) }}" class="hover:text-white">{{ $breadcrumb['title'] }}</a>
-            @else
-            <span class="mx-2">/</span>
-            <a href="{{ route($breadcrumb['route']) }}" class="hover:text-white">{{ $breadcrumb['title'] }}</a>
-            @endif
-          <?php }  ?>
-        <?php } ?>
-      </nav>
-    </div>
-  </section>
-  @endif
-  @include($main)
+  <main class="flex-grow w-full">
+    @if(!empty($breadcrumbs))
+    <section class="bg-gradient-to-r from-red-600 to-red-800 py-8">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white mb-2">{{ $title }}</h2>
+        <nav class="text-white/90">
+          <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+            <?php if (!array_key_exists('route', $breadcrumb)) { ?>
+              <span class="mx-2">/</span>
+              <span>{{ $breadcrumb['title'] }}</span>
+            <?php } else { ?>
+              @if($breadcrumb['title'] == 'Beranda')
+              <a href="{{ route($breadcrumb['route']) }}" class="hover:text-white">{{ $breadcrumb['title'] }}</a>
+              @else
+              <span class="mx-2">/</span>
+              <a href="{{ route($breadcrumb['route']) }}" class="hover:text-white">{{ $breadcrumb['title'] }}</a>
+              @endif
+            <?php }  ?>
+          <?php } ?>
+        </nav>
+      </div>
+    </section>
+    @endif
+
+    @include($main)
+  </main>
 
   @include('main.layout.footer')
 
-  <button id="back-to-top" class="fixed bottom-8 right-8 bg-red-600 text-white w-12 h-12 rounded-full shadow-lg hidden hover:bg-red-700 transition">
+  <button id="back-to-top" class="fixed bottom-8 right-8 bg-red-600 text-white w-12 h-12 rounded-full shadow-lg hidden hover:bg-red-700 transition z-50">
     <i class="fas fa-arrow-up"></i>
   </button>
 

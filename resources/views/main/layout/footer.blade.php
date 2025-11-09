@@ -9,10 +9,10 @@
       <div>
         <h4 class="text-lg font-semibold mb-4">Link Cepat</h4>
         <ul class="space-y-2">
-          <li><a href="#" class="text-gray-400 hover:text-white transition">Profil Desa</a></li>
-          <li><a href="#" class="text-gray-400 hover:text-white transition">Layanan</a></li>
-          <li><a href="#" class="text-gray-400 hover:text-white transition">Berita</a></li>
-          <li><a href="#" class="text-gray-400 hover:text-white transition">Pengaduan</a></li>
+          <li><a href="{{ route('profile.history') }}" class="text-gray-400 hover:text-white transition">Profil Desa</a></li>
+          <li><a href="{{ route('news.index') }}" class="text-gray-400 hover:text-white transition">Berita & Informasi</a></li>
+          <li><a href="{{ route('service.index') }}" class="text-gray-400 hover:text-white transition">Layanan Masyarakat</a></li>
+          <li><a href="https://forms.gle/PUBxooALDLNdUkS67" class="text-gray-400 hover:text-white transition">Pengaduan Masyarakat</a></li>
         </ul>
       </div>
 
@@ -47,7 +47,7 @@
 
     <div class="border-t border-gray-800 mt-8 pt-8 text-center">
       <p class="text-gray-400">
-        © 2025 Desa Motoling Dua. All rights reserved. | Developed with <i class="fas fa-heart text-red-500"></i> by ID-124
+        © 2025 Desa Motoling Dua. All rights reserved. | Developed by ID-124
       </p>
     </div>
   </div>
