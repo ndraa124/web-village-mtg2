@@ -94,6 +94,11 @@
               Kategori Berita
             </a>
           </li>
+          <li class="menu-item">
+            <a href="{{ route('master.legal-product-category.index') }}" class="menu-link {{ request()->routeIs('master.legal-product-category.*') ? 'active' : '' }}">
+              Kategori Produk Hukum
+            </a>
+          </li>
         </ul>
       </li>
 

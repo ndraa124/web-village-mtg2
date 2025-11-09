@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\NewsCategory;
+namespace App\Http\Requests\Master\NewsCategory;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreNewsCategoryRequest extends FormRequest
+class UpdateNewsCategoryRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -13,8 +14,15 @@ class StoreNewsCategoryRequest extends FormRequest
 
     public function rules(): array
     {
+        $categoryId = $this->route('category')->id;
+
         return [
-            'name' => 'required|string|max:255|unique:categories,name',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('categories')->ignore($categoryId),
+            ],
         ];
     }
 

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Http\Requests\NewsCategory\StoreNewsCategoryRequest;
-use App\Http\Requests\NewsCategory\UpdateNewsCategoryRequest;
+use App\Http\Requests\Master\NewsCategory\StoreNewsCategoryRequest;
+use App\Http\Requests\Master\NewsCategory\UpdateNewsCategoryRequest;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller

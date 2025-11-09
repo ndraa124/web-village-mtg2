@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\StuntingController;
 use App\Http\Controllers\Admin\SocialAssistanceController;
 use App\Http\Controllers\Admin\IdmStatusController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\LegalProductsCategoryController;
 
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\VisionController;
@@ -63,6 +64,7 @@ use App\Http\Controllers\Admin\InfographicsIdmIklController;
 use App\Http\Controllers\Admin\InfographicsSdgsController;
 
 use App\Http\Controllers\Admin\ManageNewsController;
+
 use App\Http\Controllers\Admin\AntiCorruptGovernanceController;
 use App\Http\Controllers\Admin\AntiCorruptSupervisionController;
 use App\Http\Controllers\Admin\AntiCorruptServiceQualityController;
@@ -134,6 +136,7 @@ Route::middleware(['authenticate'])->group(function () {
             Route::resource('social_assistance', SocialAssistanceController::class);
             Route::resource('idm_status', IdmStatusController::class);
             Route::resource('category', CategoryController::class)->except(['show']);
+            Route::resource('legal-product-category', LegalProductsCategoryController::class)->except(['show']);
         });
 
     Route::prefix('/settings')

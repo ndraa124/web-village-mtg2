@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\NewsCategory;
+namespace App\Http\Requests\Master\LegalProductCategory;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateNewsCategoryRequest extends FormRequest
+class UpdateLegalProductCategoryRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -14,14 +14,14 @@ class UpdateNewsCategoryRequest extends FormRequest
 
     public function rules(): array
     {
-        $categoryId = $this->route('category')->id;
+        $categoryId = $this->route('legal_product_category')->id;
 
         return [
             'name' => [
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('categories')->ignore($categoryId),
+                Rule::unique('legal_products_categories')->ignore($categoryId),
             ],
         ];
     }
