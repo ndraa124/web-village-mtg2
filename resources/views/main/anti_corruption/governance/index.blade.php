@@ -20,19 +20,6 @@
   }
 </style>
 
-<section class="bg-gradient-to-r from-red-600 to-red-800 py-8">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-white mb-2">Tata Laksana</h2>
-    <nav class="text-white/90">
-      <a href="index.html" class="hover:text-white">Beranda</a>
-      <span class="mx-2">/</span>
-      <a href="#" class="hover:text-white">Desa Anti Korupsi</a>
-      <span class="mx-2">/</span>
-      <span>Tata Laksana</span>
-    </nav>
-  </div>
-</section>
-
 <section class="py-16 bg-white">
   <div class="container mx-auto px-4 max-w-5xl">
 
@@ -43,11 +30,15 @@
 
     <article class="prose prose-lg max-w-none text-gray-700 space-y-6">
       <div class="fs-16 text-body news-content" style="line-height: 1.7;">
-        @if ($antiCorrupt->content == "")
-        Tidak ada konten
-        @else
-        {!! $antiCorrupt->content !!}
-        @endif
+        <?php if (!$antiCorrupt) { ?>
+          Tidak ada konten
+        <?php } else { ?>
+          <?php if ($antiCorrupt->content == "") { ?>
+            Tidak ada konten
+          <?php } else { ?>
+            {!! $antiCorrupt->content !!}
+          <?php } ?>
+        <?php } ?>
       </div>
     </article>
 

@@ -1,16 +1,3 @@
-<section class="bg-gradient-to-r from-red-600 to-red-800 py-8">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-white mb-2">Visi & Misi</h2>
-    <nav class="text-white/90">
-      <a href="index.html" class="hover:text-white">Beranda</a>
-      <span class="mx-2">/</span>
-      <a href="#" class="hover:text-white">Profil</a>
-      <span class="mx-2">/</span>
-      <span>Visi & Misi</span>
-    </nav>
-  </div>
-</section>
-
 <section class="py-16">
   <div class="container mx-auto px-4">
     <div class="bg-white rounded-lg shadow-xl mb-12 overflow-hidden">

@@ -11,8 +11,20 @@ class GovernanceController extends Controller
     $antiCorrupt = AntiCorruptGovernance::find(1);
 
     $data = [
-      'title' => 'Desa Anti Korupsi - Tata Laksana',
+      'title' => 'Tata Laksana',
       'main'  => 'main.anti_corruption.governance.index',
+      'breadcrumbs' => [
+        [
+          'route' => 'home',
+          'title' => 'Beranda',
+        ],
+        [
+          'title' => 'Desa Anti Korupsi',
+        ],
+        [
+          'title' => 'Tata Laksana',
+        ]
+      ],
       'antiCorrupt' => $antiCorrupt
     ];
 

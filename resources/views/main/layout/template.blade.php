@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="{{ asset('main/css/styles.css') }}">
+  <link rel="stylesheet" href="{{ asset('main/css/style.css') }}">
 </head>
 
 <body class="bg-gray-50">
@@ -32,7 +32,31 @@
   </script>
 
   @include('main.layout.navbar')
+
+  @if(!empty($breadcrumbs))
+  <section class="bg-gradient-to-r from-red-600 to-red-800 py-8">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-white mb-2">{{ $title }}</h2>
+      <nav class="text-white/90">
+        <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+          <?php if (!array_key_exists('route', $breadcrumb)) { ?>
+            <span class="mx-2">/</span>
+            <span>{{ $breadcrumb['title'] }}</span>
+          <?php } else { ?>
+            @if($breadcrumb['title'] == 'Beranda')
+            <a href="{{ route($breadcrumb['route']) }}" class="hover:text-white">{{ $breadcrumb['title'] }}</a>
+            @else
+            <span class="mx-2">/</span>
+            <a href="{{ route($breadcrumb['route']) }}" class="hover:text-white">{{ $breadcrumb['title'] }}</a>
+            @endif
+          <?php }  ?>
+        <?php } ?>
+      </nav>
+    </div>
+  </section>
+  @endif
   @include($main)
+
   @include('main.layout.footer')
 
   <button id="back-to-top" class="fixed bottom-8 right-8 bg-red-600 text-white w-12 h-12 rounded-full shadow-lg hidden hover:bg-red-700 transition">

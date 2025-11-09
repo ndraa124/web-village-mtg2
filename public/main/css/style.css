@@ -205,6 +205,45 @@ html {
     }
 }
 
+/* Mobile Dropdown Menu */
+.mobile-dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.mobile-dropdown-content:not(.hidden) {
+    max-height: 500px;
+    transition: max-height 0.5s ease-in;
+}
+
+.mobile-dropdown-btn i {
+    transition: transform 0.3s ease;
+}
+
+.mobile-dropdown-btn[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
+/* Mobile Menu Scrollbar */
+#mobile-menu {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-red) #f1f1f1;
+}
+
+#mobile-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+#mobile-menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#mobile-menu::-webkit-scrollbar-thumb {
+    background: var(--primary-red);
+    border-radius: 3px;
+}
+
 /* Progress Bar Animation */
 .progress-bar {
     position: relative;
@@ -413,17 +452,6 @@ select:focus {
 }
 
 /* Animasi teks masuk (jika belum ada di style.css) */
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .animate-slide-up {
     /* Menerapkan animasi HANYA saat slide aktif */
     .swiper-slide-active & {

@@ -11,8 +11,20 @@ class ServiceQualityController extends Controller
     $antiCorrupt = AntiCorruptServiceQuality::find(1);
 
     $data = [
-      'title' => 'Desa Anti Korupsi - Kualitas Pelayanan Publik',
+      'title' => 'Kualitas Pelayanan Publik',
       'main'  => 'main.anti_corruption.service_quality.index',
+      'breadcrumbs' => [
+        [
+          'route' => 'home',
+          'title' => 'Beranda',
+        ],
+        [
+          'title' => 'Desa Anti Korupsi',
+        ],
+        [
+          'title' => 'Kualitas Pelayanan Publik',
+        ]
+      ],
       'antiCorrupt' => $antiCorrupt
     ];
 

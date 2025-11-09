@@ -36,19 +36,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<section class="bg-gradient-to-r from-red-600 to-red-800 py-8">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-white mb-2">Stunting</h2>
-    <nav class="text-white/90">
-      <a href="index.html" class="hover:text-white">Beranda</a>
-      <span class="mx-2">/</span>
-      <a href="#" class="hover:text-white">Infografis</a>
-      <span class="mx-2">/</span>
-      <span>Stunting</span>
-    </nav>
-  </div>
-</section>
-
 <section class="py-8">
   <div class="container mx-auto px-4">
     <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg shadow-md">

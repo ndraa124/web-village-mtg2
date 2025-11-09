@@ -11,8 +11,20 @@ class SupervisionController extends Controller
     $antiCorrupt = AntiCorruptSupervision::find(1);
 
     $data = [
-      'title' => 'Desa Anti Korupsi - Pengawasan',
+      'title' => 'Pengawasan',
       'main'  => 'main.anti_corruption.supervision.index',
+      'breadcrumbs' => [
+        [
+          'route' => 'home',
+          'title' => 'Beranda',
+        ],
+        [
+          'title' => 'Desa Anti Korupsi',
+        ],
+        [
+          'title' => 'Pengawasan',
+        ]
+      ],
       'antiCorrupt' => $antiCorrupt
     ];
 

@@ -1,5 +1,4 @@
 <style>
-  /* Menggunakan kembali style hover dari style.css Anda */
   .card-hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -9,21 +8,17 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
 
-  /* Style untuk FAQ Accordion */
   details>summary {
     list-style: none;
-    /* Hapus panah default */
     cursor: pointer;
   }
 
   details>summary::-webkit-details-marker {
     display: none;
-    /* Hapus panah di Chrome */
   }
 
   details>summary::after {
     content: '+';
-    /* Ikon 'plus' */
     font-size: 1.5rem;
     font-weight: 300;
     transition: transform 0.2s ease;
@@ -31,27 +26,13 @@
 
   details[open]>summary::after {
     content: '−';
-    /* Ikon 'minus' */
     transform: rotate(180deg);
   }
 
   details[open] {
     background-color: #fef2f2;
-    /* light-red-50 */
   }
 </style>
-
-{{-- 1. Bagian Header Halaman --}}
-<section class="bg-gradient-to-r from-red-600 to-red-800 py-8">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-white mb-2">Layanan Publik</h2>
-    <nav class="text-white/90">
-      <a href="index.html" class="hover:text-white">Beranda</a>
-      <span class="mx-2">/</span>
-      <span>Layanan</span>
-    </nav>
-  </div>
-</section>
 
 {{-- 2. Bagian Pengantar --}}
 <section class="py-16">

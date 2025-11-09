@@ -11,8 +11,20 @@ class LocalWisdomController extends Controller
     $antiCorrupt = AntiCorruptLocalWisdom::find(1);
 
     $data = [
-      'title' => 'Desa Anti Korupsi - Kearifan Lokal',
+      'title' => 'Kearifan Lokal',
       'main'  => 'main.anti_corruption.local_wisdom.index',
+      'breadcrumbs' => [
+        [
+          'route' => 'home',
+          'title' => 'Beranda',
+        ],
+        [
+          'title' => 'Desa Anti Korupsi',
+        ],
+        [
+          'title' => 'Kearifan Lokas',
+        ]
+      ],
       'antiCorrupt' => $antiCorrupt
     ];
 

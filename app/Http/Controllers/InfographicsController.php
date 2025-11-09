@@ -7,8 +7,20 @@ class InfographicsController extends Controller
   public function index()
   {
     $data = [
-      'title' => 'Infografis',
+      'title' => 'Penduduk',
       'main'  => 'main.infographics.index',
+      'breadcrumbs' => [
+        [
+          'route' => 'home',
+          'title' => 'Beranda',
+        ],
+        [
+          'title' => 'Infografis',
+        ],
+        [
+          'title' => 'Penduduk',
+        ]
+      ],
     ];
 
     return view('main.layout.template', $data);
@@ -17,8 +29,20 @@ class InfographicsController extends Controller
   public function apbdes()
   {
     $data = [
-      'title' => 'Infografis',
+      'title' => 'Anggaran Pendapatan dan Belanja Desa',
       'main'  => 'main.infographics.apbdes',
+      'breadcrumbs' => [
+        [
+          'route' => 'home',
+          'title' => 'Beranda',
+        ],
+        [
+          'title' => 'Infografis',
+        ],
+        [
+          'title' => 'APBDes',
+        ]
+      ],
     ];
 
     return view('main.layout.template', $data);
@@ -27,8 +51,20 @@ class InfographicsController extends Controller
   public function stunting()
   {
     $data = [
-      'title' => 'Infografis',
+      'title' => 'Stunting',
       'main'  => 'main.infographics.stunting',
+      'breadcrumbs' => [
+        [
+          'route' => 'home',
+          'title' => 'Beranda',
+        ],
+        [
+          'title' => 'Infografis',
+        ],
+        [
+          'title' => 'Stunting',
+        ]
+      ],
     ];
 
     return view('main.layout.template', $data);
@@ -37,8 +73,20 @@ class InfographicsController extends Controller
   public function socialAssistance()
   {
     $data = [
-      'title' => 'Infografis',
+      'title' => 'Bantuan Sosial',
       'main'  => 'main.infographics.social_assistance',
+      'breadcrumbs' => [
+        [
+          'route' => 'home',
+          'title' => 'Beranda',
+        ],
+        [
+          'title' => 'Infografis',
+        ],
+        [
+          'title' => 'Bantuan Sosial',
+        ]
+      ],
     ];
 
     return view('main.layout.template', $data);
@@ -47,8 +95,20 @@ class InfographicsController extends Controller
   public function idm()
   {
     $data = [
-      'title' => 'Infografis',
+      'title' => 'Indeks Desa Membangun (IDM)',
       'main'  => 'main.infographics.idm',
+      'breadcrumbs' => [
+        [
+          'route' => 'home',
+          'title' => 'Beranda',
+        ],
+        [
+          'title' => 'Infografis',
+        ],
+        [
+          'title' => 'IDM',
+        ]
+      ],
     ];
 
     return view('main.layout.template', $data);
@@ -57,8 +117,20 @@ class InfographicsController extends Controller
   public function sdgs()
   {
     $data = [
-      'title' => 'Infografis',
+      'title' => 'Sustainable Development Goals (SDGs)',
       'main'  => 'main.infographics.sdgs',
+      'breadcrumbs' => [
+        [
+          'route' => 'home',
+          'title' => 'Beranda',
+        ],
+        [
+          'title' => 'Infografis',
+        ],
+        [
+          'title' => 'SDGs',
+        ]
+      ],
     ];
 
     return view('main.layout.template', $data);

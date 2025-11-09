@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-class PotentialController extends Controller
+class LegalProductsController extends Controller
 {
   public function index()
   {
     $data = [
-      'title' => 'Potensi Desa',
-      'main'  => 'main.potential.index',
+      'title' => 'Produk Hukum',
+      'main'  => 'main.legal_products.index',
       'breadcrumbs' => [
         [
           'route' => 'home',
           'title' => 'Beranda',
         ],
         [
-          'title' => 'Potensi Desa',
+          'title' => 'Produk Hukum',
         ]
       ],
     ];

@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     initMobileMenu();
+    initMobileDropdown();
     initBackToTop();
     initCounterAnimation();
     initMap();
@@ -38,18 +39,73 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
 
+            // Close mobile menu when clicking on regular links (not dropdown buttons)
             const mobileLinks = mobileMenu.querySelectorAll("a");
             mobileLinks.forEach((link) => {
                 link.addEventListener("click", function () {
-                    mobileMenu.classList.add("hidden");
-                    const icon = mobileMenuBtn.querySelector("i");
-                    if (icon) {
-                        icon.classList.add("fa-bars");
-                        icon.classList.remove("fa-times");
+                    // Only close menu if it's not a dropdown parent
+                    if (!this.classList.contains("mobile-dropdown-btn")) {
+                        mobileMenu.classList.add("hidden");
+                        const icon = mobileMenuBtn.querySelector("i");
+                        if (icon) {
+                            icon.classList.add("fa-bars");
+                            icon.classList.remove("fa-times");
+                        }
                     }
                 });
             });
         }
+    }
+
+    function initMobileDropdown() {
+        const dropdownButtons = document.querySelectorAll(
+            ".mobile-dropdown-btn"
+        );
+
+        dropdownButtons.forEach((button) => {
+            button.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                const content = this.nextElementSibling;
+                const icon = this.querySelector("i");
+                const isOpen = !content.classList.contains("hidden");
+
+                // Close all other dropdowns
+                document
+                    .querySelectorAll(".mobile-dropdown-content")
+                    .forEach((dropdown) => {
+                        if (dropdown !== content) {
+                            dropdown.classList.add("hidden");
+                            const otherIcon =
+                                dropdown.previousElementSibling.querySelector(
+                                    "i"
+                                );
+                            if (otherIcon) {
+                                otherIcon.style.transform = "rotate(0deg)";
+                            }
+                            dropdown.previousElementSibling.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+                        }
+                    });
+
+                // Toggle current dropdown
+                if (isOpen) {
+                    content.classList.add("hidden");
+                    icon.style.transform = "rotate(0deg)";
+                    this.setAttribute("aria-expanded", "false");
+                } else {
+                    content.classList.remove("hidden");
+                    icon.style.transform = "rotate(180deg)";
+                    this.setAttribute("aria-expanded", "true");
+                }
+            });
+
+            // Set initial ARIA attributes
+            button.setAttribute("aria-expanded", "false");
+            button.setAttribute("aria-haspopup", "true");
+        });
     }
 
     function initBackToTop() {

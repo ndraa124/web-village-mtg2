@@ -7,8 +7,20 @@ class OrganizationController extends Controller
   public function index()
   {
     $data = [
-      'title' => 'Sejarah',
+      'title' => 'Struktur Organisasi',
       'main'  => 'main.organization.index',
+      'breadcrumbs' => [
+        [
+          'route' => 'home',
+          'title' => 'Beranda',
+        ],
+        [
+          'title' => 'Profil',
+        ],
+        [
+          'title' => 'Struktur Organisasi',
+        ]
+      ],
     ];
 
     return view('main.layout.template', $data);

@@ -10,6 +10,7 @@ use App\Http\Controllers\InfographicsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PotentialController;
+use App\Http\Controllers\LegalProductsController;
 use App\Http\Controllers\GovernanceController;
 use App\Http\Controllers\SupervisionController;
 use App\Http\Controllers\ServiceQualityController;
@@ -106,6 +107,7 @@ Route::prefix('/news')
 
 Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
 Route::get('/potential', [PotentialController::class, 'index'])->name('potential.index');
+Route::get('/legal-products', [LegalProductsController::class, 'index'])->name('legal-products.index');
 
 Route::prefix('/anti-corruption')
     ->name('anti.')

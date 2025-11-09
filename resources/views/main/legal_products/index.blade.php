@@ -22,7 +22,6 @@
   }
 </style>
 
-{{-- 2. Bagian Pengantar --}}
 <section class="py-16">
   <div class="container mx-auto px-4 text-center max-w-3xl">
     <i class="fas fa-gem text-5xl text-red-600 mb-4"></i>
@@ -34,12 +33,10 @@
   </div>
 </section>
 
-{{-- 3. Daftar Potensi (Grid) --}}
 <section class="py-16 bg-gray-50">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      {{-- Potensi 1: Wisata Alam --}}
       <div class="potensi-card bg-white rounded-lg shadow-lg overflow-hidden card-hover">
         <div class="relative h-56">
           <img src="https://via.placeholder.com/400x250.png?text=Wisata+Alam" alt="Wisata Alam" class="w-full h-full object-cover transition-transform duration-300">
@@ -63,7 +60,6 @@
         </div>
       </div>
 
-      {{-- Potensi 2: Pertanian & Perkebunan --}}
       <div class="potensi-card bg-white rounded-lg shadow-lg overflow-hidden card-hover">
         <div class="relative h-56">
           <img src="https://via.placeholder.com/400x250.png?text=Pertanian" alt="Pertanian" class="w-full h-full object-cover transition-transform duration-300">
@@ -87,7 +83,6 @@
         </div>
       </div>
 
-      {{-- Potensi 3: UMKM & Kerajinan --}}
       <div class="potensi-card bg-white rounded-lg shadow-lg overflow-hidden card-hover">
         <div class="relative h-56">
           <img src="https://via.placeholder.com/400x250.png?text=UMKM" alt="UMKM" class="w-full h-full object-cover transition-transform duration-300">
@@ -115,7 +110,6 @@
   </div>
 </section>
 
-{{-- 4. Call to Action (Investasi/Kolaborasi) --}}
 <section class="py-16 bg-white">
   <div class="container mx-auto px-4">
     <div class="bg-gradient-to-r from-red-600 to-red-700 rounded-lg p-12 text-white text-center shadow-2xl">

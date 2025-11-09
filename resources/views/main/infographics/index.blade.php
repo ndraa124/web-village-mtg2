@@ -1,16 +1,4 @@
-{{-- Menambahkan library Chart.js --}}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<section class="bg-gradient-to-r from-red-600 to-red-800 py-8">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-white mb-2">Infografis Penduduk</h2>
-    <nav class="text-white/90">
-      <a href="index.html" class="hover:text-white">Beranda</a>
-      <span class="mx-2">/</span>
-      <span>Infografis</span>
-    </nav>
-  </div>
-</section>
 
 <section class="py-16">
   <div class="container mx-auto px-4">
