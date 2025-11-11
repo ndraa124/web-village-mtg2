@@ -17,7 +17,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Nama Dusun</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="text" name="hamlet_name" class="form-control" id="hamlet-name" value="{{ old('hamlet_name', $hamlet->hamlet_name) }}" placeholder="Nama Dusun">
               </div>
               @error('hamlet_name')

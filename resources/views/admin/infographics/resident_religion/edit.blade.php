@@ -39,7 +39,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Total Penduduk</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="total" class="form-control" value="{{ old('total', $residentReligion->total) }}" placeholder="0" min="0">
               </div>
               @error('total')

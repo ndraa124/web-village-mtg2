@@ -186,6 +186,11 @@
               Pembiayaan
             </a>
           </li>
+          <li class="menu-item">
+            <a href="{{ route('infographics.apbd.development-realization.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.development-realization.*') ? 'active' : '' }}">
+              Realisasi Pembangunan
+            </a>
+          </li>
         </ul>
       </li>
 

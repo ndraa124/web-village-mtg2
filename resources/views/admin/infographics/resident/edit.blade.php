@@ -32,7 +32,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Total Penduduk</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="t_resident" class="form-control" placeholder="0"
                   value="{{ old('t_resident', $resident->t_resident) }}">
               </div>
@@ -47,7 +47,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Total Kepala Keluarga (KK)</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="t_head_of_family" class="form-control" placeholder="0"
                   value="{{ old('t_head_of_family', $resident->t_head_of_family) }}">
               </div>
@@ -62,7 +62,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Total Laki-laki</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="t_man" class="form-control" placeholder="0"
                   value="{{ old('t_man', $resident->t_man) }}">
               </div>
@@ -77,7 +77,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Total Perempuan</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="t_woman" class="form-control" placeholder="0"
                   value="{{ old('t_woman', $resident->t_woman) }}">
               </div>
@@ -92,7 +92,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Total Penduduk Sementara</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="t_temporary" class="form-control" placeholder="0"
                   value="{{ old('t_temporary', $resident->t_temporary) }}">
               </div>
@@ -107,7 +107,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Total Mutasi</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="t_mutation" class="form-control" placeholder="0"
                   value="{{ old('t_mutation', $resident->t_mutation) }}">
               </div>

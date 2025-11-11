@@ -17,7 +17,7 @@
           <div class="col-lg-12">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Deskripsi Misi</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <textarea name="description" class="form-control" id="mission-description" rows="5" placeholder="Tuliskan misi di sini...">{{ old('description', $mission->description) }}</textarea>
               </div>
               @error('description')

@@ -36,7 +36,7 @@
                   <option value="">-- Pilih Pembiayaan --</option>
                   @foreach ($financings as $financing)
                   <option value="{{ $financing->id }}" {{ old('financing_id') == $financing->id ? 'selected' : '' }}>
-                    {{ $financing->financing_name }} {{-- Asumsi 'financing_name' --}}
+                    {{ $financing->financing_name }}
                   </option>
                   @endforeach
                 </select>
@@ -52,7 +52,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Anggaran (Budget)</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="budget" class="form-control" value="{{ old('budget', 0) }}" placeholder="0" min="0">
               </div>
               @error('budget')
@@ -66,7 +66,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Persen (%)</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="percent" class="form-control" value="{{ old('percent', 0) }}" placeholder="0" min="0" max="100">
               </div>
               @error('percent')

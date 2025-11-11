@@ -31,7 +31,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Nama Lengkap</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="text" name="name" class="form-control" id="name" value="{{ old('name', $user->name) }}" placeholder="Nama">
               </div>
               @error('name')
@@ -45,7 +45,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Password</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                 <small class="form-text text-muted">Kosongkan jika tidak ingin mengubah password.</small>
               </div>
@@ -60,7 +60,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Konfirmasi Password</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="password" name="password_confirmation" class="form-control" id="password" placeholder="Konfirmasi Password">
               </div>
             </div>

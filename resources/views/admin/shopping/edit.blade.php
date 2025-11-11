@@ -17,7 +17,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Nama Belanja</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="text" name="shopping_name" class="form-control" id="shopping-name" value="{{ old('shopping_name', $shopping->shopping_name) }}" placeholder="Nama Belanja">
               </div>
               @error('shopping_name')

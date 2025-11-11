@@ -17,7 +17,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Nama Stunting</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="text" name="stunting_name" class="form-control" id="stunting-name" value="{{ old('stunting_name') }}" placeholder="Nama Stunting">
               </div>
               @error('stunting_name')

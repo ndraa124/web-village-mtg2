@@ -17,7 +17,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Nama Bantuan Sosial</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="text" name="social_assistance_name" class="form-control" id="social-assistance-name" value="{{ old('social_assistance_name', $social_assistance->social_assistance_name) }}" placeholder="Nama Bantuan Sosial">
               </div>
               @error('social_assistance_name')

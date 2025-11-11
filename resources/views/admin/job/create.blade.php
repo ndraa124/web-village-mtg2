@@ -17,7 +17,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Nama Pekerjaan</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="text" name="job_name" class="form-control" id="job-name" value="{{ old('job_name') }}" placeholder="Nama Pekerjaan">
               </div>
               @error('job_name')

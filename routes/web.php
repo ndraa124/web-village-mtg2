@@ -53,6 +53,7 @@ use App\Http\Controllers\Admin\InfographicsApbdYearController;
 use App\Http\Controllers\Admin\InfographicsApbdIncomeController;
 use App\Http\Controllers\Admin\InfographicsApbdShoppingController;
 use App\Http\Controllers\Admin\InfographicsApbdFinancingController;
+use App\Http\Controllers\Admin\InfographicsApbdDevRealizationController;
 
 use App\Http\Controllers\Admin\InfographicsStuntingController;
 use App\Http\Controllers\Admin\InfographicsSocialAssistanceController;
@@ -205,6 +206,9 @@ Route::middleware(['authenticate'])->group(function () {
                         ->parameters(['shopping' => 'apbdShopping']);
                     Route::resource('financing', InfographicsApbdFinancingController::class)
                         ->parameters(['financing' => 'apbdFinancing']);
+                    Route::resource('development-realization', InfographicsApbdDevRealizationController::class)
+                        ->parameter('development-realization', 'apbdRealization')
+                        ->except(['show']);
                 });
 
             Route::resource('stunting', InfographicsStuntingController::class)

@@ -17,7 +17,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Deskripsi Status</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="text" name="status_desc" class="form-control" id="status-desc" value="{{ old('status_desc') }}" placeholder="Deskripsi Status">
               </div>
               @error('status_desc')

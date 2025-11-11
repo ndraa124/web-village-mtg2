@@ -38,7 +38,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Kelompok Umur</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="text" name="age" class="form-control" value="{{ old('age') }}" placeholder="Contoh: 0-5 Tahun">
               </div>
               @error('age')
@@ -52,7 +52,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Total</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="total" class="form-control" value="{{ old('total', 0) }}" placeholder="0">
               </div>
               @error('total')

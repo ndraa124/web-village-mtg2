@@ -31,7 +31,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Pendapatan (Income)</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="income" class="form-control" value="{{ old('income', 0) }}" placeholder="0" min="0">
               </div>
               @error('income')
@@ -45,7 +45,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Belanja (Shopping)</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="shopping" class="form-control" value="{{ old('shopping', 0) }}" placeholder="0" min="0">
               </div>
               @error('shopping')
@@ -59,7 +59,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Pengeluaran (Expenditure)</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="expenditure" class="form-control" value="{{ old('expenditure', 0) }}" placeholder="0" min="0">
               </div>
               @error('expenditure')
@@ -73,7 +73,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Pembiayaan (Financing)</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="financing" class="form-control" value="{{ old('financing', 0) }}" placeholder="0" min="0">
               </div>
               @error('financing')
@@ -87,7 +87,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Surplus / Defisit</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="surplus_deficit" class="form-control" value="{{ old('surplus_deficit', 0) }}" placeholder="0">
               </div>
               @error('surplus_deficit')

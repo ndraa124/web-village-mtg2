@@ -190,42 +190,22 @@
       <div class="bg-white rounded-lg shadow-lg p-8">
         <h3 class="text-xl font-bold text-gray-800 mb-6">Realisasi Pembangunan</h3>
         <div class="space-y-4">
+          @forelse($realizationStats as $realize)
           <div>
             <div class="flex justify-between mb-1">
-              <span class="text-gray-600">Infrastruktur</span>
-              <span class="text-gray-800 font-semibold">{{ $realizationStats['infrastructure'] ?? 0 }}%</span>
+              <span class="text-gray-600">{{ $realize->category_name ?? 0 }}</span>
+              <span class="text-gray-800 font-semibold">{{ $realize->percent ?? 0 }}%</span>
             </div>
             <div class="w-full bg-gray-200 rounded-full h-2">
               <div
                 class="bg-red-600 h-2 rounded-full"
-                style="--progress: {{ $realizationStats['infrastructure'] ?? 0 }}%; width: var(--progress);">
+                style="--progress: {{ $realize->percent ?? 0 }}%; width: var(--progress);">
               </div>
             </div>
           </div>
-          <div>
-            <div class="flex justify-between mb-1">
-              <span class="text-gray-600">Pendidikan</span>
-              <span class="text-gray-800 font-semibold">{{ $realizationStats['education'] ?? 0 }}%</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2">
-              <div
-                class="bg-red-600 h-2 rounded-full"
-                style="--progress: {{ $realizationStats['education'] ?? 0 }}%; width: var(--progress);">
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between mb-1">
-              <span class="text-gray-600">Kesehatan</span>
-              <span class="text-gray-800 font-semibold">{{ $realizationStats['health'] ?? 0 }}%</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2">
-              <div
-                class="bg-red-600 h-2 rounded-full"
-                style="--progress: {{ $realizationStats['health'] ?? 0 }}%; width: var(--progress);">
-              </div>
-            </div>
-          </div>
+          @empty
+          <p class="text-gray-500 col-span-4">Belum ada realisasi untuk ditampilkan.</p>
+          @endforelse
         </div>
       </div>
     </div>

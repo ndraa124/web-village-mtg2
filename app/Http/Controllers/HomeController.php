@@ -13,6 +13,7 @@ use App\Models\VillagePotential;
 use App\Models\Village;
 use App\Models\InfographicsResident;
 use App\Models\InfographicsApbd;
+use App\Models\InfographicsApbdDevRealization;
 
 class HomeController extends Controller
 {
@@ -52,11 +53,9 @@ class HomeController extends Controller
 
         $apbdStats = InfographicsApbd::latest('year')->first();
 
-        $realizationStats = [
-            'infrastructure' => 0,
-            'education' => 0,
-            'health' => 0,
-        ];
+        $realizationStats = InfographicsApbdDevRealization::latest('year')
+            ->limit(3)
+            ->get();
 
         $data = [
             'title' => 'Home',

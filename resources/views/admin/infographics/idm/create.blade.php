@@ -52,7 +52,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Skor Minimal</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="min_score" class="form-control" value="{{ old('min_score', '0.0000') }}" placeholder="0.0000" step="0.0001">
               </div>
               @error('min_score')
@@ -66,7 +66,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Skor IKS</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="iks_score" class="form-control" value="{{ old('iks_score', '0.0000') }}" placeholder="0.0000" step="0.0001">
               </div>
               @error('iks_score')
@@ -80,7 +80,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Skor IKE</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="ike_score" class="form-control" value="{{ old('ike_score', '0.0000') }}" placeholder="0.0000" step="0.0001">
               </div>
               @error('ike_score')
@@ -94,7 +94,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Skor IKL</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="ikl_score" class="form-control" value="{{ old('ikl_score', '0.0000') }}" placeholder="0.0000" step="0.0001">
               </div>
               @error('ikl_score')
@@ -108,7 +108,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Skor Tambahan</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="addition_score" class="form-control" value="{{ old('addition_score', '0.0000') }}" placeholder="0.0000" step="0.0001">
               </div>
               @error('addition_score')
@@ -122,7 +122,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Total Skor</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="number" name="total_score" class="form-control" value="{{ old('total_score', '0.0000') }}" placeholder="0.0000" step="0.0001">
               </div>
               @error('total_score')

@@ -17,7 +17,7 @@
           <div class="col-lg-12">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Deskripsi Visi</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <textarea name="description" class="form-control" id="vision-description" rows="5" placeholder="Tuliskan visi di sini...">{{ old('description', $vision->description) }}</textarea>
               </div>
               @error('description')

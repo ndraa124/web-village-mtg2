@@ -17,7 +17,7 @@
           <div class="col-lg-6">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Nama Pembiayaan</label>
-              <div class="form-groupo">
+              <div class="form-group">
                 <input type="text" name="financing_name" class="form-control" id="financing-name" value="{{ old('financing_name', $financing->financing_name) }}" placeholder="Nama Pembiayaan">
               </div>
               @error('financing_name')
