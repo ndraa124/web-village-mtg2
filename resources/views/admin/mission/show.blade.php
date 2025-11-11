@@ -14,6 +14,11 @@
         </li>
 
         <li class="list-group-item d-flex justify-content-between align-items-center p-20">
+          <span class="text-secondary fw-medium">Judul Misi</span>
+          <span class="fw-bold text-end" style="max-width: 70%;">{{ $mission->title }}</span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-center p-20">
           <span class="text-secondary fw-medium">Deskripsi Misi</span>
           <span class="fw-bold text-end" style="max-width: 70%;">{{ $mission->description }}</span>
         </li>

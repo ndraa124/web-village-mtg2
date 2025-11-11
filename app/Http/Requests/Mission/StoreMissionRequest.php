@@ -14,14 +14,16 @@ class StoreMissionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'description' => 'required|string',
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'description.required' => 'Deskripsi Misi wajib diisi.',
+            'title.required' => 'Judul Misi wajib diisi.',
+            'title.max' => 'Judul Misi tidak boleh lebih dari :max karakter.',
         ];
     }
 }

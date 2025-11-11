@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vision;
+use App\Models\Mission;
+
 class VisionMissionController extends Controller
 {
   public function index()
   {
+    $vision = Vision::latest()->first();
+    $missions = Mission::orderBy('id', 'asc')->get();
+
     $data = [
       'title' => 'Visi & Misi',
       'main'  => 'main.vision_mission.index',
@@ -21,6 +27,8 @@ class VisionMissionController extends Controller
           'title' => 'Visi & Misi',
         ]
       ],
+      'vision' => $vision,
+      'missions' => $missions
     ];
 
     return view('main.layout.template', $data);

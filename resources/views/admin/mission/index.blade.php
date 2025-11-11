@@ -35,7 +35,8 @@
         <thead>
           <tr>
             <th scope="col" class="fw-medium text-center">#</th>
-            <th scope="col" class="fw-medium">Deskripsi Misi</th>
+            <th scope="col" class="fw-medium">Judul</th>
+            <th scope="col" class="fw-medium">Deskripsi</th>
             <th scope="col" class="fw-medium text-center">Status</th>
             <th scope="col" class="fw-medium text-center">Tanggal Dibuat</th>
             <th scope="col" class="fw-medium text-center">Aksi</th>
@@ -45,7 +46,8 @@
           @forelse ($missions as $row)
           <tr>
             <td class="text-body text-center">{{ $loop->iteration }}</td>
-            <td class="text-body">{{ $row->description }}</td>
+            <td class="text-body">{{ $row->title }}</td>
+            <td class="text-body">{{ $row->description ?? '-' }}</td>
             <td class="text-body text-center">
               @if ($row->is_active)
               <span class="badge bg-success">Aktif</span>

@@ -12,6 +12,7 @@ class Mission extends Model
   protected $table = 'mission';
 
   protected $fillable = [
+    'title',
     'description',
     'is_active',
   ];

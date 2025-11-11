@@ -18,7 +18,8 @@ class MissionController extends Controller
     $query = Mission::query();
 
     $query->when($search, function ($q, $search) {
-      return $q->where('description', 'like', "%{$search}%");
+      return $q->where('title', 'like', "%{$search}%")
+        ->orWhere('description', 'like', "%{$search}%");
     });
 
     $missions = $query->orderByDesc('is_active')
@@ -71,18 +72,11 @@ class MissionController extends Controller
   {
     $validatedData = $request->validated();
 
-    DB::beginTransaction();
-
     try {
-      Mission::where('is_active', true)->update(['is_active' => false]);
-
-      $validatedData['is_active'] = true;
       Mission::create($validatedData);
 
-      DB::commit();
-
       return redirect()->route('mission.index')
-        ->with('success', 'Misi baru berhasil ditambahkan dan diaktifkan.');
+        ->with('success', 'Misi baru berhasil ditambahkan.');
     } catch (\Exception $e) {
       DB::rollBack();
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -142,35 +136,11 @@ class MissionController extends Controller
     $validatedData = $request->validated();
     $newIsActiveState = $request->has('is_active');
 
-    if ($newIsActiveState == false && $mission->is_active == true) {
-      $activeCount = Mission::where('is_active', true)->count();
-
-      if ($activeCount == 1) {
-        return back()->withInput()->with(
-          'error',
-          'Gagal update. Tidak dapat menonaktifkan satu-satunya Misi yang aktif.'
-        );
-      }
-    }
-
-    DB::beginTransaction();
-
     try {
+      $mission->title = $validatedData['title'];
       $mission->description = $validatedData['description'];
-
-      if ($newIsActiveState == true && $mission->is_active == false) {
-        Mission::where('id', '!=', $mission->id)
-          ->where('is_active', true)
-          ->update(['is_active' => false]);
-
-        $mission->is_active = true;
-      } else {
-        $mission->is_active = $newIsActiveState;
-      }
-
+      $mission->is_active = $newIsActiveState;
       $mission->save();
-
-      DB::commit();
 
       return redirect()->route('mission.index')
         ->with('success', 'Misi berhasil diperbarui.');

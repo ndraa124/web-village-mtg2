@@ -16,7 +16,21 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="mb-20">
-              <label class="label fs-16 mb-2">Deskripsi Misi</label>
+              <label class="label fs-16 mb-2">Judul</label>
+              <div class="form-group">
+                <input type="text" name="title" class="form-control" value="{{ old('title') }}" placeholder="Tuliskan judul misi...">
+              </div>
+              @error('title')
+              <div class="text-danger small mt-2">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="mb-20">
+              <label class="label fs-16 mb-2">Deskripsi (Opsional)</label>
               <div class="form-group">
                 <textarea name="description" class="form-control" id="mission-description" rows="5" placeholder="Tuliskan misi di sini...">{{ old('description') }}</textarea>
               </div>
