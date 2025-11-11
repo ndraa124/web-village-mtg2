@@ -153,7 +153,41 @@
         </div>
       </div>
 
-      <div class="col-lg-12">
+      <div class="col-lg-12 mt-4">
+        <div class="mb-20">
+          <h3 class="fs-22">Jam Operasional</h3>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="mb-20">
+          <label class="label fs-16 mb-2">Hari Kerja (Senin-Jumat)</label>
+          <div class="form-group">
+            <input type="text" class="form-control" id="operational_hours_weekdays" name="operational_hours_weekdays" value="{{ old('operational_hours_weekdays', $village->operational_hours_weekdays ?? '') }}" placeholder="Contoh: 08:00 - 16:00">
+          </div>
+          @error('operational_hours_weekdays')
+          <div class="text-danger small mt-2">
+            {{ $message }}
+          </div>
+          @enderror
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="mb-20">
+          <label class="label fs-16 mb-2">Akhir Pekan (Sabtu-Minggu)</label>
+          <div class="form-group">
+            <input type="text" class="form-control" id="operational_hours_weekends" name="operational_hours_weekends" value="{{ old('operational_hours_weekends', $village->operational_hours_weekends ?? '') }}" placeholder="Contoh: Tutup">
+          </div>
+          @error('operational_hours_weekends')
+          <div class="text-danger small mt-2">
+            {{ $message }}
+          </div>
+          @enderror
+        </div>
+      </div>
+
+      <div class="col-lg-12 mt-4">
         <div class="mb-20">
           <h3 class="mb-1 fs-22">Logo Desa</h3>
           <p class="fs-16 lh-1-8">Logo ini akan ditampilkan di profil desa.</p>
@@ -190,13 +224,61 @@
         </div>
       </div>
 
-      <div class="col-lg-12">
+      <div class="col-lg-12 mt-4">
+        <div class="mb-20">
+          <h3 class="fs-22">Pengaturan Peta</h3>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="mb-20">
+          <label class="label fs-16 mb-2">Latitude</label>
+          <div class="form-group">
+            <input type="text" class="form-control" id="map_latitude" name="map_latitude" value="{{ old('map_latitude', $village->map_latitude ?? '') }}" placeholder="Latitude Peta">
+          </div>
+          @error('map_latitude')
+          <div class="text-danger small mt-2">
+            {{ $message }}
+          </div>
+          @enderror
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="mb-20">
+          <label class="label fs-16 mb-2">Longitude</label>
+          <div class="form-group">
+            <input type="text" class="form-control" id="map_longitude" name="map_longitude" value="{{ old('map_longitude', $village->map_longitude ?? '') }}" placeholder="Longitude Peta">
+          </div>
+          @error('map_longitude')
+          <div class="text-danger small mt-2">
+            {{ $message }}
+          </div>
+          @enderror
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="mb-20">
+          <label class="label fs-16 mb-2">Zoom Level</label>
+          <div class="form-group">
+            <input type="number" class="form-control" id="map_zoom" name="map_zoom" value="{{ old('map_zoom', $village->map_zoom ?? '') }}" placeholder="Contoh: 15">
+          </div>
+          @error('map_zoom')
+          <div class="text-danger small mt-2">
+            {{ $message }}
+          </div>
+          @enderror
+        </div>
+      </div>
+
+      <div class="col-lg-12 mt-4">
         <div class="mb-20">
           <h3 class="fs-22">Profil Sosial Media</h3>
         </div>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-3">
         <div class="mb-20">
           <label class="label fs-16 mb-2">Facebook</label>
           <div class="form-group">
@@ -210,7 +292,7 @@
         </div>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-3">
         <div class="mb-20">
           <label class="label fs-16 mb-2">Twitter</label>
           <div class="form-group">
@@ -224,13 +306,27 @@
         </div>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-3">
         <div class="mb-20">
           <label class="label fs-16 mb-2">Instagram</label>
           <div class="form-group">
             <input type="text" class="form-control" id="instagram" name="instagram" value="{{ old('instagram', $village->instagram ?? '') }}" placeholder="Link Instagram">
           </div>
           @error('instagram')
+          <div class="text-danger small mt-2">
+            {{ $message }}
+          </div>
+          @enderror
+        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="mb-20">
+          <label class="label fs-16 mb-2">YouTube</label>
+          <div class="form-group">
+            <input type="text" class="form-control" id="youtube" name="youtube" value="{{ old('youtube', $village->youtube ?? '') }}" placeholder="Link YouTube">
+          </div>
+          @error('youtube')
           <div class="text-danger small mt-2">
             {{ $message }}
           </div>
