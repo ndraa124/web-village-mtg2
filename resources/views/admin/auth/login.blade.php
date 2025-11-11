@@ -47,7 +47,7 @@
         <div class="mb-20">
           <div class="d-flex justify-content-between align-items-center flex-wrap gap-1">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <input type="checkbox" name="remember" class="form-check-input" id="flexCheckDefault">
               <label class="form-check-label fs-16" for="flexCheckDefault">
                 Ingat saya
               </label>

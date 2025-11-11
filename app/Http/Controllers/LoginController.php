@@ -20,8 +20,9 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         $validateData = $request->validated();
+        $remember = $request->boolean('remember');
 
-        if (Auth::attempt($validateData)) {
+        if (Auth::attempt($validateData, $remember)) {
             $request->session()->regenerate();
             return redirect()->intended('dashboard');
         }
