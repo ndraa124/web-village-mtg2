@@ -63,6 +63,6 @@ class News extends Model
       return Storage::disk('public')->url($this->image);
     }
 
-    return "https://placehold.co/600x400/e2e8f0/e2e8f0?text=No+Image";
+    return asset('img/img_placeholder.png');
   }
 }

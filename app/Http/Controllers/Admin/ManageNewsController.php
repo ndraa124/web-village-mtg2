@@ -31,7 +31,7 @@ class ManageNewsController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Manajemen Berita',
+      'title' => 'Manajemen Berita & Informasi',
       'main' => 'admin.news.index',
       'breadcrumbs' => [
         [
@@ -39,7 +39,7 @@ class ManageNewsController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Berita'
+          'title' => 'Berita & Informasi'
         ],
       ],
       'news' => $news
@@ -54,7 +54,7 @@ class ManageNewsController extends Controller
     $tags = Tag::orderBy('name')->get();
 
     $data = [
-      'title' => 'Tambah Berita Baru',
+      'title' => 'Tambah Berita & Informasi Baru',
       'main' => 'admin.news.create',
       'breadcrumbs' => [
         [
@@ -63,7 +63,7 @@ class ManageNewsController extends Controller
         ],
         [
           'route' => 'manage-news.index',
-          'title' => 'Berita'
+          'title' => 'Berita & Informasi'
         ],
         [
           'title' => 'Tambah Baru'
@@ -126,7 +126,7 @@ class ManageNewsController extends Controller
     $manageNews->load('user', 'category', 'tags');
 
     $data = [
-      'title' => 'Detail Berita',
+      'title' => 'Detail Berita & Informasi',
       'main' => 'admin.news.show',
       'breadcrumbs' => [
         [
@@ -135,7 +135,7 @@ class ManageNewsController extends Controller
         ],
         [
           'route' => 'manage-news.index',
-          'title' => 'Berita'
+          'title' => 'Berita & Informasi'
         ],
         [
           'title' => 'Detail'
@@ -155,7 +155,7 @@ class ManageNewsController extends Controller
     $manageNews->load('tags');
 
     $data = [
-      'title' => 'Edit Berita',
+      'title' => 'Edit Berita & Informasi',
       'main' => 'admin.news.edit',
       'breadcrumbs' => [
         [
@@ -164,7 +164,7 @@ class ManageNewsController extends Controller
         ],
         [
           'route' => 'manage-news.index',
-          'title' => 'Berita'
+          'title' => 'Berita & Informasi'
         ],
         [
           'title' => 'Edit'

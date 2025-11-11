@@ -35,6 +35,37 @@
   </div>
 </section>
 
+<section id="informasi" class="py-4 bg-gray-800 text-white">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center">
+
+      <div class="flex-shrink-0 pr-4">
+        <span class="bg-red-600 text-white text-sm font-bold py-2 px-4 rounded shadow-lg">
+          <i class="fas fa-bullhorn mr-2"></i> INFORMASI
+        </span>
+      </div>
+
+      <div class="flex-1 min-w-0 ticker-wrap">
+        <div class="ticker-tape">
+          @forelse($informationNews as $info)
+          <div class="ticker-item">
+            <a href="{{ route('news.show', $info->slug) }}" class="hover:underline">
+              <span class="text-gray-400 mr-2">[{{ $info->published_at->format('d/m/Y') }}]</span>
+              <span class="font-medium">{{ $info->title }}</span>
+            </a>
+          </div>
+          @empty
+          <div class="ticker-item">
+            <p>Belum ada informasi terbaru saat ini.</p>
+          </div>
+          @endforelse
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section class="py-16 bg-gray-100">
   <div class="container mx-auto px-4">
     <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">

@@ -281,7 +281,7 @@
       <li class="menu-item {{ request()->routeIs('manage-news.*') ? 'open' : '' }}">
         <a href="{{ route('manage-news.index') }}" class="menu-link {{ request()->routeIs('manage-news.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">feed</span>
-          <span class="title">Berita</span>
+          <span class="title">Berita & Informasi</span>
         </a>
       </li>
 

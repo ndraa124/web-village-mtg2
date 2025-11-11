@@ -47,9 +47,9 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="mb-20">
-              <label class="label fs-16 mb-2">Judul Berita</label>
+              <label class="label fs-16 mb-2">Judul Berita/Informasi</label>
               <div class="form-group">
-                <input type="text" name="title" class="form-control" value="{{ old('title') }}" placeholder="Masukkan judul berita...">
+                <input type="text" name="title" class="form-control" value="{{ old('title') }}" placeholder="Masukkan judul berita atau informasi...">
               </div>
               @error('title')
               <div class="text-danger small mt-2">
@@ -61,9 +61,9 @@
 
           <div class="col-lg-12">
             <div class="mb-20">
-              <label class="label fs-16 mb-2">Konten Berita</label>
+              <label class="label fs-16 mb-2">Konten Berita/Informasi</label>
               <div class="form-group">
-                <textarea id="ckeditor-editor" name="content" class="form-control" rows="10" placeholder="Masukkan konten berita...">{{ old('content') }}</textarea>
+                <textarea id="ckeditor-editor" name="content" class="form-control" rows="10" placeholder="Masukkan konten berita atau informasi...">{{ old('content') }}</textarea>
               </div>
               @error('content')
               <div class="text-danger small mt-2">

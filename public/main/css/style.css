@@ -490,3 +490,34 @@ select:focus {
     /* Sembunyikan elemen di slide non-aktif */
     opacity: 0;
 }
+
+/* ===== Animasi Ticker Informasi ===== */
+.ticker-wrap {
+    overflow: hidden;
+}
+
+.ticker-tape {
+    display: flex; /* Menggunakan flexbox */
+    width: fit-content; /* Lebar sesuai konten */
+    animation: scroll-horizontal 40s linear infinite;
+}
+
+.ticker-item {
+    flex-shrink: 0; /* Mencegah item menyusut */
+    white-space: nowrap; /* Teks tetap satu baris */
+    padding: 0 1.5rem; /* Jarak antar item */
+}
+
+@keyframes scroll-horizontal {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    } /* Bergerak 50% (lebar list asli) */
+}
+
+/* Jeda animasi saat kursor mouse di atasnya */
+.ticker-wrap:hover .ticker-tape {
+    animation-play-state: paused;
+}

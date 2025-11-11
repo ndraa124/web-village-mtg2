@@ -142,7 +142,7 @@
 
             <div class="mt-8 p-6 bg-gray-50 rounded-lg">
               <div class="flex items-center gap-4">
-                <img src="https://via.placeholder.com/80" alt="Author" class="w-20 h-20 rounded-full">
+                <img src="{{ asset('admin/images/admin.png') }}" alt="Author" class="w-20 h-20 rounded-full">
                 <div>
                   <h4 class="font-bold text-gray-800">{{ $news->user->name ?? 'Admin Desa' }}</h4>
                   <p class="text-gray-600 text-sm">Pengelola Website Desa Motoling Dua</p>

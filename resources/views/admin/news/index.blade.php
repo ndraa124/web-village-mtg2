@@ -35,7 +35,7 @@
         <thead>
           <tr>
             <th scope="col" class="fw-medium text-center">#</th>
-            <th scope="col" class="fw-medium">Judul Berita</th>
+            <th scope="col" class="fw-medium">Judul Berita/Informasi</th>
             <th scope="col" class="fw-medium">Author</th>
             <th scope="col" class="fw-medium">Kategori</th>
             <th scope="col" class="fw-medium text-center">Status</th>
@@ -83,7 +83,7 @@
           @empty
           <tr>
             <td colspan="7" class="text-center text-secondary p-20">
-              Tidak ada data berita yang ditemukan.
+              Tidak ada data berita atau informasi yang ditemukan.
             </td>
           </tr>
           @endforelse

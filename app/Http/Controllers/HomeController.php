@@ -21,8 +21,19 @@ class HomeController extends Controller
         $village = Village::where('is_active', true)->firstOrFail();
 
         $latestNews = News::where('status', 'published')
+            ->whereDoesntHave('category', function ($query) {
+                $query->where('name', 'Informasi');
+            })
             ->latest('published_at')
             ->limit(3)
+            ->get();
+
+        $informationNews = News::where('status', 'published')
+            ->whereHas('category', function ($query) {
+                $query->where('name', 'Informasi');
+            })
+            ->latest('published_at')
+            ->limit(5)
             ->get();
 
         $services = Services::orderBy('title', 'asc')
@@ -52,6 +63,7 @@ class HomeController extends Controller
             'main'  => 'main.home.index',
             'village' => $village,
             'latestNews' => $latestNews,
+            'informationNews' => $informationNews,
             'services' => $services,
             'potentials' => $potentials,
             'galleryImages' => $galleryImages,

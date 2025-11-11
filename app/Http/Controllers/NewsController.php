@@ -43,23 +43,23 @@ class NewsController extends Controller
       ->when($year, fn($q) => $q->whereYear('published_at', $year))
       ->when($month, fn($q) => $q->whereMonth('published_at', $month));
 
-    $query->latest('published_at');
+    $featuredNews = (clone $query)
+      ->whereDoesntHave('category', function ($subQ) {
+        $subQ->where('name', 'Informasi');
+      })
+      ->latest('published_at')
+      ->first();
 
-    $featuredNews = $query->first();
-
-    $news = News::with('user', 'category')
-      ->where('status', 'published')
-      ->when($category, fn($q) => $q->where('category_id', $category->id))
-      ->when($tag, fn($q) => $q->whereHas('tags', fn($subQ) => $subQ->where('tags.id', $tag->id)))
-      ->when($search, fn($q) => $q->where('title', 'like', "%{$search}%"))
-      ->when($year, fn($q) => $q->whereYear('published_at', $year))
-      ->when($month, fn($q) => $q->whereMonth('published_at', $month))
-      ->where('id', '!=', $featuredNews->id ?? null)
+    $news = $query
+      ->when($featuredNews, fn($q) => $q->where('id', '!=', $featuredNews->id))
       ->latest('published_at')
       ->paginate(6)
       ->appends($request->query());
 
     $popularNews = News::where('status', 'published')
+      ->whereDoesntHave('category', function ($subQ) {
+        $subQ->where('name', 'Informasi');
+      })
       ->orderBy('views_count', 'desc')
       ->limit(5)
       ->get();
