@@ -31,15 +31,21 @@
         <div class="bg-gray-800 rounded-lg p-4">
           <p class="text-gray-400 mb-2">
             <i class="fas fa-users mr-2"></i>
-            Total: <span class="text-white font-semibold">125,678</span>
+            Total: <span class="text-white font-semibold">
+              {{ number_format($totalVisitors ?? 0) }}
+            </span>
           </p>
           <p class="text-gray-400 mb-2">
             <i class="fas fa-user mr-2"></i>
-            Hari Ini: <span class="text-white font-semibold">234</span>
+            Hari Ini: <span class="text-white font-semibold">
+              {{ number_format($todayVisitors ?? 0) }}
+            </span>
           </p>
           <p class="text-gray-400">
             <i class="fas fa-chart-line mr-2"></i>
-            Online: <span class="text-white font-semibold">12</span>
+            Online: <span class="text-white font-semibold">
+              {{ number_format($onlineVisitors ?? 0) }}
+            </span>
           </p>
         </div>
       </div>
