@@ -290,6 +290,13 @@
         </a>
       </li>
 
+      <li class="menu-item {{ request()->routeIs('galleries.*') ? 'open' : '' }}">
+        <a href="{{ route('galleries.index') }}" class="menu-link {{ request()->routeIs('galleries.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">photo_library</span>
+          <span class="title">Galeri</span>
+        </a>
+      </li>
+
       <li class="menu-item {{ request()->routeIs('manage.anti.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">target</span>

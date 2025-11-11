@@ -66,6 +66,7 @@ use App\Http\Controllers\Admin\InfographicsIdmIklController;
 use App\Http\Controllers\Admin\InfographicsSdgsController;
 
 use App\Http\Controllers\Admin\ManageNewsController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ManageLegalProductController;
 
 use App\Http\Controllers\Admin\AntiCorruptGovernanceController;
@@ -243,6 +244,9 @@ Route::middleware(['authenticate'])->group(function () {
 
     Route::resource('manage-news', ManageNewsController::class)
         ->parameters(['manage-news' => 'manageNews']);
+    Route::resource('galleries', GalleryController::class)
+        ->names('galleries')
+        ->except(['show']);
     Route::resource('manage-legal-product', ManageLegalProductController::class)
         ->parameter('manage-legal-product', 'legalProduct');
 
