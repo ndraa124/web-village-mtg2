@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\Contact\StoreContactRequest;
 use App\Mail\ContactFormMail;
 
+use App\Models\Slider;
 use App\Models\News;
 use App\Models\Services;
 use App\Models\Gallery;
@@ -19,6 +20,8 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $sliders = Slider::where('is_active', true)->get();
+
         $village = Village::where('is_active', true)->firstOrFail();
 
         $latestNews = News::where('status', 'published')
@@ -60,6 +63,7 @@ class HomeController extends Controller
         $data = [
             'title' => 'Home',
             'main'  => 'main.home.index',
+            'sliders' => $sliders,
             'village' => $village,
             'latestNews' => $latestNews,
             'informationNews' => $informationNews,

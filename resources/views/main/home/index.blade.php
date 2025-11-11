@@ -1,36 +1,38 @@
 <section class="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
   <div class="absolute inset-0 swiper hero-background-slider">
     <div class="swiper-wrapper">
-      <div class="swiper-slide" style="background-image: url('https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg'); background-size: cover; background-position: center;">
+      @forelse ($sliders as $slider)
+      <div class="swiper-slide" style="background-image: url('{{ $slider->image_url }}'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 z-10 bg-black opacity-40"></div>
       </div>
-
-      <div class="swiper-slide" style="background-image: url('https://images.pexels.com/photos/1146708/pexels-photo-1146708.jpeg'); background-size: cover; background-position: center;">
+      @empty
+      <div class="swiper-slide" style="background-image: url('#');">
         <div class="absolute inset-0 z-10 bg-black opacity-40"></div>
       </div>
-
-      <div class="swiper-slide" style="background-image: url('https://images.pexels.com/photos/1855416/pexels-photo-1855416.jpeg'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 z-10 bg-black opacity-40"></div>
-      </div>
+      @endforelse
     </div>
   </div>
 
-  <div class="relative z-20 container mx-auto px-4 py-24 md:py-32 lg:py-48">
+  <div class="relative z-20 container mx-auto px-4 py-32 md:py-40 lg:py-48">
     <div class="text-center text-white">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Selamat Datang di Website Resmi</h2>
-      <h3 class="text-3xl md:text-4xl font-bold mb-6">DESA MOTOLING DUA</h3>
-      <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
+
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">Selamat Datang di Website Resmi</h2>
+      <h3 class="text-2xl md:text-4xl font-bold mb-6">DESA MOTOLING DUA</h3>
+
+      <p class="text-base md:text-xl mb-8 max-w-3xl mx-auto">
         Melalui website ini Anda dapat menjelajahi segala hal yang terkait dengan Desa.
         Aspek pemerintahan, penduduk, demografi, potensi Desa, dan juga berita tentang Desa.
       </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="#layanan" class="bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-red-50 transition">
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#layanan" class="w-full sm:w-auto bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-red-50 transition">
           <i class="fas fa-hand-holding-heart mr-2"></i> Layanan Publik
         </a>
-        <a href="#berita" class="bg-red-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-800 transition border-2 border-white">
+        <a href="#berita" class="w-full sm:w-auto bg-red-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-800 transition border-2 border-white">
           <i class="fas fa-newspaper mr-2"></i> Berita Terkini
         </a>
       </div>
+
     </div>
   </div>
 </section>

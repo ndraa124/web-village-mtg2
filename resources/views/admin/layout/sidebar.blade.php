@@ -297,6 +297,13 @@
         </a>
       </li>
 
+      <li class="menu-item {{ request()->routeIs('slider.*') ? 'open' : '' }}">
+        <a href="{{ route('slider.index') }}" class="menu-link {{ request()->routeIs('slider.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">auto_awesome_motion</span>
+          <span class="title">Slider</span>
+        </a>
+      </li>
+
       <li class="menu-item {{ request()->routeIs('manage.anti.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">target</span>

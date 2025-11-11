@@ -9,8 +9,10 @@ class VisionMissionController extends Controller
 {
   public function index()
   {
-    $vision = Vision::latest()->first();
-    $missions = Mission::orderBy('id', 'asc')->get();
+    $vision = Vision::where('is_active', true)->first();
+    $missions = Mission::where('is_active', true)
+      ->orderBy('id', 'asc')
+      ->get();
 
     $data = [
       'title' => 'Visi & Misi',

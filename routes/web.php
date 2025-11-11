@@ -35,10 +35,6 @@ use App\Http\Controllers\Admin\IdmStatusController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LegalProductsCategoryController;
 
-use App\Http\Controllers\Admin\SettingsController;
-use App\Http\Controllers\Admin\VisionController;
-use App\Http\Controllers\Admin\MissionController;
-
 use App\Http\Controllers\Admin\InfographicsResidentController;
 use App\Http\Controllers\Admin\InfographicsResidentAgeController;
 use App\Http\Controllers\Admin\InfographicsResidentHamletController;
@@ -65,8 +61,12 @@ use App\Http\Controllers\Admin\InfographicsIdmIklController;
 
 use App\Http\Controllers\Admin\InfographicsSdgsController;
 
+use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\VisionController;
+use App\Http\Controllers\Admin\MissionController;
 use App\Http\Controllers\Admin\ManageNewsController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ManageLegalProductController;
 
 use App\Http\Controllers\Admin\AntiCorruptGovernanceController;
@@ -146,17 +146,6 @@ Route::middleware(['authenticate'])->group(function () {
                 ->parameter('legal-product-category', 'category')
                 ->except(['show']);
         });
-
-    Route::prefix('/settings')
-        ->controller(SettingsController::class)
-        ->name('settings.')
-        ->group(function () {
-            Route::get('/', 'index')->name('index');
-            Route::put('/update/{village}', 'update')->name('update');
-        });
-
-    Route::resource('vision', VisionController::class);
-    Route::resource('mission', MissionController::class);
 
     Route::prefix('/infographics')
         ->name('infographics.')
@@ -242,6 +231,17 @@ Route::middleware(['authenticate'])->group(function () {
                 ->parameters(['sdgs' => 'sdg']);
         });
 
+    Route::prefix('/settings')
+        ->controller(SettingsController::class)
+        ->name('settings.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::put('/update/{village}', 'update')->name('update');
+        });
+
+    Route::resource('vision', VisionController::class);
+    Route::resource('mission', MissionController::class);
+    Route::resource('mission', MissionController::class);
     Route::resource('manage-news', ManageNewsController::class)
         ->parameters(['manage-news' => 'manageNews']);
     Route::resource('galleries', GalleryController::class)
@@ -249,6 +249,7 @@ Route::middleware(['authenticate'])->group(function () {
         ->except(['show']);
     Route::resource('manage-legal-product', ManageLegalProductController::class)
         ->parameter('manage-legal-product', 'legalProduct');
+    Route::resource('slider', SliderController::class);
 
     Route::prefix('/manage-anti-corruption')
         ->name('manage.anti.')

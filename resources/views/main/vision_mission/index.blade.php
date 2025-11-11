@@ -65,7 +65,7 @@
             </div>
           </div>
           @empty
-          <p class="text-center text-gray-500 col-span-4">Belum ada galeri untuk ditampilkan.</p>
+          <p class="text-center text-gray-500 col-span-4">Belum ada misi untuk ditampilkan.</p>
           @endforelse
 
         </div>

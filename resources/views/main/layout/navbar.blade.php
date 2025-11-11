@@ -1,22 +1,18 @@
 <nav class="bg-white shadow-lg sticky top-0 z-50">
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-center py-4">
-      <!-- Logo Section - Responsive -->
       <div class="flex items-center space-x-3 flex-shrink-0">
         <img src="{{ asset('img/logo.png') }}" alt="Logo Desa" class="h-10 w-8">
-        <!-- Desktop Logo Text -->
         <div class="hidden sm:block">
           <h1 class="text-red-700 font-bold text-lg md:text-xl">DESA MOTOLING DUA</h1>
           <p class="text-xs text-gray-600">Kecamatan Motoling - Kabupaten Minahasa Selatan</p>
         </div>
-        <!-- Mobile Logo Text -->
         <div class="block sm:hidden">
           <h1 class="text-red-700 font-bold text-sm">DESA MOTOLING DUA</h1>
           <p class="text-[10px] text-gray-600">Kec. Motoling - Kab. Minsel</p>
         </div>
       </div>
 
-      <!-- Desktop Menu -->
       <div class="hidden lg:flex items-center space-x-6">
         <a href="{{ route('home') }}" class="text-gray-700 hover:text-red-600 transition {{ request()->routeIs('home') ? 'text-red-600 font-semibold' : '' }}">
           Beranda
@@ -129,21 +125,18 @@
         </div>
       </div>
 
-      <!-- Mobile Menu Button -->
       <button id="mobile-menu-btn" class="lg:hidden text-gray-700 p-2 hover:bg-gray-100 rounded-md transition">
         <i class="fas fa-bars text-2xl"></i>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Menu -->
   <div id="mobile-menu" class="lg:hidden hidden bg-white border-t absolute left-0 right-0 shadow-lg">
     <div class="max-h-[70vh] overflow-y-auto">
       <a href="{{ route('home') }}" class="block px-4 py-3 text-gray-700 hover:bg-red-50 border-b {{ request()->routeIs('home') ? 'text-red-600 font-semibold bg-red-50' : '' }}">
         Beranda
       </a>
 
-      <!-- Profil Dropdown -->
       <div class="border-b">
         <button class="mobile-dropdown-btn w-full text-left px-4 py-3 text-gray-700 hover:bg-red-50 flex justify-between items-center {{ request()->routeIs('profile.*') ? 'text-red-600 font-semibold' : '' }}">
           Profil
@@ -162,7 +155,6 @@
         </div>
       </div>
 
-      <!-- Infografis Dropdown -->
       <div class="border-b">
         <button class="mobile-dropdown-btn w-full text-left px-4 py-3 text-gray-700 hover:bg-red-50 flex justify-between items-center {{ request()->routeIs('public.infographics.*') ? 'text-red-600 font-semibold' : '' }}">
           Infografis
@@ -190,7 +182,6 @@
         </div>
       </div>
 
-      <!-- Layanan Dropdown -->
       <div class="border-b">
         <button class="mobile-dropdown-btn w-full text-left px-4 py-3 text-gray-700 hover:bg-red-50 flex justify-between items-center {{ request()->routeIs('service.*') ? 'text-red-600 font-semibold' : '' }}">
           Layanan
@@ -218,7 +209,6 @@
         Produk Hukum
       </a>
 
-      <!-- Desa Anti Korupsi Dropdown -->
       <div class="border-b">
         <button class="mobile-dropdown-btn w-full text-left px-4 py-3 text-gray-700 hover:bg-red-50 flex justify-between items-center {{ request()->routeIs('anti.*') ? 'text-red-600 font-semibold' : '' }}">
           Desa Anti Korupsi
@@ -243,7 +233,6 @@
         </div>
       </div>
 
-      <!-- Survei Dropdown -->
       <div class="border-b">
         <button class="mobile-dropdown-btn w-full text-left px-4 py-3 text-gray-700 hover:bg-red-50 flex justify-between items-center">
           Survei
