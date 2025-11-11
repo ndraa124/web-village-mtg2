@@ -29,24 +29,49 @@
       <div>
         <h4 class="text-lg font-semibold mb-4">Statistik Pengunjung</h4>
         <div class="bg-gray-800 rounded-lg p-4">
-          <p class="text-gray-400 mb-2">
-            <i class="fas fa-users mr-2"></i>
-            Total: <span class="text-white font-semibold">
-              {{ number_format($totalVisitors ?? 0) }}
-            </span>
-          </p>
-          <p class="text-gray-400 mb-2">
-            <i class="fas fa-user mr-2"></i>
-            Hari Ini: <span class="text-white font-semibold">
-              {{ number_format($todayVisitors ?? 0) }}
-            </span>
-          </p>
-          <p class="text-gray-400">
-            <i class="fas fa-chart-line mr-2"></i>
-            Online: <span class="text-white font-semibold">
-              {{ number_format($onlineVisitors ?? 0) }}
-            </span>
-          </p>
+          <div class="grid grid-cols-2 gap-x-4 gap-y-3">
+
+            <div>
+              <p class="flex items-center text-gray-400 text-sm mb-0">
+                <i class="fas fa-users mr-2 w-4 text-center"></i>
+                Total
+              </p>
+              <p class="text-white font-semibold text-lg">
+                {{ number_format($totalVisitors ?? 0) }}
+              </p>
+            </div>
+
+            <div>
+              <p class="flex items-center text-gray-400 text-sm mb-0">
+                <i class="fas fa-calendar-alt mr-2 w-4 text-center"></i>
+                Bulan Ini
+              </p>
+              <p class="text-white font-semibold text-lg">
+                {{ number_format($monthVisitors ?? 0) }}
+              </p>
+            </div>
+
+            <div>
+              <p class="flex items-center text-gray-400 text-sm mb-0">
+                <i class="fas fa-calendar-day mr-2 w-4 text-center"></i>
+                Kemarin
+              </p>
+              <p class="text-white font-semibold text-lg">
+                {{ number_format($yesterdayVisitors ?? 0) }}
+              </p>
+            </div>
+
+            <div>
+              <p class="flex items-center text-gray-400 text-sm mb-0">
+                <i class="fas fa-user mr-2 w-4 text-center"></i>
+                Hari Ini
+              </p>
+              <p class="text-white font-semibold text-lg">
+                {{ number_format($todayVisitors ?? 0) }}
+              </p>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>

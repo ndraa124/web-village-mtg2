@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\DB;
 use App\Models\Visitor;
 use Carbon\Carbon;
 
@@ -25,17 +24,21 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composer('*', function ($view) {
             $totalVisitors = Visitor::count();
-            $todayVisitors = Visitor::whereDate('created_at', Carbon::today())->count();
 
-            $minutesToConsiderOnline = 15;
-            $onlineVisitors = DB::table('sessions')
-                ->where('last_activity', '>', Carbon::now()->subMinutes($minutesToConsiderOnline))
+            $today = Carbon::today();
+            $yesterday = Carbon::yesterday();
+
+            $todayVisitors = Visitor::whereDate('created_at', $today)->count();
+            $yesterdayVisitors = Visitor::whereDate('created_at', $yesterday)->count();
+            $monthVisitors = Visitor::whereMonth('created_at', Carbon::now()->month)
+                ->whereYear('created_at', Carbon::now()->year)
                 ->count();
 
             $view->with([
                 'totalVisitors'  => $totalVisitors,
+                'monthVisitors'  => $monthVisitors,
+                'yesterdayVisitors' => $yesterdayVisitors,
                 'todayVisitors'  => $todayVisitors,
-                'onlineVisitors' => $onlineVisitors,
             ]);
         });
     }
