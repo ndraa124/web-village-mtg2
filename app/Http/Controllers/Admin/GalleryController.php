@@ -25,10 +25,10 @@ class GalleryController extends Controller
 
     $data = [
       'title' => 'Daftar Galeri',
-      'main' => 'admin.galleries.index',
+      'main' => 'admin.content.galleries.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -45,14 +45,14 @@ class GalleryController extends Controller
   {
     $data = [
       'title' => 'Tambah Galeri',
-      'main' => 'admin.galleries.create',
+      'main' => 'admin.content.galleries.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'galleries.index',
+          'route' => 'admin.content.galleries.index',
           'title' => 'Daftar Galeri'
         ],
         [
@@ -74,7 +74,7 @@ class GalleryController extends Controller
 
       Gallery::create($validatedData);
 
-      return redirect()->route('galleries.index')
+      return redirect()->route('admin.content.galleries.index')
         ->with('success', 'Gambar galeri berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -85,14 +85,14 @@ class GalleryController extends Controller
   {
     $data = [
       'title' => 'Edit Galeri',
-      'main' => 'admin.galleries.edit',
+      'main' => 'admin.content.galleries.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'galleries.index',
+          'route' => 'admin.content.galleries.index',
           'title' => 'Daftar Galeri'
         ],
         [
@@ -121,7 +121,7 @@ class GalleryController extends Controller
 
       $gallery->update($validatedData);
 
-      return redirect()->route('galleries.index')
+      return redirect()->route('admin.content.galleries.index')
         ->with('success', 'Gambar galeri berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -137,7 +137,7 @@ class GalleryController extends Controller
 
       $gallery->delete();
 
-      return redirect()->route('galleries.index')
+      return redirect()->route('admin.content.galleries.index')
         ->with('success', 'Gambar galeri berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

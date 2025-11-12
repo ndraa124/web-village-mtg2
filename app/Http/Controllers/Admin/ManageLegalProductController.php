@@ -27,10 +27,10 @@ class ManageLegalProductController extends Controller
 
     $data = [
       'title' => 'Manajemen Produk Hukum',
-      'main' => 'admin.legal_products.index',
+      'main' => 'admin.content.legal_products.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -47,14 +47,14 @@ class ManageLegalProductController extends Controller
   {
     $data = [
       'title' => 'Tambah Produk Hukum',
-      'main' => 'admin.legal_products.create',
+      'main' => 'admin.content.legal_products.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'manage-legal-product.index',
+          'route' => 'admin.content.legal-product.index',
           'title' => 'Produk Hukum'
         ],
         [
@@ -72,7 +72,7 @@ class ManageLegalProductController extends Controller
     try {
       LegalProducts::create($request->validated());
 
-      return redirect()->route('manage-legal-product.index')
+      return redirect()->route('admin.content.legal-product.index')
         ->with('success', 'Produk hukum berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -85,14 +85,14 @@ class ManageLegalProductController extends Controller
 
     $data = [
       'title' => 'Detail Produk Hukum',
-      'main' => 'admin.legal_products.show',
+      'main' => 'admin.content.legal_products.show',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'manage-legal-product.index',
+          'route' => 'admin.content.legal-product.index',
           'title' => 'Produk Hukum'
         ],
         [
@@ -109,14 +109,14 @@ class ManageLegalProductController extends Controller
   {
     $data = [
       'title' => 'Edit Produk Hukum',
-      'main' => 'admin.legal_products.edit',
+      'main' => 'admin.content.legal_products.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'manage-legal-product.index',
+          'route' => 'admin.content.legal-product.index',
           'title' => 'Produk Hukum'
         ],
         [
@@ -135,7 +135,7 @@ class ManageLegalProductController extends Controller
     try {
       $legalProduct->update($request->validated());
 
-      return redirect()->route('manage-legal-product.index')
+      return redirect()->route('admin.content.legal-product.index')
         ->with('success', 'Produk hukum berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -147,7 +147,7 @@ class ManageLegalProductController extends Controller
     try {
       $legalProduct->delete();
 
-      return redirect()->route('manage-legal-product.index')
+      return redirect()->route('admin.content.legal-product.index')
         ->with('success', 'Produk hukum berhasil dihapus.');
     } catch (\Exception $e) {
       if ($e->getCode() == '23000') {

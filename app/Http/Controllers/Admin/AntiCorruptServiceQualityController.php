@@ -23,10 +23,10 @@ class AntiCorruptServiceQualityController extends Controller
 
     $data = [
       'title' => 'Anti Korupsi - Kualitas Pelayanan Publik',
-      'main' => 'admin.anti_corrupt.service_quality.index',
+      'main' => 'admin.content.anti_corrupt.service_quality.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -43,14 +43,14 @@ class AntiCorruptServiceQualityController extends Controller
   {
     $data = [
       'title' => 'Edit Anti Korupsi - Kualitas Pelayanan Publik',
-      'main' => 'admin.anti_corrupt.service_quality.edit',
+      'main' => 'admin.content.anti_corrupt.service_quality.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'manage.anti.service-quality.index',
+          'route' => 'admin.content.anti.service-quality.index',
           'title' => 'Anti Korupsi - Kualitas Pelayanan Publik'
         ],
         [
@@ -70,7 +70,7 @@ class AntiCorruptServiceQualityController extends Controller
     try {
       $antiCorrupt->update($validatedData);
 
-      return redirect()->route('manage.anti.service-quality.index')
+      return redirect()->route('admin.content.anti.service-quality.index')
         ->with('success', 'Kualitas pelayanan publik berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());

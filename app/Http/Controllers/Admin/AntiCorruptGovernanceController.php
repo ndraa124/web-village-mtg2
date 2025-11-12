@@ -23,10 +23,10 @@ class AntiCorruptGovernanceController extends Controller
 
     $data = [
       'title' => 'Anti Korupsi - Tata Laksana',
-      'main' => 'admin.anti_corrupt.governance.index',
+      'main' => 'admin.content.anti_corrupt.governance.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -43,14 +43,14 @@ class AntiCorruptGovernanceController extends Controller
   {
     $data = [
       'title' => 'Edit Anti Korupsi - Tata Laksana',
-      'main' => 'admin.anti_corrupt.governance.edit',
+      'main' => 'admin.content.anti_corrupt.governance.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'manage.anti.governance.index',
+          'route' => 'admin.content.anti.governance.index',
           'title' => 'Anti Korupsi - Tata Laksana'
         ],
         [
@@ -70,7 +70,7 @@ class AntiCorruptGovernanceController extends Controller
     try {
       $antiCorrupt->update($validatedData);
 
-      return redirect()->route('manage.anti.governance.index')
+      return redirect()->route('admin.content.anti.governance.index')
         ->with('success', 'Tata laksana berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());

@@ -23,10 +23,10 @@ class AntiCorruptSupervisionController extends Controller
 
     $data = [
       'title' => 'Anti Korupsi - Pengawasan',
-      'main' => 'admin.anti_corrupt.supervision.index',
+      'main' => 'admin.content.anti_corrupt.supervision.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -43,14 +43,14 @@ class AntiCorruptSupervisionController extends Controller
   {
     $data = [
       'title' => 'Edit Anti Korupsi - Pengawasan',
-      'main' => 'admin.anti_corrupt.supervision.edit',
+      'main' => 'admin.content.anti_corrupt.supervision.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'manage.anti.supervision.index',
+          'route' => 'admin.content.anti.supervision.index',
           'title' => 'Anti Korupsi - Pengawasan'
         ],
         [
@@ -70,7 +70,7 @@ class AntiCorruptSupervisionController extends Controller
     try {
       $antiCorrupt->update($validatedData);
 
-      return redirect()->route('manage.anti.supervision.index')
+      return redirect()->route('admin.content.anti.supervision.index')
         ->with('success', 'Pengawasan berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());

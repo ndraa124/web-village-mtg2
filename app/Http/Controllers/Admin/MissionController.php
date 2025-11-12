@@ -29,10 +29,10 @@ class MissionController extends Controller
 
     $data = [
       'title' => 'Daftar Misi',
-      'main' => 'admin.mission.index',
+      'main' => 'admin.content.profile.mission.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
@@ -49,14 +49,14 @@ class MissionController extends Controller
   {
     $data = [
       'title' => 'Tambah Misi',
-      'main' => 'admin.mission.create',
+      'main' => 'admin.content.profile.mission.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'mission.index',
+          'route' => 'admin.content.profile.mission.index',
           'title' => 'Misi',
         ],
         [
@@ -75,7 +75,7 @@ class MissionController extends Controller
     try {
       Mission::create($validatedData);
 
-      return redirect()->route('mission.index')
+      return redirect()->route('admin.content.profile.mission.index')
         ->with('success', 'Misi baru berhasil ditambahkan.');
     } catch (\Exception $e) {
       DB::rollBack();
@@ -87,14 +87,14 @@ class MissionController extends Controller
   {
     $data = [
       'title' => 'Detail Misi',
-      'main' => 'admin.mission.show',
+      'main' => 'admin.content.profile.mission.show',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'mission.index',
+          'route' => 'admin.content.profile.mission.index',
           'title' => 'Misi',
         ],
         [
@@ -111,14 +111,14 @@ class MissionController extends Controller
   {
     $data = [
       'title' => 'Edit Misi',
-      'main' => 'admin.mission.edit',
+      'main' => 'admin.content.profile.mission.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'mission.index',
+          'route' => 'admin.content.profile.mission.index',
           'title' => 'Misi',
         ],
         [
@@ -142,7 +142,7 @@ class MissionController extends Controller
       $mission->is_active = $newIsActiveState;
       $mission->save();
 
-      return redirect()->route('mission.index')
+      return redirect()->route('admin.content.profile.mission.index')
         ->with('success', 'Misi berhasil diperbarui.');
     } catch (\Exception $e) {
       DB::rollBack();
@@ -154,7 +154,7 @@ class MissionController extends Controller
   {
     $mission->delete();
 
-    return redirect()->route('mission.index')
+    return redirect()->route('admin.content.profile.mission.index')
       ->with('success', 'Misi berhasil dihapus.');
   }
 }

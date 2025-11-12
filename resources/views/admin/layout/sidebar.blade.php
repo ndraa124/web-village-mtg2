@@ -264,81 +264,81 @@
         <span class="menu-title-text">KONTEN PUBLIK</span>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('admin.slider.*') ? 'open' : '' }}">
-        <a href="{{ route('admin.slider.index') }}" class="menu-link {{ request()->routeIs('admin.slider.*') ? 'active' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.content.slider.*') ? 'open' : '' }}">
+        <a href="{{ route('admin.content.slider.index') }}" class="menu-link {{ request()->routeIs('admin.content.slider.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">auto_awesome_motion</span>
           <span class="title">Slider</span>
         </a>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('admin.galleries.*') ? 'open' : '' }}">
-        <a href="{{ route('admin.galleries.index') }}" class="menu-link {{ request()->routeIs('admin.galleries.*') ? 'active' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.content.galleries.*') ? 'open' : '' }}">
+        <a href="{{ route('admin.content.galleries.index') }}" class="menu-link {{ request()->routeIs('admin.content.galleries.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">photo_library</span>
           <span class="title">Galeri</span>
         </a>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('admin.profile.*') ? 'open' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.content.profile.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">app_registration</span>
           <span class="title">Profil Desa</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('admin.profile.vision.index') }}" class="menu-link {{ request()->routeIs('admin.profile.vision.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.content.profile.vision.index') }}" class="menu-link {{ request()->routeIs('admin.content.profile.vision.*') ? 'active' : '' }}">
               Visi
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('admin.profile.mission.index') }}" class="menu-link {{ request()->routeIs('admin.profile.mission.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.content.profile.mission.index') }}" class="menu-link {{ request()->routeIs('admin.content.profile.mission.*') ? 'active' : '' }}">
               Misi
             </a>
           </li>
         </ul>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('admin.manage-news.*') ? 'open' : '' }}">
-        <a href="{{ route('admin.manage-news.index') }}" class="menu-link {{ request()->routeIs('admin.manage-news.*') ? 'active' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.content.news.*') ? 'open' : '' }}">
+        <a href="{{ route('admin.content.news.index') }}" class="menu-link {{ request()->routeIs('admin.content.news.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">feed</span>
           <span class="title">Berita & Informasi</span>
         </a>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('admin.manage-legal-product.*') ? 'open' : '' }}">
-        <a href="{{ route('admin.manage-legal-product.index') }}" class="menu-link {{ request()->routeIs('admin.manage-legal-product.*') ? 'active' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.content.legal-product.*') ? 'open' : '' }}">
+        <a href="{{ route('admin.content.legal-product.index') }}" class="menu-link {{ request()->routeIs('admin.content.legal-product.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">gavel</span>
           <span class="title">Produk Hukum</span>
         </a>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('admin.manage.anti.*') ? 'open' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.content.anti.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">target</span>
           <span class="title">Desa Anti Korupsi</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('admin.manage.anti.governance.index') }}" class="menu-link {{ request()->routeIs('admin.manage.anti.governance.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.content.anti.governance.index') }}" class="menu-link {{ request()->routeIs('admin.content.anti.governance.*') ? 'active' : '' }}">
               Tata Laksana
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('admin.manage.anti.supervision.index') }}" class="menu-link {{ request()->routeIs('admin.manage.anti.supervision.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.content.anti.supervision.index') }}" class="menu-link {{ request()->routeIs('admin.content.anti.supervision.*') ? 'active' : '' }}">
               Pengawasan
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('admin.manage.anti.service-quality.index') }}" class="menu-link {{ request()->routeIs('admin.manage.anti.service-quality.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.content.anti.service-quality.index') }}" class="menu-link {{ request()->routeIs('admin.content.anti.service-quality.*') ? 'active' : '' }}">
               Kualitas Pelayanan Publik
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('admin.manage.anti.participate.index') }}" class="menu-link {{ request()->routeIs('admin.manage.anti.participate.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.content.anti.participate.index') }}" class="menu-link {{ request()->routeIs('admin.content.anti.participate.*') ? 'active' : '' }}">
               Partisipasi Masyarakat
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('admin.manage.anti.local-wisdom.index') }}" class="menu-link {{ request()->routeIs('admin.manage.anti.local-wisdom.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.content.anti.local-wisdom.index') }}" class="menu-link {{ request()->routeIs('admin.content.anti.local-wisdom.*') ? 'active' : '' }}">
               Kearifan Lokal
             </a>
           </li>

@@ -23,10 +23,10 @@ class AntiCorruptParticipateController extends Controller
 
     $data = [
       'title' => 'Anti Korupsi - Partisipasi Masyarakat',
-      'main' => 'admin.anti_corrupt.participate.index',
+      'main' => 'admin.content.anti_corrupt.participate.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -43,14 +43,14 @@ class AntiCorruptParticipateController extends Controller
   {
     $data = [
       'title' => 'Edit Anti Korupsi - Partisipasi Masyarakat',
-      'main' => 'admin.anti_corrupt.participate.edit',
+      'main' => 'admin.content.anti_corrupt.participate.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'manage.anti.participate.index',
+          'route' => 'admin.content.anti.participate.index',
           'title' => 'Anti Korupsi - Partisipasi Masyarakat'
         ],
         [
@@ -70,7 +70,7 @@ class AntiCorruptParticipateController extends Controller
     try {
       $antiCorrupt->update($validatedData);
 
-      return redirect()->route('manage.anti.participate.index')
+      return redirect()->route('admin.content.anti.participate.index')
         ->with('success', 'Partisipasi masyarakat berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());

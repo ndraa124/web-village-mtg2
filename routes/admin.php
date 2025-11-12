@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,12 +56,11 @@ use App\Http\Controllers\Admin\InfographicsSdgsController;
 | Content Public
 |--------------------------------------------------------------------------
 */
-use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\VisionController;
 use App\Http\Controllers\Admin\MissionController;
-use App\Http\Controllers\Admin\ManageNewsController;
-use App\Http\Controllers\Admin\GalleryController;
-use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ManageLegalProductController;
 use App\Http\Controllers\Admin\AntiCorruptGovernanceController;
 use App\Http\Controllers\Admin\AntiCorruptSupervisionController;
@@ -70,32 +68,52 @@ use App\Http\Controllers\Admin\AntiCorruptServiceQualityController;
 use App\Http\Controllers\Admin\AntiCorruptParticipateController;
 use App\Http\Controllers\Admin\AntiCorruptLocalWisdomController;
 
+/*
+|--------------------------------------------------------------------------
+| Others
+|--------------------------------------------------------------------------
+*/
+use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\UserController;
+
 Route::middleware(['authenticate'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('users', UserController::class);
 
     Route::prefix('/master')
         ->name('master.')
         ->group(function () {
             Route::resource('education', EducationController::class)->except(['show']);
+
             Route::resource('gender', GenderController::class)->except(['show']);
+
             Route::resource('hamlet', HamletController::class)->except(['show']);
+
             Route::resource('job', JobController::class)->except(['show']);
+
             Route::resource('marriage', MarriageController::class)->except(['show']);
+
             Route::resource('religion', ReligionController::class)->except(['show']);
+
             Route::resource('income', IncomeController::class)->except(['show']);
+
             Route::resource('shopping', ShoppingController::class)->except(['show']);
+
             Route::resource('financing', FinancingController::class)->except(['show']);
+
             Route::resource('stunting', StuntingController::class)->except(['show']);
+
             Route::resource('social-assistance', SocialAssistanceController::class)
                 ->parameter('social-assistance', 'socialAssistance')
                 ->except(['show']);
+
             Route::resource('idm-status', IdmStatusController::class)
                 ->parameter('idm-status', 'idmStatus')
                 ->except(['show']);
+
             Route::resource('news-category', NewsCategoryController::class)
                 ->parameter('news-category', 'category')
                 ->except(['show']);
+
             Route::resource('legal-product-category', LegalProductsCategoryController::class)
                 ->parameter('legal-product-category', 'category')
                 ->except(['show']);
@@ -116,21 +134,27 @@ Route::middleware(['authenticate'])->group(function () {
                     Route::resource('age', InfographicsResidentAgeController::class)
                         ->parameter('age', 'residentAge')
                         ->except(['show']);
+
                     Route::resource('hamlet', InfographicsResidentHamletController::class)
                         ->parameter('hamlet', 'residentHamlet')
                         ->except(['show']);
+
                     Route::resource('education', InfographicsResidentEducationController::class)
                         ->parameters(['education' => 'residentEducation'])
                         ->except(['show']);
+
                     Route::resource('job', InfographicsResidentJobController::class)
                         ->parameters(['job' => 'residentJob'])
                         ->except(['show']);
+
                     Route::resource('must_select', InfographicsResidentMustSelectController::class)
                         ->parameters(['must_select' => 'residentMustSelect'])
                         ->except(['show']);
+
                     Route::resource('marriage', InfographicsResidentMarriageController::class)
                         ->parameters(['marriage' => 'residentMarriage'])
                         ->except(['show']);
+
                     Route::resource('religion', InfographicsResidentReligionController::class)
                         ->parameters(['religion' => 'residentReligion'])
                         ->except(['show']);
@@ -141,12 +165,15 @@ Route::middleware(['authenticate'])->group(function () {
                 ->group(function () {
                     Route::resource('income', InfographicsApbdIncomeController::class)
                         ->parameters(['income' => 'apbdIncome']);
+
                     Route::resource('shopping', InfographicsApbdShoppingController::class)
                         ->parameters(['shopping' => 'apbdShopping'])
                         ->except(['show']);
+
                     Route::resource('financing', InfographicsApbdFinancingController::class)
                         ->parameters(['financing' => 'apbdFinancing'])
                         ->except(['show']);
+
                     Route::resource('development-realization', InfographicsApbdDevRealizationController::class)
                         ->parameter('development-realization', 'apbdRealization')
                         ->except(['show']);
@@ -157,6 +184,7 @@ Route::middleware(['authenticate'])->group(function () {
 
             Route::resource('stunting', InfographicsStuntingController::class)
                 ->except(['show']);
+
             Route::resource('social-assistance', InfographicsSocialAssistanceController::class)
                 ->parameters(['social-assistance' => 'socialAssistance']);
 
@@ -165,8 +193,10 @@ Route::middleware(['authenticate'])->group(function () {
                 ->group(function () {
                     Route::resource('iks', InfographicsIdmIksController::class)
                         ->parameters(['iks' => 'idmIks']);
+
                     Route::resource('ike', InfographicsIdmIkeController::class)
                         ->parameters(['ike' => 'idmIke']);
+
                     Route::resource('ikl', InfographicsIdmIklController::class)
                         ->parameters(['ikl' => 'idmIkl']);
 
@@ -179,36 +209,48 @@ Route::middleware(['authenticate'])->group(function () {
                 ->except(['show']);
         });
 
-    Route::prefix('/profile')
-        ->name('profile.')
+    Route::prefix('/content')
+        ->name('content.')
         ->group(function () {
-            Route::resource('vision', VisionController::class);
-            Route::resource('mission', MissionController::class);
+            Route::resource('slider', SliderController::class);
+
+            Route::resource('galleries', GalleryController::class)
+                ->names('galleries')
+                ->except(['show']);
+
+            Route::prefix('/profile')
+                ->name('profile.')
+                ->group(function () {
+                    Route::resource('vision', VisionController::class);
+                    Route::resource('mission', MissionController::class);
+                });
+
+            Route::resource('news', NewsController::class);
+
+            Route::resource('legal-product', ManageLegalProductController::class)
+                ->parameter('legal-product', 'legalProduct');
+
+            Route::prefix('/anti-corruption')
+                ->name('anti.')
+                ->group(function () {
+                    Route::resource('governance', AntiCorruptGovernanceController::class)
+                        ->parameters(['governance' => 'antiCorrupt']);
+
+                    Route::resource('supervision', AntiCorruptSupervisionController::class)
+                        ->parameters(['supervision' => 'antiCorrupt']);
+
+                    Route::resource('service-quality', AntiCorruptServiceQualityController::class)
+                        ->parameters(['service-quality' => 'antiCorrupt']);
+
+                    Route::resource('participate', AntiCorruptParticipateController::class)
+                        ->parameters(['participate' => 'antiCorrupt']);
+
+                    Route::resource('local-wisdom', AntiCorruptLocalWisdomController::class)
+                        ->parameters(['local-wisdom' => 'antiCorrupt']);
+                });
         });
 
-    Route::resource('manage-news', ManageNewsController::class)
-        ->parameters(['manage-news' => 'manageNews']);
-    Route::resource('galleries', GalleryController::class)
-        ->names('galleries')
-        ->except(['show']);
-    Route::resource('manage-legal-product', ManageLegalProductController::class)
-        ->parameter('manage-legal-product', 'legalProduct');
-    Route::resource('slider', SliderController::class);
-
-    Route::prefix('/manage-anti-corruption')
-        ->name('manage.anti.')
-        ->group(function () {
-            Route::resource('governance', AntiCorruptGovernanceController::class)
-                ->parameters(['governance' => 'antiCorrupt']);
-            Route::resource('supervision', AntiCorruptSupervisionController::class)
-                ->parameters(['supervision' => 'antiCorrupt']);
-            Route::resource('service-quality', AntiCorruptServiceQualityController::class)
-                ->parameters(['service-quality' => 'antiCorrupt']);
-            Route::resource('participate', AntiCorruptParticipateController::class)
-                ->parameters(['participate' => 'antiCorrupt']);
-            Route::resource('local-wisdom', AntiCorruptLocalWisdomController::class)
-                ->parameters(['local-wisdom' => 'antiCorrupt']);
-        });
+    Route::resource('users', UserController::class);
 
     Route::prefix('/settings')
         ->controller(SettingsController::class)

@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
-use App\Models\Category;
+use App\Models\NewsCategory;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class NewsController extends Controller
 {
-  public function index(Request $request, ?Category $category = null, ?Tag $tag = null)
+  public function index(Request $request, ?NewsCategory $category = null, ?Tag $tag = null)
   {
     $pageTitle = 'Berita & Informasi';
 
@@ -19,11 +19,11 @@ class NewsController extends Controller
     $month = $request->input('month');
 
     if ($category) {
-      $pageTitle = 'Kategori Berita: ' . $category->name;
+      $pageTitle = 'Kategori: ' . $category->name;
     }
 
     if ($tag) {
-      $pageTitle = 'Tag Berita: ' . $tag->name;
+      $pageTitle = 'Tag: ' . $tag->name;
     }
 
     if ($search) {
@@ -64,7 +64,7 @@ class NewsController extends Controller
       ->limit(5)
       ->get();
 
-    $categories = Category::withCount(['news' => fn($q) => $q->where('status', 'published')])
+    $categories = NewsCategory::withCount(['news' => fn($q) => $q->where('status', 'published')])
       ->orderBy('news_count', 'desc')
       ->get();
 

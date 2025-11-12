@@ -30,10 +30,10 @@ class SliderController extends Controller
 
     $data = [
       'title' => 'Daftar Slider',
-      'main' => 'admin.slider.index',
+      'main' => 'admin.content.slider.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
@@ -50,14 +50,14 @@ class SliderController extends Controller
   {
     $data = [
       'title' => 'Tambah Slider',
-      'main' => 'admin.slider.create',
+      'main' => 'admin.content.slider.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'slider.index',
+          'route' => 'admin.content.slider.index',
           'title' => 'Slider',
         ],
         [
@@ -81,7 +81,7 @@ class SliderController extends Controller
 
       Slider::create($validatedData);
 
-      return redirect()->route('slider.index')
+      return redirect()->route('admin.content.slider.index')
         ->with('success', 'Slider baru berhasil ditambahkan.');
     } catch (\Exception $e) {
       DB::rollBack();
@@ -93,14 +93,14 @@ class SliderController extends Controller
   {
     $data = [
       'title' => 'Detail Slider',
-      'main' => 'admin.slider.show',
+      'main' => 'admin.content.slider.show',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'slider.index',
+          'route' => 'admin.content.slider.index',
           'title' => 'Slider',
         ],
         [
@@ -117,14 +117,14 @@ class SliderController extends Controller
   {
     $data = [
       'title' => 'Edit Slider',
-      'main' => 'admin.slider.edit',
+      'main' => 'admin.content.slider.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'slider.index',
+          'route' => 'admin.content.slider.index',
           'title' => 'Slider',
         ],
         [
@@ -158,7 +158,7 @@ class SliderController extends Controller
 
       $slider->save();
 
-      return redirect()->route('slider.index')
+      return redirect()->route('admin.content.slider.index')
         ->with('success', 'Slider berhasil diperbarui.');
     } catch (\Exception $e) {
       DB::rollBack();
@@ -179,7 +179,7 @@ class SliderController extends Controller
 
       DB::commit();
 
-      return redirect()->route('slider.index')
+      return redirect()->route('admin.content.slider.index')
         ->with('success', 'Slider berhasil dihapus.');
     } catch (\Exception $e) {
       DB::rollBack();

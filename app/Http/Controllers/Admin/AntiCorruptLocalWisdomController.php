@@ -23,10 +23,10 @@ class AntiCorruptLocalWisdomController extends Controller
 
     $data = [
       'title' => 'Anti Korupsi - Kearifan Lokal',
-      'main' => 'admin.anti_corrupt.local_wisdom.index',
+      'main' => 'admin.content.anti_corrupt.local_wisdom.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -43,14 +43,14 @@ class AntiCorruptLocalWisdomController extends Controller
   {
     $data = [
       'title' => 'Edit Anti Korupsi - Kearifan Lokal',
-      'main' => 'admin.anti_corrupt.local_wisdom.edit',
+      'main' => 'admin.content.anti_corrupt.local_wisdom.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'manage.anti.local-wisdom.index',
+          'route' => 'admin.content.anti.local-wisdom.index',
           'title' => 'Anti Korupsi - Kearifan Lokal'
         ],
         [
@@ -70,7 +70,7 @@ class AntiCorruptLocalWisdomController extends Controller
     try {
       $antiCorrupt->update($validatedData);
 
-      return redirect()->route('manage.anti.local-wisdom.index')
+      return redirect()->route('admin.content.anti.local-wisdom.index')
         ->with('success', 'Kearifan lokal berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
