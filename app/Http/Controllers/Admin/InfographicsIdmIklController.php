@@ -30,7 +30,7 @@ class InfographicsIdmIklController extends Controller
       'main' => 'admin.infographics.idm_ikl.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -50,11 +50,11 @@ class InfographicsIdmIklController extends Controller
       'main' => 'admin.infographics.idm_ikl.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.idm.ikl.index',
+          'route' => 'admin.infographics.idm.ikl.index',
           'title' => 'Daftar Indikator IKL'
         ],
         ['title' => 'Tambah Data'],
@@ -71,7 +71,7 @@ class InfographicsIdmIklController extends Controller
     try {
       InfographicsIdmIkl::create($validatedData);
 
-      return redirect()->route('infographics.idm.ikl.index')
+      return redirect()->route('admin.infographics.idm.ikl.index')
         ->with('success', 'Data Indikator IKL berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -85,11 +85,11 @@ class InfographicsIdmIklController extends Controller
       'main' => 'admin.infographics.idm_ikl.show',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.idm.ikl.index',
+          'route' => 'admin.infographics.idm.ikl.index',
           'title' => 'Daftar Indikator IKL'
         ],
         [
@@ -109,11 +109,11 @@ class InfographicsIdmIklController extends Controller
       'main' => 'admin.infographics.idm_ikl.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.idm.ikl.index',
+          'route' => 'admin.infographics.idm.ikl.index',
           'title' => 'Daftar Indikator IKL'
         ],
         [
@@ -133,7 +133,7 @@ class InfographicsIdmIklController extends Controller
     try {
       $idmIkl->update($validatedData);
 
-      return redirect()->route('infographics.idm.ikl.index')
+      return redirect()->route('admin.infographics.idm.ikl.index')
         ->with('success', 'Data Indikator IKL berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -145,7 +145,7 @@ class InfographicsIdmIklController extends Controller
     try {
       $idmIkl->delete();
 
-      return redirect()->route('infographics.idm.ikl.index')
+      return redirect()->route('admin.infographics.idm.ikl.index')
         ->with('success', 'Data Indikator IKL berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

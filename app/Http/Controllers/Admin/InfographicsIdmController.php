@@ -33,7 +33,7 @@ class InfographicsIdmController extends Controller
       'main' => 'admin.infographics.idm.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -55,11 +55,11 @@ class InfographicsIdmController extends Controller
       'main' => 'admin.infographics.idm.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.idm.index',
+          'route' => 'admin.infographics.idm.index',
           'title' => 'Daftar Skor IDM'
         ],
         ['title' => 'Tambah Data'],
@@ -77,7 +77,7 @@ class InfographicsIdmController extends Controller
     try {
       InfographicsIdm::create($validatedData);
 
-      return redirect()->route('infographics.idm.index')
+      return redirect()->route('admin.infographics.idm.index')
         ->with('success', 'Data Skor IDM berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -93,11 +93,11 @@ class InfographicsIdmController extends Controller
       'main' => 'admin.infographics.idm.show',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.idm.index',
+          'route' => 'admin.infographics.idm.index',
           'title' => 'Daftar Skor IDM'
         ],
         [
@@ -119,11 +119,11 @@ class InfographicsIdmController extends Controller
       'main' => 'admin.infographics.idm.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.idm.index',
+          'route' => 'admin.infographics.idm.index',
           'title' => 'Daftar Skor IDM'
         ],
         [
@@ -144,7 +144,7 @@ class InfographicsIdmController extends Controller
     try {
       $idm->update($validatedData);
 
-      return redirect()->route('infographics.idm.index')
+      return redirect()->route('admin.infographics.idm.index')
         ->with('success', 'Data Skor IDM berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -156,7 +156,7 @@ class InfographicsIdmController extends Controller
     try {
       $idm->delete();
 
-      return redirect()->route('infographics.idm.index')
+      return redirect()->route('admin.infographics.idm.index')
         ->with('success', 'Data Skor IDM berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

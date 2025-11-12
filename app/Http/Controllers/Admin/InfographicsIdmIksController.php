@@ -30,7 +30,7 @@ class InfographicsIdmIksController extends Controller
       'main' => 'admin.infographics.idm_iks.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -50,11 +50,11 @@ class InfographicsIdmIksController extends Controller
       'main' => 'admin.infographics.idm_iks.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.idm.iks.index',
+          'route' => 'admin.infographics.idm.iks.index',
           'title' => 'Daftar Indikator IKS'
         ],
         ['title' => 'Tambah Data'],
@@ -71,7 +71,7 @@ class InfographicsIdmIksController extends Controller
     try {
       InfographicsIdmIks::create($validatedData);
 
-      return redirect()->route('infographics.idm.iks.index')
+      return redirect()->route('admin.infographics.idm.iks.index')
         ->with('success', 'Data Indikator IKS berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -85,11 +85,11 @@ class InfographicsIdmIksController extends Controller
       'main' => 'admin.infographics.idm_iks.show',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.idm.iks.index',
+          'route' => 'admin.infographics.idm.iks.index',
           'title' => 'Daftar Indikator IKS'
         ],
         [
@@ -109,11 +109,11 @@ class InfographicsIdmIksController extends Controller
       'main' => 'admin.infographics.idm_iks.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.idm.iks.index',
+          'route' => 'admin.infographics.idm.iks.index',
           'title' => 'Daftar Indikator IKS'
         ],
         [
@@ -133,7 +133,7 @@ class InfographicsIdmIksController extends Controller
     try {
       $idmIks->update($validatedData);
 
-      return redirect()->route('infographics.idm.iks.index')
+      return redirect()->route('admin.infographics.idm.iks.index')
         ->with('success', 'Data Indikator IKS berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -145,7 +145,7 @@ class InfographicsIdmIksController extends Controller
     try {
       $idmIks->delete();
 
-      return redirect()->route('infographics.idm.iks.index')
+      return redirect()->route('admin.infographics.idm.iks.index')
         ->with('success', 'Data Indikator IKS berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

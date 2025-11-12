@@ -10,7 +10,7 @@
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('infographics.idm.store') }}" method="POST">
+      <form action="{{ route('admin.infographics.idm.store') }}" method="POST">
         @csrf
 
         <div class="row">
@@ -138,7 +138,7 @@
           <div class="col-lg-12">
             <div class="d-flex gap-2">
               <button type="submit" class="btn btn-primary fw-normal text-white">Tambah</button>
-              <a href="{{ route('infographics.idm.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('admin.infographics.idm.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>

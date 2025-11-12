@@ -163,22 +163,15 @@ Route::middleware(['authenticate'])->group(function () {
             Route::prefix('/idm')
                 ->name('idm.')
                 ->group(function () {
-                    Route::controller(InfographicsIdmController::class)->group(function () {
-                        Route::get('/', 'index')->name('index');
-                        Route::get('/create', 'create')->name('create');
-                        Route::post('/store', 'store')->name('store');
-                        Route::get('/show/{idm}', 'show')->name('show');
-                        Route::get('/edit/{idm}', 'edit')->name('edit');
-                        Route::put('/update/{idm}', 'update')->name('update');
-                        Route::delete('/destroy/{idm}', 'destroy')->name('destroy');
-                    });
-
                     Route::resource('iks', InfographicsIdmIksController::class)
                         ->parameters(['iks' => 'idmIks']);
                     Route::resource('ike', InfographicsIdmIkeController::class)
                         ->parameters(['ike' => 'idmIke']);
                     Route::resource('ikl', InfographicsIdmIklController::class)
                         ->parameters(['ikl' => 'idmIkl']);
+
+                    Route::resource('/', InfographicsIdmController::class)
+                        ->parameters(['' => 'idm']);
                 });
 
             Route::resource('sdgs', InfographicsSdgsController::class)

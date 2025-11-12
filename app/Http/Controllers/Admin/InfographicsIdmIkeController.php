@@ -30,7 +30,7 @@ class InfographicsIdmIkeController extends Controller
       'main' => 'admin.infographics.idm_ike.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -50,11 +50,11 @@ class InfographicsIdmIkeController extends Controller
       'main' => 'admin.infographics.idm_ike.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.idm.ike.index',
+          'route' => 'admin.infographics.idm.ike.index',
           'title' => 'Daftar Indikator IKE'
         ],
         ['title' => 'Tambah Data'],
@@ -71,7 +71,7 @@ class InfographicsIdmIkeController extends Controller
     try {
       InfographicsIdmIke::create($validatedData);
 
-      return redirect()->route('infographics.idm.ike.index')
+      return redirect()->route('admin.infographics.idm.ike.index')
         ->with('success', 'Data Indikator IKE berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -85,11 +85,11 @@ class InfographicsIdmIkeController extends Controller
       'main' => 'admin.infographics.idm_ike.show',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.idm.ike.index',
+          'route' => 'admin.infographics.idm.ike.index',
           'title' => 'Daftar Indikator IKE'
         ],
         [
@@ -109,11 +109,11 @@ class InfographicsIdmIkeController extends Controller
       'main' => 'admin.infographics.idm_ike.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.idm.ike.index',
+          'route' => 'admin.infographics.idm.ike.index',
           'title' => 'Daftar Indikator IKE'
         ],
         [
@@ -133,7 +133,7 @@ class InfographicsIdmIkeController extends Controller
     try {
       $idmIke->update($validatedData);
 
-      return redirect()->route('infographics.idm.ike.index')
+      return redirect()->route('admin.infographics.idm.ike.index')
         ->with('success', 'Data Indikator IKE berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -145,7 +145,7 @@ class InfographicsIdmIkeController extends Controller
     try {
       $idmIke->delete();
 
-      return redirect()->route('infographics.idm.ike.index')
+      return redirect()->route('admin.infographics.idm.ike.index')
         ->with('success', 'Data Indikator IKE berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());
