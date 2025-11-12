@@ -30,7 +30,7 @@ class UserController extends Controller
             'main' => 'admin.users.index',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
@@ -50,11 +50,11 @@ class UserController extends Controller
             'main' => 'admin.users.create',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'users.index',
+                    'route' => 'admin.users.index',
                     'title' => 'User',
                 ],
                 [
@@ -73,7 +73,7 @@ class UserController extends Controller
         try {
             User::create($validatedData);
 
-            return redirect()->route('users.index')
+            return redirect()->route('admin.users.index')
                 ->with('success', 'User berhasil ditambahkan.');
         } catch (\Exception $e) {
             return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -87,11 +87,11 @@ class UserController extends Controller
             'main' => 'admin.users.show',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'users.index',
+                    'route' => 'admin.users.index',
                     'title' => 'Users',
                 ],
                 [
@@ -111,11 +111,11 @@ class UserController extends Controller
             'main' => 'admin.users.edit',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'users.index',
+                    'route' => 'admin.users.index',
                     'title' => 'User',
                 ],
                 [
@@ -138,7 +138,7 @@ class UserController extends Controller
 
         $user->update($validatedData);
 
-        return redirect()->route('users.index')
+        return redirect()->route('admin.users.index')
             ->with('success', 'User berhasil diperbarui.');
     }
 
@@ -146,7 +146,7 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('users.index')
+        return redirect()->route('admin.users.index')
             ->with('success', 'User berhasil dihapus.');
     }
 }

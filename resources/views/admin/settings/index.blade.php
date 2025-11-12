@@ -22,7 +22,7 @@
   </div>
   @endif
 
-  <form action="{{ route('settings.update', $village->id) }}" method="POST" enctype="multipart/form-data">
+  <form action="{{ route('admin.settings.update', $village->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -337,7 +337,7 @@
       <div class="col-lg-12">
         <div class="d-flex gap-2">
           <button type="submit" class="btn btn-primary fw-normal text-white">Simpan Profil</button>
-          <a href="{{ route('dashboard') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+          <a href="{{ route('admin.dashboard') }}" class="btn btn-danger fw-normal text-white">Batal</a>
         </div>
       </div>
     </div>

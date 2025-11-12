@@ -17,7 +17,7 @@ class SettingsController extends Controller
       'main' => 'admin.settings.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
@@ -55,7 +55,7 @@ class SettingsController extends Controller
 
     $village->update($validatedData);
 
-    return redirect()->route('settings.index')
+    return redirect()->route('admin.settings.index')
       ->with('success', 'Data desa berhasil diperbarui.');
   }
 }
