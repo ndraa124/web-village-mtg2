@@ -139,27 +139,20 @@ Route::middleware(['authenticate'])->group(function () {
             Route::prefix('/apbd')
                 ->name('apbd.')
                 ->group(function () {
-                    Route::controller(InfographicsApbdController::class)->group(function () {
-                        Route::get('/', 'index')->name('index');
-                        Route::get('/create', 'create')->name('create');
-                        Route::post('/store', 'store')->name('store');
-                        Route::get('/show/{apbd}', 'show')->name('show');
-                        Route::get('/edit/{apbd}', 'edit')->name('edit');
-                        Route::put('/update/{apbd}', 'update')->name('update');
-                        Route::delete('/destroy/{apbd}', 'destroy')->name('destroy');
-                    });
-
-                    Route::resource('year', InfographicsApbdYearController::class)
-                        ->parameters(['year' => 'apbdYear']);
                     Route::resource('income', InfographicsApbdIncomeController::class)
                         ->parameters(['income' => 'apbdIncome']);
                     Route::resource('shopping', InfographicsApbdShoppingController::class)
-                        ->parameters(['shopping' => 'apbdShopping']);
+                        ->parameters(['shopping' => 'apbdShopping'])
+                        ->except(['show']);
                     Route::resource('financing', InfographicsApbdFinancingController::class)
-                        ->parameters(['financing' => 'apbdFinancing']);
+                        ->parameters(['financing' => 'apbdFinancing'])
+                        ->except(['show']);
                     Route::resource('development-realization', InfographicsApbdDevRealizationController::class)
                         ->parameter('development-realization', 'apbdRealization')
                         ->except(['show']);
+
+                    Route::resource('/', InfographicsApbdController::class)
+                        ->parameters(['' => 'apbd']);
                 });
 
             Route::resource('stunting', InfographicsStuntingController::class)

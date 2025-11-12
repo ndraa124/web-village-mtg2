@@ -36,11 +36,6 @@
           <span class="text-secondary fw-medium">Dibuat Pada</span>
           <span class="fw-bold">{{ $apbd->created_at?->format('d M Y, H:i') }}</span>
         </li>
-
-        <li class="list-group-item d-flex justify-content-between align-items-center p-20">
-          <span class="text-secondary fw-medium">Diperbarui Pada</span>
-          <span class="fw-bold">{{ $apbd->updated_at?->format('d M Y, H:i') }}</span>
-        </li>
       </ul>
     </div>
   </div>

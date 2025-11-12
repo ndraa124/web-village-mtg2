@@ -25,15 +25,15 @@ class InfographicsApbdController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Semua APBD',
+      'title' => 'Daftar APBD per Tahun',
       'main' => 'admin.infographics.apbd.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Semua APBD'
+          'title' => 'Daftar APBD per Tahun'
         ],
       ],
       'apbds' => $apbds
@@ -49,12 +49,12 @@ class InfographicsApbdController extends Controller
       'main' => 'admin.infographics.apbd.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.index',
-          'title' => 'Data Semua APBD'
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'Data APBD per Tahun'
         ],
         ['title' => 'Tambah Data'],
       ],
@@ -70,7 +70,7 @@ class InfographicsApbdController extends Controller
     try {
       InfographicsApbd::create($validatedData);
 
-      return redirect()->route('infographics.apbd.index')
+      return redirect()->route('admin.infographics.apbd.index')
         ->with('success', 'Data APBD berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -84,12 +84,12 @@ class InfographicsApbdController extends Controller
       'main' => 'admin.infographics.apbd.show',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.index',
-          'title' => 'Data APBD'
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'Data APBD per Tahun'
         ],
         [
           'title' => 'Detail Data'
@@ -108,12 +108,12 @@ class InfographicsApbdController extends Controller
       'main' => 'admin.infographics.apbd.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.index',
-          'title' => 'Data Semua APBD'
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'Data APBD per Tahun'
         ],
         [
           'title' => 'Edit Data'
@@ -132,7 +132,7 @@ class InfographicsApbdController extends Controller
     try {
       $apbd->update($validatedData);
 
-      return redirect()->route('infographics.apbd.index')
+      return redirect()->route('admin.infographics.apbd.index')
         ->with('success', 'Data APBD berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -144,7 +144,7 @@ class InfographicsApbdController extends Controller
     try {
       $apbd->delete();
 
-      return redirect()->route('infographics.apbd.index')
+      return redirect()->route('admin.infographics.apbd.index')
         ->with('success', 'Data APBD berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

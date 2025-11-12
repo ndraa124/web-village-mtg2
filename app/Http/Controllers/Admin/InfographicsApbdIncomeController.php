@@ -33,7 +33,7 @@ class InfographicsApbdIncomeController extends Controller
       'main' => 'admin.infographics.apbd_income.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -55,14 +55,16 @@ class InfographicsApbdIncomeController extends Controller
       'main' => 'admin.infographics.apbd_income.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.income.index',
+          'route' => 'admin.infographics.apbd.income.index',
           'title' => 'Daftar Pendapatan APBD'
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'title' => 'Tambah Data'
+        ],
       ],
       'incomes' => $incomes
     ];
@@ -77,37 +79,11 @@ class InfographicsApbdIncomeController extends Controller
     try {
       InfographicsApbdIncome::create($validatedData);
 
-      return redirect()->route('infographics.apbd.income.index')
+      return redirect()->route('admin.infographics.apbd.income.index')
         ->with('success', 'Data Pendapatan APBD berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
-  }
-
-  public function show(InfographicsApbdIncome $apbdIncome)
-  {
-    $apbdIncome->load('income');
-
-    $data = [
-      'title' => 'Detail Data Pendapatan APBD',
-      'main' => 'admin.infographics.apbd_income.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard'
-        ],
-        [
-          'route' => 'infographics.apbd.income.index',
-          'title' => 'Daftar Pendapatan APBD'
-        ],
-        [
-          'title' => 'Detail Data'
-        ],
-      ],
-      'apbdIncome' => $apbdIncome
-    ];
-
-    return view('admin.layout.template', $data);
   }
 
   public function edit(InfographicsApbdIncome $apbdIncome)
@@ -119,11 +95,11 @@ class InfographicsApbdIncomeController extends Controller
       'main' => 'admin.infographics.apbd_income.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.income.index',
+          'route' => 'admin.infographics.apbd.income.index',
           'title' => 'Daftar Pendapatan APBD'
         ],
         [
@@ -144,7 +120,7 @@ class InfographicsApbdIncomeController extends Controller
     try {
       $apbdIncome->update($validatedData);
 
-      return redirect()->route('infographics.apbd.income.index')
+      return redirect()->route('admin.infographics.apbd.income.index')
         ->with('success', 'Data Pendapatan APBD berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -156,7 +132,7 @@ class InfographicsApbdIncomeController extends Controller
     try {
       $apbdIncome->delete();
 
-      return redirect()->route('infographics.apbd.income.index')
+      return redirect()->route('admin.infographics.apbd.income.index')
         ->with('success', 'Data Pendapatan APBD berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

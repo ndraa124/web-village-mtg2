@@ -163,11 +163,6 @@
         <ul class="menu-sub">
           <li class="menu-item">
             <a href="{{ route('admin.infographics.apbd.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.index') || request()->routeIs('admin.infographics.apbd.create') || request()->routeIs('admin.infographics.apbd.show') || request()->routeIs('admin.infographics.apbd.edit') ? 'active' : '' }}">
-              Semua APBD
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.apbd.year.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.year.*') ? 'active' : '' }}">
               APBD per Tahun
             </a>
           </li>

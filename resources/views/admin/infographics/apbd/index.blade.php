@@ -1,6 +1,6 @@
 <div class="card bg-white rounded-10 border border-white mb-4">
   <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
-    <form action="{{ route('infographics.apbd.index') }}" method="GET" class="table-src-form position-relative m-0">
+    <form action="{{ route('admin.infographics.apbd.index') }}" method="GET" class="table-src-form position-relative m-0">
       <input type="text" name="search" class="form-control w-350" value="{{ request('search') }}" placeholder="Cari tahun...">
 
       <button type="submit" class="src-btn position-absolute top-50 start-0 translate-middle-y bg-transparent p-0 border-0">
@@ -8,7 +8,7 @@
       </button>
     </form>
 
-    <a href="{{ route('infographics.apbd.create') }}" class="text-primary fs-16 text-decoration-none">+ Tambah Baru</a>
+    <a href="{{ route('admin.infographics.apbd.create') }}" class="text-primary fs-16 text-decoration-none">+ Tambah Baru</a>
   </div>
 
   @if ($message = Session::get('success'))
@@ -37,9 +37,7 @@
             <th scope="col" class="fw-medium text-center">#</th>
             <th scope="col" class="fw-medium">Tahun</th>
             <th scope="col" class="fw-medium text-end">Pendapatan</th>
-            <th scope="col" class="fw-medium text-end">Belanja</th>
-            <th scope="col" class="fw-medium text-end">Pembiayaan</th>
-            <th scope="col" class="fw-medium text-end">Surplus/Defisit</th>
+            <th scope="col" class="fw-medium text-end">Pengeluaran</th>
             <th scope="col" class="fw-medium text-center">Aksi</th>
           </tr>
         </thead>
@@ -49,18 +47,16 @@
             <td class="text-body text-center">{{ $loop->iteration + $apbds->firstItem() - 1 }}</td>
             <td class="text-body">{{ $row->year }}</td>
             <td class="text-body text-end">Rp {{ number_format($row->income, 0, ',', '.') }}</td>
-            <td class="text-body text-end">Rp {{ number_format($row->shopping, 0, ',', '.') }}</td>
-            <td class="text-body text-end">Rp {{ number_format($row->financing, 0, ',', '.') }}</td>
-            <td class="text-body text-end">Rp {{ number_format($row->surplus_deficit, 0, ',', '.') }}</td>
+            <td class="text-body text-end">Rp {{ number_format($row->expenditure, 0, ',', '.') }}</td>
             <td>
-              <form action="{{ route('infographics.apbd.destroy', $row->id) }}" method="POST">
+              <form action="{{ route('admin.infographics.apbd.destroy', $row->id) }}" method="POST">
                 <div class="d-flex justify-content-center" style="gap: 18px;">
 
-                  <a href="{{ route('infographics.apbd.show', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Detail">
+                  <a href="{{ route('admin.infographics.apbd.show', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Detail">
                     <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
                   </a>
 
-                  <a href="{{ route('infographics.apbd.edit', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                  <a href="{{ route('admin.infographics.apbd.edit', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
                     <i class="material-symbols-outlined fs-16 fw-normal text-warning">edit</i>
                   </a>
 
