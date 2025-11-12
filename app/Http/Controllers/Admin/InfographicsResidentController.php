@@ -30,7 +30,7 @@ class InfographicsResidentController extends Controller
       'main' => 'admin.infographics.resident.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
@@ -50,11 +50,11 @@ class InfographicsResidentController extends Controller
       'main' => 'admin.infographics.resident.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'infographics.resident.index',
+          'route' => 'admin.infographics.resident.index',
           'title' => 'Infografis Penduduk',
         ],
         [
@@ -77,7 +77,7 @@ class InfographicsResidentController extends Controller
       $resident->update($validatedData);
       DB::commit();
 
-      return redirect()->route('infographics.resident.index')
+      return redirect()->route('admin.infographics.resident.index')
         ->with('success', 'Data infografis kependudukan berhasil diperbarui.');
     } catch (\Exception $e) {
       DB::rollBack();

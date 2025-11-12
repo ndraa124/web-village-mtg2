@@ -24,7 +24,7 @@
         <small class="text-secondary">Data ini akan ditampilkan pada halaman depan website.</small>
       </div>
 
-      <form action="{{ route('infographics.resident.update', $resident->id) }}" method="POST">
+      <form action="{{ route('admin.infographics.resident.update', $resident->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -122,7 +122,7 @@
           <div class="col-lg-12">
             <div class="d-flex gap-2">
               <button type="submit" class="btn btn-primary fw-normal text-white">Simpan Perubahan</button>
-              <a href="{{ route('infographics.resident.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('admin.infographics.resident.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('infographics.resident.job.update', $residentJob->id) }}" method="POST">
+      <form action="{{ route('admin.infographics.resident.job.update', $residentJob->id) }}" method="POST">
         @csrf @method('PUT')
 
         <div class="row">
@@ -22,7 +22,7 @@
                   <option value="">-- Pilih Pekerjaan --</option>
                   @foreach ($jobs as $job)
                   <option value="{{ $job->id }}" {{ old('job_id', $residentJob->job_id) == $job->id ? 'selected' : '' }}>
-                    {{ $job->job_name }} {{-- Asumsi 'job_name' --}}
+                    {{ $job->job_name }}
                   </option>
                   @endforeach
                 </select>
@@ -53,7 +53,7 @@
           <div class="col-lg-12">
             <div class="d-flex gap-2">
               <button type="submit" class="btn btn-primary fw-normal text-white">Ubah</button>
-              <a href="{{ route('infographics.resident.job.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('admin.infographics.resident.job.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>

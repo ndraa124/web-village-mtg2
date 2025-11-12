@@ -47,7 +47,7 @@
 
   <div class="col-lg-12">
     <div class="d-flex gap-2">
-      <a href="{{ route('infographics.resident.edit', $resident->id) }}" class="btn btn-warning fw-normal text-white">Edit</a>
+      <a href="{{ route('admin.infographics.resident.edit', $resident->id) }}" class="btn btn-warning fw-normal text-white">Edit</a>
     </div>
   </div>
 </div>

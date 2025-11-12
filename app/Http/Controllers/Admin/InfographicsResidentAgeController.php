@@ -32,7 +32,7 @@ class InfographicsResidentAgeController extends Controller
       'main' => 'admin.infographics.resident_age.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
@@ -52,11 +52,11 @@ class InfographicsResidentAgeController extends Controller
       'main' => 'admin.infographics.resident_age.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'infographics.resident.age.index',
+          'route' => 'admin.infographics.resident.age.index',
           'title' => 'Kelompok Umur Penduduk',
         ],
         [
@@ -76,37 +76,11 @@ class InfographicsResidentAgeController extends Controller
     try {
       InfographicsResidentAge::create($validatedData);
 
-      return redirect()->route('infographics.resident.age.index')
+      return redirect()->route('admin.infographics.resident.age.index')
         ->with('success', 'Data kelompok umur berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
-  }
-
-  public function show(InfographicsResidentAge $residentAge)
-  {
-    $residentAge->load('gender');
-
-    $data = [
-      'title' => 'Detail Kelompok Umur',
-      'main' => 'admin.infographics.resident_age.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard',
-        ],
-        [
-          'route' => 'infographics.resident.age.index',
-          'title' => 'Kelompok Umur Penduduk',
-        ],
-        [
-          'title' => 'Detail Kelompok Umur',
-        ]
-      ],
-      'age' => $residentAge
-    ];
-
-    return view('admin.layout.template', $data);
   }
 
   public function edit(InfographicsResidentAge $residentAge)
@@ -118,11 +92,11 @@ class InfographicsResidentAgeController extends Controller
       'main' => 'admin.infographics.resident_age.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'infographics.resident.age.index',
+          'route' => 'admin.infographics.resident.age.index',
           'title' => 'Kelompok Umur Penduduk',
         ],
         [
@@ -142,7 +116,7 @@ class InfographicsResidentAgeController extends Controller
 
     $residentAge->update($validatedData);
 
-    return redirect()->route('infographics.resident.age.index')
+    return redirect()->route('admin.infographics.resident.age.index')
       ->with('success', 'Data kelompok umur berhasil diperbarui.');
   }
 
@@ -150,7 +124,7 @@ class InfographicsResidentAgeController extends Controller
   {
     $residentAge->delete();
 
-    return redirect()->route('infographics.resident.age.index')
+    return redirect()->route('admin.infographics.resident.age.index')
       ->with('success', 'Data kelompok umur berhasil dihapus.');
   }
 }

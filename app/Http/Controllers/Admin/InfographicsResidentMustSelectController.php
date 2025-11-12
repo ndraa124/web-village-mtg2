@@ -29,7 +29,7 @@ class InfographicsResidentMustSelectController extends Controller
       'main' => 'admin.infographics.resident_must_select.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -49,11 +49,11 @@ class InfographicsResidentMustSelectController extends Controller
       'main' => 'admin.infographics.resident_must_select.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.resident.must_select.index',
+          'route' => 'admin.infographics.resident.must_select.index',
           'title' => 'Data Penduduk (Wajib Pilih)'
         ],
         ['title' => 'Tambah Data'],
@@ -70,35 +70,11 @@ class InfographicsResidentMustSelectController extends Controller
     try {
       InfographicsResidentMustSelect::create($validatedData);
 
-      return redirect()->route('infographics.resident.must_select.index')
+      return redirect()->route('admin.infographics.resident.must_select.index')
         ->with('success', 'Data penduduk wajib pilih berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
-  }
-
-  public function show(InfographicsResidentMustSelect $residentMustSelect)
-  {
-    $data = [
-      'title' => 'Detail Data Penduduk (Wajib Pilih)',
-      'main' => 'admin.infographics.resident_must_select.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard'
-        ],
-        [
-          'route' => 'infographics.resident.must_select.index',
-          'title' => 'Data Penduduk (Wajib Pilih)'
-        ],
-        [
-          'title' => 'Detail Data'
-        ],
-      ],
-      'residentMustSelect' => $residentMustSelect
-    ];
-
-    return view('admin.layout.template', $data);
   }
 
   public function edit(InfographicsResidentMustSelect $residentMustSelect)
@@ -108,11 +84,11 @@ class InfographicsResidentMustSelectController extends Controller
       'main' => 'admin.infographics.resident_must_select.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.resident.must_select.index',
+          'route' => 'admin.infographics.resident.must_select.index',
           'title' => 'Data Penduduk (Wajib Pilih)'
         ],
         [
@@ -132,7 +108,7 @@ class InfographicsResidentMustSelectController extends Controller
     try {
       $residentMustSelect->update($validatedData);
 
-      return redirect()->route('infographics.resident.must_select.index')
+      return redirect()->route('admin.infographics.resident.must_select.index')
         ->with('success', 'Data penduduk wajib pilih berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -144,7 +120,7 @@ class InfographicsResidentMustSelectController extends Controller
     try {
       $residentMustSelect->delete();
 
-      return redirect()->route('infographics.resident.must_select.index')
+      return redirect()->route('admin.infographics.resident.must_select.index')
         ->with('success', 'Data penduduk wajib pilih berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

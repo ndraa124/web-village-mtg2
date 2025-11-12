@@ -10,7 +10,7 @@
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('infographics.resident.marriage.store') }}" method="POST">
+      <form action="{{ route('admin.infographics.resident.marriage.store') }}" method="POST">
         @csrf
 
         <div class="row">
@@ -29,7 +29,7 @@
                   <option value="">-- Pilih Perkawinan --</option>
                   @foreach ($marriages as $marriage)
                   <option value="{{ $marriage->id }}" {{ old('marriage_id') == $marriage->id ? 'selected' : '' }}>
-                    {{ $marriage->marriage_name }} {{-- Asumsi 'marriage_name' --}}
+                    {{ $marriage->marriage_name }}
                   </option>
                   @endforeach
                 </select>
@@ -64,7 +64,7 @@
               @if ($marriages->isNotEmpty())
               <button type="submit" class="btn btn-primary fw-normal text-white">Tambah</button>
               @endif
-              <a href="{{ route('infographics.resident.marriage.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('admin.infographics.resident.marriage.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>

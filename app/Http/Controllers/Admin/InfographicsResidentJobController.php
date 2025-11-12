@@ -32,7 +32,7 @@ class InfographicsResidentJobController extends Controller
       'main' => 'admin.infographics.resident_job.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -58,11 +58,11 @@ class InfographicsResidentJobController extends Controller
       'main' => 'admin.infographics.resident_job.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.resident.job.index',
+          'route' => 'admin.infographics.resident.job.index',
           'title' => 'Data Penduduk (Pekerjaan)'
         ],
         ['title' => 'Tambah Data'],
@@ -80,37 +80,11 @@ class InfographicsResidentJobController extends Controller
     try {
       InfographicsResidentJob::create($validatedData);
 
-      return redirect()->route('infographics.resident.job.index')
+      return redirect()->route('admin.infographics.resident.job.index')
         ->with('success', 'Data pekerjaan penduduk berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
-  }
-
-  public function show(InfographicsResidentJob $residentJob)
-  {
-    $residentJob->load('job');
-
-    $data = [
-      'title' => 'Detail Data Pekerjaan Penduduk',
-      'main' => 'admin.infographics.resident_job.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard'
-        ],
-        [
-          'route' => 'infographics.resident.job.index',
-          'title' => 'Data Penduduk (Pekerjaan)'
-        ],
-        [
-          'title' => 'Detail Data'
-        ],
-      ],
-      'residentJob' => $residentJob
-    ];
-
-    return view('admin.layout.template', $data);
   }
 
   public function edit(InfographicsResidentJob $residentJob)
@@ -125,11 +99,11 @@ class InfographicsResidentJobController extends Controller
       'main' => 'admin.infographics.resident_job.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.resident.job.index',
+          'route' => 'admin.infographics.resident.job.index',
           'title' => 'Data Penduduk (Pekerjaan)'
         ],
         [
@@ -150,7 +124,7 @@ class InfographicsResidentJobController extends Controller
     try {
       $residentJob->update($validatedData);
 
-      return redirect()->route('infographics.resident.job.index')
+      return redirect()->route('admin.infographics.resident.job.index')
         ->with('success', 'Data pekerjaan penduduk berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -162,7 +136,7 @@ class InfographicsResidentJobController extends Controller
     try {
       $residentJob->delete();
 
-      return redirect()->route('infographics.resident.job.index')
+      return redirect()->route('admin.infographics.resident.job.index')
         ->with('success', 'Data pekerjaan penduduk berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

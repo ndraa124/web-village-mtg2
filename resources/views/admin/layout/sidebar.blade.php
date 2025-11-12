@@ -124,7 +124,7 @@
           </li>
           <li class="menu-item">
             <a href="{{ route('admin.infographics.resident.hamlet.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.hamlet.*') ? 'active' : '' }}">
-              Jumlah Dusun
+              Jumlah Jaga
             </a>
           </li>
           <li class="menu-item">

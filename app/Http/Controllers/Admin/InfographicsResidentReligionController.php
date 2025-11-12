@@ -32,7 +32,7 @@ class InfographicsResidentReligionController extends Controller
       'main' => 'admin.infographics.resident_religion.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -58,11 +58,11 @@ class InfographicsResidentReligionController extends Controller
       'main' => 'admin.infographics.resident_religion.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.resident.religion.index',
+          'route' => 'admin.infographics.resident.religion.index',
           'title' => 'Data Penduduk (Agama)'
         ],
         ['title' => 'Tambah Data'],
@@ -80,37 +80,11 @@ class InfographicsResidentReligionController extends Controller
     try {
       InfographicsResidentReligion::create($validatedData);
 
-      return redirect()->route('infographics.resident.religion.index')
+      return redirect()->route('admin.infographics.resident.religion.index')
         ->with('success', 'Data agama penduduk berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
-  }
-
-  public function show(InfographicsResidentReligion $residentReligion)
-  {
-    $residentReligion->load('religion');
-
-    $data = [
-      'title' => 'Detail Data Agama Penduduk',
-      'main' => 'admin.infographics.resident_religion.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard'
-        ],
-        [
-          'route' => 'infographics.resident.religion.index',
-          'title' => 'Data Penduduk (Agama)'
-        ],
-        [
-          'title' => 'Detail Data'
-        ],
-      ],
-      'residentReligion' => $residentReligion
-    ];
-
-    return view('admin.layout.template', $data);
   }
 
   public function edit(InfographicsResidentReligion $residentReligion)
@@ -127,11 +101,11 @@ class InfographicsResidentReligionController extends Controller
       'main' => 'admin.infographics.resident_religion.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.resident.religion.index',
+          'route' => 'admin.infographics.resident.religion.index',
           'title' => 'Data Penduduk (Agama)'
         ],
         [
@@ -152,7 +126,7 @@ class InfographicsResidentReligionController extends Controller
     try {
       $residentReligion->update($validatedData);
 
-      return redirect()->route('infographics.resident.religion.index')
+      return redirect()->route('admin.infographics.resident.religion.index')
         ->with('success', 'Data agama penduduk berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -164,7 +138,7 @@ class InfographicsResidentReligionController extends Controller
     try {
       $residentReligion->delete();
 
-      return redirect()->route('infographics.resident.religion.index')
+      return redirect()->route('admin.infographics.resident.religion.index')
         ->with('success', 'Data agama penduduk berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

@@ -1,6 +1,6 @@
 <div class="card bg-white rounded-10 border border-white mb-4">
   <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
-    <form action="{{ route('infographics.resident.age.index') }}" method="GET" class="table-src-form position-relative m-0">
+    <form action="{{ route('admin.infographics.resident.age.index') }}" method="GET" class="table-src-form position-relative m-0">
       <input type="text" name="search" class="form-control w-350" value="{{ request('search') }}" placeholder="Cari kelompok umur atau jenis kelamin...">
 
       <button type="submit" class="src-btn position-absolute top-50 start-0 translate-middle-y bg-transparent p-0 border-0">
@@ -8,7 +8,7 @@
       </button>
     </form>
 
-    <a href="{{ route('infographics.resident.age.create') }}" class="text-primary fs-16 text-decoration-none">+ Tambah Baru</a>
+    <a href="{{ route('admin.infographics.resident.age.create') }}" class="text-primary fs-16 text-decoration-none">+ Tambah Baru</a>
   </div>
 
   @if ($message = Session::get('success'))
@@ -51,14 +51,10 @@
             <td class="text-body text-center">{{ $row->total }}</td>
             <td class="text-body text-center">{{ $row->created_at->format('d M Y, H:i') }}</td>
             <td>
-              <form action="{{ route('infographics.resident.age.destroy', $row->id) }}" method="POST">
+              <form action="{{ route('admin.infographics.resident.age.destroy', $row->id) }}" method="POST">
                 <div class="d-flex justify-content-center" style="gap: 18px;">
 
-                  <a href="{{ route('infographics.resident.age.show', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Detail">
-                    <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
-                  </a>
-
-                  <a href="{{ route('infographics.resident.age.edit', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                  <a href="{{ route('admin.infographics.resident.age.edit', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
                     <i class="material-symbols-outlined fs-16 fw-normal text-warning">edit</i>
                   </a>
 

@@ -32,7 +32,7 @@ class InfographicsResidentMarriageController extends Controller
       'main' => 'admin.infographics.resident_marriage.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -58,11 +58,11 @@ class InfographicsResidentMarriageController extends Controller
       'main' => 'admin.infographics.resident_marriage.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.resident.marriage.index',
+          'route' => 'admin.infographics.resident.marriage.index',
           'title' => 'Data Penduduk (Perkawinan)'
         ],
         ['title' => 'Tambah Data'],
@@ -80,37 +80,11 @@ class InfographicsResidentMarriageController extends Controller
     try {
       InfographicsResidentMarriage::create($validatedData);
 
-      return redirect()->route('infographics.resident.marriage.index')
+      return redirect()->route('admin.infographics.resident.marriage.index')
         ->with('success', 'Data perkawinan penduduk berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
-  }
-
-  public function show(InfographicsResidentMarriage $residentMarriage)
-  {
-    $residentMarriage->load('marriage');
-
-    $data = [
-      'title' => 'Detail Data Perkawinan Penduduk',
-      'main' => 'admin.infographics.resident_marriage.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard'
-        ],
-        [
-          'route' => 'infographics.resident.marriage.index',
-          'title' => 'Data Penduduk (Perkawinan)'
-        ],
-        [
-          'title' => 'Detail Data'
-        ],
-      ],
-      'residentMarriage' => $residentMarriage
-    ];
-
-    return view('admin.layout.template', $data);
   }
 
   public function edit(InfographicsResidentMarriage $residentMarriage)
@@ -127,11 +101,11 @@ class InfographicsResidentMarriageController extends Controller
       'main' => 'admin.infographics.resident_marriage.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.resident.marriage.index',
+          'route' => 'admin.infographics.resident.marriage.index',
           'title' => 'Data Penduduk (Perkawinan)'
         ],
         [
@@ -152,7 +126,7 @@ class InfographicsResidentMarriageController extends Controller
     try {
       $residentMarriage->update($validatedData);
 
-      return redirect()->route('infographics.resident.marriage.index')
+      return redirect()->route('admin.infographics.resident.marriage.index')
         ->with('success', 'Data perkawinan penduduk berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -164,7 +138,7 @@ class InfographicsResidentMarriageController extends Controller
     try {
       $residentMarriage->delete();
 
-      return redirect()->route('infographics.resident.marriage.index')
+      return redirect()->route('admin.infographics.resident.marriage.index')
         ->with('success', 'Data perkawinan penduduk berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

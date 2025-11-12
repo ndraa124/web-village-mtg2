@@ -114,19 +114,26 @@ Route::middleware(['authenticate'])->group(function () {
                     });
 
                     Route::resource('age', InfographicsResidentAgeController::class)
-                        ->parameter('age', 'residentAge');
+                        ->parameter('age', 'residentAge')
+                        ->except(['show']);
                     Route::resource('hamlet', InfographicsResidentHamletController::class)
-                        ->parameter('hamlet', 'residentHamlet');
+                        ->parameter('hamlet', 'residentHamlet')
+                        ->except(['show']);
                     Route::resource('education', InfographicsResidentEducationController::class)
-                        ->parameters(['education' => 'residentEducation']);
+                        ->parameters(['education' => 'residentEducation'])
+                        ->except(['show']);
                     Route::resource('job', InfographicsResidentJobController::class)
-                        ->parameters(['job' => 'residentJob']);
+                        ->parameters(['job' => 'residentJob'])
+                        ->except(['show']);
                     Route::resource('must_select', InfographicsResidentMustSelectController::class)
-                        ->parameters(['must_select' => 'residentMustSelect']);
+                        ->parameters(['must_select' => 'residentMustSelect'])
+                        ->except(['show']);
                     Route::resource('marriage', InfographicsResidentMarriageController::class)
-                        ->parameters(['marriage' => 'residentMarriage']);
+                        ->parameters(['marriage' => 'residentMarriage'])
+                        ->except(['show']);
                     Route::resource('religion', InfographicsResidentReligionController::class)
-                        ->parameters(['religion' => 'residentReligion']);
+                        ->parameters(['religion' => 'residentReligion'])
+                        ->except(['show']);
                 });
 
             Route::prefix('/apbd')

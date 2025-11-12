@@ -10,7 +10,7 @@
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('infographics.resident.hamlet.store') }}" method="POST">
+      <form action="{{ route('admin.infographics.resident.hamlet.store') }}" method="POST">
         @csrf
 
         <div class="row">
@@ -23,13 +23,13 @@
           @else
           <div class="col-lg-6">
             <div class="mb-20">
-              <label class="label fs-16 mb-2">Nama Dusun</label>
+              <label class="label fs-16 mb-2">Nama Jaga</label>
               <div class="form-group">
                 <select name="hamlet_id" class="form-select form-control" id="hamlet-id" aria-label="Hamlet">
-                  <option value="">-- Pilih Dusun --</option>
+                  <option value="">-- Pilih Jaga --</option>
                   @foreach ($hamlets as $hamlet)
                   <option value="{{ $hamlet->id }}" {{ old('hamlet_id') == $hamlet->id ? 'selected' : '' }}>
-                    {{ $hamlet->hamlet_name }}
+                    Jaga {{ $hamlet->hamlet_name }}
                   </option>
                   @endforeach
                 </select>
@@ -64,7 +64,7 @@
               @if ($hamlets->isNotEmpty())
               <button type="submit" class="btn btn-primary fw-normal text-white">Tambah</button>
               @endif
-              <a href="{{ route('infographics.resident.hamlet.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('admin.infographics.resident.hamlet.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>

@@ -32,7 +32,7 @@ class InfographicsResidentEducationController extends Controller
       'main' => 'admin.infographics.resident_education.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -58,11 +58,11 @@ class InfographicsResidentEducationController extends Controller
       'main' => 'admin.infographics.resident_education.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.resident.education.index',
+          'route' => 'admin.infographics.resident.education.index',
           'title' => 'Data Penduduk (Pendidikan)'
         ],
         ['title' => 'Tambah Data'],
@@ -80,37 +80,11 @@ class InfographicsResidentEducationController extends Controller
     try {
       InfographicsResidentEducation::create($validatedData);
 
-      return redirect()->route('infographics.resident.education.index')
+      return redirect()->route('admin.infographics.resident.education.index')
         ->with('success', 'Data pendidikan penduduk berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
-  }
-
-  public function show(InfographicsResidentEducation $residentEducation)
-  {
-    $residentEducation->load('education');
-
-    $data = [
-      'title' => 'Detail Data Pendidikan Penduduk',
-      'main' => 'admin.infographics.resident_education.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard'
-        ],
-        [
-          'route' => 'infographics.resident.education.index',
-          'title' => 'Data Penduduk (Pendidikan)'
-        ],
-        [
-          'title' => 'Detail Data'
-        ],
-      ],
-      'residentEducation' => $residentEducation
-    ];
-
-    return view('admin.layout.template', $data);
   }
 
   public function edit(InfographicsResidentEducation $residentEducation)
@@ -125,11 +99,11 @@ class InfographicsResidentEducationController extends Controller
       'main' => 'admin.infographics.resident_education.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.resident.education.index',
+          'route' => 'admin.infographics.resident.education.index',
           'title' => 'Data Penduduk (Pendidikan)'
         ],
         [
@@ -150,7 +124,7 @@ class InfographicsResidentEducationController extends Controller
     try {
       $residentEducation->update($validatedData);
 
-      return redirect()->route('infographics.resident.education.index')
+      return redirect()->route('admin.infographics.resident.education.index')
         ->with('success', 'Data pendidikan penduduk berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -162,7 +136,7 @@ class InfographicsResidentEducationController extends Controller
     try {
       $residentEducation->delete();
 
-      return redirect()->route('infographics.resident.education.index')
+      return redirect()->route('admin.infographics.resident.education.index')
         ->with('success', 'Data pendidikan penduduk berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

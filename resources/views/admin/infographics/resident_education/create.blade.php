@@ -10,7 +10,7 @@
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('infographics.resident.education.store') }}" method="POST">
+      <form action="{{ route('admin.infographics.resident.education.store') }}" method="POST">
         @csrf
 
         <div class="row">
@@ -64,7 +64,7 @@
               @if ($educations->isNotEmpty())
               <button type="submit" class="btn btn-primary fw-normal text-white">Tambah</button>
               @endif
-              <a href="{{ route('infographics.resident.education.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('admin.infographics.resident.education.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>
