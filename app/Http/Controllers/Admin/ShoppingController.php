@@ -25,10 +25,10 @@ class ShoppingController extends Controller
 
     $data = [
       'title' => 'Daftar Belanja',
-      'main' => 'admin.shopping.index',
+      'main' => 'admin.master.shopping.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
@@ -45,14 +45,14 @@ class ShoppingController extends Controller
   {
     $data = [
       'title' => 'Tambah Belanja',
-      'main' => 'admin.shopping.create',
+      'main' => 'admin.master.shopping.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.shopping.index',
+          'route' => 'admin.master.shopping.index',
           'title' => 'Belanja',
         ],
         [
@@ -71,49 +71,25 @@ class ShoppingController extends Controller
     try {
       Shopping::create($validatedData);
 
-      return redirect()->route('master.shopping.index')
+      return redirect()->route('admin.master.shopping.index')
         ->with('success', 'Belanja berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
   }
 
-  public function show(Shopping $shopping)
-  {
-    $data = [
-      'title' => 'Detail Belanja',
-      'main' => 'admin.shopping.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard',
-        ],
-        [
-          'route' => 'master.shopping.index',
-          'title' => 'Belanja',
-        ],
-        [
-          'title' => 'Detail Belanja',
-        ]
-      ],
-      'shopping' => $shopping
-    ];
-
-    return view('admin.layout.template', $data);
-  }
-
   public function edit(Shopping $shopping)
   {
     $data = [
       'title' => 'Edit Belanja',
-      'main' => 'admin.shopping.edit',
+      'main' => 'admin.master.shopping.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.shopping.index',
+          'route' => 'admin.master.shopping.index',
           'title' => 'Belanja',
         ],
         [
@@ -132,7 +108,7 @@ class ShoppingController extends Controller
 
     $shopping->update($validatedData);
 
-    return redirect()->route('master.shopping.index')
+    return redirect()->route('admin.master.shopping.index')
       ->with('success', 'Belanja berhasil diperbarui.');
   }
 
@@ -140,7 +116,7 @@ class ShoppingController extends Controller
   {
     $shopping->delete();
 
-    return redirect()->route('master.shopping.index')
+    return redirect()->route('admin.master.shopping.index')
       ->with('success', 'Belanja berhasil dihapus.');
   }
 }

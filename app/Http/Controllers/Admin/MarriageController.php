@@ -25,10 +25,10 @@ class MarriageController extends Controller
 
     $data = [
       'title' => 'Daftar Perkawinan',
-      'main' => 'admin.marriage.index',
+      'main' => 'admin.master.marriage.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
@@ -45,14 +45,14 @@ class MarriageController extends Controller
   {
     $data = [
       'title' => 'Tambah Perkawinan',
-      'main' => 'admin.marriage.create',
+      'main' => 'admin.master.marriage.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.marriage.index',
+          'route' => 'admin.master.marriage.index',
           'title' => 'Perkawinan',
         ],
         [
@@ -71,49 +71,25 @@ class MarriageController extends Controller
     try {
       Marriage::create($validatedData);
 
-      return redirect()->route('master.marriage.index')
+      return redirect()->route('admin.master.marriage.index')
         ->with('success', 'Perkawinan berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
   }
 
-  public function show(Marriage $marriage)
-  {
-    $data = [
-      'title' => 'Detail Perkawinan',
-      'main' => 'admin.marriage.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard',
-        ],
-        [
-          'route' => 'master.marriage.index',
-          'title' => 'Perkawinan',
-        ],
-        [
-          'title' => 'Detail Perkawinan',
-        ]
-      ],
-      'marriage' => $marriage
-    ];
-
-    return view('admin.layout.template', $data);
-  }
-
   public function edit(Marriage $marriage)
   {
     $data = [
       'title' => 'Edit Perkawinan',
-      'main' => 'admin.marriage.edit',
+      'main' => 'admin.master.marriage.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.marriage.index',
+          'route' => 'admin.master.marriage.index',
           'title' => 'Perkawinan',
         ],
         [
@@ -132,7 +108,7 @@ class MarriageController extends Controller
 
     $marriage->update($validatedData);
 
-    return redirect()->route('master.marriage.index')
+    return redirect()->route('admin.master.marriage.index')
       ->with('success', 'Perkawinan berhasil diperbarui.');
   }
 
@@ -140,7 +116,7 @@ class MarriageController extends Controller
   {
     $marriage->delete();
 
-    return redirect()->route('master.marriage.index')
+    return redirect()->route('admin.master.marriage.index')
       ->with('success', 'Perkawinan berhasil dihapus.');
   }
 }

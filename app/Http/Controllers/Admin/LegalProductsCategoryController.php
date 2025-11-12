@@ -26,10 +26,10 @@ class LegalProductsCategoryController extends Controller
 
     $data = [
       'title' => 'Manajemen Kategori Produk Hukum',
-      'main' => 'admin.legal_product_category.index',
+      'main' => 'admin.master.legal_product_category.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -46,14 +46,14 @@ class LegalProductsCategoryController extends Controller
   {
     $data = [
       'title' => 'Tambah Kategori Produk Hukum',
-      'main' => 'admin.legal_product_category.create',
+      'main' => 'admin.master.legal_product_category.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'master.legal-product-category.index',
+          'route' => 'admin.master.legal-product-category.index',
           'title' => 'Kategori Produk Hukum'
         ],
         [
@@ -70,7 +70,7 @@ class LegalProductsCategoryController extends Controller
     try {
       LegalProductsCategories::create($request->validated());
 
-      return redirect()->route('master.legal-product-category.index')
+      return redirect()->route('admin.master.legal-product-category.index')
         ->with('success', 'Kategori berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -81,14 +81,14 @@ class LegalProductsCategoryController extends Controller
   {
     $data = [
       'title' => 'Edit Kategori Produk Hukum',
-      'main' => 'admin.legal_product_category.edit',
+      'main' => 'admin.master.legal_product_category.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'master.legal-product-category.index',
+          'route' => 'admin.master.legal-product-category.index',
           'title' => 'Kategori Produk Hukum'
         ],
         [
@@ -106,7 +106,7 @@ class LegalProductsCategoryController extends Controller
     try {
       $category->update($request->validated());
 
-      return redirect()->route('master.legal-product-category.index')
+      return redirect()->route('admin.master.legal-product-category.index')
         ->with('success', 'Kategori berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -118,7 +118,7 @@ class LegalProductsCategoryController extends Controller
     try {
       $category->delete();
 
-      return redirect()->route('master.legal-product-category.index')
+      return redirect()->route('admin.master.legal-product-category.index')
         ->with('success', 'Kategori berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

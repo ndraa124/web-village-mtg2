@@ -24,15 +24,15 @@ class HamletController extends Controller
             ->appends($request->query());
 
         $data = [
-            'title' => 'Daftar Dusun',
-            'main' => 'admin.hamlet.index',
+            'title' => 'Daftar Jaga',
+            'main' => 'admin.master.hamlet.index',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'title' => 'Dusun',
+                    'title' => 'Jaga',
                 ]
             ],
             'hamlets' => $hamlets
@@ -44,19 +44,19 @@ class HamletController extends Controller
     public function create()
     {
         $data = [
-            'title' => 'Tambah Dusun',
-            'main' => 'admin.hamlet.create',
+            'title' => 'Tambah Jaga',
+            'main' => 'admin.master.hamlet.create',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'master.hamlet.index',
-                    'title' => 'Dusun',
+                    'route' => 'admin.master.hamlet.index',
+                    'title' => 'Jaga',
                 ],
                 [
-                    'title' => 'Tambah Dusun',
+                    'title' => 'Tambah Jaga',
                 ]
             ]
         ];
@@ -71,53 +71,29 @@ class HamletController extends Controller
         try {
             Hamlet::create($validatedData);
 
-            return redirect()->route('master.hamlet.index')
-                ->with('success', 'Dusun berhasil ditambahkan.');
+            return redirect()->route('admin.master.hamlet.index')
+                ->with('success', 'Jaga berhasil ditambahkan.');
         } catch (\Exception $e) {
             return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
         }
     }
 
-    public function show(Hamlet $hamlet)
-    {
-        $data = [
-            'title' => 'Detail Dusun',
-            'main' => 'admin.hamlet.show',
-            'breadcrumbs' => [
-                [
-                    'route' => 'dashboard',
-                    'title' => 'Dashboard',
-                ],
-                [
-                    'route' => 'master.hamlet.index',
-                    'title' => 'Dusun',
-                ],
-                [
-                    'title' => 'Detail Dusun',
-                ]
-            ],
-            'hamlet' => $hamlet
-        ];
-
-        return view('admin.layout.template', $data);
-    }
-
     public function edit(Hamlet $hamlet)
     {
         $data = [
-            'title' => 'Edit Dusun',
-            'main' => 'admin.hamlet.edit',
+            'title' => 'Edit Jaga',
+            'main' => 'admin.master.hamlet.edit',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'master.hamlet.index',
-                    'title' => 'Dusun',
+                    'route' => 'admin.master.hamlet.index',
+                    'title' => 'Jaga',
                 ],
                 [
-                    'title' => 'Edit Dusun',
+                    'title' => 'Edit Jaga',
                 ]
             ],
             'hamlet' => $hamlet
@@ -132,15 +108,15 @@ class HamletController extends Controller
 
         $hamlet->update($validatedData);
 
-        return redirect()->route('master.hamlet.index')
-            ->with('success', 'Dusun berhasil diperbarui.');
+        return redirect()->route('admin.master.hamlet.index')
+            ->with('success', 'Jaga berhasil diperbarui.');
     }
 
     public function destroy(Hamlet $hamlet)
     {
         $hamlet->delete();
 
-        return redirect()->route('master.hamlet.index')
-            ->with('success', 'Dusun berhasil dihapus.');
+        return redirect()->route('admin.master.hamlet.index')
+            ->with('success', 'Jaga berhasil dihapus.');
     }
 }

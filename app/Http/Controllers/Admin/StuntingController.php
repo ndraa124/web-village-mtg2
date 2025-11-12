@@ -25,10 +25,10 @@ class StuntingController extends Controller
 
     $data = [
       'title' => 'Daftar Stunting',
-      'main' => 'admin.stunting.index',
+      'main' => 'admin.master.stunting.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
@@ -45,14 +45,14 @@ class StuntingController extends Controller
   {
     $data = [
       'title' => 'Tambah Stunting',
-      'main' => 'admin.stunting.create',
+      'main' => 'admin.master.stunting.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.stunting.index',
+          'route' => 'admin.master.stunting.index',
           'title' => 'Stunting',
         ],
         [
@@ -71,49 +71,25 @@ class StuntingController extends Controller
     try {
       Stunting::create($validatedData);
 
-      return redirect()->route('master.stunting.index')
+      return redirect()->route('admin.master.stunting.index')
         ->with('success', 'Stunting berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
   }
 
-  public function show(Stunting $stunting)
-  {
-    $data = [
-      'title' => 'Detail Stunting',
-      'main' => 'admin.stunting.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard',
-        ],
-        [
-          'route' => 'master.stunting.index',
-          'title' => 'Stunting',
-        ],
-        [
-          'title' => 'Detail Stunting',
-        ]
-      ],
-      'stunting' => $stunting
-    ];
-
-    return view('admin.layout.template', $data);
-  }
-
   public function edit(Stunting $stunting)
   {
     $data = [
       'title' => 'Edit Stunting',
-      'main' => 'admin.stunting.edit',
+      'main' => 'admin.master.stunting.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.stunting.index',
+          'route' => 'admin.master.stunting.index',
           'title' => 'Stunting',
         ],
         [
@@ -132,7 +108,7 @@ class StuntingController extends Controller
 
     $stunting->update($validatedData);
 
-    return redirect()->route('master.stunting.index')
+    return redirect()->route('admin.master.stunting.index')
       ->with('success', 'Stunting berhasil diperbarui.');
   }
 
@@ -140,7 +116,7 @@ class StuntingController extends Controller
   {
     $stunting->delete();
 
-    return redirect()->route('master.stunting.index')
+    return redirect()->route('admin.master.stunting.index')
       ->with('success', 'Stunting berhasil dihapus.');
   }
 }

@@ -25,10 +25,10 @@ class EducationController extends Controller
 
         $data = [
             'title' => 'Daftar Pendidikan',
-            'main' => 'admin.education.index',
+            'main' => 'admin.master.education.index',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
@@ -45,14 +45,14 @@ class EducationController extends Controller
     {
         $data = [
             'title' => 'Tambah Pendidikan',
-            'main' => 'admin.education.create',
+            'main' => 'admin.master.education.create',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'master.education.index',
+                    'route' => 'admin.master.education.index',
                     'title' => 'Pendidikan',
                 ],
                 [
@@ -71,49 +71,25 @@ class EducationController extends Controller
         try {
             Education::create($validatedData);
 
-            return redirect()->route('master.education.index')
+            return redirect()->route('admin.master.education.index')
                 ->with('success', 'Pendidikan berhasil ditambahkan.');
         } catch (\Exception $e) {
             return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
         }
     }
 
-    public function show(Education $education)
-    {
-        $data = [
-            'title' => 'Detail Pendidikan',
-            'main' => 'admin.education.show',
-            'breadcrumbs' => [
-                [
-                    'route' => 'dashboard',
-                    'title' => 'Dashboard',
-                ],
-                [
-                    'route' => 'master.education.index',
-                    'title' => 'Pendidikan',
-                ],
-                [
-                    'title' => 'Detail Pendidikan',
-                ]
-            ],
-            'education' => $education
-        ];
-
-        return view('admin.layout.template', $data);
-    }
-
     public function edit(Education $education)
     {
         $data = [
             'title' => 'Edit Pendidikan',
-            'main' => 'admin.education.edit',
+            'main' => 'admin.master.education.edit',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'master.education.index',
+                    'route' => 'admin.master.education.index',
                     'title' => 'Pendidikan',
                 ],
                 [
@@ -132,7 +108,7 @@ class EducationController extends Controller
 
         $education->update($validatedData);
 
-        return redirect()->route('master.education.index')
+        return redirect()->route('admin.master.education.index')
             ->with('success', 'Pendidikan berhasil diperbarui.');
     }
 
@@ -140,7 +116,7 @@ class EducationController extends Controller
     {
         $education->delete();
 
-        return redirect()->route('master.education.index')
+        return redirect()->route('admin.master.education.index')
             ->with('success', 'Pendidikan berhasil dihapus.');
     }
 }

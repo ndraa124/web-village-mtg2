@@ -25,10 +25,10 @@ class IncomeController extends Controller
 
     $data = [
       'title' => 'Daftar Pendapatan',
-      'main' => 'admin.income.index',
+      'main' => 'admin.master.income.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
@@ -45,14 +45,14 @@ class IncomeController extends Controller
   {
     $data = [
       'title' => 'Tambah Pendapatan',
-      'main' => 'admin.income.create',
+      'main' => 'admin.master.income.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.income.index',
+          'route' => 'admin.master.income.index',
           'title' => 'Pendapatan',
         ],
         [
@@ -71,49 +71,25 @@ class IncomeController extends Controller
     try {
       Income::create($validatedData);
 
-      return redirect()->route('master.income.index')
+      return redirect()->route('admin.master.income.index')
         ->with('success', 'Pendapatan berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
   }
 
-  public function show(Income $income)
-  {
-    $data = [
-      'title' => 'Detail Pendapatan',
-      'main' => 'admin.income.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard',
-        ],
-        [
-          'route' => 'master.income.index',
-          'title' => 'Pendapatan',
-        ],
-        [
-          'title' => 'Detail Pendapatan',
-        ]
-      ],
-      'income' => $income
-    ];
-
-    return view('admin.layout.template', $data);
-  }
-
   public function edit(Income $income)
   {
     $data = [
       'title' => 'Edit Pendapatan',
-      'main' => 'admin.income.edit',
+      'main' => 'admin.master.income.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.income.index',
+          'route' => 'admin.master.income.index',
           'title' => 'Pendapatan',
         ],
         [
@@ -132,7 +108,7 @@ class IncomeController extends Controller
 
     $income->update($validatedData);
 
-    return redirect()->route('master.income.index')
+    return redirect()->route('admin.master.income.index')
       ->with('success', 'Pendapatan berhasil diperbarui.');
   }
 
@@ -140,7 +116,7 @@ class IncomeController extends Controller
   {
     $income->delete();
 
-    return redirect()->route('master.income.index')
+    return redirect()->route('admin.master.income.index')
       ->with('success', 'Pendapatan berhasil dihapus.');
   }
 }

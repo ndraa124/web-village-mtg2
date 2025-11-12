@@ -25,10 +25,10 @@ class FinancingController extends Controller
 
     $data = [
       'title' => 'Daftar Pembiayaan',
-      'main' => 'admin.financing.index',
+      'main' => 'admin.master.financing.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
@@ -45,14 +45,14 @@ class FinancingController extends Controller
   {
     $data = [
       'title' => 'Tambah Pembiayaan',
-      'main' => 'admin.financing.create',
+      'main' => 'admin.master.financing.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.financing.index',
+          'route' => 'admin.master.financing.index',
           'title' => 'Pembiayaan',
         ],
         [
@@ -71,49 +71,25 @@ class FinancingController extends Controller
     try {
       Financing::create($validatedData);
 
-      return redirect()->route('master.financing.index')
+      return redirect()->route('admin.master.financing.index')
         ->with('success', 'Pembiayaan berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
   }
 
-  public function show(Financing $financing)
-  {
-    $data = [
-      'title' => 'Detail Pembiayaan',
-      'main' => 'admin.financing.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard',
-        ],
-        [
-          'route' => 'master.financing.index',
-          'title' => 'Pembiayaan',
-        ],
-        [
-          'title' => 'Detail Pembiayaan',
-        ]
-      ],
-      'financing' => $financing
-    ];
-
-    return view('admin.layout.template', $data);
-  }
-
   public function edit(Financing $financing)
   {
     $data = [
       'title' => 'Edit Pembiayaan',
-      'main' => 'admin.financing.edit',
+      'main' => 'admin.master.financing.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.financing.index',
+          'route' => 'admin.master.financing.index',
           'title' => 'Pembiayaan',
         ],
         [
@@ -132,7 +108,7 @@ class FinancingController extends Controller
 
     $financing->update($validatedData);
 
-    return redirect()->route('master.financing.index')
+    return redirect()->route('admin.master.financing.index')
       ->with('success', 'Pembiayaan berhasil diperbarui.');
   }
 
@@ -140,7 +116,7 @@ class FinancingController extends Controller
   {
     $financing->delete();
 
-    return redirect()->route('master.financing.index')
+    return redirect()->route('admin.master.financing.index')
       ->with('success', 'Pembiayaan berhasil dihapus.');
   }
 }

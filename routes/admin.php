@@ -1,0 +1,226 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
+
+/*
+|--------------------------------------------------------------------------
+| Master Data
+|--------------------------------------------------------------------------
+*/
+use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\GenderController;
+use App\Http\Controllers\Admin\HamletController;
+use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Admin\MarriageController;
+use App\Http\Controllers\Admin\ReligionController;
+use App\Http\Controllers\Admin\IncomeController;
+use App\Http\Controllers\Admin\ShoppingController;
+use App\Http\Controllers\Admin\FinancingController;
+use App\Http\Controllers\Admin\StuntingController;
+use App\Http\Controllers\Admin\SocialAssistanceController;
+use App\Http\Controllers\Admin\IdmStatusController;
+use App\Http\Controllers\Admin\NewsCategoryController;
+use App\Http\Controllers\Admin\LegalProductsCategoryController;
+
+/*
+|--------------------------------------------------------------------------
+| Infographics
+|--------------------------------------------------------------------------
+*/
+use App\Http\Controllers\Admin\InfographicsResidentController;
+use App\Http\Controllers\Admin\InfographicsResidentAgeController;
+use App\Http\Controllers\Admin\InfographicsResidentHamletController;
+use App\Http\Controllers\Admin\InfographicsResidentEducationController;
+use App\Http\Controllers\Admin\InfographicsResidentJobController;
+use App\Http\Controllers\Admin\InfographicsResidentMustSelectController;
+use App\Http\Controllers\Admin\InfographicsResidentMarriageController;
+use App\Http\Controllers\Admin\InfographicsResidentReligionController;
+use App\Http\Controllers\Admin\InfographicsApbdController;
+use App\Http\Controllers\Admin\InfographicsApbdYearController;
+use App\Http\Controllers\Admin\InfographicsApbdIncomeController;
+use App\Http\Controllers\Admin\InfographicsApbdShoppingController;
+use App\Http\Controllers\Admin\InfographicsApbdFinancingController;
+use App\Http\Controllers\Admin\InfographicsApbdDevRealizationController;
+use App\Http\Controllers\Admin\InfographicsStuntingController;
+use App\Http\Controllers\Admin\InfographicsSocialAssistanceController;
+use App\Http\Controllers\Admin\InfographicsIdmController;
+use App\Http\Controllers\Admin\InfographicsIdmIksController;
+use App\Http\Controllers\Admin\InfographicsIdmIkeController;
+use App\Http\Controllers\Admin\InfographicsIdmIklController;
+use App\Http\Controllers\Admin\InfographicsSdgsController;
+
+/*
+|--------------------------------------------------------------------------
+| Content Public
+|--------------------------------------------------------------------------
+*/
+use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\VisionController;
+use App\Http\Controllers\Admin\MissionController;
+use App\Http\Controllers\Admin\ManageNewsController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\ManageLegalProductController;
+use App\Http\Controllers\Admin\AntiCorruptGovernanceController;
+use App\Http\Controllers\Admin\AntiCorruptSupervisionController;
+use App\Http\Controllers\Admin\AntiCorruptServiceQualityController;
+use App\Http\Controllers\Admin\AntiCorruptParticipateController;
+use App\Http\Controllers\Admin\AntiCorruptLocalWisdomController;
+
+Route::middleware(['authenticate'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('users', UserController::class);
+
+    Route::prefix('/master')
+        ->name('master.')
+        ->group(function () {
+            Route::resource('education', EducationController::class)->except(['show']);
+            Route::resource('gender', GenderController::class)->except(['show']);
+            Route::resource('hamlet', HamletController::class)->except(['show']);
+            Route::resource('job', JobController::class)->except(['show']);
+            Route::resource('marriage', MarriageController::class)->except(['show']);
+            Route::resource('religion', ReligionController::class)->except(['show']);
+            Route::resource('income', IncomeController::class)->except(['show']);
+            Route::resource('shopping', ShoppingController::class)->except(['show']);
+            Route::resource('financing', FinancingController::class)->except(['show']);
+            Route::resource('stunting', StuntingController::class)->except(['show']);
+            Route::resource('social-assistance', SocialAssistanceController::class)
+                ->parameter('social-assistance', 'socialAssistance')
+                ->except(['show']);
+            Route::resource('idm-status', IdmStatusController::class)
+                ->parameter('idm-status', 'idmStatus')
+                ->except(['show']);
+            Route::resource('news-category', NewsCategoryController::class)
+                ->parameter('news-category', 'category')
+                ->except(['show']);
+            Route::resource('legal-product-category', LegalProductsCategoryController::class)
+                ->parameter('legal-product-category', 'category')
+                ->except(['show']);
+        });
+
+    Route::prefix('/infographics')
+        ->name('infographics.')
+        ->group(function () {
+            Route::prefix('/resident')
+                ->name('resident.')
+                ->group(function () {
+                    Route::controller(InfographicsResidentController::class)->group(function () {
+                        Route::get('/', 'index')->name('index');
+                        Route::get('/edit/{resident}', 'edit')->name('edit');
+                        Route::put('/update/{resident}', 'update')->name('update');
+                    });
+
+                    Route::resource('age', InfographicsResidentAgeController::class)
+                        ->parameter('age', 'residentAge');
+                    Route::resource('hamlet', InfographicsResidentHamletController::class)
+                        ->parameter('hamlet', 'residentHamlet');
+                    Route::resource('education', InfographicsResidentEducationController::class)
+                        ->parameters(['education' => 'residentEducation']);
+                    Route::resource('job', InfographicsResidentJobController::class)
+                        ->parameters(['job' => 'residentJob']);
+                    Route::resource('must_select', InfographicsResidentMustSelectController::class)
+                        ->parameters(['must_select' => 'residentMustSelect']);
+                    Route::resource('marriage', InfographicsResidentMarriageController::class)
+                        ->parameters(['marriage' => 'residentMarriage']);
+                    Route::resource('religion', InfographicsResidentReligionController::class)
+                        ->parameters(['religion' => 'residentReligion']);
+                });
+
+            Route::prefix('/apbd')
+                ->name('apbd.')
+                ->group(function () {
+                    Route::controller(InfographicsApbdController::class)->group(function () {
+                        Route::get('/', 'index')->name('index');
+                        Route::get('/create', 'create')->name('create');
+                        Route::post('/store', 'store')->name('store');
+                        Route::get('/show/{apbd}', 'show')->name('show');
+                        Route::get('/edit/{apbd}', 'edit')->name('edit');
+                        Route::put('/update/{apbd}', 'update')->name('update');
+                        Route::delete('/destroy/{apbd}', 'destroy')->name('destroy');
+                    });
+
+                    Route::resource('year', InfographicsApbdYearController::class)
+                        ->parameters(['year' => 'apbdYear']);
+                    Route::resource('income', InfographicsApbdIncomeController::class)
+                        ->parameters(['income' => 'apbdIncome']);
+                    Route::resource('shopping', InfographicsApbdShoppingController::class)
+                        ->parameters(['shopping' => 'apbdShopping']);
+                    Route::resource('financing', InfographicsApbdFinancingController::class)
+                        ->parameters(['financing' => 'apbdFinancing']);
+                    Route::resource('development-realization', InfographicsApbdDevRealizationController::class)
+                        ->parameter('development-realization', 'apbdRealization')
+                        ->except(['show']);
+                });
+
+            Route::resource('stunting', InfographicsStuntingController::class)
+                ->parameters(['stunting' => 'stunting']);
+            Route::resource('social-assistance', InfographicsSocialAssistanceController::class)
+                ->parameters(['social_assistance' => 'socialAssistance']);
+
+            Route::prefix('/idm')
+                ->name('idm.')
+                ->group(function () {
+                    Route::controller(InfographicsIdmController::class)->group(function () {
+                        Route::get('/', 'index')->name('index');
+                        Route::get('/create', 'create')->name('create');
+                        Route::post('/store', 'store')->name('store');
+                        Route::get('/show/{idm}', 'show')->name('show');
+                        Route::get('/edit/{idm}', 'edit')->name('edit');
+                        Route::put('/update/{idm}', 'update')->name('update');
+                        Route::delete('/destroy/{idm}', 'destroy')->name('destroy');
+                    });
+
+                    Route::resource('iks', InfographicsIdmIksController::class)
+                        ->parameters(['iks' => 'idmIks']);
+                    Route::resource('ike', InfographicsIdmIkeController::class)
+                        ->parameters(['ike' => 'idmIke']);
+                    Route::resource('ikl', InfographicsIdmIklController::class)
+                        ->parameters(['ikl' => 'idmIkl']);
+                });
+
+            Route::resource('sdgs', InfographicsSdgsController::class)
+                ->parameters(['sdgs' => 'sdg']);
+        });
+
+    Route::prefix('/profile')
+        ->name('profile.')
+        ->group(function () {
+            Route::resource('vision', VisionController::class);
+            Route::resource('mission', MissionController::class);
+        });
+
+    Route::resource('manage-news', ManageNewsController::class)
+        ->parameters(['manage-news' => 'manageNews']);
+    Route::resource('galleries', GalleryController::class)
+        ->names('galleries')
+        ->except(['show']);
+    Route::resource('manage-legal-product', ManageLegalProductController::class)
+        ->parameter('manage-legal-product', 'legalProduct');
+    Route::resource('slider', SliderController::class);
+
+    Route::prefix('/manage-anti-corruption')
+        ->name('manage.anti.')
+        ->group(function () {
+            Route::resource('governance', AntiCorruptGovernanceController::class)
+                ->parameters(['governance' => 'antiCorrupt']);
+            Route::resource('supervision', AntiCorruptSupervisionController::class)
+                ->parameters(['supervision' => 'antiCorrupt']);
+            Route::resource('service-quality', AntiCorruptServiceQualityController::class)
+                ->parameters(['service-quality' => 'antiCorrupt']);
+            Route::resource('participate', AntiCorruptParticipateController::class)
+                ->parameters(['participate' => 'antiCorrupt']);
+            Route::resource('local-wisdom', AntiCorruptLocalWisdomController::class)
+                ->parameters(['local-wisdom' => 'antiCorrupt']);
+        });
+
+    Route::prefix('/settings')
+        ->controller(SettingsController::class)
+        ->name('settings.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::put('/update/{village}', 'update')->name('update');
+        });
+});

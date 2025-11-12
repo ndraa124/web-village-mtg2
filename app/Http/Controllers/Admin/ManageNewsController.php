@@ -35,7 +35,7 @@ class ManageNewsController extends Controller
       'main' => 'admin.news.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -58,11 +58,11 @@ class ManageNewsController extends Controller
       'main' => 'admin.news.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'manage-news.index',
+          'route' => 'admin.manage-news.index',
           'title' => 'Berita & Informasi'
         ],
         [
@@ -114,7 +114,7 @@ class ManageNewsController extends Controller
         $news->tags()->attach($tagIds);
       }
 
-      return redirect()->route('manage-news.index')
+      return redirect()->route('admin.manage-news.index')
         ->with('success', 'Berita berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -130,11 +130,11 @@ class ManageNewsController extends Controller
       'main' => 'admin.news.show',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'manage-news.index',
+          'route' => 'admin.manage-news.index',
           'title' => 'Berita & Informasi'
         ],
         [
@@ -159,11 +159,11 @@ class ManageNewsController extends Controller
       'main' => 'admin.news.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'manage-news.index',
+          'route' => 'admin.manage-news.index',
           'title' => 'Berita & Informasi'
         ],
         [
@@ -224,7 +224,7 @@ class ManageNewsController extends Controller
         $manageNews->tags()->detach();
       }
 
-      return redirect()->route('manage-news.index')
+      return redirect()->route('admin.manage-news.index')
         ->with('success', 'Berita berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -241,7 +241,7 @@ class ManageNewsController extends Controller
       $manageNews->tags()->detach();
       $manageNews->delete();
 
-      return redirect()->route('manage-news.index')
+      return redirect()->route('admin.manage-news.index')
         ->with('success', 'Berita berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

@@ -46,7 +46,7 @@
                 </div>
                 <ul class="admin-link mb-0 list-unstyled">
                   <li>
-                    <a class="dropdown-item admin-item-link d-flex align-items-center text-body" href="{{ route('settings.index') }}">
+                    <a class="dropdown-item admin-item-link d-flex align-items-center text-body" href="{{ route('admin.settings.index') }}">
                       <i class="material-symbols-outlined">settings</i>
                       <span class="ms-2">Pengaturan</span>
                     </a>

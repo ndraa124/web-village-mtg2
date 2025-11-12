@@ -25,10 +25,10 @@ class SocialAssistanceController extends Controller
 
         $data = [
             'title' => 'Daftar Bantuan Sosial',
-            'main' => 'admin.social_assistance.index',
+            'main' => 'admin.master.social_assistance.index',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
@@ -45,14 +45,14 @@ class SocialAssistanceController extends Controller
     {
         $data = [
             'title' => 'Tambah Bantuan Sosial',
-            'main' => 'admin.social_assistance.create',
+            'main' => 'admin.master.social_assistance.create',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'master.social_assistance.index',
+                    'route' => 'admin.master.social-assistance.index',
                     'title' => 'Bantuan Sosial',
                 ],
                 [
@@ -71,76 +71,52 @@ class SocialAssistanceController extends Controller
         try {
             SocialAssistance::create($validatedData);
 
-            return redirect()->route('master.social_assistance.index')
+            return redirect()->route('admin.master.social-assistance.index')
                 ->with('success', 'Bantuan Sosial berhasil ditambahkan.');
         } catch (\Exception $e) {
             return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
         }
     }
 
-    public function show(SocialAssistance $social_assistance)
-    {
-        $data = [
-            'title' => 'Detail Bantuan Sosial',
-            'main' => 'admin.social_assistance.show',
-            'breadcrumbs' => [
-                [
-                    'route' => 'dashboard',
-                    'title' => 'Dashboard',
-                ],
-                [
-                    'route' => 'master.social_assistance.index',
-                    'title' => 'Bantuan Sosial',
-                ],
-                [
-                    'title' => 'Detail Bantuan Sosial',
-                ]
-            ],
-            'social_assistance' => $social_assistance
-        ];
-
-        return view('admin.layout.template', $data);
-    }
-
-    public function edit(SocialAssistance $social_assistance)
+    public function edit(SocialAssistance $socialAssistance)
     {
         $data = [
             'title' => 'Edit Bantuan Sosial',
-            'main' => 'admin.social_assistance.edit',
+            'main' => 'admin.master.social_assistance.edit',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'master.social_assistance.index',
+                    'route' => 'admin.master.social-assistance.index',
                     'title' => 'Bantuan Sosial',
                 ],
                 [
                     'title' => 'Edit Bantuan Sosial',
                 ]
             ],
-            'social_assistance' => $social_assistance
+            'social_assistance' => $socialAssistance
         ];
 
         return view('admin.layout.template', $data);
     }
 
-    public function update(StoreSocialAssistanceRequest $request, SocialAssistance $social_assistance)
+    public function update(StoreSocialAssistanceRequest $request, SocialAssistance $socialAssistance)
     {
         $validatedData = $request->validated();
 
-        $social_assistance->update($validatedData);
+        $socialAssistance->update($validatedData);
 
-        return redirect()->route('master.social_assistance.index')
+        return redirect()->route('admin.master.social-assistance.index')
             ->with('success', 'Bantuan Sosial berhasil diperbarui.');
     }
 
-    public function destroy(SocialAssistance $social_assistance)
+    public function destroy(SocialAssistance $socialAssistance)
     {
-        $social_assistance->delete();
+        $socialAssistance->delete();
 
-        return redirect()->route('master.social_assistance.index')
+        return redirect()->route('admin.master.social-assistance.index')
             ->with('success', 'Bantuan Sosial berhasil dihapus.');
     }
 }

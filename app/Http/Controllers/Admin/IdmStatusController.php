@@ -19,23 +19,23 @@ class IdmStatusController extends Controller
       return $q->where('status_desc', 'like', "%{$search}%");
     });
 
-    $idm_statuses = $query->latest()
+    $idm_status = $query->latest()
       ->paginate(10)
       ->appends($request->query());
 
     $data = [
       'title' => 'Daftar IDM Status',
-      'main' => 'admin.idm_status.index',
+      'main' => 'admin.master.idm_status.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
           'title' => 'IDM Status',
         ]
       ],
-      'idm_statuses' => $idm_statuses
+      'idm_status' => $idm_status
     ];
 
     return view('admin.layout.template', $data);
@@ -45,14 +45,14 @@ class IdmStatusController extends Controller
   {
     $data = [
       'title' => 'Tambah IDM Status',
-      'main' => 'admin.idm_status.create',
+      'main' => 'admin.master.idm_status.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.idm_status.index',
+          'route' => 'admin.master.idm-status.index',
           'title' => 'IDM Status',
         ],
         [
@@ -71,76 +71,52 @@ class IdmStatusController extends Controller
     try {
       IdmStatus::create($validatedData);
 
-      return redirect()->route('master.idm_status.index')
+      return redirect()->route('admin.master.idm-status.index')
         ->with('success', 'IDM Status berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
   }
 
-  public function show(IdmStatus $idm_status)
-  {
-    $data = [
-      'title' => 'Detail IDM Status',
-      'main' => 'admin.idm_status.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard',
-        ],
-        [
-          'route' => 'master.idm_status.index',
-          'title' => 'IDM Status',
-        ],
-        [
-          'title' => 'Detail IDM Status',
-        ]
-      ],
-      'idm_status' => $idm_status
-    ];
-
-    return view('admin.layout.template', $data);
-  }
-
-  public function edit(IdmStatus $idm_status)
+  public function edit(IdmStatus $idmStatus)
   {
     $data = [
       'title' => 'Edit IDM Status',
-      'main' => 'admin.idm_status.edit',
+      'main' => 'admin.master.idm_status.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.idm_status.index',
+          'route' => 'admin.master.idm-status.index',
           'title' => 'IDM Status',
         ],
         [
           'title' => 'Edit IDM Status',
         ]
       ],
-      'idm_status' => $idm_status
+      'idm_status' => $idmStatus
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function update(StoreIdmStatusRequest $request, IdmStatus $idm_status)
+  public function update(StoreIdmStatusRequest $request, IdmStatus $idmStatus)
   {
     $validatedData = $request->validated();
 
-    $idm_status->update($validatedData);
+    $idmStatus->update($validatedData);
 
-    return redirect()->route('master.idm_status.index')
+    return redirect()->route('admin.master.idm-status.index')
       ->with('success', 'IDM Status berhasil diperbarui.');
   }
 
-  public function destroy(IdmStatus $idm_status)
+  public function destroy(IdmStatus $idmStatus)
   {
-    $idm_status->delete();
+    $idmStatus->delete();
 
-    return redirect()->route('master.idm_status.index')
+    return redirect()->route('admin.master.idm-status.index')
       ->with('success', 'IDM Status berhasil dihapus.');
   }
 }

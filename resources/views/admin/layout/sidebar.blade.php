@@ -1,6 +1,6 @@
 <div class="sidebar-area" id="sidebar-area">
   <div class="logo position-relative d-flex align-items-center justify-content-between">
-    <a href="{{ route('dashboard') }}" class="d-block text-decoration-none position-relative">
+    <a href="{{ route('admin.dashboard') }}" class="d-block text-decoration-none position-relative">
       <img src="{{ asset('img/logo.png') }}" alt="logo-icon" width="30px">
     </a>
     <div class="logo-text text-secondary fw-semibold" style="margin-left: 18px;">Motoling Dua</div>
@@ -12,8 +12,8 @@
         <span class="menu-title-text">MAIN</span>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('dashboard.*') ? 'open' : '' }}">
-        <a href="{{ route('dashboard') }}" class="menu-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.dashboard.*') ? 'open' : '' }}">
+        <a href="{{ route('admin.dashboard') }}" class="menu-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">dashboard</span>
           <span class="title">Dashboard</span>
         </a>
@@ -23,79 +23,79 @@
         <span class="menu-title-text">MASTER</span>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('master.*') ? 'open' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.master.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">database</span>
           <span class="title">Master Data</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('master.education.index') }}" class="menu-link {{ request()->routeIs('master.education.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.master.education.index') }}" class="menu-link {{ request()->routeIs('admin.master.education.*') ? 'active' : '' }}">
               Pendidikan
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('master.gender.index') }}" class="menu-link {{ request()->routeIs('master.gender.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.master.gender.index') }}" class="menu-link {{ request()->routeIs('admin.master.gender.*') ? 'active' : '' }}">
               Jenis Kelamin
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('master.hamlet.index') }}" class="menu-link {{ request()->routeIs('master.hamlet.*') ? 'active' : '' }}">
-              Dusun
+            <a href="{{ route('admin.master.hamlet.index') }}" class="menu-link {{ request()->routeIs('admin.master.hamlet.*') ? 'active' : '' }}">
+              Jaga
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('master.job.index') }}" class="menu-link {{ request()->routeIs('master.job.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.master.job.index') }}" class="menu-link {{ request()->routeIs('admin.master.job.*') ? 'active' : '' }}">
               Pekerjaan
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('master.marriage.index') }}" class="menu-link {{ request()->routeIs('master.marriage.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.master.marriage.index') }}" class="menu-link {{ request()->routeIs('admin.master.marriage.*') ? 'active' : '' }}">
               Perkawinan
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('master.religion.index') }}" class="menu-link {{ request()->routeIs('master.religion.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.master.religion.index') }}" class="menu-link {{ request()->routeIs('admin.master.religion.*') ? 'active' : '' }}">
               Agama
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('master.income.index') }}" class="menu-link {{ request()->routeIs('master.income.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.master.income.index') }}" class="menu-link {{ request()->routeIs('admin.master.income.*') ? 'active' : '' }}">
               Pendapatan
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('master.shopping.index') }}" class="menu-link {{ request()->routeIs('master.shopping.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.master.shopping.index') }}" class="menu-link {{ request()->routeIs('admin.master.shopping.*') ? 'active' : '' }}">
               Belanja
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('master.financing.index') }}" class="menu-link {{ request()->routeIs('master.financing.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.master.financing.index') }}" class="menu-link {{ request()->routeIs('admin.master.financing.*') ? 'active' : '' }}">
               Pembiayaan
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('master.stunting.index') }}" class="menu-link {{ request()->routeIs('master.stunting.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.master.stunting.index') }}" class="menu-link {{ request()->routeIs('admin.master.stunting.*') ? 'active' : '' }}">
               Stunting
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('master.social_assistance.index') }}" class="menu-link {{ request()->routeIs('master.social_assistance.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.master.social-assistance.index') }}" class="menu-link {{ request()->routeIs('admin.master.social-assistance.*') ? 'active' : '' }}">
               Bantuan Sosial
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('master.idm_status.index') }}" class="menu-link {{ request()->routeIs('master.idm_status.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.master.idm-status.index') }}" class="menu-link {{ request()->routeIs('admin.master.idm-status.*') ? 'active' : '' }}">
               IDM Status
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('master.category.index') }}" class="menu-link {{ request()->routeIs('master.category.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.master.news-category.index') }}" class="menu-link {{ request()->routeIs('admin.master.news-category.*') ? 'active' : '' }}">
               Kategori Berita
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('master.legal-product-category.index') }}" class="menu-link {{ request()->routeIs('master.legal-product-category.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.master.legal-product-category.index') }}" class="menu-link {{ request()->routeIs('admin.master.legal-product-category.*') ? 'active' : '' }}">
               Kategori Produk Hukum
             </a>
           </li>
@@ -106,159 +106,159 @@
         <span class="menu-title-text">INFOGRAFIS</span>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('infographics.resident.*') ? 'open' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.infographics.resident.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">groups</span>
           <span class="title">Penduduk</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('infographics.resident.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.index') || request()->routeIs('infographics.resident.edit') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.resident.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.index') || request()->routeIs('admin.infographics.resident.edit') ? 'active' : '' }}">
               Jumlah Penduduk
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.resident.age.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.age.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.resident.age.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.age.*') ? 'active' : '' }}">
               Jumlah Umur
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.resident.hamlet.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.hamlet.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.resident.hamlet.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.hamlet.*') ? 'active' : '' }}">
               Jumlah Dusun
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.resident.education.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.education.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.resident.education.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.education.*') ? 'active' : '' }}">
               Jumlah Pendidikan
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.resident.job.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.job.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.resident.job.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.job.*') ? 'active' : '' }}">
               Jumlah Pekerjaan
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.resident.must_select.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.must_select.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.resident.must_select.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.must_select.*') ? 'active' : '' }}">
               Jumlah Wajib Pilih
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.resident.marriage.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.marriage.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.resident.marriage.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.marriage.*') ? 'active' : '' }}">
               Jumlah Perkawinan
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.resident.religion.index') }}" class="menu-link {{ request()->routeIs('infographics.resident.religion.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.resident.religion.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.religion.*') ? 'active' : '' }}">
               Jumlah Agama
             </a>
           </li>
         </ul>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('infographics.apbd.*') ? 'open' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.infographics.apbd.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">attach_money</span>
           <span class="title">APBD</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('infographics.apbd.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.index') || request()->routeIs('infographics.apbd.create') || request()->routeIs('infographics.apbd.show') || request()->routeIs('infographics.apbd.edit') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.apbd.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.index') || request()->routeIs('admin.infographics.apbd.create') || request()->routeIs('admin.infographics.apbd.show') || request()->routeIs('admin.infographics.apbd.edit') ? 'active' : '' }}">
               Semua APBD
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.apbd.year.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.year.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.apbd.year.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.year.*') ? 'active' : '' }}">
               APBD per Tahun
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.apbd.income.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.income.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.apbd.income.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.income.*') ? 'active' : '' }}">
               Pendapatan
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.apbd.shopping.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.shopping.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.apbd.shopping.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.shopping.*') ? 'active' : '' }}">
               Belanja
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.apbd.financing.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.financing.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.apbd.financing.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.financing.*') ? 'active' : '' }}">
               Pembiayaan
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.apbd.development-realization.index') }}" class="menu-link {{ request()->routeIs('infographics.apbd.development-realization.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.apbd.development-realization.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.development-realization.*') ? 'active' : '' }}">
               Realisasi Pembangunan
             </a>
           </li>
         </ul>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('infographics.stunting.*') ? 'open' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.infographics.stunting.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">stacked_bar_chart</span>
           <span class="title">Stunting</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('infographics.stunting.index') }}" class="menu-link {{ request()->routeIs('infographics.stunting.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.stunting.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.stunting.*') ? 'active' : '' }}">
               Data Stunting
             </a>
           </li>
         </ul>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('infographics.social-assistance.*') ? 'open' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.infographics.social-assistance.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">volunteer_activism</span>
           <span class="title">Bantuan Sosial</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('infographics.social-assistance.index') }}" class="menu-link {{ request()->routeIs('infographics.social-assistance.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.social-assistance.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.social-assistance.*') ? 'active' : '' }}">
               Penerima Bantual Sosial
             </a>
           </li>
         </ul>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('infographics.idm.*') ? 'open' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.infographics.idm.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">leaderboard</span>
           <span class="title">IDM</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('infographics.idm.index') }}" class="menu-link {{ request()->routeIs('infographics.idm.index') || request()->routeIs('infographics.idm.create') || request()->routeIs('infographics.idm.show') || request()->routeIs('infographics.idm.edit') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.idm.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.idm.index') || request()->routeIs('admin.infographics.idm.create') || request()->routeIs('admin.infographics.idm.show') || request()->routeIs('admin.infographics.idm.edit') ? 'active' : '' }}">
               Skor IDM
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.idm.iks.index') }}" class="menu-link {{ request()->routeIs('infographics.idm.iks.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.idm.iks.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.idm.iks.*') ? 'active' : '' }}">
               Indikator IKS
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.idm.ike.index') }}" class="menu-link {{ request()->routeIs('infographics.idm.ike.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.idm.ike.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.idm.ike.*') ? 'active' : '' }}">
               Indikator IKE
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('infographics.idm.ikl.index') }}" class="menu-link {{ request()->routeIs('infographics.idm.ikl.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.idm.ikl.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.idm.ikl.*') ? 'active' : '' }}">
               Indikator IKL
             </a>
           </li>
         </ul>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('infographics.sdgs.*') ? 'open' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.infographics.sdgs.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
           <span class="material-symbols-outlined menu-icon">target</span>
           <span class="title">SDGs</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('infographics.sdgs.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.sdgs.*') ? 'active' : '' }}">
               Jumlah SDGs
             </a>
           </li>
@@ -266,83 +266,88 @@
       </li>
 
       <li class="menu-title small text-uppercase">
-        <span class="menu-title-text">KONTEN</span>
+        <span class="menu-title-text">KONTEN PUBLIK</span>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('vision.*') ? 'open' : '' }}">
-        <a href="{{ route('vision.index') }}" class="menu-link {{ request()->routeIs('vision.*') ? 'active' : '' }}">
-          <span class="material-symbols-outlined menu-icon">infrared</span>
-          <span class="title">Visi</span>
-        </a>
-      </li>
-
-      <li class="menu-item {{ request()->routeIs('mission.*') ? 'open' : '' }}">
-        <a href="{{ route('mission.index') }}" class="menu-link {{ request()->routeIs('mission.*') ? 'active' : '' }}">
-          <span class="material-symbols-outlined menu-icon">rocket_launch</span>
-          <span class="title">Misi</span>
-        </a>
-      </li>
-
-      <li class="menu-item {{ request()->routeIs('manage-news.*') ? 'open' : '' }}">
-        <a href="{{ route('manage-news.index') }}" class="menu-link {{ request()->routeIs('manage-news.*') ? 'active' : '' }}">
-          <span class="material-symbols-outlined menu-icon">feed</span>
-          <span class="title">Berita & Informasi</span>
-        </a>
-      </li>
-
-      <li class="menu-item {{ request()->routeIs('galleries.*') ? 'open' : '' }}">
-        <a href="{{ route('galleries.index') }}" class="menu-link {{ request()->routeIs('galleries.*') ? 'active' : '' }}">
-          <span class="material-symbols-outlined menu-icon">photo_library</span>
-          <span class="title">Galeri</span>
-        </a>
-      </li>
-
-      <li class="menu-item {{ request()->routeIs('slider.*') ? 'open' : '' }}">
-        <a href="{{ route('slider.index') }}" class="menu-link {{ request()->routeIs('slider.*') ? 'active' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.slider.*') ? 'open' : '' }}">
+        <a href="{{ route('admin.slider.index') }}" class="menu-link {{ request()->routeIs('admin.slider.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">auto_awesome_motion</span>
           <span class="title">Slider</span>
         </a>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('manage.anti.*') ? 'open' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.galleries.*') ? 'open' : '' }}">
+        <a href="{{ route('admin.galleries.index') }}" class="menu-link {{ request()->routeIs('admin.galleries.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">photo_library</span>
+          <span class="title">Galeri</span>
+        </a>
+      </li>
+
+      <li class="menu-item {{ request()->routeIs('admin.profile.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle active">
-          <span class="material-symbols-outlined menu-icon">target</span>
-          <span class="title">Anti Korupsi</span>
+          <span class="material-symbols-outlined menu-icon">app_registration</span>
+          <span class="title">Profil Desa</span>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{ route('manage.anti.governance.index') }}" class="menu-link {{ request()->routeIs('manage.anti.governance.*') ? 'active' : '' }}">
-              Tata Laksana
+            <a href="{{ route('admin.profile.vision.index') }}" class="menu-link {{ request()->routeIs('admin.profile.vision.*') ? 'active' : '' }}">
+              Visi
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('manage.anti.supervision.index') }}" class="menu-link {{ request()->routeIs('manage.anti.supervision.*') ? 'active' : '' }}">
-              Pengawasan
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('manage.anti.service-quality.index') }}" class="menu-link {{ request()->routeIs('manage.anti.service-quality.*') ? 'active' : '' }}">
-              Kualitas Pelayanan Publik
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('manage.anti.participate.index') }}" class="menu-link {{ request()->routeIs('manage.anti.participate.*') ? 'active' : '' }}">
-              Partisipasi Masyarakat
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('manage.anti.local-wisdom.index') }}" class="menu-link {{ request()->routeIs('manage.anti.local-wisdom.*') ? 'active' : '' }}">
-              Kearifan Lokal
+            <a href="{{ route('admin.profile.mission.index') }}" class="menu-link {{ request()->routeIs('admin.profile.mission.*') ? 'active' : '' }}">
+              Misi
             </a>
           </li>
         </ul>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('manage-legal-product.*') ? 'open' : '' }}">
-        <a href="{{ route('manage-legal-product.index') }}" class="menu-link {{ request()->routeIs('manage-legal-product.*') ? 'active' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.manage-news.*') ? 'open' : '' }}">
+        <a href="{{ route('admin.manage-news.index') }}" class="menu-link {{ request()->routeIs('admin.manage-news.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">feed</span>
+          <span class="title">Berita & Informasi</span>
+        </a>
+      </li>
+
+      <li class="menu-item {{ request()->routeIs('admin.manage-legal-product.*') ? 'open' : '' }}">
+        <a href="{{ route('admin.manage-legal-product.index') }}" class="menu-link {{ request()->routeIs('admin.manage-legal-product.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">gavel</span>
           <span class="title">Produk Hukum</span>
         </a>
+      </li>
+
+      <li class="menu-item {{ request()->routeIs('admin.manage.anti.*') ? 'open' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+          <span class="material-symbols-outlined menu-icon">target</span>
+          <span class="title">Desa Anti Korupsi</span>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="{{ route('admin.manage.anti.governance.index') }}" class="menu-link {{ request()->routeIs('admin.manage.anti.governance.*') ? 'active' : '' }}">
+              Tata Laksana
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('admin.manage.anti.supervision.index') }}" class="menu-link {{ request()->routeIs('admin.manage.anti.supervision.*') ? 'active' : '' }}">
+              Pengawasan
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('admin.manage.anti.service-quality.index') }}" class="menu-link {{ request()->routeIs('admin.manage.anti.service-quality.*') ? 'active' : '' }}">
+              Kualitas Pelayanan Publik
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('admin.manage.anti.participate.index') }}" class="menu-link {{ request()->routeIs('admin.manage.anti.participate.*') ? 'active' : '' }}">
+              Partisipasi Masyarakat
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('admin.manage.anti.local-wisdom.index') }}" class="menu-link {{ request()->routeIs('admin.manage.anti.local-wisdom.*') ? 'active' : '' }}">
+              Kearifan Lokal
+            </a>
+          </li>
+        </ul>
       </li>
 
       @if(Auth::user()->role == 'superadmin')
@@ -350,8 +355,8 @@
         <span class="menu-title-text">USERS</span>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('users.*') ? 'open' : '' }}">
-        <a href="{{ route('users.index') }}" class="menu-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.users.*') ? 'open' : '' }}">
+        <a href="{{ route('admin.users.index') }}" class="menu-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">manage_accounts</span>
           <span class="title">Manajemen User</span>
         </a>

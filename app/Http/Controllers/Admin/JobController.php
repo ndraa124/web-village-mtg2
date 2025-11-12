@@ -25,10 +25,10 @@ class JobController extends Controller
 
         $data = [
             'title' => 'Daftar Pekerjaan',
-            'main' => 'admin.job.index',
+            'main' => 'admin.master.job.index',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
@@ -45,14 +45,14 @@ class JobController extends Controller
     {
         $data = [
             'title' => 'Tambah Pekerjaan',
-            'main' => 'admin.job.create',
+            'main' => 'admin.master.job.create',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'master.job.index',
+                    'route' => 'admin.master.job.index',
                     'title' => 'Pekerjaan',
                 ],
                 [
@@ -71,49 +71,25 @@ class JobController extends Controller
         try {
             Job::create($validatedData);
 
-            return redirect()->route('master.job.index')
+            return redirect()->route('admin.master.job.index')
                 ->with('success', 'Pekerjaan berhasil ditambahkan.');
         } catch (\Exception $e) {
             return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
         }
     }
 
-    public function show(Job $job)
-    {
-        $data = [
-            'title' => 'Detail Pekerjaan',
-            'main' => 'admin.job.show',
-            'breadcrumbs' => [
-                [
-                    'route' => 'dashboard',
-                    'title' => 'Dashboard',
-                ],
-                [
-                    'route' => 'master.job.index',
-                    'title' => 'Pekerjaan',
-                ],
-                [
-                    'title' => 'Detail Pekerjaan',
-                ]
-            ],
-            'job' => $job
-        ];
-
-        return view('admin.layout.template', $data);
-    }
-
     public function edit(Job $job)
     {
         $data = [
             'title' => 'Edit Pekerjaan',
-            'main' => 'admin.job.edit',
+            'main' => 'admin.master.job.edit',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'master.job.index',
+                    'route' => 'admin.master.job.index',
                     'title' => 'Pekerjaan',
                 ],
                 [
@@ -132,7 +108,7 @@ class JobController extends Controller
 
         $job->update($validatedData);
 
-        return redirect()->route('master.job.index')
+        return redirect()->route('admin.master.job.index')
             ->with('success', 'Pekerjaan berhasil diperbarui.');
     }
 
@@ -140,7 +116,7 @@ class JobController extends Controller
     {
         $job->delete();
 
-        return redirect()->route('master.job.index')
+        return redirect()->route('admin.master.job.index')
             ->with('success', 'Pekerjaan berhasil dihapus.');
     }
 }

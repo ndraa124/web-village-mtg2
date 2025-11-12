@@ -25,10 +25,10 @@ class GenderController extends Controller
 
         $data = [
             'title' => 'Daftar Jenis Kelamin',
-            'main' => 'admin.gender.index',
+            'main' => 'admin.master.gender.index',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
@@ -45,14 +45,14 @@ class GenderController extends Controller
     {
         $data = [
             'title' => 'Tambah Jenis Kelamin',
-            'main' => 'admin.gender.create',
+            'main' => 'admin.master.gender.create',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'master.gender.index',
+                    'route' => 'admin.master.gender.index',
                     'title' => 'Jenis Kelamin',
                 ],
                 [
@@ -71,49 +71,25 @@ class GenderController extends Controller
         try {
             Gender::create($validatedData);
 
-            return redirect()->route('master.gender.index')
+            return redirect()->route('admin.master.gender.index')
                 ->with('success', 'Jenis kelamin berhasil ditambahkan.');
         } catch (\Exception $e) {
             return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
         }
     }
 
-    public function show(Gender $gender)
-    {
-        $data = [
-            'title' => 'Detail Jenis Kelamin',
-            'main' => 'admin.gender.show',
-            'breadcrumbs' => [
-                [
-                    'route' => 'dashboard',
-                    'title' => 'Dashboard',
-                ],
-                [
-                    'route' => 'master.gender.index',
-                    'title' => 'Jenis Kelamin',
-                ],
-                [
-                    'title' => 'Detail Jenis Kelamin',
-                ]
-            ],
-            'gender' => $gender
-        ];
-
-        return view('admin.layout.template', $data);
-    }
-
     public function edit(Gender $gender)
     {
         $data = [
             'title' => 'Edit Jenis Kelamin',
-            'main' => 'admin.gender.edit',
+            'main' => 'admin.master.gender.edit',
             'breadcrumbs' => [
                 [
-                    'route' => 'dashboard',
+                    'route' => 'admin.dashboard',
                     'title' => 'Dashboard',
                 ],
                 [
-                    'route' => 'master.gender.index',
+                    'route' => 'admin.master.gender.index',
                     'title' => 'Jenis Kelamin',
                 ],
                 [
@@ -132,7 +108,7 @@ class GenderController extends Controller
 
         $gender->update($validatedData);
 
-        return redirect()->route('master.gender.index')
+        return redirect()->route('admin.master.gender.index')
             ->with('success', 'Jenis kelamin berhasil diperbarui.');
     }
 
@@ -140,7 +116,7 @@ class GenderController extends Controller
     {
         $gender->delete();
 
-        return redirect()->route('master.gender.index')
+        return redirect()->route('admin.master.gender.index')
             ->with('success', 'Jenis kelamin berhasil dihapus.');
     }
 }

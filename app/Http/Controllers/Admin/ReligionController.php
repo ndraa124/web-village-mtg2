@@ -25,10 +25,10 @@ class ReligionController extends Controller
 
     $data = [
       'title' => 'Daftar Agama',
-      'main' => 'admin.religion.index',
+      'main' => 'admin.master.religion.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
@@ -45,14 +45,14 @@ class ReligionController extends Controller
   {
     $data = [
       'title' => 'Tambah Agama',
-      'main' => 'admin.religion.create',
+      'main' => 'admin.master.religion.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.religion.index',
+          'route' => 'admin.master.religion.index',
           'title' => 'Agama',
         ],
         [
@@ -71,49 +71,25 @@ class ReligionController extends Controller
     try {
       Religion::create($validatedData);
 
-      return redirect()->route('master.religion.index')
+      return redirect()->route('admin.master.religion.index')
         ->with('success', 'Agama berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
   }
 
-  public function show(Religion $religion)
-  {
-    $data = [
-      'title' => 'Detail Agama',
-      'main' => 'admin.religion.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard',
-        ],
-        [
-          'route' => 'master.religion.index',
-          'title' => 'Agama',
-        ],
-        [
-          'title' => 'Detail Agama',
-        ]
-      ],
-      'religion' => $religion
-    ];
-
-    return view('admin.layout.template', $data);
-  }
-
   public function edit(Religion $religion)
   {
     $data = [
       'title' => 'Edit Agama',
-      'main' => 'admin.religion.edit',
+      'main' => 'admin.master.religion.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'master.religion.index',
+          'route' => 'admin.master.religion.index',
           'title' => 'Agama',
         ],
         [
@@ -132,7 +108,7 @@ class ReligionController extends Controller
 
     $religion->update($validatedData);
 
-    return redirect()->route('master.religion.index')
+    return redirect()->route('admin.master.religion.index')
       ->with('success', 'Agama berhasil diperbarui.');
   }
 
@@ -140,7 +116,7 @@ class ReligionController extends Controller
   {
     $religion->delete();
 
-    return redirect()->route('master.religion.index')
+    return redirect()->route('admin.master.religion.index')
       ->with('success', 'Agama berhasil dihapus.');
   }
 }

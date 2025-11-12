@@ -49,7 +49,7 @@ class News extends Model
 
   public function category(): BelongsTo
   {
-    return $this->belongsTo(Category::class);
+    return $this->belongsTo(NewsCategory::class);
   }
 
   public function tags(): BelongsToMany
