@@ -33,7 +33,7 @@ class InfographicsApbdFinancingController extends Controller
       'main' => 'admin.infographics.apbd_financing.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -55,11 +55,11 @@ class InfographicsApbdFinancingController extends Controller
       'main' => 'admin.infographics.apbd_financing.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.financing.index',
+          'route' => 'admin.infographics.apbd.financing.index',
           'title' => 'Daftar Pembiayaan APBD'
         ],
         ['title' => 'Tambah Data'],
@@ -77,37 +77,11 @@ class InfographicsApbdFinancingController extends Controller
     try {
       InfographicsApbdFinancing::create($validatedData);
 
-      return redirect()->route('infographics.apbd.financing.index')
+      return redirect()->route('admin.infographics.apbd.financing.index')
         ->with('success', 'Data Pembiayaan APBD berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
-  }
-
-  public function show(InfographicsApbdFinancing $apbdFinancing)
-  {
-    $apbdFinancing->load('financing');
-
-    $data = [
-      'title' => 'Detail Data Pembiayaan APBD',
-      'main' => 'admin.infographics.apbd_financing.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard'
-        ],
-        [
-          'route' => 'infographics.apbd.financing.index',
-          'title' => 'Daftar Pembiayaan APBD'
-        ],
-        [
-          'title' => 'Detail Data'
-        ],
-      ],
-      'apbdFinancing' => $apbdFinancing
-    ];
-
-    return view('admin.layout.template', $data);
   }
 
   public function edit(InfographicsApbdFinancing $apbdFinancing)
@@ -119,11 +93,11 @@ class InfographicsApbdFinancingController extends Controller
       'main' => 'admin.infographics.apbd_financing.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.financing.index',
+          'route' => 'admin.infographics.apbd.financing.index',
           'title' => 'Daftar Pembiayaan APBD'
         ],
         [
@@ -144,7 +118,7 @@ class InfographicsApbdFinancingController extends Controller
     try {
       $apbdFinancing->update($validatedData);
 
-      return redirect()->route('infographics.apbd.financing.index')
+      return redirect()->route('admin.infographics.apbd.financing.index')
         ->with('success', 'Data Pembiayaan APBD berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -156,7 +130,7 @@ class InfographicsApbdFinancingController extends Controller
     try {
       $apbdFinancing->delete();
 
-      return redirect()->route('infographics.apbd.financing.index')
+      return redirect()->route('admin.infographics.apbd.financing.index')
         ->with('success', 'Data Pembiayaan APBD berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

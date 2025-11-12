@@ -33,7 +33,7 @@ class InfographicsApbdShoppingController extends Controller
       'main' => 'admin.infographics.apbd_shopping.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -55,11 +55,11 @@ class InfographicsApbdShoppingController extends Controller
       'main' => 'admin.infographics.apbd_shopping.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.shopping.index',
+          'route' => 'admin.infographics.apbd.shopping.index',
           'title' => 'Daftar Belanja APBD'
         ],
         ['title' => 'Tambah Data'],
@@ -77,37 +77,11 @@ class InfographicsApbdShoppingController extends Controller
     try {
       InfographicsApbdShopping::create($validatedData);
 
-      return redirect()->route('infographics.apbd.shopping.index')
+      return redirect()->route('admin.infographics.apbd.shopping.index')
         ->with('success', 'Data Belanja APBD berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
-  }
-
-  public function show(InfographicsApbdShopping $apbdShopping)
-  {
-    $apbdShopping->load('shopping');
-
-    $data = [
-      'title' => 'Detail Data Belanja APBD',
-      'main' => 'admin.infographics.apbd_shopping.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard'
-        ],
-        [
-          'route' => 'infographics.apbd.shopping.index',
-          'title' => 'Daftar Belanja APBD'
-        ],
-        [
-          'title' => 'Detail Data'
-        ],
-      ],
-      'apbdShopping' => $apbdShopping
-    ];
-
-    return view('admin.layout.template', $data);
   }
 
   public function edit(InfographicsApbdShopping $apbdShopping)
@@ -119,11 +93,11 @@ class InfographicsApbdShoppingController extends Controller
       'main' => 'admin.infographics.apbd_shopping.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.shopping.index',
+          'route' => 'admin.infographics.apbd.shopping.index',
           'title' => 'Daftar Belanja APBD'
         ],
         [
@@ -144,7 +118,7 @@ class InfographicsApbdShoppingController extends Controller
     try {
       $apbdShopping->update($validatedData);
 
-      return redirect()->route('infographics.apbd.shopping.index')
+      return redirect()->route('admin.infographics.apbd.shopping.index')
         ->with('success', 'Data Belanja APBD berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -156,7 +130,7 @@ class InfographicsApbdShoppingController extends Controller
     try {
       $apbdShopping->delete();
 
-      return redirect()->route('infographics.apbd.shopping.index')
+      return redirect()->route('admin.infographics.apbd.shopping.index')
         ->with('success', 'Data Belanja APBD berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

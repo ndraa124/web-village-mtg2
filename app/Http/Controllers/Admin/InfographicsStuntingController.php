@@ -33,7 +33,7 @@ class InfographicsStuntingController extends Controller
       'main' => 'admin.infographics.stunting.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -55,11 +55,11 @@ class InfographicsStuntingController extends Controller
       'main' => 'admin.infographics.stunting.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.stunting.index',
+          'route' => 'admin.infographics.stunting.index',
           'title' => 'Daftar Infografis Stunting'
         ],
         ['title' => 'Tambah Data'],
@@ -77,37 +77,11 @@ class InfographicsStuntingController extends Controller
     try {
       InfographicsStunting::create($validatedData);
 
-      return redirect()->route('infographics.stunting.index')
+      return redirect()->route('admin.infographics.stunting.index')
         ->with('success', 'Data Stunting berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
-  }
-
-  public function show(InfographicsStunting $stunting)
-  {
-    $stunting->load('stunting');
-
-    $data = [
-      'title' => 'Detail Data Infografis Stunting',
-      'main' => 'admin.infographics.stunting.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard'
-        ],
-        [
-          'route' => 'infographics.stunting.index',
-          'title' => 'Daftar Infografis Stunting'
-        ],
-        [
-          'title' => 'Detail Data'
-        ],
-      ],
-      'stunting' => $stunting
-    ];
-
-    return view('admin.layout.template', $data);
   }
 
   public function edit(InfographicsStunting $stunting)
@@ -119,11 +93,11 @@ class InfographicsStuntingController extends Controller
       'main' => 'admin.infographics.stunting.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.stunting.index',
+          'route' => 'admin.infographics.stunting.index',
           'title' => 'Daftar Infografis Stunting'
         ],
         [
@@ -144,7 +118,7 @@ class InfographicsStuntingController extends Controller
     try {
       $stunting->update($validatedData);
 
-      return redirect()->route('infographics.stunting.index')
+      return redirect()->route('admin.infographics.stunting.index')
         ->with('success', 'Data Stunting berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -156,7 +130,7 @@ class InfographicsStuntingController extends Controller
     try {
       $stunting->delete();
 
-      return redirect()->route('infographics.stunting.index')
+      return redirect()->route('admin.infographics.stunting.index')
         ->with('success', 'Data Stunting berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

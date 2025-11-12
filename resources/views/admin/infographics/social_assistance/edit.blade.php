@@ -10,7 +10,7 @@
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('infographics.social-assistance.update', $socialAssistance->id) }}" method="POST">
+      <form action="{{ route('admin.infographics.social-assistance.update', $socialAssistance->id) }}" method="POST">
         @csrf @method('PUT')
 
         <div class="row">
@@ -22,7 +22,7 @@
                   <option value="">-- Pilih Bantuan Sosial --</option>
                   @foreach ($socialAssistances as $social)
                   <option value="{{ $social->id }}" {{ old('social_assistance_id', $socialAssistance->social_assistance_id) == $social->id ? 'selected' : '' }}>
-                    {{ $social->social_assistance_name }} {{-- Asumsi 'social_assistance_name' --}}
+                    {{ $social->social_assistance_name }}
                   </option>
                   @endforeach
                 </select>
@@ -54,7 +54,7 @@
           <div class="col-lg-12">
             <div class="d-flex gap-2">
               <button type="submit" class="btn btn-primary fw-normal text-white">Ubah</button>
-              <a href="{{ route('infographics.social-assistance.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('admin.infographics.social-assistance.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>

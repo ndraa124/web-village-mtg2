@@ -10,7 +10,7 @@
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('infographics.stunting.update', $stunting->id) }}" method="POST">
+      <form action="{{ route('admin.infographics.stunting.update', $stunting->id) }}" method="POST">
         @csrf @method('PUT')
 
         <div class="row">
@@ -36,7 +36,7 @@
                   <option value="">-- Pilih Kategori --</option>
                   @foreach ($stuntings as $stunting_category)
                   <option value="{{ $stunting_category->id }}" {{ old('stunting_id', $stunting->stunting_id) == $stunting_category->id ? 'selected' : '' }}>
-                    {{ $stunting_category->stunting_name }} {{-- Asumsi 'stunting_name' --}}
+                    {{ $stunting_category->stunting_name }}
                   </option>
                   @endforeach
                 </select>
@@ -85,7 +85,7 @@
           <div class="col-lg-12">
             <div class="d-flex gap-2">
               <button type="submit" class="btn btn-primary fw-normal text-white">Ubah</button>
-              <a href="{{ route('infographics.stunting.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('admin.infographics.stunting.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>

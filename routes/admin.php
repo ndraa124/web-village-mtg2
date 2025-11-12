@@ -156,9 +156,9 @@ Route::middleware(['authenticate'])->group(function () {
                 });
 
             Route::resource('stunting', InfographicsStuntingController::class)
-                ->parameters(['stunting' => 'stunting']);
+                ->except(['show']);
             Route::resource('social-assistance', InfographicsSocialAssistanceController::class)
-                ->parameters(['social_assistance' => 'socialAssistance']);
+                ->parameters(['social-assistance' => 'socialAssistance']);
 
             Route::prefix('/idm')
                 ->name('idm.')

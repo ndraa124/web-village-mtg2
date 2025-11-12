@@ -10,7 +10,7 @@
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('infographics.apbd.shopping.store') }}" method="POST">
+      <form action="{{ route('admin.infographics.apbd.shopping.store') }}" method="POST">
         @csrf
 
         <div class="row">
@@ -36,7 +36,7 @@
                   <option value="">-- Pilih Belanja --</option>
                   @foreach ($shoppings as $shopping)
                   <option value="{{ $shopping->id }}" {{ old('shopping_id') == $shopping->id ? 'selected' : '' }}>
-                    {{ $shopping->shopping_name }} {{-- Asumsi 'shopping_name' --}}
+                    {{ $shopping->shopping_name }}
                   </option>
                   @endforeach
                 </select>
@@ -82,7 +82,7 @@
           <div class="col-lg-12">
             <div class="d-flex gap-2">
               <button type="submit" class="btn btn-primary fw-normal text-white">Tambah</button>
-              <a href="{{ route('infographics.apbd.shopping.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('admin.infographics.apbd.shopping.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>

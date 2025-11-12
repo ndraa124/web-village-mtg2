@@ -30,7 +30,7 @@ class InfographicsApbdDevRealizationController extends Controller
       'main' => 'admin.infographics.apbd_development_realization.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -50,11 +50,11 @@ class InfographicsApbdDevRealizationController extends Controller
       'main' => 'admin.infographics.apbd_development_realization.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.development-realization.index',
+          'route' => 'admin.infographics.apbd.development-realization.index',
           'title' => 'Daftar Realisasi Pembangunan'
         ],
         ['title' => 'Tambah Data'],
@@ -71,7 +71,7 @@ class InfographicsApbdDevRealizationController extends Controller
     try {
       InfographicsApbdDevRealization::create($validatedData);
 
-      return redirect()->route('infographics.apbd.development-realization.index')
+      return redirect()->route('admin.infographics.apbd.development-realization.index')
         ->with('success', 'Data realisasi pembangunan berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
@@ -85,11 +85,11 @@ class InfographicsApbdDevRealizationController extends Controller
       'main' => 'admin.infographics.apbd_development_realization.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.apbd.development-realization.index',
+          'route' => 'admin.infographics.apbd.development-realization.index',
           'title' => 'Daftar Realisasi Pembangunan'
         ],
         [
@@ -109,7 +109,7 @@ class InfographicsApbdDevRealizationController extends Controller
     try {
       $apbdRealization->update($validatedData);
 
-      return redirect()->route('infographics.apbd.development-realization.index')
+      return redirect()->route('admin.infographics.apbd.development-realization.index')
         ->with('success', 'Data realisasi pembangunan berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -121,7 +121,7 @@ class InfographicsApbdDevRealizationController extends Controller
     try {
       $apbdRealization->delete();
 
-      return redirect()->route('infographics.apbd.development-realization.index')
+      return redirect()->route('admin.infographics.apbd.development-realization.index')
         ->with('success', 'Data realisasi pembangunan berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

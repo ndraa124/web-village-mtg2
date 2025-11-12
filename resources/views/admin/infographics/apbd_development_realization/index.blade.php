@@ -1,6 +1,6 @@
 <div class="card bg-white rounded-10 border border-white mb-4">
   <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
-    <form action="{{ route('infographics.apbd.development-realization.index') }}" method="GET" class="table-src-form position-relative m-0">
+    <form action="{{ route('admin.infographics.apbd.development-realization.index') }}" method="GET" class="table-src-form position-relative m-0">
       <input type="text" name="search" class="form-control w-350" value="{{ request('search') }}" placeholder="Cari tahun atau nama kategori...">
 
       <button type="submit" class="src-btn position-absolute top-50 start-0 translate-middle-y bg-transparent p-0 border-0">
@@ -8,7 +8,7 @@
       </button>
     </form>
 
-    <a href="{{ route('infographics.apbd.development-realization.create') }}" class="text-primary fs-16 text-decoration-none">+ Tambah Baru</a>
+    <a href="{{ route('admin.infographics.apbd.development-realization.create') }}" class="text-primary fs-16 text-decoration-none">+ Tambah Baru</a>
   </div>
 
   @if ($message = Session::get('success'))
@@ -49,10 +49,10 @@
             <td class="text-body">{{ $row->category_name ?? 'N/A' }}</td>
             <td class="text-body text-center">{{ $row->percent }}%</td>
             <td>
-              <form action="{{ route('infographics.apbd.development-realization.destroy', $row->id) }}" method="POST">
+              <form action="{{ route('admin.infographics.apbd.development-realization.destroy', $row->id) }}" method="POST">
                 <div class="d-flex justify-content-center" style="gap: 18px;">
 
-                  <a href="{{ route('infographics.apbd.development-realization.edit', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                  <a href="{{ route('admin.infographics.apbd.development-realization.edit', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
                     <i class="material-symbols-outlined fs-16 fw-normal text-warning">edit</i>
                   </a>
 
