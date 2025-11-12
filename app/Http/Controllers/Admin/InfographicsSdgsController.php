@@ -29,7 +29,7 @@ class InfographicsSdgsController extends Controller
       'main' => 'admin.infographics.sdgs.index',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
@@ -49,11 +49,11 @@ class InfographicsSdgsController extends Controller
       'main' => 'admin.infographics.sdgs.create',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.sdgs.index',
+          'route' => 'admin.infographics.sdgs.index',
           'title' => 'Daftar Infografis SDGs'
         ],
         ['title' => 'Tambah Data'],
@@ -70,35 +70,11 @@ class InfographicsSdgsController extends Controller
     try {
       InfographicsSdgs::create($validatedData);
 
-      return redirect()->route('infographics.sdgs.index')
+      return redirect()->route('admin.infographics.sdgs.index')
         ->with('success', 'Data Infografis SDGs berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
-  }
-
-  public function show(InfographicsSdgs $sdg)
-  {
-    $data = [
-      'title' => 'Detail Data Infografis SDGs',
-      'main' => 'admin.infographics.sdgs.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'dashboard',
-          'title' => 'Dashboard'
-        ],
-        [
-          'route' => 'infographics.sdgs.index',
-          'title' => 'Daftar Infografis SDGs'
-        ],
-        [
-          'title' => 'Detail Data'
-        ],
-      ],
-      'sdg' => $sdg
-    ];
-
-    return view('admin.layout.template', $data);
   }
 
   public function edit(InfographicsSdgs $sdg)
@@ -108,11 +84,11 @@ class InfographicsSdgsController extends Controller
       'main' => 'admin.infographics.sdgs.edit',
       'breadcrumbs' => [
         [
-          'route' => 'dashboard',
+          'route' => 'admin.dashboard',
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'infographics.sdgs.index',
+          'route' => 'admin.infographics.sdgs.index',
           'title' => 'Daftar Infografis SDGs'
         ],
         [
@@ -132,7 +108,7 @@ class InfographicsSdgsController extends Controller
     try {
       $sdg->update($validatedData);
 
-      return redirect()->route('infographics.sdgs.index')
+      return redirect()->route('admin.infographics.sdgs.index')
         ->with('success', 'Data Infografis SDGs berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
@@ -144,7 +120,7 @@ class InfographicsSdgsController extends Controller
     try {
       $sdg->delete();
 
-      return redirect()->route('infographics.sdgs.index')
+      return redirect()->route('admin.infographics.sdgs.index')
         ->with('success', 'Data Infografis SDGs berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());

@@ -175,7 +175,8 @@ Route::middleware(['authenticate'])->group(function () {
                 });
 
             Route::resource('sdgs', InfographicsSdgsController::class)
-                ->parameters(['sdgs' => 'sdg']);
+                ->parameters(['sdgs' => 'sdg'])
+                ->except(['show']);
         });
 
     Route::prefix('/profile')
