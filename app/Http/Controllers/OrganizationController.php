@@ -8,7 +8,7 @@ class OrganizationController extends Controller
   {
     $data = [
       'title' => 'Struktur Organisasi',
-      'main'  => 'main.organization.index',
+      'main'  => 'main.profile.organization.index',
       'breadcrumbs' => [
         [
           'route' => 'home',

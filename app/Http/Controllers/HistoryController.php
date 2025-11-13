@@ -8,7 +8,7 @@ class HistoryController extends Controller
   {
     $data = [
       'title' => 'Sejarah Desa',
-      'main'  => 'main.history.index',
+      'main'  => 'main.profile.history.index',
       'breadcrumbs' => [
         [
           'route' => 'home',

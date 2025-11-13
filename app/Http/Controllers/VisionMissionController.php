@@ -16,7 +16,7 @@ class VisionMissionController extends Controller
 
     $data = [
       'title' => 'Visi & Misi',
-      'main'  => 'main.vision_mission.index',
+      'main'  => 'main.profile.vision_mission.index',
       'breadcrumbs' => [
         [
           'route' => 'home',
