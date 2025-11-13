@@ -58,6 +58,8 @@ use App\Http\Controllers\Admin\InfographicsSdgsController;
 */
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\HistoryController;
+use App\Http\Controllers\Admin\HistoryTimelineController;
 use App\Http\Controllers\Admin\VisionController;
 use App\Http\Controllers\Admin\MissionController;
 use App\Http\Controllers\Admin\NewsController;
@@ -221,6 +223,18 @@ Route::middleware(['authenticate'])->group(function () {
             Route::prefix('/profile')
                 ->name('profile.')
                 ->group(function () {
+                    Route::prefix('history')
+                        ->name('history.')
+                        ->group(function () {
+                            Route::resource('timeline', HistoryTimelineController::class)
+                                ->names('timeline')
+                                ->except(['index', 'show']);
+
+                            Route::resource('/', HistoryController::class)
+                                ->parameter('', 'history')
+                                ->except(['show', 'destroy']);
+                        });
+
                     Route::resource('vision', VisionController::class);
                     Route::resource('mission', MissionController::class);
                 });

@@ -8,10 +8,10 @@
       </div>
 
       @error('error')
-      <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
-        {{ $message }}
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+        <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+          {{ $message }}
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
       @enderror
 
       <form action="{{ route('auth.login.attempt') }}" method="POST">
@@ -23,9 +23,9 @@
             <input type="text" name="nik" class="form-control" id="floatingInput1" value="{{ old('nik') }}" placeholder="Masukkan NIK *">
           </div>
           @error('nik')
-          <div class="text-danger small mt-2">
-            {{ $message }}
-          </div>
+            <div class="text-danger small mt-2">
+              {{ $message }}
+            </div>
           @enderror
         </div>
 
@@ -38,9 +38,9 @@
             </div>
           </div>
           @error('password')
-          <div class="text-danger small mt-2">
-            {{ $message }}
-          </div>
+            <div class="text-danger small mt-2">
+              {{ $message }}
+            </div>
           @enderror
         </div>
 

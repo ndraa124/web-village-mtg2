@@ -61,24 +61,24 @@
           </span>
         </div>
 
-        @if($news->tags->isNotEmpty())
-        <div class="d-flex flex-wrap gap-2 fs-14 text-secondary mb-3 border-top pt-3">
-          <span class="fw-medium">
-            <i class="material-symbols-outlined fs-16" style="vertical-align: middle; margin-top: -3px;">sell</i>
-            Tags:
-          </span>
-          @foreach($news->tags as $tag)
-          <span class="badge bg-primary-light text-primary">{{ $tag->name }}</span>
-          @endforeach
-        </div>
+        @if ($news->tags->isNotEmpty())
+          <div class="d-flex flex-wrap gap-2 fs-14 text-secondary mb-3 border-top pt-3">
+            <span class="fw-medium">
+              <i class="material-symbols-outlined fs-16" style="vertical-align: middle; margin-top: -3px;">sell</i>
+              Tags:
+            </span>
+            @foreach ($news->tags as $tag)
+              <span class="badge bg-primary-light text-primary">{{ $tag->name }}</span>
+            @endforeach
+          </div>
         @endif
 
         <hr>
 
-        @if($news->image)
-        <div class="text-center mb-4">
-          <img src="{{ $news->image_url }}" alt="Gambar Berita" class="img-fluid rounded-3" style="max-height: 400px; width: auto;">
-        </div>
+        @if ($news->image)
+          <div class="text-center mb-4">
+            <img src="{{ $news->image_url }}" alt="Gambar Berita" class="img-fluid rounded-3" style="max-height: 400px; width: auto;">
+          </div>
         @endif
 
         <div class="fs-16 text-body news-content" style="line-height: 1.7;">

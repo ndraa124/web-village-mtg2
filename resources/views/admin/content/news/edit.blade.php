@@ -19,12 +19,12 @@
 <div class="row">
   <div class="col-lg-12">
     @if ($message = Session::get('error'))
-    <div class="col-12">
-      <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
-        {{ $message }}
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+      <div class="col-12">
+        <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+          {{ $message }}
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
       </div>
-    </div>
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
@@ -39,9 +39,9 @@
                 <input type="text" name="title" class="form-control" value="{{ old('title', $news->title) }}" placeholder="Masukkan judul berita atau informasi...">
               </div>
               @error('title')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -53,15 +53,15 @@
                 <textarea id="ckeditor-editor" name="content" class="form-control" rows="10" placeholder="Masukkan konten berita atau informasi...">{{ old('content', $news->content) }}</textarea>
               </div>
               @error('content')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
 
           @php
-          $selectedTagIds = old('tags', $news->tags->pluck('id')->toArray());
+            $selectedTagIds = old('tags', $news->tags->pluck('id')->toArray());
           @endphp
 
           <div class="col-lg-6">
@@ -71,16 +71,16 @@
                 <select name="category_id" class="form-select form-control" aria-label="Kategori">
                   <option value="">Pilih Kategori...</option>
                   @foreach ($categories as $category)
-                  <option value="{{ $category->id }}" {{ old('category_id', $news->category_id) == $category->id ? 'selected' : '' }}>
-                    {{ $category->name }}
-                  </option>
+                    <option value="{{ $category->id }}" {{ old('category_id', $news->category_id) == $category->id ? 'selected' : '' }}>
+                      {{ $category->name }}
+                    </option>
                   @endforeach
                 </select>
               </div>
               @error('category_id')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -91,16 +91,16 @@
               <div class="form-group">
                 <select id="select-tags" name="tags[]" multiple placeholder="Pilih atau tambah tags..." autocomplete="off">
                   @foreach ($tags as $tag)
-                  <option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedTagIds) ? 'selected' : '' }}>
-                    {{ $tag->name }}
-                  </option>
+                    <option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedTagIds) ? 'selected' : '' }}>
+                      {{ $tag->name }}
+                    </option>
                   @endforeach
                 </select>
               </div>
               @error('tags')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -113,9 +113,9 @@
                 <small class="d-block mt-2">Kosongkan jika tidak ingin mengganti gambar.</small>
               </div>
               @error('image')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
               <label class="mt-3">Gambar Saat Ini:</label>
               <img id="image-preview" src="{{ $news->image_url }}" alt="Image Preview" class="img-thumbnail mt-1" style="max-height: 200px;">
@@ -132,9 +132,9 @@
                 </select>
               </div>
               @error('status')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -154,15 +154,6 @@
 </div>
 
 <script>
-  function previewImage(event) {
-    var reader = new FileReader();
-    reader.onload = function() {
-      var output = document.getElementById('image-preview');
-      output.src = reader.result;
-    };
-    reader.readAsDataURL(event.target.files[0]);
-  }
-
   ClassicEditor
     .create(document.querySelector('#ckeditor-editor'), {
       toolbar: {

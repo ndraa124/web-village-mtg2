@@ -285,6 +285,11 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
+            <a href="{{ route('admin.content.profile.history.index') }}" class="menu-link {{ request()->routeIs('admin.content.profile.history.*') ? 'active' : '' }}">
+              Sejarah Desa
+            </a>
+          </li>
+          <li class="menu-item">
             <a href="{{ route('admin.content.profile.vision.index') }}" class="menu-link {{ request()->routeIs('admin.content.profile.vision.*') ? 'active' : '' }}">
               Visi
             </a>
@@ -345,17 +350,17 @@
         </ul>
       </li>
 
-      @if(Auth::user()->role == 'superadmin')
-      <li class="menu-title small text-uppercase">
-        <span class="menu-title-text">USERS</span>
-      </li>
+      @if (Auth::user()->role == 'superadmin')
+        <li class="menu-title small text-uppercase">
+          <span class="menu-title-text">USERS</span>
+        </li>
 
-      <li class="menu-item {{ request()->routeIs('admin.users.*') ? 'open' : '' }}">
-        <a href="{{ route('admin.users.index') }}" class="menu-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
-          <span class="material-symbols-outlined menu-icon">manage_accounts</span>
-          <span class="title">Manajemen User</span>
-        </a>
-      </li>
+        <li class="menu-item {{ request()->routeIs('admin.users.*') ? 'open' : '' }}">
+          <a href="{{ route('admin.users.index') }}" class="menu-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+            <span class="material-symbols-outlined menu-icon">manage_accounts</span>
+            <span class="title">Manajemen User</span>
+          </a>
+        </li>
       @endif
     </ul>
   </aside>
