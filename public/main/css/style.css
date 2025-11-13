@@ -521,3 +521,21 @@ select:focus {
 .ticker-wrap:hover .ticker-tape {
     animation-play-state: paused;
 }
+
+#map {
+    position: relative;
+    z-index: 10;
+}
+
+#map .leaflet-container {
+    z-index: 10 !important;
+}
+
+#map .leaflet-pane {
+    z-index: 10 !important;
+}
+
+#map .leaflet-marker-pane,
+#map .leaflet-popup-pane {
+    z-index: 20 !important;
+}

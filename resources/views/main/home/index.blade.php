@@ -317,7 +317,7 @@
     </h2>
 
     <div class="bg-white rounded-lg shadow-lg p-4">
-      <div id="map" class="h-96 rounded-lg"
+      <div id="map" class="h-96 rounded-lg z-10"
         data-latitude="{{ $village['map_latitude'] ?? '-0.0' }}"
         data-longitude="{{ $village['map_longitude'] ?? '0.0' }}"
         data-zoom="{{ $village['map_zoom'] ?? '14' }}">
