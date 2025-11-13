@@ -27,8 +27,9 @@ class VisionController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Visi',
+      'title' => 'Visi & Misi',
       'main' => 'admin.content.profile.vision.index',
+      'active_tab' => 'vision',
       'breadcrumbs' => [
         [
           'route' => 'admin.dashboard',
@@ -55,7 +56,7 @@ class VisionController extends Controller
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'admin.content.profile.vision.index',
+          'route' => 'admin.content.profile.vision-mission.vision.index',
           'title' => 'Visi',
         ],
         [
@@ -81,36 +82,12 @@ class VisionController extends Controller
 
       DB::commit();
 
-      return redirect()->route('admin.content.profile.vision.index')
+      return redirect()->route('admin.content.profile.vision-mission.vision.index')
         ->with('success', 'Visi baru berhasil ditambahkan dan diaktifkan.');
     } catch (\Exception $e) {
       DB::rollBack();
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
-  }
-
-  public function show(Vision $vision)
-  {
-    $data = [
-      'title' => 'Detail Visi',
-      'main' => 'admin.content.profile.vision.show',
-      'breadcrumbs' => [
-        [
-          'route' => 'admin.dashboard',
-          'title' => 'Dashboard',
-        ],
-        [
-          'route' => 'admin.content.profile.vision.index',
-          'title' => 'Visi',
-        ],
-        [
-          'title' => 'Detail Visi',
-        ]
-      ],
-      'vision' => $vision
-    ];
-
-    return view('admin.layout.template', $data);
   }
 
   public function edit(Vision $vision)
@@ -124,7 +101,7 @@ class VisionController extends Controller
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'admin.content.profile.vision.index',
+          'route' => 'admin.content.profile.vision-mission.vision.index',
           'title' => 'Visi',
         ],
         [
@@ -172,7 +149,7 @@ class VisionController extends Controller
 
       DB::commit();
 
-      return redirect()->route('admin.content.profile.vision.index')
+      return redirect()->route('admin.content.profile.vision-mission.vision.index')
         ->with('success', 'Visi berhasil diperbarui.');
     } catch (\Exception $e) {
       DB::rollBack();
@@ -184,7 +161,7 @@ class VisionController extends Controller
   {
     $vision->delete();
 
-    return redirect()->route('admin.content.profile.vision.index')
+    return redirect()->route('admin.content.profile.vision-mission.vision.index')
       ->with('success', 'Visi berhasil dihapus.');
   }
 }

@@ -290,13 +290,8 @@
             </a>
           </li>
           <li class="menu-item">
-            <a href="{{ route('admin.content.profile.vision.index') }}" class="menu-link {{ request()->routeIs('admin.content.profile.vision.*') ? 'active' : '' }}">
-              Visi
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.content.profile.mission.index') }}" class="menu-link {{ request()->routeIs('admin.content.profile.mission.*') ? 'active' : '' }}">
-              Misi
+            <a href="{{ route('admin.content.profile.vision-mission.vision.index') }}" class="menu-link {{ request()->routeIs('admin.content.profile.vision-mission.*') ? 'active' : '' }}">
+              Visi & Misi
             </a>
           </li>
         </ul>

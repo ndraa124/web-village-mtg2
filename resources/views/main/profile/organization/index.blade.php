@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <div id="imageModal" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4" onclick="closeImageModal()">
+    <div id="imageModal" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4" onclick="closeImageModal()">
       <button class="absolute top-4 right-4 text-white hover:text-red-500 transition-colors z-10" onclick="closeImageModal()">
         <i class="fas fa-times text-3xl"></i>
       </button>

@@ -235,8 +235,14 @@ Route::middleware(['authenticate'])->group(function () {
                                 ->except(['show', 'destroy']);
                         });
 
-                    Route::resource('vision', VisionController::class);
-                    Route::resource('mission', MissionController::class);
+                    Route::prefix('vision-mission')
+                        ->name('vision-mission.')
+                        ->group(function () {
+                            Route::resource('vision', VisionController::class)
+                                ->except(['show']);
+                            Route::resource('mission', MissionController::class)
+                                ->except(['show']);
+                        });
                 });
 
             Route::resource('news', NewsController::class);
