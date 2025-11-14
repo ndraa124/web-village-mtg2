@@ -418,19 +418,16 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     document.head.appendChild(style);
 
-    const serviceCards = document.querySelectorAll(
-        '[class*="bg-gradient-to-br"]'
-    );
-    serviceCards.forEach((card) => {
-        if (card.querySelector("a")) {
-            card.style.cursor = "pointer";
-            card.addEventListener("click", function (e) {
-                if (e.target.tagName !== "A") {
-                    const link = this.querySelector("a");
-                    if (link) {
-                        link.click();
-                    }
-                }
+    const clickableCards = document.querySelectorAll(".clickable-card");
+    clickableCards.forEach((card) => {
+        const innerDiv = card.querySelector('[class*="bg-gradient-to-br"]');
+
+        if (innerDiv) {
+            innerDiv.style.cursor = "pointer";
+            innerDiv.addEventListener("click", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                card.click();
             });
         }
     });

@@ -13,6 +13,10 @@ class LocalWisdomController extends Controller
     $data = [
       'title' => 'Kearifan Lokal',
       'main'  => 'main.anti_corruption.local_wisdom.index',
+      'header' => [
+        'title' => 'Kearifan Lokal',
+        'description' => 'Nilai-nilai dan praktik budaya lokal yang mendukung integritas, kebersamaan, dan tata kelola yang baik',
+      ],
       'breadcrumbs' => [
         [
           'route' => 'home',
@@ -22,7 +26,7 @@ class LocalWisdomController extends Controller
           'title' => 'Desa Anti Korupsi',
         ],
         [
-          'title' => 'Kearifan Lokas',
+          'title' => 'Kearifan Lokal',
         ]
       ],
       'antiCorrupt' => $antiCorrupt

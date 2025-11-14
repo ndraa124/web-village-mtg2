@@ -345,6 +345,25 @@
         </ul>
       </li>
 
+      <li class="menu-item {{ request()->routeIs('admin.services.*') ? 'open' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle {{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">handshake</span>
+          <span class="title">Layanan Publik</span>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="{{ route('admin.services.index') }}" class="menu-link {{ request()->routeIs('admin.services.index') || request()->routeIs('admin.services.create') || request()->routeIs('admin.services.edit') ? 'active' : '' }}">
+              Daftar Layanan
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('admin.services.submissions.index') }}" class="menu-link {{ request()->routeIs('admin.services.submissions.*') ? 'active' : '' }}">
+              Pengajuan Layanan
+            </a>
+          </li>
+        </ul>
+      </li>
+
       @if (Auth::user()->role == 'superadmin')
         <li class="menu-title small text-uppercase">
           <span class="menu-title-text">USERS</span>

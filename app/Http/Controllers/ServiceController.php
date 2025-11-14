@@ -9,6 +9,10 @@ class ServiceController extends Controller
     $data = [
       'title' => 'Layanan Masyarakat',
       'main'  => 'main.service.index',
+      'header' => [
+        'title' => 'Layanan Masyarakat',
+        'description' => 'Kami berkomitmen untuk menyediakan layanan administrasi dan kemasyarakatan yang cepat, transparan, dan efisien bagi seluruh warga Desa Motoling Dua',
+      ],
       'breadcrumbs' => [
         [
           'route' => 'home',

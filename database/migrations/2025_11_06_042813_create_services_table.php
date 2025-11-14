@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('description');
-            $table->string('link')->nullable();
-            $table->string('icon_class');
+            $table->string('slug')->unique();
+            $table->string('title', 150);
+            $table->text('description');
+            $table->longText('requirements_content');
+            $table->string('icon_class', 100);
             $table->timestamps();
         });
     }

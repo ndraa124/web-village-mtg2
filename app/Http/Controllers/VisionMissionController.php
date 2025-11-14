@@ -17,6 +17,10 @@ class VisionMissionController extends Controller
     $data = [
       'title' => 'Visi & Misi',
       'main'  => 'main.profile.vision_mission.index',
+      'header' => [
+        'title' => 'Visi & Misi Motoling Dua ',
+        'description' => 'Cita-cita bersama dan upaya-upaya strategis Desa Motoling Dua untuk mewujudkan kemajuan',
+      ],
       'breadcrumbs' => [
         [
           'route' => 'home',

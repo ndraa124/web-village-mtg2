@@ -1,14 +1,5 @@
 <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-8">
-      <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
-        <i class="fas fa-history text-red-600 mr-2"></i>
-        Sejarah Desa Motoling Dua
-      </h3>
-      <p class="text-gray-600">Perjalanan dan Perkembangan Desa</p>
-      <div class="w-24 h-1 bg-red-600 mx-auto mt-4"></div>
-    </div>
-
     <div class="mb-16">
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
         <div class="relative group cursor-pointer" onclick="openImageModal('{{ $historyVillage->history_image_url }}', 'Foto Desa Motoling Dua')">

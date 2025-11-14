@@ -13,6 +13,10 @@ class SupervisionController extends Controller
     $data = [
       'title' => 'Pengawasan',
       'main'  => 'main.anti_corruption.supervision.index',
+      'header' => [
+        'title' => 'Pengawasan',
+        'description' => 'Mekanisme pengawasan dan pelaporan dalam penyelenggaraan pemerintahan Desa Motoling Dua',
+      ],
       'breadcrumbs' => [
         [
           'route' => 'home',

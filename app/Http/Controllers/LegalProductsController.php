@@ -27,6 +27,10 @@ class LegalProductsController extends Controller
     $data = [
       'title' => 'Produk Hukum',
       'main'  => 'main.legal_products.index',
+      'header' => [
+        'title' => 'Database Produk Hukum',
+        'description' => 'Temukan peraturan desa, surat keputusan, dan dokumen hukum lainnya yang relevan dengan Desa Motoling Dua',
+      ],
       'breadcrumbs' => [
         [
           'route' => 'home',

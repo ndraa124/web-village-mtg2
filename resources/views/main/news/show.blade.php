@@ -56,28 +56,28 @@
   }
 </style>
 
-<section class="py-12">
+<section class="py-20 bg-gradient-to-b from-gray-50 to-white">
   <div class="container mx-auto px-4">
     <div class="flex flex-col lg:flex-row gap-8">
 
       <article class="lg:w-2/3">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden transition-all duration-500">
           <div class="p-8">
             <div class="flex items-center gap-3 mb-4">
-              @if($news->category)
-              <a href="{{ route('news.category', $news->category->slug) }}" class="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold hover:bg-red-700 transition">
-                <i class="fas fa-folder mr-1"></i> {{ $news->category->name }}
-              </a>
+              @if ($news->category)
+                <a href="{{ route('news.category', $news->category->slug) }}" class="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold hover:bg-red-700 transition">
+                  <i class="fas fa-folder mr-1"></i> {{ $news->category->name }}
+                </a>
               @endif
 
-              @if($news->status == 'published')
-              <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                <i class="fas fa-check-circle mr-1"></i> Dipublikasi
-              </span>
+              @if ($news->status == 'published')
+                <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  <i class="fas fa-check-circle mr-1"></i> Dipublikasi
+                </span>
               @else
-              <span class="bg-yellow-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                <i class="fas fa-edit mr-1"></i> Draft
-              </span>
+                <span class="bg-yellow-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  <i class="fas fa-edit mr-1"></i> Draft
+                </span>
               @endif
             </div>
 
@@ -127,20 +127,20 @@
               {!! $news->content !!}
             </div>
 
-            @if($news->tags->isNotEmpty())
-            <div class="mt-8 pt-6 border-t">
-              <div class="flex flex-wrap items-center gap-2">
-                <span class="font-semibold text-gray-700">Tags:</span>
-                @foreach($news->tags as $tag)
-                <a href="{{ route('news.tag', $tag->slug) }}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-red-600 hover:text-white transition">
-                  #{{ $tag->name }}
-                </a>
-                @endforeach
+            @if ($news->tags->isNotEmpty())
+              <div class="mt-8 pt-6 border-t">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="font-semibold text-gray-700">Tags:</span>
+                  @foreach ($news->tags as $tag)
+                    <a href="{{ route('news.tag', $tag->slug) }}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-red-600 hover:text-white transition">
+                      #{{ $tag->name }}
+                    </a>
+                  @endforeach
+                </div>
               </div>
-            </div>
             @endif
 
-            <div class="mt-8 p-6 bg-gray-50 rounded-lg">
+            <div class="mt-8 p-6 bg-gray-50 rounded-2xl">
               <div class="flex items-center gap-4">
                 <img src="{{ asset('admin/images/admin.png') }}" alt="Author" class="w-20 h-20 rounded-full">
                 <div>
@@ -163,64 +163,60 @@
           </div>
         </div>
 
-        @if($relatedNews->count() > 0)
-        <div class="bg-white rounded-lg shadow-lg p-6 mt-8">
-          <h3 class="text-xl font-bold text-gray-800 mb-4">
-            <i class="fas fa-newspaper text-red-600 mr-2"></i>
-            Berita Terkait
-          </h3>
-          <div class="grid md:grid-cols-2 gap-4">
+        @if ($relatedNews->count() > 0)
+          <div class="bg-white rounded-3xl shadow-xl p-8 mt-16">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">
+              <i class="fas fa-newspaper text-red-600 mr-2"></i>
+              Berita Terkait
+            </h3>
+            <div class="grid md:grid-cols-2 gap-4">
 
-            @foreach($relatedNews as $related)
-            <article class="flex gap-3">
-              <img src="{{ $related->image_url }}" alt="{{ $related->title }}" class="w-24 h-24 object-cover rounded">
-              <div>
-                <a href="{{ route('news.show', $related->slug) }}" class="font-semibold text-gray-800 hover:text-red-600 transition cursor-pointer line-clamp-2">
-                  {{ $related->title }}
-                </a>
-                <p class="text-sm text-gray-500 mt-1">
-                  <i class="far fa-calendar mr-1"></i> {{ $related->published_at->format('d F Y') }}
-                </p>
-              </div>
-            </article>
-            @endforeach
+              @foreach ($relatedNews as $related)
+                <article class="flex gap-3">
+                  <img src="{{ $related->image_url }}" alt="{{ $related->title }}" class="w-24 h-24 object-cover rounded">
+                  <div>
+                    <a href="{{ route('news.show', $related->slug) }}" class="font-semibold text-gray-800 hover:text-red-600 transition cursor-pointer line-clamp-2">
+                      {{ $related->title }}
+                    </a>
+                    <p class="text-sm text-gray-500 mt-1">
+                      <i class="far fa-calendar mr-1"></i> {{ $related->published_at->format('d F Y') }}
+                    </p>
+                  </div>
+                </article>
+              @endforeach
 
+            </div>
           </div>
-        </div>
         @endif
 
-        <div class="bg-white rounded-lg shadow-lg p-6 mt-8">
+        <div class="bg-white rounded-3xl shadow-xl p-8 mt-16">
           <h3 class="text-xl font-bold text-gray-800 mb-6">
             <i class="fas fa-comments text-red-600 mr-2"></i>
             Komentar
           </h3>
 
-          <div class="fb-comments"
-            data-href="{{ Request::url() }}"
-            data-width="100%"
-            data-numposts="5">
-          </div>
+          <div class="fb-comments" data-href="{{ Request::url() }}" data-width="100%" data-numposts="5"></div>
         </div>
       </article>
 
       <aside class="lg:w-1/3">
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6 sticky top-24">
+        <div class="bg-white rounded-3xl shadow-xl p-6 mb-6 sticky top-24">
           <h3 class="text-lg font-bold text-gray-800 mb-4">
             <i class="fas fa-clock text-red-600 mr-2"></i>
             Berita Terbaru
           </h3>
           <div class="space-y-4">
             @forelse($latestNewsSidebar as $latest)
-            <article class="pb-4 border-b">
-              <a href="{{ route('news.show', $latest->slug) }}" class="font-semibold text-gray-800 hover:text-red-600 transition cursor-pointer mb-1 line-clamp-2">
-                {{ $latest->title }}
-              </a>
-              <p class="text-xs text-gray-500 mt-1">
-                <i class="far fa-calendar mr-1"></i> {{ $latest->published_at->format('d F Y') }}
-              </p>
-            </article>
+              <article class="pb-4 border-b">
+                <a href="{{ route('news.show', $latest->slug) }}" class="font-semibold text-gray-800 hover:text-red-600 transition cursor-pointer mb-1 line-clamp-2">
+                  {{ $latest->title }}
+                </a>
+                <p class="text-xs text-gray-500 mt-1">
+                  <i class="far fa-calendar mr-1"></i> {{ $latest->published_at->format('d F Y') }}
+                </p>
+              </article>
             @empty
-            <p class="text-sm text-gray-500">Tidak ada berita terbaru.</p>
+              <p class="text-sm text-gray-500">Tidak ada berita terbaru.</p>
             @endforelse
           </div>
         </div>

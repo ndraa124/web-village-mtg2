@@ -69,6 +69,8 @@ use App\Http\Controllers\Admin\AntiCorruptSupervisionController;
 use App\Http\Controllers\Admin\AntiCorruptServiceQualityController;
 use App\Http\Controllers\Admin\AntiCorruptParticipateController;
 use App\Http\Controllers\Admin\AntiCorruptLocalWisdomController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ServiceSubmissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -209,6 +211,25 @@ Route::middleware(['authenticate'])->group(function () {
             Route::resource('sdgs', InfographicsSdgsController::class)
                 ->parameters(['sdgs' => 'sdg'])
                 ->except(['show']);
+        });
+
+    Route::prefix('/services')
+        ->name('services.')
+        ->group(function () {
+            Route::resource('/', ServiceController::class)
+                ->except(['show'])
+                ->parameters(['' => 'service']);
+
+            Route::prefix('submissions')
+                ->name('submissions.')
+                ->controller(ServiceSubmissionController::class)
+                ->group(function () {
+                    Route::get('/', 'index')->name('index');
+                    Route::get('/{submission}', 'show')->name('show');
+                    Route::post('/{submission}/complete', 'complete')->name('complete');
+                    Route::post('/{submission}/reject', 'reject')->name('reject');
+                    Route::delete('/{submission}', 'destroy')->name('destroy');
+                });
         });
 
     Route::prefix('/content')

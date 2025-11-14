@@ -9,6 +9,10 @@ class OrganizationController extends Controller
     $data = [
       'title' => 'Struktur Organisasi',
       'main'  => 'main.profile.organization.index',
+      'header' => [
+        'title' => 'Bagan Struktur Organisasi',
+        'description' => 'Struktur Organisasi Pemerintahan Desa Motoling Dua',
+      ],
       'breadcrumbs' => [
         [
           'route' => 'home',

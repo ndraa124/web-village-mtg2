@@ -18,6 +18,10 @@ class HistoryController extends Controller
     $data = [
       'title' => 'Sejarah Desa',
       'main'  => 'main.profile.history.index',
+      'header' => [
+        'title' => 'Sejarah Desa Motoling Dua',
+        'description' => 'Perjalanan dan Perkembangan Desa Motoling Dua',
+      ],
       'breadcrumbs' => [
         [
           'route' => 'home',

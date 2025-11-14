@@ -84,6 +84,10 @@ class NewsController extends Controller
     $data = [
       'title' => $pageTitle,
       'main'  => 'main.news.index',
+      'header' => [
+        'title' => 'Berita & Informasi Terbaru dari Desa',
+        'description' => 'Ikuti perkembangan, pengumuman, dan kegiatan terkini yang ada di Desa Motoling Dua',
+      ],
       'breadcrumbs' => [
         [
           'route' => 'home',
@@ -130,6 +134,10 @@ class NewsController extends Controller
     $data = [
       'title' => 'Detail Berita',
       'main'  => 'main.news.show',
+      'header' => [
+        'title' => 'Detail Berita & Informasi',
+        'description' => 'Perjalanan dan Perkembangan Desa',
+      ],
       'breadcrumbs' => [
         [
           'route' => 'home',

@@ -1,11 +1,10 @@
 <style>
   .card-hover {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   .card-hover:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px) scale(1.02);
   }
 
   details>summary {
@@ -17,186 +16,289 @@
     display: none;
   }
 
-  details>summary::after {
+  details>summary::before {
     content: '+';
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 300;
-    transition: transform 0.2s ease;
+    margin-right: 1rem;
+    color: #dc2626;
+    transition: transform 0.3s ease;
+    display: inline-block;
   }
 
-  details[open]>summary::after {
+  details[open]>summary::before {
     content: '−';
     transform: rotate(180deg);
   }
 
   details[open] {
-    background-color: #fef2f2;
+    background: linear-gradient(to bottom right, #fef2f2, #fee2e2);
+    border-color: #fca5a5;
   }
 </style>
 
-{{-- 2. Bagian Pengantar --}}
-<section class="py-16">
-  <div class="container mx-auto px-4 text-center max-w-3xl">
-    <i class="fas fa-hands-helping text-5xl text-red-600 mb-4"></i>
-    <h3 class="text-3xl font-bold text-gray-800 mb-4">Pelayanan Terbaik untuk Warga</h3>
-    <p class="text-gray-600 text-lg">
-      Kami berkomitmen untuk menyediakan layanan administrasi dan kemasyarakatan yang cepat, transparan, dan efisien
-      bagi seluruh warga Desa Motoling Dua. Temukan layanan yang Anda butuhkan di bawah ini.
-    </p>
-  </div>
-</section>
-
-{{-- 3. Daftar Layanan (Grid) --}}
-<section class="py-16 bg-gray-50">
+<section class="py-16 bg-gradient-to-b from-gray-50 to-white">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      {{-- Kartu Layanan 1: E-KTP --}}
-      <div class="bg-white rounded-lg shadow-lg p-8 text-center card-hover">
-        <div class="w-20 h-20 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fas fa-id-card text-4xl"></i>
-        </div>
-        <h4 class="text-xl font-bold text-gray-800 mb-2">Layanan E-KTP</h4>
-        <p class="text-gray-600 mb-4">Pengajuan KTP baru, perpanjangan, atau penggantian KTP yang rusak/hilang.</p>
-        <a href="#" class="text-red-600 font-semibold hover:underline">Lihat Persyaratan →</a>
+    <div class="mb-20">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+          <i class="fas fa-clipboard-list text-red-600 mr-2"></i>
+          Jenis Layanan
+        </h3>
+        <p class="text-gray-600">Pilih layanan yang Anda butuhkan</p>
+        <div class="w-24 h-1 bg-red-600 mx-auto mt-4"></div>
       </div>
 
-      {{-- Kartu Layanan 2: Surat Keterangan --}}
-      <div class="bg-white rounded-lg shadow-lg p-8 text-center card-hover">
-        <div class="w-20 h-20 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fas fa-file-alt text-4xl"></i>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 hover:border-red-300 hover:shadow-2xl">
+          <div class="bg-gradient-to-br from-red-50 to-white p-6">
+            <div class="relative">
+              <div class="absolute inset-0 bg-red-400 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+              <div class="relative w-20 h-20 bg-gradient-to-br from-red-500 to-red-700 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <i class="fas fa-id-card text-4xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-red-600 transition-colors">Layanan E-KTP</h4>
+            <p class="text-gray-600 mb-4 leading-relaxed">Pengajuan KTP baru, perpanjangan, atau penggantian KTP yang rusak/hilang.</p>
+            <a href="#" class="inline-flex items-center text-red-600 font-semibold hover:text-red-700 transition-colors group/link">
+              Ajukan Sekarang →
+              <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
         </div>
-        <h4 class="text-xl font-bold text-gray-800 mb-2">Surat Keterangan</h4>
-        <p class="text-gray-600 mb-4">Pengajuan Surat Keterangan Usaha (SKU), Domisili, Tidak Mampu (SKTM), dll.</p>
-        <a href="#" class="text-red-600 font-semibold hover:underline">Lihat Persyaratan →</a>
-      </div>
 
-      {{-- Kartu Layanan 3: Akta Kelahiran --}}
-      <div class="bg-white rounded-lg shadow-lg p-8 text-center card-hover">
-        <div class="w-20 h-20 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fas fa-baby text-4xl"></i>
+        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 hover:border-blue-300 hover:shadow-2xl">
+          <div class="bg-gradient-to-br from-blue-50 to-white p-6">
+            <div class="relative">
+              <div class="absolute inset-0 bg-blue-400 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+              <div class="relative w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <i class="fas fa-file-alt text-4xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">Surat Keterangan</h4>
+            <p class="text-gray-600 mb-4 leading-relaxed">Pengajuan Surat Keterangan Usaha (SKU), Domisili, Tidak Mampu (SKTM), dll.</p>
+            <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors group/link">
+              Ajukan Sekarang →
+              <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
         </div>
-        <h4 class="text-xl font-bold text-gray-800 mb-2">Akta Kelahiran</h4>
-        <p class="text-gray-600 mb-4">Pengajuan pembuatan Akta Kelahiran baru bagi warga yang baru melahirkan.</p>
-        <a href="#" class="text-red-600 font-semibold hover:underline">Lihat Persyaratan →</a>
-      </div>
 
-      {{-- Kartu Layanan 4: Akta Kematian --}}
-      <div class="bg-white rounded-lg shadow-lg p-8 text-center card-hover">
-        <div class="w-20 h-20 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fas fa-cross text-4xl"></i>
+        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 hover:border-green-300 hover:shadow-2xl">
+          <div class="bg-gradient-to-br from-green-50 to-white p-6">
+            <div class="relative">
+              <div class="absolute inset-0 bg-green-400 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+              <div class="relative w-20 h-20 bg-gradient-to-br from-green-500 to-green-700 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <i class="fas fa-baby text-4xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">Akta Kelahiran</h4>
+            <p class="text-gray-600 mb-4 leading-relaxed">Pengajuan pembuatan Akta Kelahiran baru bagi warga yang baru melahirkan.</p>
+            <a href="#" class="inline-flex items-center text-green-600 font-semibold hover:text-green-700 transition-colors group/link">
+              Ajukan Sekarang →
+              <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
         </div>
-        <h4 class="text-xl font-bold text-gray-800 mb-2">Akta Kematian</h4>
-        <p class="text-gray-600 mb-4">Pengajuan Akta Kematian sebagai dokumen resmi pencatatan kependudukan.</p>
-        <a href="#" class="text-red-600 font-semibold hover:underline">Lihat Persyaratan →</a>
-      </div>
 
-      {{-- Kartu Layanan 5: Surat Pindah --}}
-      <div class="bg-white rounded-lg shadow-lg p-8 text-center card-hover">
-        <div class="w-20 h-20 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fas fa-truck-moving text-4xl"></i>
+        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 hover:border-gray-400 hover:shadow-2xl">
+          <div class="bg-gradient-to-br from-gray-50 to-white p-6">
+            <div class="relative">
+              <div class="absolute inset-0 bg-gray-400 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+              <div class="relative w-20 h-20 bg-gradient-to-br from-gray-600 to-gray-800 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <i class="fas fa-cross text-4xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-gray-700 transition-colors">Akta Kematian</h4>
+            <p class="text-gray-600 mb-4 leading-relaxed">Pengajuan Akta Kematian sebagai dokumen resmi pencatatan kependudukan.</p>
+            <a href="#" class="inline-flex items-center text-gray-700 font-semibold hover:text-gray-800 transition-colors group/link">
+              Ajukan Sekarang →
+              <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
         </div>
-        <h4 class="text-xl font-bold text-gray-800 mb-2">Surat Pindah</h4>
-        <p class="text-gray-600 mb-4">Layanan pengurusan surat pindah domisili (datang atau keluar) desa.</p>
-        <a href="#" class="text-red-600 font-semibold hover:underline">Lihat Persyaratan →</a>
-      </div>
 
-      {{-- Kartu Layanan 6: Perizinan UMKM --}}
-      <div class="bg-white rounded-lg shadow-lg p-8 text-center card-hover">
-        <div class="w-20 h-20 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fas fa-store text-4xl"></i>
+        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 hover:border-purple-300 hover:shadow-2xl">
+          <div class="bg-gradient-to-br from-purple-50 to-white p-6">
+            <div class="relative">
+              <div class="absolute inset-0 bg-purple-400 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+              <div class="relative w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-700 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <i class="fas fa-truck-moving text-4xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-purple-600 transition-colors">Surat Pindah</h4>
+            <p class="text-gray-600 mb-4 leading-relaxed">Layanan pengurusan surat pindah domisili (datang atau keluar) desa.</p>
+            <a href="#" class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-700 transition-colors group/link">
+              Ajukan Sekarang →
+              <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
         </div>
-        <h4 class="text-xl font-bold text-gray-800 mb-2">Izin UMKM</h4>
-        <p class="text-gray-600 mb-4">Bantuan pengajuan perizinan usaha mikro, kecil, dan menengah (NIB, P-IRT).</p>
-        <a href="#" class="text-red-600 font-semibold hover:underline">Lihat Persyaratan →</a>
-      </div>
 
+        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 hover:border-yellow-300 hover:shadow-2xl">
+          <div class="bg-gradient-to-br from-yellow-50 to-white p-6">
+            <div class="relative">
+              <div class="absolute inset-0 bg-yellow-400 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+              <div class="relative w-20 h-20 bg-gradient-to-br from-yellow-500 to-yellow-700 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <i class="fas fa-store text-4xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-yellow-600 transition-colors">Izin UMKM</h4>
+            <p class="text-gray-600 mb-4 leading-relaxed">Bantuan pengajuan perizinan usaha mikro, kecil, dan menengah (NIB, P-IRT).</p>
+            <a href="#" class="inline-flex items-center text-yellow-600 font-semibold hover:text-yellow-700 transition-colors group/link">
+              Ajukan Sekarang →
+              <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
 
-{{-- 4. Alur Pelayanan (How-to) --}}
-<section class="py-16 bg-white">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
-      <i class="fas fa-stream text-red-600 mr-2"></i>
-      Alur Pelayanan
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-
-      <div class="p-6">
-        <div class="w-24 h-24 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-          <span class="text-4xl font-bold">1</span>
-        </div>
-        <h4 class="text-xl font-bold text-gray-800 mb-2">Datang ke Kantor Desa</h4>
-        <p class="text-gray-600">Bawa dokumen persyaratan yang diperlukan sesuai layanan yang dituju.</p>
+    <div class="mb-20">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+          <i class="fas fa-route text-red-600 mr-2"></i>
+          Alur Pelayanan
+        </h3>
+        <p class="text-gray-600">Langkah mudah mendapatkan layanan</p>
+        <div class="w-24 h-1 bg-red-600 mx-auto mt-4"></div>
       </div>
 
-      <div class="p-6">
-        <div class="w-24 h-24 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-          <span class="text-4xl font-bold">2</span>
-        </div>
-        <h4 class="text-xl font-bold text-gray-800 mb-2">Ambil Nomor Antrian</h4>
-        <p class="text-gray-600">Menuju loket pelayanan dan sampaikan keperluan Anda kepada petugas.</p>
-      </div>
+      <div class="relative">
+        <div class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-red-200 transform -translate-y-1/2 z-0"></div>
 
-      <div class="p-6">
-        <div class="w-24 h-24 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-          <span class="text-4xl font-bold">3</span>
-        </div>
-        <h4 class="text-xl font-bold text-gray-800 mb-2">Proses & Verifikasi</h4>
-        <p class="text-gray-600">Petugas akan memverifikasi data Anda. Dokumen akan diproses (SOP 1-3 hari kerja).</p>
-      </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+          <div class="group text-center">
+            <div class="relative inline-block mb-6">
+              <div class="absolute inset-0 bg-red-400 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+              <div class="relative w-28 h-28 bg-gradient-to-br from-red-600 to-red-700 text-white rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300 border-4 border-white">
+                <span class="text-5xl font-extrabold">1</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow border border-gray-100">
+              <h4 class="text-xl font-bold text-gray-800 mb-3">Datang ke Kantor Desa</h4>
+              <p class="text-gray-600 leading-relaxed">Bawa dokumen persyaratan yang diperlukan sesuai layanan yang dituju</p>
+            </div>
+          </div>
 
+          <div class="group text-center">
+            <div class="relative inline-block mb-6">
+              <div class="absolute inset-0 bg-red-400 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+              <div class="relative w-28 h-28 bg-gradient-to-br from-red-600 to-red-700 text-white rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300 border-4 border-white">
+                <span class="text-5xl font-extrabold">2</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow border border-gray-100">
+              <h4 class="text-xl font-bold text-gray-800 mb-3">Ambil Nomor Antrian</h4>
+              <p class="text-gray-600 leading-relaxed">Menuju loket pelayanan dan sampaikan keperluan Anda kepada petugas</p>
+            </div>
+          </div>
+
+          <div class="group text-center">
+            <div class="relative inline-block mb-6">
+              <div class="absolute inset-0 bg-red-400 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+              <div class="relative w-28 h-28 bg-gradient-to-br from-red-600 to-red-700 text-white rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-300 border-4 border-white">
+                <span class="text-5xl font-extrabold">3</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow border border-gray-100">
+              <h4 class="text-xl font-bold text-gray-800 mb-3">Proses & Verifikasi</h4>
+              <p class="text-gray-600 leading-relaxed">Petugas akan memverifikasi data. Dokumen diproses dalam 1-3 hari kerja</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
 
-{{-- 5. FAQ (Tanya Jawab) --}}
-<section class="py-16 bg-gray-50">
-  <div class="container mx-auto px-4 max-w-3xl">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
-      <i class="fas fa-question-circle text-red-600 mr-2"></i>
-      Pertanyaan yang Sering Diajukan
-    </h2>
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+          <i class="fas fa-question-circle text-red-600 mr-2"></i>
+          Pertanyaan yang Sering Diajukan
+        </h3>
+        <p class="text-gray-600">Jawaban untuk pertanyaan umum seputar layanan</p>
+        <div class="w-24 h-1 bg-red-600 mx-auto mt-4"></div>
+      </div>
 
-    <div class="space-y-4">
+      <div class="space-y-4">
+        <details class="group bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 border-2 border-gray-200 hover:border-red-300">
+          <summary class="flex justify-between items-center font-bold text-lg text-gray-800 cursor-pointer">
+            <span>Apa jam operasional kantor desa?</span>
+          </summary>
+          <div class="mt-4 pt-4 border-t border-gray-200">
+            <p class="text-gray-600 leading-relaxed">
+              Jam pelayanan Kantor Desa Motoling Dua adalah:
+            </p>
+            <ul class="mt-3 space-y-2 text-gray-600">
+              <li class="flex items-start">
+                <i class="fas fa-clock text-red-600 mr-3 mt-1"></i>
+                <span><strong>Senin - Kamis:</strong> 08.00 - 16.00 WITA</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-clock text-red-600 mr-3 mt-1"></i>
+                <span><strong>Jumat:</strong> 08.00 - 15.00 WITA</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-utensils text-red-600 mr-3 mt-1"></i>
+                <span><strong>Istirahat:</strong> 12.00 - 13.00 WITA</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-calendar-times text-red-600 mr-3 mt-1"></i>
+                <span><em>Sabtu, Minggu, dan Hari Libur Nasional: Tutup</em></span>
+              </li>
+            </ul>
+          </div>
+        </details>
 
-      <details class="bg-white rounded-lg shadow p-6 transition-all duration-300">
-        <summary class="flex justify-between items-center font-semibold text-lg text-gray-800">
-          Apa jam operasional kantor desa?
-        </summary>
-        <p class="text-gray-600 mt-4">
-          Jam pelayanan Kantor Desa Motoling Dua adalah:
-          <br><strong>Senin - Kamis:</strong> 08.00 - 16.00 WITA
-          <br><strong>Jumat:</strong> 08.00 - 15.00 WITA
-          <br><strong>Istirahat:</strong> 12.00 - 13.00 WITA
-          <br><em>Sabtu, Minggu, dan Hari Libur Nasional: Tutup</em>
-        </p>
-      </details>
+        <details class="group bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 border-2 border-gray-200 hover:border-red-300">
+          <summary class="flex justify-between items-center font-bold text-lg text-gray-800 cursor-pointer">
+            <span>Dokumen apa saja yang harus saya bawa?</span>
+          </summary>
+          <div class="mt-4 pt-4 border-t border-gray-200">
+            <p class="text-gray-600 leading-relaxed mb-3">
+              Persyaratan dokumen bervariasi tergantung layanan. Namun, dokumen umum yang sebaiknya selalu Anda bawa:
+            </p>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                <span>Kartu Tanda Penduduk (E-KTP)</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                <span>Kartu Keluarga (KK)</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                <span>Surat Pengantar dari Kepala Jaga/Lingkungan (jika diperlukan)</span>
+              </li>
+            </ul>
+          </div>
+        </details>
 
-      <details class="bg-white rounded-lg shadow p-6 transition-all duration-300">
-        <summary class="flex justify-between items-center font-semibold text-lg text-gray-800">
-          Dokumen apa saja yang harus saya bawa?
-        </summary>
-        <p class="text-gray-600 mt-4">
-          Persyaratan dokumen bervariasi tergantung layanan. Namun, dokumen umum yang sebaiknya selalu Anda bawa (atau siapkan fotokopinya) adalah:
-          <br>• Kartu Tanda Penduduk (E-KTP)
-          <br>• Kartu Keluarga (KK)
-          <br>• Surat Pengantar dari Kepala Jaga/Lingkungan (jika diperlukan)
-        </p>
-      </details>
-
-      <details class="bg-white rounded-lg shadow p-6 transition-all duration-300">
-        <summary class="flex justify-between items-center font-semibold text-lg text-gray-800">
-          Apakah pengurusan surat bisa diwakilkan?
-        </summary>
-        <p class="text-gray-600 mt-4">
-          Pada prinsipnya, untuk layanan yang menyangkut data kependudukan (seperti E-KTP) diwajibkan yang bersangkutan untuk hadir.
-          Namun, untuk layanan administrasi umum, pengurusan dapat diwakilkan oleh anggota keluarga yang terdaftar dalam satu Kartu Keluarga (KK) dengan membawa surat kuasa sederhana dan KTP asli pemohon.
-        </p>
-      </details>
-
+        <details class="group bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 border-2 border-gray-200 hover:border-red-300">
+          <summary class="flex justify-between items-center font-bold text-lg text-gray-800 cursor-pointer">
+            <span>Apakah pengurusan surat bisa diwakilkan?</span>
+          </summary>
+          <div class="mt-4 pt-4 border-t border-gray-200">
+            <p class="text-gray-600 leading-relaxed">
+              Pada prinsipnya, untuk layanan yang menyangkut data kependudukan (seperti E-KTP) diwajibkan yang bersangkutan untuk hadir.
+              Namun, untuk layanan administrasi umum, pengurusan dapat diwakilkan oleh anggota keluarga yang terdaftar dalam satu Kartu Keluarga (KK) dengan membawa surat kuasa sederhana dan KTP asli pemohon.
+            </p>
+          </div>
+        </details>
+      </div>
     </div>
   </div>
 </section>

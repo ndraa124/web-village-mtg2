@@ -1,14 +1,6 @@
 <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
   <div class="container mx-auto px-4">
     <div class="mb-16">
-      <div class="text-center mb-8">
-        <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
-          <i class="fas fa-sitemap text-red-600 mr-2"></i>
-          Bagan Struktur Organisasi
-        </h3>
-        <p class="text-gray-600">Struktur organisasi pemerintahan desa</p>
-        <div class="w-24 h-1 bg-red-600 mx-auto mt-4"></div>
-      </div>
 
       <div class="grid md:grid-cols-2 gap-6">
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">

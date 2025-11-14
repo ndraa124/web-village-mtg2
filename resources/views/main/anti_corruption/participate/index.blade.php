@@ -18,29 +18,55 @@
     background-color: #f8f9fa;
     font-weight: 600;
   }
+
+  .news-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .news-content h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .news-content h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .news-content ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .news-content ol {
+    list-style-type: decimal;
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+  }
 </style>
 
-<section class="py-16 bg-white">
+<section class="py-20 bg-gradient-to-b from-gray-50 to-white">
   <div class="container mx-auto px-4 max-w-5xl">
+    <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+      <article class="max-w-none text-gray-700">
+        <div class="fs-16 text-body news-content">
 
-    <div class="text-center mb-12">
-      <i class="fas fa-landmark text-5xl text-red-600 mb-4"></i>
-      <h3 class="text-3xl font-bold text-gray-800 mb-4">Partisipasi Masyarakat</h3>
-    </div>
-
-    <article class="prose prose-lg max-w-none text-gray-700 space-y-6">
-      <div class="fs-16 text-body news-content" style="line-height: 1.7;">
-        <?php if (!$antiCorrupt) { ?>
-          Tidak ada konten
-        <?php } else { ?>
-          <?php if ($antiCorrupt->content == "") { ?>
-            Tidak ada konten
-          <?php } else { ?>
+          @if (empty($antiCorrupt) || $antiCorrupt->content == '')
+            <p class="text-center italic text-gray-500">
+              Tidak ada konten untuk ditampilkan.
+            </p>
+          @else
             {!! $antiCorrupt->content !!}
-          <?php } ?>
-        <?php } ?>
-      </div>
-    </article>
+          @endif
 
+        </div>
+      </article>
+    </div>
   </div>
 </section>

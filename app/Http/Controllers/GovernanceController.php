@@ -13,6 +13,10 @@ class GovernanceController extends Controller
     $data = [
       'title' => 'Tata Laksana',
       'main'  => 'main.anti_corruption.governance.index',
+      'header' => [
+        'title' => 'Tata Laksana',
+        'description' => 'Prinsip-prinsip dan implementasi tata kelola pemerintahan desa yang baik di Desa Motoling Dua',
+      ],
       'breadcrumbs' => [
         [
           'route' => 'home',

@@ -13,6 +13,10 @@ class ServiceQualityController extends Controller
     $data = [
       'title' => 'Kualitas Pelayanan Publik',
       'main'  => 'main.anti_corruption.service_quality.index',
+      'header' => [
+        'title' => 'Kualitas Pelayanan Publik',
+        'description' => 'Standar dan komitmen kami dalam memberikan pelayanan publik yang prima, transparan, dan akuntabel',
+      ],
       'breadcrumbs' => [
         [
           'route' => 'home',

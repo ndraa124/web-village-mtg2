@@ -13,6 +13,10 @@ class ParticipateController extends Controller
     $data = [
       'title' => 'Partisipasi Masyarakat',
       'main'  => 'main.anti_corruption.participate.index',
+      'header' => [
+        'title' => 'Partisipasi Masyarakat',
+        'description' => 'Mendorong keterlibatan aktif warga dalam proses pembangunan dan pengawasan pemerintahan desa',
+      ],
       'breadcrumbs' => [
         [
           'route' => 'home',

@@ -86,8 +86,6 @@ class HomeController extends Controller
         try {
             Mail::to($recipientEmail)->send(new ContactFormMail($validatedData));
         } catch (\Exception $e) {
-            dd($e->getMessage());
-
             return redirect(url()->previous() . '#kontak')
                 ->with('error', 'Terjadi kesalahan. Pesan Anda tidak dapat dikirim.')
                 ->withInput();
