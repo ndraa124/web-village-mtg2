@@ -50,7 +50,17 @@ Route::prefix('/news')
         Route::get('/{news:slug}', 'show')->name('show');
     });
 
-Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
+Route::prefix('/service')
+    ->controller(ServiceController::class)
+    ->name('service.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{service:slug}', 'show')->name('show');
+
+        Route::get('/{service:slug}/submit', 'createSubmission')->name('submission.create');
+        Route::post('/{service:slug}/submit', 'storeSubmission')->name('submission.store');
+    });
+
 Route::get('/potential', [PotentialController::class, 'index'])->name('potential.index');
 Route::get('/legal-products', [LegalProductsController::class, 'index'])->name('legal-products.index');
 

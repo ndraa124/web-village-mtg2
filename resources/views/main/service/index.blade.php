@@ -50,119 +50,38 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 hover:border-red-300 hover:shadow-2xl">
-          <div class="bg-gradient-to-br from-red-50 to-white p-6">
-            <div class="relative">
-              <div class="absolute inset-0 bg-red-400 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-              <div class="relative w-20 h-20 bg-gradient-to-br from-red-500 to-red-700 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <i class="fas fa-id-card text-4xl"></i>
-              </div>
-            </div>
-          </div>
-          <div class="p-6">
-            <h4 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-red-600 transition-colors">Layanan E-KTP</h4>
-            <p class="text-gray-600 mb-4 leading-relaxed">Pengajuan KTP baru, perpanjangan, atau penggantian KTP yang rusak/hilang.</p>
-            <a href="#" class="inline-flex items-center text-red-600 font-semibold hover:text-red-700 transition-colors group/link">
-              Ajukan Sekarang →
-              <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
+        @php
+          $colors = ['blue', 'red', 'green', 'indigo', 'purple', 'yellow', 'pink'];
+        @endphp
 
-        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 hover:border-blue-300 hover:shadow-2xl">
-          <div class="bg-gradient-to-br from-blue-50 to-white p-6">
-            <div class="relative">
-              <div class="absolute inset-0 bg-blue-400 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-              <div class="relative w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <i class="fas fa-file-alt text-4xl"></i>
-              </div>
-            </div>
-          </div>
-          <div class="p-6">
-            <h4 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">Surat Keterangan</h4>
-            <p class="text-gray-600 mb-4 leading-relaxed">Pengajuan Surat Keterangan Usaha (SKU), Domisili, Tidak Mampu (SKTM), dll.</p>
-            <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors group/link">
-              Ajukan Sekarang →
-              <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
+        @forelse ($services as $service)
+          @php
+            $color = $colors[($loop->iteration - 1) % count($colors)];
+          @endphp
 
-        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 hover:border-green-300 hover:shadow-2xl">
-          <div class="bg-gradient-to-br from-green-50 to-white p-6">
-            <div class="relative">
-              <div class="absolute inset-0 bg-green-400 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-              <div class="relative w-20 h-20 bg-gradient-to-br from-green-500 to-green-700 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <i class="fas fa-baby text-4xl"></i>
+          <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 hover:border-{{ $color }}-300 hover:shadow-2xl transition-all duration-300">
+            <div class="bg-gradient-to-br from-{{ $color }}-50 to-white p-6">
+              <div class="relative">
+                <div class="absolute inset-0 bg-{{ $color }}-400 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                <div class="relative w-20 h-20 bg-gradient-to-br from-{{ $color }}-500 to-{{ $color }}-700 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                  <i class="{{ $service->icon_class }} text-4xl"></i>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="p-6">
-            <h4 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">Akta Kelahiran</h4>
-            <p class="text-gray-600 mb-4 leading-relaxed">Pengajuan pembuatan Akta Kelahiran baru bagi warga yang baru melahirkan.</p>
-            <a href="#" class="inline-flex items-center text-green-600 font-semibold hover:text-green-700 transition-colors group/link">
-              Ajukan Sekarang →
-              <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 hover:border-gray-400 hover:shadow-2xl">
-          <div class="bg-gradient-to-br from-gray-50 to-white p-6">
-            <div class="relative">
-              <div class="absolute inset-0 bg-gray-400 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-              <div class="relative w-20 h-20 bg-gradient-to-br from-gray-600 to-gray-800 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <i class="fas fa-cross text-4xl"></i>
-              </div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-{{ $color }}-600 transition-colors">{{ $service->title }}</h4>
+              <p class="text-gray-600 mb-4 leading-relaxed">{{ $service->description }}</p>
+              <a href="{{ route('service.show', $service->slug) }}" class="inline-flex items-center text-{{ $color }}-600 font-semibold hover:text-{{ $color }}-700 transition-colors group/link">
+                Lihat Persyaratan
+                <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform"></i>
+              </a>
             </div>
           </div>
-          <div class="p-6">
-            <h4 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-gray-700 transition-colors">Akta Kematian</h4>
-            <p class="text-gray-600 mb-4 leading-relaxed">Pengajuan Akta Kematian sebagai dokumen resmi pencatatan kependudukan.</p>
-            <a href="#" class="inline-flex items-center text-gray-700 font-semibold hover:text-gray-800 transition-colors group/link">
-              Ajukan Sekarang →
-              <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform"></i>
-            </a>
+        @empty
+          <div class="col-span-full text-center py-10">
+            <p class="text-gray-500 text-lg">Saat ini belum ada layanan publik yang tersedia.</p>
           </div>
-        </div>
-
-        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 hover:border-purple-300 hover:shadow-2xl">
-          <div class="bg-gradient-to-br from-purple-50 to-white p-6">
-            <div class="relative">
-              <div class="absolute inset-0 bg-purple-400 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-              <div class="relative w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-700 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <i class="fas fa-truck-moving text-4xl"></i>
-              </div>
-            </div>
-          </div>
-          <div class="p-6">
-            <h4 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-purple-600 transition-colors">Surat Pindah</h4>
-            <p class="text-gray-600 mb-4 leading-relaxed">Layanan pengurusan surat pindah domisili (datang atau keluar) desa.</p>
-            <a href="#" class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-700 transition-colors group/link">
-              Ajukan Sekarang →
-              <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 hover:border-yellow-300 hover:shadow-2xl">
-          <div class="bg-gradient-to-br from-yellow-50 to-white p-6">
-            <div class="relative">
-              <div class="absolute inset-0 bg-yellow-400 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-              <div class="relative w-20 h-20 bg-gradient-to-br from-yellow-500 to-yellow-700 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <i class="fas fa-store text-4xl"></i>
-              </div>
-            </div>
-          </div>
-          <div class="p-6">
-            <h4 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-yellow-600 transition-colors">Izin UMKM</h4>
-            <p class="text-gray-600 mb-4 leading-relaxed">Bantuan pengajuan perizinan usaha mikro, kecil, dan menengah (NIB, P-IRT).</p>
-            <a href="#" class="inline-flex items-center text-yellow-600 font-semibold hover:text-yellow-700 transition-colors group/link">
-              Ajukan Sekarang →
-              <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
+        @endforelse
       </div>
     </div>
 
