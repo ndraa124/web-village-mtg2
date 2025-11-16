@@ -43,7 +43,7 @@
               <td>{{ $submission->nik }}</td>
               <td>{{ $submission->name }}</td>
               <td>{{ $submission->tracking_number }}</td>
-              <td>{{ \Carbon\Carbon::parse($submission->created_at)->format('d M Y H:i') }}</td>
+              <td>{{ $submission->created_at->format('d M Y H:i') }}</td>
               <td class="text-center">
                 @php
                   $badgeClass = match ($submission->status) {
@@ -59,8 +59,12 @@
               <td class="text-center">
                 <form action="{{ route('admin.services.submissions.destroy', $submission) }}" method="POST" class="d-inline">
                   <div class="d-flex justify-content-center" style="gap: 18px;">
-                    <a href="{{ route('admin.services.submissions.show', $submission) }}" class="bg-transparent p-0 border-0 hover-text-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Verifikasi">
-                      <i class="material-symbols-outlined fs-16 fw-normal text-primary">verified</i>
+                    <a href="{{ route('admin.services.submissions.show', $submission) }}" class="bg-transparent p-0 border-0 hover-text-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{{ $submission->status == 'pending' ? 'Verifikasi' : 'Detail' }}">
+                      @if ($submission->status == 'pending')
+                        <i class="material-symbols-outlined fs-16 fw-normal text-primary">verified</i>
+                      @else
+                        <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                      @endif
                     </a>
 
                     @csrf @method('DELETE')
