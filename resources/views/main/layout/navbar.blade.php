@@ -4,12 +4,12 @@
       <div class="flex items-center space-x-3 flex-shrink-0">
         <img src="{{ asset('img/logo.png') }}" alt="Logo Desa" class="h-10 w-8">
         <div class="hidden sm:block">
-          <h1 class="text-red-700 font-bold text-lg md:text-xl">DESA MOTOLING DUA</h1>
-          <p class="text-xs text-gray-600">Kecamatan Motoling - Kabupaten Minahasa Selatan</p>
+          <h1 class="text-red-700 font-bold text-lg md:text-xl">{{ $village->name }}</h1>
+          <p class="text-xs text-gray-600">Kecamatan {{ $village->subdistrict }} - Kabupaten {{ $village->regency }}</p>
         </div>
         <div class="block sm:hidden">
-          <h1 class="text-red-700 font-bold text-sm">DESA MOTOLING DUA</h1>
-          <p class="text-[10px] text-gray-600">Kec. Motoling - Kab. Minsel</p>
+          <h1 class="text-red-700 font-bold text-sm">{{ $village->name }}</h1>
+          <p class="text-[10px] text-gray-600">Kec. {{ $village->subdistrict }} - Kab. {{ $village->regency }}</p>
         </div>
       </div>
 
@@ -66,8 +66,8 @@
             Layanan <i class="fas fa-chevron-down ml-1 text-xs"></i>
           </button>
           <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-            <a href="{{ route('service.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('service.index') ? 'text-red-600 font-semibold' : '' }}">
-              Layanan Masyarakat
+            <a href="{{ route('service.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('service.*') ? 'text-red-600 font-semibold' : '' }}">
+              Layanan Publik
             </a>
             <a href="https://forms.gle/PUBxooALDLNdUkS67" target="_blank" class="block px-4 py-2 hover:bg-red-50 hover:text-red-600">
               Layanan Pengaduan

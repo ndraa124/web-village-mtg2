@@ -14,17 +14,22 @@ return new class extends Migration
         Schema::create('service_submissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
-            $table->string('name', 150);
-            $table->string('email', 150);
-            $table->string('phone', 50)->nullable();
-            $table->text('user_description');
+            $table->string('tracking_number', 100);
+            $table->string('nik', 16);
+            $table->string('name', 100);
+            $table->string('email', 100);
+            $table->string('phone', 16)->nullable();
+            $table->text('purpose');
             $table->json('supporting_files')->nullable();
-            $table->enum('status', ['pending', 'in_process', 'rejected', 'completed'])->default('pending');
+            $table->enum('status', ['pending', 'verified', 'processing', 'rejected', 'completed'])->default('pending');
             $table->text('rejection_reason')->nullable();
             $table->string('final_document_path')->nullable();
             $table->text('admin_notes')->nullable();
-            $table->timestamps();
+            $table->timestamp('verified_at')->nullable();
+            $table->timestamp('processing_at')->nullable();
+            $table->timestamp('rejected_at')->nullable();
             $table->timestamp('completed_at')->nullable();
+            $table->timestamps();
         });
     }
 

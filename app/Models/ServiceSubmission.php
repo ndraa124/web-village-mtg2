@@ -13,22 +13,28 @@ class ServiceSubmission extends Model
 
     protected $fillable = [
         'service_id',
+        'tracking_number',
+        'nik',
         'name',
         'email',
         'phone',
-        'user_description',
+        'purpose',
         'supporting_files',
         'status',
-        'submission_data',
         'rejection_reason',
         'final_document_path',
         'admin_notes',
+        'verified_at',
+        'processing_at',
+        'rejected_at',
         'completed_at',
     ];
 
     protected $casts = [
-        'submission_data' => 'array',
         'supporting_files' => 'array',
+        'verified_at' => 'datetime',
+        'processing_at' => 'datetime',
+        'rejected_at' => 'datetime',
         'completed_at' => 'datetime',
     ];
 

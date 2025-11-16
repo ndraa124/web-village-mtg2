@@ -8,6 +8,7 @@ use App\Http\Requests\ServiceSubmission\CompleteSubmissionRequest;
 use App\Mail\ServiceCompletedMail;
 use App\Mail\ServiceRejectedMail;
 use App\Models\ServiceSubmission;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Carbon;
@@ -16,10 +17,25 @@ class ServiceSubmissionController extends Controller
 {
   public function index()
   {
-    $submissions = ServiceSubmission::with('service')
-      ->orderByRaw("CASE status WHEN 'pending' THEN 1 WHEN 'in_process' THEN 2 ELSE 3 END")
+    $query = ServiceSubmission::with('service');
+
+    if (request('status') && request('status') != 'all') {
+      $query->where('status', request('status'));
+    }
+
+    $submissions = $query->orderByRaw("
+        CASE status 
+          WHEN 'pending' THEN 1 
+          WHEN 'verified' THEN 2 
+          WHEN 'processing' THEN 3 
+          WHEN 'rejected' THEN 4 
+          ELSE 5 
+        END
+      ")
       ->latest()
       ->paginate(10);
+
+    $countNewSubmission = ServiceSubmission::where('status', 'pending')->count();
 
     $data = [
       'title' => 'Daftar Pengajuan Layanan',
@@ -34,6 +50,9 @@ class ServiceSubmissionController extends Controller
         ],
       ],
       'submissions' => $submissions,
+      'stats' => [
+        'newSubmission' => $countNewSubmission
+      ]
     ];
 
     return view('admin.layout.template', $data);
@@ -42,8 +61,10 @@ class ServiceSubmissionController extends Controller
   public function show(ServiceSubmission $submission)
   {
     if ($submission->status === 'pending') {
-      $submission->status = 'in_process';
-      $submission->save();
+      $submission->update([
+        'status' => 'verified',
+        'verified_at' => Carbon::now()
+      ]);
     }
 
     $data = [
@@ -67,6 +88,22 @@ class ServiceSubmissionController extends Controller
     return view('admin.layout.template', $data);
   }
 
+  public function process(ServiceSubmission $submission)
+  {
+    if ($submission->status === 'verified') {
+      $submission->update([
+        'status' => 'processing',
+        'processing_at' => Carbon::now()
+      ]);
+
+      return redirect()->back()
+        ->with('success', 'Status pengajuan telah diubah menjadi "Processing".');
+    }
+
+    return redirect()->back()
+      ->with('error', 'Status tidak dapat diubah.');
+  }
+
   public function complete(CompleteSubmissionRequest $request, ServiceSubmission $submission)
   {
     $validatedData = $request->validated();
@@ -78,14 +115,17 @@ class ServiceSubmissionController extends Controller
       'status' => 'completed',
       'final_document_path' => $path,
       'admin_notes' => $validatedData['admin_notes'],
+      'verified_at' => $submission->verified_at ?? Carbon::now(),
+      'processing_at' => $submission->processing_at ?? Carbon::now(),
       'completed_at' => Carbon::now(),
       'rejection_reason' => null,
+      'rejected_at' => null,
     ]);
 
     try {
       Mail::to($submission->email)->send(new ServiceCompletedMail($submission));
     } catch (\Exception $e) {
-      // Log error, but don't stop the process
+      Log::error('Gagal mengirim email: ' . $e->getMessage());
     }
 
     return redirect()->route('admin.services.submissions.index')
@@ -99,7 +139,8 @@ class ServiceSubmissionController extends Controller
     $submission->update([
       'status' => 'rejected',
       'rejection_reason' => $validatedData['rejection_reason'],
-      'completed_at' => Carbon::now(),
+      'rejected_at' => Carbon::now(),
+      'completed_at' => null,
       'admin_notes' => null,
       'final_document_path' => null,
     ]);
@@ -107,7 +148,7 @@ class ServiceSubmissionController extends Controller
     try {
       Mail::to($submission->email)->send(new ServiceRejectedMail($submission));
     } catch (\Exception $e) {
-      // Log error, but don't stop the process
+      Log::error('Gagal mengirim email: ' . $e->getMessage());
     }
 
     return redirect()->route('admin.services.submissions.index')

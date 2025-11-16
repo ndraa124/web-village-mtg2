@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use App\Models\Village;
+use App\Models\Services;
 use App\Models\Visitor;
 use Carbon\Carbon;
 
@@ -23,6 +25,9 @@ class ViewServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('*', function ($view) {
+            $village = Village::where('is_active', true)->firstOrFail();
+            $services = Services::orderBy('title', 'asc')->limit(4)->get();
+
             $totalVisitors = Visitor::count();
 
             $today = Carbon::today();
@@ -39,6 +44,8 @@ class ViewServiceProvider extends ServiceProvider
                 'monthVisitors'  => $monthVisitors,
                 'yesterdayVisitors' => $yesterdayVisitors,
                 'todayVisitors'  => $todayVisitors,
+                'village' => $village,
+                'servicesFooter' => $services,
             ]);
         });
     }

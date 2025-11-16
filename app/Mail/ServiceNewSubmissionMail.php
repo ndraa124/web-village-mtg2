@@ -30,7 +30,7 @@ class ServiceNewSubmissionMail extends Mailable
   public function content(): Content
   {
     return new Content(
-      view: 'emails.new_submission_admin',
+      view: 'emails.new-submission-admin',
       with: [
         'submission' => $this->submission,
       ]

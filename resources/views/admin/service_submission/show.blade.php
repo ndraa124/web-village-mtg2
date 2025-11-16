@@ -11,9 +11,11 @@
 
     <div class="card bg-white rounded-10 border border-white mb-4">
       <div class="p-20">
-        <h3 class="fw-bold mb-3">Detail Pengajuan: {{ $submission->service->title ?? 'Layanan Tidak Ditemukan' }}</h3>
-
         <div class="d-flex gap-4 fs-14 text-secondary mb-3 border-bottom pb-3">
+          <span>
+            <i class="material-symbols-outlined fs-16" style="vertical-align: middle; margin-top: -3px;">badge</i>
+            NIK: <strong>{{ $submission->nik }}</strong>
+          </span>
           <span>
             <i class="material-symbols-outlined fs-16" style="vertical-align: middle; margin-top: -3px;">person</i>
             Pengaju: <strong>{{ $submission->name }}</strong>
@@ -28,37 +30,47 @@
           </span>
           <span>
             <i class="material-symbols-outlined fs-16" style="vertical-align: middle; margin-top: -3px;">calendar_month</i>
-            Tanggal: <strong>{{ \Carbon\Carbon::parse($submission->created_at)->format('d F Y H:i') }}</strong>
+            Tanggal: <strong>{{ $submission->created_at->format('d F Y H:i') }}</strong>
           </span>
         </div>
 
         <div class="mb-4">
-          <h5 class="fw-bold text-primary">Status Saat Ini:</h5>
+          <h5 class="fw-bold">Status Saat Ini:</h5>
           @php
             $badgeClass = match ($submission->status) {
-                'pending' => 'bg-danger-light text-danger',
-                'in_process' => 'bg-warning-light text-warning',
-                'completed' => 'bg-success-light text-success',
-                'rejected' => 'bg-secondary-light text-secondary',
-                default => 'bg-info-light text-info',
+                'pending' => 'bg-danger text-danger',
+                'verified' => 'bg-info text-info',
+                'processing' => 'bg-warning text-warning',
+                'completed' => 'bg-success text-success',
+                'rejected' => 'bg-secondary text-secondary',
+                default => 'bg-info text-info',
             };
           @endphp
-          <span class="badge {{ $badgeClass }} fs-6 p-2">{{ ucfirst(str_replace('_', ' ', $submission->status)) }}</span>
+          <span class="badge {{ $badgeClass }} bg-opacity-25 fs-6 p-2">
+            {{ function_exists('getStatusLabel') ? getStatusLabel($submission->status) : ucfirst(str_replace('_', ' ', $submission->status)) }}
+          </span>
 
-          @if ($submission->status === 'in_process')
-            <p class="mt-2 text-warning">Pengajuan ini sedang dalam peninjauan Anda (otomatis berubah dari pending).</p>
+          @if ($submission->status === 'verified')
+            <p class="mt-2">Pengajuan telah diverifikasi oleh admin pada: {{ $submission->verified_at->format('d F Y H:i') }}</p>
+          @elseif ($submission->status === 'processing')
+            <p class="mt-2">Pengajuan mulai diproses pada: {{ $submission->processing_at->format('d F Y H:i') }}</p>
           @elseif($submission->status === 'completed')
-            <p class="mt-2 text-success">Selesai pada: {{ \Carbon\Carbon::parse($submission->completed_at)->format('d F Y') }}</p>
+            <p class="mt-2">Selesai pada: {{ $submission->completed_at->format('d F Y H:i') }}</p>
           @elseif($submission->status === 'rejected')
-            <p class="mt-2 text-secondary">Ditolak pada: {{ \Carbon\Carbon::parse($submission->completed_at)->format('d F Y') }}</p>
+            <p class="mt-2">Ditolak pada: {{ $submission->rejected_at->format('d F Y H:i') }}</p>
           @endif
         </div>
 
         <hr>
 
         <div class="mb-4">
+          <h5 class="fw-bold text-dark">Nomor Tracking:</h5>
+          <p class="p-3 border rounded">{{ $submission->tracking_number }}</p>
+        </div>
+
+        <div class="mb-4">
           <h5 class="fw-bold text-dark">Keterangan / Keperluan Pengajuan:</h5>
-          <p class="p-3 border rounded bg-light">{{ $submission->user_description }}</p>
+          <p class="p-3 border rounded">{{ $submission->purpose }}</p>
         </div>
 
         <div class="mb-4">
@@ -102,15 +114,28 @@
           <hr>
         @endif
 
-        @if ($submission->status === 'pending' || $submission->status === 'in_process')
+        @if ($submission->status === 'verified')
           <div class="d-flex gap-3">
-            <button type="button" class="btn btn-success fw-normal text-white" data-bs-toggle="modal" data-bs-target="#completeModal">
-              <i class="material-symbols-outlined fs-16" style="vertical-align: sub;">done</i> Selesai (Completed)
-            </button>
+            <form action="{{ route('admin.services.submissions.process', $submission) }}" method="POST">
+              @csrf
+              <button type="submit" class="btn btn-warning fw-normal text-white">
+                <i class="material-symbols-outlined fs-16" style="vertical-align: sub;">sync</i> Proses Sekarang
+              </button>
+            </form>
 
             <button type="button" class="btn btn-danger fw-normal text-white" data-bs-toggle="modal" data-bs-target="#rejectModal">
-              <i class="material-symbols-outlined fs-16" style="vertical-align: sub;">close</i> Tolak (Rejected)
+              <i class="material-symbols-outlined fs-16" style="vertical-align: sub;">close</i> Tolak
             </button>
+          </div>
+        @elseif ($submission->status === 'processing')
+          <div class="d-flex gap-3">
+            <button type="button" class="btn btn-success fw-normal text-white" data-bs-toggle="modal" data-bs-target="#completeModal">
+              <i class="material-symbols-outlined fs-16" style="vertical-align: sub;">done</i> Selesai
+            </button>
+          </div>
+        @elseif ($submission->status === 'pending')
+          <div class="alert alert-info">
+            Status akan otomatis berubah menjadi "Verified" setelah halaman ini dimuat.
           </div>
         @endif
       </div>
@@ -188,3 +213,17 @@
     </div>
   </div>
 </div>
+
+@php
+  function getStatusLabel($status)
+  {
+      return match ($status) {
+          'pending' => 'Menunggu Verifikasi',
+          'verified' => 'Terverifikasi',
+          'processing' => 'Sedang Diproses',
+          'completed' => 'Selesai',
+          'rejected' => 'Ditolak',
+          default => 'Unknown',
+      };
+  }
+@endphp

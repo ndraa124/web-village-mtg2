@@ -54,11 +54,15 @@ Route::prefix('/service')
     ->controller(ServiceController::class)
     ->name('service.')
     ->group(function () {
+        Route::get('/tracking', 'trackingSubmission')->name('submission.tracking');
+        Route::post('/tracking/check', 'trackingCheck')->name('submission.tracking.check');
+        Route::get('/tracking/result/{submission:tracking_number}', 'trackingResult')->name('submission.tracking.result');
+
         Route::get('/', 'index')->name('index');
         Route::get('/{service:slug}', 'show')->name('show');
-
         Route::get('/{service:slug}/submit', 'createSubmission')->name('submission.create');
         Route::post('/{service:slug}/submit', 'storeSubmission')->name('submission.store');
+        Route::get('/{service:slug}/complete', 'completeSubmission')->name('submission.complete');
     });
 
 Route::get('/potential', [PotentialController::class, 'index'])->name('potential.index');

@@ -31,7 +31,7 @@ class ServiceRejectedMail extends Mailable implements ShouldQueue
   public function content(): Content
   {
     return new Content(
-      view: 'emails.service_rejected',
+      view: 'emails.service-rejected',
       with: [
         'submission' => $this->submission,
       ]

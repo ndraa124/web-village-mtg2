@@ -41,7 +41,7 @@
               <th class="px-4 py-3 text-left">Judul Produk Hukum</th>
               <th class="px-4 py-3 text-left">Kategori</th>
               <th class="px-4 py-3 text-center w-24">Tahun</th>
-              <th class="px-4 py-3 text-center w-32 rounded-tr-xl">Aksi</th>
+              <th class="px-4 py-3 text-center w-40 rounded-tr-xl">Aksi</th>
             </tr>
           </thead>
           <tbody>

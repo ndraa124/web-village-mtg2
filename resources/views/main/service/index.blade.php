@@ -35,7 +35,56 @@
     background: linear-gradient(to bottom right, #fef2f2, #fee2e2);
     border-color: #fca5a5;
   }
+
+  @keyframes pulse-shadow {
+
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
+    }
+
+    50% {
+      box-shadow: 0 0 40px rgba(220, 38, 38, 0.6);
+    }
+  }
+
+  .fixed.bottom-6 button {
+    animation: pulse-shadow 2s ease-in-out infinite;
+  }
 </style>
+
+<div class="fixed bottom-6 right-6 z-50 group">
+  <div class="relative">
+    <button onclick="toggleQuickMenu()" class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-500 to-red-700 text-white rounded-full shadow-2xl hover:shadow-red-500/50 hover:scale-110 transition-all duration-300 group-hover:rotate-90">
+      <i class="fas fa-question text-2xl"></i>
+    </button>
+
+    <div id="quickMenu" class="hidden absolute bottom-20 right-0 bg-white rounded-2xl shadow-2xl p-4 w-64 border-2 border-red-200">
+      <div class="space-y-2">
+        <a href="#faq-section" onclick="closeQuickMenu()" class="flex items-center p-3 hover:bg-blue-50 rounded-xl transition-colors group/item">
+          <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3 group-hover/item:bg-blue-200 transition-colors">
+            <i class="fas fa-question-circle text-blue-600"></i>
+          </div>
+          <span class="font-semibold text-gray-700">FAQ</span>
+        </a>
+
+        <a href="#alur-section" onclick="closeQuickMenu()" class="flex items-center p-3 hover:bg-green-50 rounded-xl transition-colors group/item">
+          <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3 group-hover/item:bg-green-200 transition-colors">
+            <i class="fas fa-route text-green-600"></i>
+          </div>
+          <span class="font-semibold text-gray-700">Alur Layanan</span>
+        </a>
+
+        <a href="{{ route('service.submission.tracking') }}" class="flex items-center p-3 hover:bg-purple-50 rounded-xl transition-colors group/item">
+          <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3 group-hover/item:bg-purple-200 transition-colors">
+            <i class="fas fa-search-location text-purple-600"></i>
+          </div>
+          <span class="font-semibold text-gray-700">Lacak Status</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
   <div class="container mx-auto px-4">
@@ -85,7 +134,7 @@
       </div>
     </div>
 
-    <div class="mb-20">
+    <div id="alur-section" class="mb-20">
       <div class="text-center mb-12">
         <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
           <i class="fas fa-route text-red-600 mr-2"></i>
@@ -96,7 +145,6 @@
       </div>
 
       <div class="relative">
-        <div class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-red-200 transform -translate-y-1/2 z-0"></div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
           <div class="group text-center">
@@ -134,14 +182,14 @@
             </div>
             <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow border border-gray-100">
               <h4 class="text-xl font-bold text-gray-800 mb-3">Proses & Verifikasi</h4>
-              <p class="text-gray-600 leading-relaxed">Petugas akan memverifikasi data. Dokumen diproses dalam 1-3 hari kerja</p>
+              <p class="text-gray-600 leading-relaxed">Petugas akan memverifikasi data. Dokumen diproses dalam 2-5 hari kerja</p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="max-w-4xl mx-auto">
+    <div id="faq-section" class="max-w-4xl mx-auto">
       <div class="text-center mb-12">
         <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
           <i class="fas fa-question-circle text-red-600 mr-2"></i>
@@ -221,3 +269,37 @@
     </div>
   </div>
 </section>
+
+<script>
+  function toggleQuickMenu() {
+    const menu = document.getElementById('quickMenu');
+    menu.classList.toggle('hidden');
+  }
+
+  function closeQuickMenu() {
+    const menu = document.getElementById('quickMenu');
+    menu.classList.add('hidden');
+  }
+
+  document.addEventListener('click', function(event) {
+    const menu = document.getElementById('quickMenu');
+    const button = event.target.closest('[onclick="toggleQuickMenu()"]');
+
+    if (!menu.contains(event.target) && !button) {
+      menu.classList.add('hidden');
+    }
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script>

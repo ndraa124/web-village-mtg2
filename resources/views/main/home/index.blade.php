@@ -329,8 +329,8 @@
             </div>
             <h3 class="text-xl font-bold mb-2">{{ $service->title }}</h3>
             <p class="text-sm mb-6 text-white/90">{{ $service->description }}</p>
-            <a href="{{ $service->link ?? '#' }}" class="inline-flex items-center bg-white {{ $loop->iteration == 1 ? 'text-red-600' : ($loop->iteration == 2 ? 'text-blue-600' : ($loop->iteration == 3 ? 'text-green-600' : 'text-purple-600')) }} px-5 py-2.5 rounded-xl text-sm font-bold hover:shadow-lg transition-all">
-              Ajukan Sekarang <i class="fas fa-arrow-right ml-2"></i>
+            <a href="{{ route('service.show', $service->slug) }}" class="inline-flex items-center bg-white {{ $loop->iteration == 1 ? 'text-red-600' : ($loop->iteration == 2 ? 'text-blue-600' : ($loop->iteration == 3 ? 'text-green-600' : 'text-purple-600')) }} px-5 py-2.5 rounded-xl text-sm font-bold hover:shadow-lg transition-all">
+              Lihat Persyaratan <i class="fas fa-arrow-right ml-2"></i>
             </a>
           </div>
         </div>
@@ -593,21 +593,20 @@
           <h3 class="text-2xl font-bold text-gray-800">Kirim Pesan</h3>
         </div>
 
-        @if (session('success'))
-          <div class="bg-green-100 border-2 border-green-400 text-green-700 px-4 py-3 rounded-2xl relative mb-6" role="alert">
-            <div class="flex items-center">
-              <i class="fas fa-check-circle mr-3 text-xl"></i>
-              <span class="block sm:inline">{{ session('success') }}</span>
-            </div>
-          </div>
+        @if ($message = Session::get('success'))
+          @include('main.layout.components.alert-success', [
+              'title' => 'Kirim Pesan Berhasil!',
+              'message' => $message,
+              'showEmailInfo' => false,
+          ])
         @endif
-        @if (session('error'))
-          <div class="bg-red-100 border-2 border-red-400 text-red-700 px-4 py-3 rounded-2xl relative mb-6" role="alert">
-            <div class="flex items-center">
-              <i class="fas fa-exclamation-circle mr-3 text-xl"></i>
-              <span class="block sm:inline">{{ session('error') }}</span>
-            </div>
-          </div>
+
+        @if ($message = Session::get('error'))
+          @include('main.layout.components.alert-error', [
+              'title' => 'Kirim Pesan Gagal!',
+              'message' => $message,
+              'showContactInfo' => false,
+          ])
         @endif
 
         <form id="contact-form" action="{{ route('contact.send') }}" method="POST">

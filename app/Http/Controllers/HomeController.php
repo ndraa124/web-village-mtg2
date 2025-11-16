@@ -11,7 +11,6 @@ use App\Models\News;
 use App\Models\Services;
 use App\Models\Gallery;
 use App\Models\VillagePotential;
-use App\Models\Village;
 use App\Models\InfographicsResident;
 use App\Models\InfographicsApbd;
 use App\Models\InfographicsApbdDevRealization;
@@ -21,8 +20,6 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = Slider::where('is_active', true)->get();
-
-        $village = Village::where('is_active', true)->firstOrFail();
 
         $latestNews = News::where('status', 'published')
             ->whereDoesntHave('category', function ($query) {
@@ -64,7 +61,6 @@ class HomeController extends Controller
             'title' => 'Home',
             'main'  => 'main.home.index',
             'sliders' => $sliders,
-            'village' => $village,
             'latestNews' => $latestNews,
             'informationNews' => $informationNews,
             'services' => $services,

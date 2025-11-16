@@ -47,11 +47,7 @@
           @forelse ($services as $service)
             <tr>
               <td class="text-body text-center">{{ $loop->iteration + ($services->currentPage() - 1) * $services->perPage() }}</td>
-              <td>
-                <a href="{{ url('/service/' . $service->slug) }}" target="_blank" class="text-primary text-decoration-none">
-                  {{ $service->title }}
-                </a>
-              </td>
+              <td class="text-body">{{ $service->title }}</td>
               <td class="text-body">{{ Str::limit($service->description, 80) }}</td>
               <td class="text-body text-center fs-5"><i class="{{ $service->icon_class }}"></i></td>
               <td class="text-body text-center">

@@ -226,6 +226,7 @@ Route::middleware(['authenticate'])->group(function () {
                 ->group(function () {
                     Route::get('/', 'index')->name('index');
                     Route::get('/{submission}', 'show')->name('show');
+                    Route::post('/{submission}/process', 'process')->name('process');
                     Route::post('/{submission}/complete', 'complete')->name('complete');
                     Route::post('/{submission}/reject', 'reject')->name('reject');
                     Route::delete('/{submission}', 'destroy')->name('destroy');

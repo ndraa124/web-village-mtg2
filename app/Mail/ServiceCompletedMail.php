@@ -32,7 +32,7 @@ class ServiceCompletedMail extends Mailable implements ShouldQueue
   public function content(): Content
   {
     return new Content(
-      view: 'emails.service_completed',
+      view: 'emails.service-completed',
       with: [
         'submission' => $this->submission,
       ]

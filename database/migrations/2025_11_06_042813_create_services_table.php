@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('title', 150);
             $table->text('description');
-            $table->longText('requirements_content');
+            $table->longText('requirements_content')->nullable();
             $table->string('icon_class', 100);
             $table->timestamps();
         });

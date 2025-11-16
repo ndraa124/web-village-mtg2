@@ -2,9 +2,10 @@
   <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
     <h5 class="m-0 fw-bold">Filter Status:</h5>
     <div class="d-flex gap-2">
-      <a href="{{ route('admin.services.submissions.index', ['status' => 'all']) }}" class="btn btn-sm {{ request('status', 'pending') == 'all' ? 'btn-primary' : 'btn-outline-primary' }}">Semua</a>
-      <a href="{{ route('admin.services.submissions.index', ['status' => 'pending']) }}" class="btn btn-sm {{ request('status', 'pending') == 'pending' ? 'btn-danger' : 'btn-outline-danger' }}">Baru ({{ App\Models\ServiceSubmission::where('status', 'pending')->count() }})</a>
-      <a href="{{ route('admin.services.submissions.index', ['status' => 'in_process']) }}" class="btn btn-sm {{ request('status') == 'in_process' ? 'btn-warning' : 'btn-outline-warning' }}">Diproses</a>
+      <a href="{{ route('admin.services.submissions.index', ['status' => 'all']) }}" class="btn btn-sm {{ request('status') == 'all' || !request('status') ? 'btn-primary' : 'btn-outline-primary' }}">Semua</a>
+      <a href="{{ route('admin.services.submissions.index', ['status' => 'pending']) }}" class="btn btn-sm {{ request('status') == 'pending' ? 'btn-danger' : 'btn-outline-danger' }}">Baru {{ $stats['newSubmission'] }}</a>
+      <a href="{{ route('admin.services.submissions.index', ['status' => 'verified']) }}" class="btn btn-sm {{ request('status') == 'verified' ? 'btn-info' : 'btn-outline-info' }}">Terverifikasi</a>
+      <a href="{{ route('admin.services.submissions.index', ['status' => 'processing']) }}" class="btn btn-sm {{ request('status') == 'processing' ? 'btn-warning' : 'btn-outline-warning' }}">Diproses</a>
       <a href="{{ route('admin.services.submissions.index', ['status' => 'completed']) }}" class="btn btn-sm {{ request('status') == 'completed' ? 'btn-success' : 'btn-outline-success' }}">Selesai</a>
       <a href="{{ route('admin.services.submissions.index', ['status' => 'rejected']) }}" class="btn btn-sm {{ request('status') == 'rejected' ? 'btn-secondary' : 'btn-outline-secondary' }}">Ditolak</a>
     </div>
@@ -26,8 +27,9 @@
           <tr>
             <th scope="col" class="text-center">#</th>
             <th scope="col">Layanan</th>
+            <th scope="col">NIK</th>
             <th scope="col">Nama Pengaju</th>
-            <th scope="col">Email</th>
+            <th scope="col">Nomor Tracking</th>
             <th scope="col">Tgl. Pengajuan</th>
             <th scope="col" class="text-center">Status</th>
             <th scope="col" class="text-center">Aksi</th>
@@ -38,26 +40,27 @@
             <tr>
               <td class="text-center">{{ $loop->iteration + ($submissions->currentPage() - 1) * $submissions->perPage() }}</td>
               <td>{{ $submission->service->title ?? 'Layanan Dihapus' }}</td>
+              <td>{{ $submission->nik }}</td>
               <td>{{ $submission->name }}</td>
-              <td>{{ $submission->email }}</td>
+              <td>{{ $submission->tracking_number }}</td>
               <td>{{ \Carbon\Carbon::parse($submission->created_at)->format('d M Y H:i') }}</td>
               <td class="text-center">
                 @php
                   $badgeClass = match ($submission->status) {
-                      'pending' => 'bg-danger-light text-danger',
-                      'in_process' => 'bg-warning-light text-warning',
-                      'completed' => 'bg-success-light text-success',
-                      'rejected' => 'bg-secondary-light text-secondary',
-                      default => 'bg-info-light text-info',
+                      'pending' => 'bg-danger text-danger',
+                      'verified' => 'bg-info text-info',
+                      'processing' => 'bg-warning text-warning',
+                      'rejected' => 'bg-secondary text-secondary',
+                      default => 'bg-info text-info',
                   };
                 @endphp
-                <span class="badge {{ $badgeClass }}">{{ ucfirst(str_replace('_', ' ', $submission->status)) }}</span>
+                <span class="badge {{ $badgeClass }} bg-opacity-25">{{ ucfirst(str_replace('_', ' ', $submission->status)) }}</span>
               </td>
               <td class="text-center">
                 <form action="{{ route('admin.services.submissions.destroy', $submission) }}" method="POST" class="d-inline">
                   <div class="d-flex justify-content-center" style="gap: 18px;">
-                    <a href="{{ route('admin.services.submissions.show', $submission) }}" class="bg-transparent p-0 border-0 hover-text-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Detail">
-                      <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                    <a href="{{ route('admin.services.submissions.show', $submission) }}" class="bg-transparent p-0 border-0 hover-text-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Verifikasi">
+                      <i class="material-symbols-outlined fs-16 fw-normal text-primary">verified</i>
                     </a>
 
                     @csrf @method('DELETE')

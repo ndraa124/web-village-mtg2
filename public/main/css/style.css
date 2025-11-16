@@ -338,15 +338,6 @@ body.mobile-menu-open {
     }
 }
 
-/* Back to Top Button */
-#back-to-top {
-    transition: all 0.3s ease;
-}
-
-#back-to-top:hover {
-    transform: translateY(-3px);
-}
-
 /* Form Input Focus */
 input:focus,
 textarea:focus,
