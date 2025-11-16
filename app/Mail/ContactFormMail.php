@@ -32,10 +32,9 @@ class ContactFormMail extends Mailable
    */
   public function envelope(): Envelope
   {
-    // Set subjek email dan alamat email "From"
     return new Envelope(
       from: new Address($this->formData['email'], $this->formData['name']),
-      subject: 'Kontak Form: ' . $this->formData['subject'],
+      subject: 'Notifikasi: Kontak Pesan ' . $this->formData['subject'],
     );
   }
 

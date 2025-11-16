@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 use App\Http\Requests\Contact\StoreContactRequest;
 use App\Mail\ContactFormMail;
 
@@ -77,11 +78,19 @@ class HomeController extends Controller
     public function sendContactEmail(StoreContactRequest $request)
     {
         $validatedData = $request->validated();
-        $recipientEmail = env('MAIL_USERNAME');
 
         try {
-            Mail::to($recipientEmail)->send(new ContactFormMail($validatedData));
+            $adminEmail = config('mail.from.address');
+
+            if (empty($adminEmail)) {
+                $adminEmail = env('MAIL_USERNAME');
+                Log::warning('MAIL_FROM_ADDRESS tidak diatur di config/mail.php');
+            }
+
+            Mail::to($adminEmail)->send(new ContactFormMail($validatedData));
         } catch (\Exception $e) {
+            Log::error('Gagal mengirim email kontak: ' . $e->getMessage());
+
             return redirect(url()->previous() . '#kontak')
                 ->with('error', 'Terjadi kesalahan. Pesan Anda tidak dapat dikirim.')
                 ->withInput();

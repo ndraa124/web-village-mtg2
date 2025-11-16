@@ -1,26 +1,29 @@
 <x-mail::message>
-  # Pesan Baru dari Form Kontak Website
+  # Notifikasi Pesan Baru dari Website
 
-  Anda menerima pesan baru dari pengunjung website.
+  Halo Admin,
+  <br>
+  Anda baru saja menerima pesan baru dari formulir kontak website.
 
   ---
 
-  **Nama Pengirim:**<br>
-  {{ $formData['name'] }}
+  ### Detail Pengirim
 
-  **Email Pengirim:**<br>
-  {{ $formData['email'] }}
-
-  **Subjek:**<br>
-  {{ $formData['subject'] }}
-
-  **Isi Pesan:**<br>
   <x-mail::panel>
-    {!! nl2br(e($formData['message'])) !!}
+    <strong>Nama:</strong> {{ $formData['name'] }}<br>
+    <strong>Email:</strong> {{ $formData['email'] }}<br>
+    <strong>Subjek:</strong> {{ $formData['subject'] }}
   </x-mail::panel>
 
   ---
 
-  Terima kasih,<br>
-  Sistem Website {{ config('app.name') }}
+  ### Isi Pesan
+
+  <x-mail::panel>
+    {!! nl2br(e($formData['message'])) !!}
+  </x-mail::panel>
+
+  <br>
+  <p>Terima kasih.</p>
+  <p>Sistem Otomatis Desa Motoling Dua</p>
 </x-mail::message>
