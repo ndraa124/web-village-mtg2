@@ -120,7 +120,7 @@
                 </p>
                 <p class="text-xs text-yellow-600">
                   <i class="fas fa-stopwatch mr-1"></i>
-                  Estimasi: 1-2 hari kerja
+                  Estimasi: 15 - 30 menit
                 </p>
               </div>
             </div>
@@ -162,7 +162,7 @@
                 </p>
                 <p class="text-xs text-purple-600">
                   <i class="fas fa-stopwatch mr-1"></i>
-                  Estimasi: 2-5 hari kerja
+                  Estimasi: 30 menit - 1 jam
                 </p>
               </div>
             </div>
@@ -342,7 +342,7 @@
             </div>
             <div>
               <h4 class="font-bold text-blue-900 mb-2">Berapa lama proses pengajuan?</h4>
-              <p class="text-sm text-blue-700">Estimasi 3-7 hari kerja sejak pengajuan diterima, tergantung jenis layanan dan kelengkapan berkas.</p>
+              <p class="text-sm text-blue-700">Estimasi 30 menit - 1 jam sejak pengajuan diterima, tergantung jenis layanan dan kelengkapan berkas.</p>
             </div>
           </div>
         </div>

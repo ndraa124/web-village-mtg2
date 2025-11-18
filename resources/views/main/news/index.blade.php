@@ -43,18 +43,6 @@
 
 <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
   <div class="container mx-auto px-4">
-
-    <div class="mb-16 text-center">
-      <div class="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-2 rounded-full mb-4 border border-red-200">
-        <i class="fas fa-newspaper text-sm"></i>
-        <span class="text-sm font-semibold">Berita & Informasi</span>
-      </div>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Kabar Terbaru dari Desa</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
-        Ikuti perkembangan, pengumuman, dan kegiatan terkini yang ada di Desa Motoling Dua.
-      </p>
-    </div>
-
     <div class="flex flex-col lg:flex-row gap-8">
       <div class="lg:w-2/3">
 

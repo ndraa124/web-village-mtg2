@@ -182,7 +182,7 @@
             </div>
             <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow border border-gray-100">
               <h4 class="text-xl font-bold text-gray-800 mb-3">Proses & Verifikasi</h4>
-              <p class="text-gray-600 leading-relaxed">Petugas akan memverifikasi data. Dokumen diproses dalam 2-5 hari kerja</p>
+              <p class="text-gray-600 leading-relaxed">Petugas akan memverifikasi data. Dokumen akan diproses dalam waktu 30 menit - 1 jam jika dokumen yang diupload sudah lengkap semua.</p>
             </div>
           </div>
         </div>
@@ -211,19 +211,19 @@
             <ul class="mt-3 space-y-2 text-gray-600">
               <li class="flex items-start">
                 <i class="fas fa-clock text-red-600 mr-3 mt-1"></i>
-                <span><strong>Senin - Kamis:</strong> 08.00 - 16.00 WITA</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-clock text-red-600 mr-3 mt-1"></i>
-                <span><strong>Jumat:</strong> 08.00 - 15.00 WITA</span>
+                <span><strong>{{ explode(':', $village->operational_hours_weekdays)[0] }}:</strong> {{ explode(':', $village->operational_hours_weekdays)[1] }}</span>
               </li>
               <li class="flex items-start">
                 <i class="fas fa-utensils text-red-600 mr-3 mt-1"></i>
                 <span><strong>Istirahat:</strong> 12.00 - 13.00 WITA</span>
               </li>
               <li class="flex items-start">
+                <i class="fas fa-clock text-red-600 mr-3 mt-1"></i>
+                <span><strong>{{ explode(':', $village->operational_hours_weekends)[0] }}:</strong> {{ explode(':', $village->operational_hours_weekends)[1] }}</span>
+              </li>
+              <li class="flex items-start">
                 <i class="fas fa-calendar-times text-red-600 mr-3 mt-1"></i>
-                <span><em>Sabtu, Minggu, dan Hari Libur Nasional: Tutup</em></span>
+                <span><em>Hari Libur Nasional: Tutup</em></span>
               </li>
             </ul>
           </div>

@@ -96,7 +96,7 @@
                 </div>
                 <div>
                   <p class="text-sm text-blue-600 mb-1">Estimasi Proses</p>
-                  <p class="text-lg font-bold text-blue-900">3-7 Hari Kerja</p>
+                  <p class="text-lg font-bold text-blue-900">30 menit - 1 jam</p>
                 </div>
               </div>
             </div>
@@ -140,7 +140,7 @@
               <div>
                 <h4 class="font-bold text-gray-800 mb-1">Verifikasi Administrasi</h4>
                 <p class="text-gray-600 text-sm">
-                  Petugas akan memverifikasi kelengkapan berkas dan data yang Anda kirimkan (1-2 hari kerja)
+                  Petugas akan memverifikasi kelengkapan berkas dan data yang Anda kirimkan (15 menit)
                 </p>
               </div>
             </div>
@@ -154,7 +154,7 @@
               <div>
                 <h4 class="font-bold text-gray-800 mb-1">Proses Pengajuan</h4>
                 <p class="text-gray-600 text-sm">
-                  Setelah diverifikasi, pengajuan akan diproses oleh pihak berwenang (2-5 hari kerja)
+                  Setelah diverifikasi, pengajuan akan diproses oleh pihak berwenang (15 menit)
                 </p>
               </div>
             </div>
@@ -209,7 +209,7 @@
                 </li>
                 <li class="flex items-start gap-2">
                   <i class="fas fa-check-circle text-yellow-600 mt-1"></i>
-                  <span>Jika dalam 3 hari kerja tidak ada konfirmasi, silakan hubungi kantor desa</span>
+                  <span>Jika dalam 1 hari kerja tidak ada konfirmasi, silakan hubungi kantor desa</span>
                 </li>
               </ul>
             </div>
