@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-lg-12">
     @if ($message = Session::get('error'))
-    <div class="col-12">
-      <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
-        {{ $message }}
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+      <div class="col-12">
+        <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+          {{ $message }}
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
       </div>
-    </div>
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
@@ -21,17 +21,17 @@
                 <select name="hamlet_id" class="form-select form-control" id="hamlet-id" aria-label="Hamlet">
                   <option value="">-- Pilih Jaga --</option>
                   @foreach ($hamlets as $hamlet)
-                  <option value="{{ $hamlet->id }}" {{ old('hamlet_id', $residentHamlet->hamlet_id) == $hamlet->id ? 'selected' : '' }}>
-                    Jaga {{ $hamlet->hamlet_name }}
-                  </option>
+                    <option value="{{ $hamlet->id }}" {{ old('hamlet_id', $residentHamlet->hamlet_id) == $hamlet->id ? 'selected' : '' }}>
+                      Jaga {{ $hamlet->hamlet_name }}
+                    </option>
                   @endforeach
                 </select>
               </div>
 
               @error('hamlet_id')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -43,9 +43,9 @@
                 <input type="number" name="total" class="form-control" value="{{ old('total', $residentHamlet->total) }}" placeholder="0">
               </div>
               @error('total')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>

@@ -30,6 +30,21 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
+            <a href="{{ route('admin.master.village-official-position.index') }}" class="menu-link {{ request()->routeIs('admin.master.village-official-position.*') ? 'active' : '' }}">
+              Jabatan Organisasi
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('admin.master.news-category.index') }}" class="menu-link {{ request()->routeIs('admin.master.news-category.*') ? 'active' : '' }}">
+              Kategori Berita
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('admin.master.legal-product-category.index') }}" class="menu-link {{ request()->routeIs('admin.master.legal-product-category.*') ? 'active' : '' }}">
+              Kategori Produk Hukum
+            </a>
+          </li>
+          <li class="menu-item">
             <a href="{{ route('admin.master.education.index') }}" class="menu-link {{ request()->routeIs('admin.master.education.*') ? 'active' : '' }}">
               Pendidikan
             </a>
@@ -87,16 +102,6 @@
           <li class="menu-item">
             <a href="{{ route('admin.master.idm-status.index') }}" class="menu-link {{ request()->routeIs('admin.master.idm-status.*') ? 'active' : '' }}">
               IDM Status
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.master.news-category.index') }}" class="menu-link {{ request()->routeIs('admin.master.news-category.*') ? 'active' : '' }}">
-              Kategori Berita
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.master.legal-product-category.index') }}" class="menu-link {{ request()->routeIs('admin.master.legal-product-category.*') ? 'active' : '' }}">
-              Kategori Produk Hukum
             </a>
           </li>
         </ul>
@@ -292,6 +297,11 @@
           <li class="menu-item">
             <a href="{{ route('admin.content.profile.vision-mission.vision.index') }}" class="menu-link {{ request()->routeIs('admin.content.profile.vision-mission.*') ? 'active' : '' }}">
               Visi & Misi
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ route('admin.content.profile.organization.structure.index') }}" class="menu-link {{ request()->routeIs('admin.content.profile.organization.*') ? 'active' : '' }}">
+              Struktur Organisasi
             </a>
           </li>
         </ul>

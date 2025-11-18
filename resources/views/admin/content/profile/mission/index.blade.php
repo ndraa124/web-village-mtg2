@@ -94,7 +94,9 @@
           </table>
         </div>
 
-        {!! $missions->links() !!}
+        <div class="pt-15 p-20">
+          {!! $missions->links() !!}
+        </div>
       </div>
     </div>
   </div>

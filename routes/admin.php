@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\SocialAssistanceController;
 use App\Http\Controllers\Admin\IdmStatusController;
 use App\Http\Controllers\Admin\NewsCategoryController;
 use App\Http\Controllers\Admin\LegalProductsCategoryController;
+use App\Http\Controllers\Admin\VillageOfficialPositionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,10 @@ use App\Http\Controllers\Admin\HistoryController;
 use App\Http\Controllers\Admin\HistoryTimelineController;
 use App\Http\Controllers\Admin\VisionController;
 use App\Http\Controllers\Admin\MissionController;
+use App\Http\Controllers\Admin\OrganizationStructureController;
+use App\Http\Controllers\Admin\OrganizationDeliberationController;
+use App\Http\Controllers\Admin\OrganizationOfficialsController;
+use App\Http\Controllers\Admin\OrganizationFunctionController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ManageLegalProductController;
 use App\Http\Controllers\Admin\AntiCorruptGovernanceController;
@@ -120,6 +125,10 @@ Route::middleware(['authenticate'])->group(function () {
 
             Route::resource('legal-product-category', LegalProductsCategoryController::class)
                 ->parameter('legal-product-category', 'category')
+                ->except(['show']);
+
+            Route::resource('village-official-position', VillageOfficialPositionController::class)
+                ->parameter('village-official-position', 'position')
                 ->except(['show']);
         });
 
@@ -264,6 +273,22 @@ Route::middleware(['authenticate'])->group(function () {
                                 ->except(['show']);
                             Route::resource('mission', MissionController::class)
                                 ->except(['show']);
+                        });
+
+                    Route::prefix('organization')
+                        ->name('organization.')
+                        ->group(function () {
+                            Route::resource('structure', OrganizationStructureController::class)
+                                ->except(['show', 'destroy']);
+
+                            Route::resource('deliberation', OrganizationDeliberationController::class)
+                                ->except(['show', 'destroy']);
+
+                            Route::resource('officials', OrganizationOfficialsController::class)
+                                ->except(['show']);
+
+                            Route::resource('function-officials', OrganizationFunctionController::class)
+                                ->parameter('function-officials', 'function');
                         });
                 });
 

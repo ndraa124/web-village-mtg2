@@ -76,6 +76,8 @@
       </table>
     </div>
 
-    {!! $services->links() !!}
+    <div class="pt-15 p-20">
+      {!! $services->links() !!}
+    </div>
   </div>
 </div>

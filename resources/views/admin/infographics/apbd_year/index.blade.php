@@ -12,21 +12,21 @@
   </div>
 
   @if ($message = Session::get('success'))
-  <div class="col-12 p-20 pb-0">
-    <div class="alert fs-16 alert-success alert-dismissible" role="alert">
-      {{ $message }}
-      <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="col-12 p-20 pb-0">
+      <div class="alert fs-16 alert-success alert-dismissible" role="alert">
+        {{ $message }}
+        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     </div>
-  </div>
   @endif
 
   @if ($message = Session::get('error'))
-  <div class="col-12 p-20 pb-0">
-    <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
-      {{ $message }}
-      <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="col-12 p-20 pb-0">
+      <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+        {{ $message }}
+        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     </div>
-  </div>
   @endif
 
   <div class="default-table-area mx-minus-1 mb-2">
@@ -44,43 +44,45 @@
         </thead>
         <tbody>
           @forelse ($apbdYears as $row)
-          <tr>
-            <td class="text-body text-center">{{ $loop->iteration + $apbdYears->firstItem() - 1 }}</td>
-            <td class="text-body">{{ $row->year }}</td>
-            <td class="text-body text-end">Rp {{ number_format($row->income, 0, ',', '.') }}</td>
-            <td class="text-body text-end">Rp {{ number_format($row->shopping, 0, ',', '.') }}</td>
-            <td class="text-body text-center">{{ $row->created_at->format('d M Y, H:i') }}</td>
-            <td>
-              <form action="{{ route('infographics.apbd.year.destroy', $row->id) }}" method="POST">
-                <div class="d-flex justify-content-center" style="gap: 18px;">
+            <tr>
+              <td class="text-body text-center">{{ $loop->iteration + $apbdYears->firstItem() - 1 }}</td>
+              <td class="text-body">{{ $row->year }}</td>
+              <td class="text-body text-end">Rp {{ number_format($row->income, 0, ',', '.') }}</td>
+              <td class="text-body text-end">Rp {{ number_format($row->shopping, 0, ',', '.') }}</td>
+              <td class="text-body text-center">{{ $row->created_at->format('d M Y, H:i') }}</td>
+              <td>
+                <form action="{{ route('infographics.apbd.year.destroy', $row->id) }}" method="POST">
+                  <div class="d-flex justify-content-center" style="gap: 18px;">
 
-                  <a href="{{ route('infographics.apbd.year.show', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Detail">
-                    <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
-                  </a>
+                    <a href="{{ route('infographics.apbd.year.show', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Detail">
+                      <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                    </a>
 
-                  <a href="{{ route('infographics.apbd.year.edit', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
-                    <i class="material-symbols-outlined fs-16 fw-normal text-warning">edit</i>
-                  </a>
+                    <a href="{{ route('infographics.apbd.year.edit', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                      <i class="material-symbols-outlined fs-16 fw-normal text-warning">edit</i>
+                    </a>
 
-                  @csrf @method('DELETE')
-                  <button type="submit" class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                    <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
-                  </button>
-                </div>
-              </form>
-            </td>
-          </tr>
+                    @csrf @method('DELETE')
+                    <button type="submit" class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                      <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                    </button>
+                  </div>
+                </form>
+              </td>
+            </tr>
           @empty
-          <tr>
-            <td colspan="6" class="text-center text-secondary p-20">
-              Tidak ada data yang ditemukan.
-            </td>
-          </tr>
+            <tr>
+              <td colspan="6" class="text-center text-secondary p-20">
+                Tidak ada data yang ditemukan.
+              </td>
+            </tr>
           @endforelse
         </tbody>
       </table>
     </div>
 
-    {!! $apbdYears->links() !!}
+    <div class="pt-15 p-20">
+      {!! $apbdYears->links() !!}
+    </div>
   </div>
 </div>

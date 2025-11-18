@@ -12,21 +12,21 @@
   </div>
 
   @if ($message = Session::get('success'))
-  <div class="col-12 p-20 pb-0">
-    <div class="alert fs-16 alert-success alert-dismissible" role="alert">
-      {{ $message }}
-      <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="col-12 p-20 pb-0">
+      <div class="alert fs-16 alert-success alert-dismissible" role="alert">
+        {{ $message }}
+        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     </div>
-  </div>
   @endif
 
   @if ($message = Session::get('error'))
-  <div class="col-12 p-20 pb-0">
-    <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
-      {{ $message }}
-      <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="col-12 p-20 pb-0">
+      <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+        {{ $message }}
+        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     </div>
-  </div>
   @endif
 
   <div class="default-table-area mx-minus-1 mb-2">
@@ -43,39 +43,41 @@
         </thead>
         <tbody>
           @forelse ($residentEducations as $row)
-          <tr>
-            <td class="text-body text-center">{{ $loop->iteration + $residentEducations->firstItem() - 1 }}</td>
-            {{-- Asumsi relasi 'education' dan kolom 'education_name' --}}
-            <td class="text-body">{{ $row->education->education_name ?? 'N/A' }}</td>
-            <td class="text-body text-center">{{ $row->total }}</td>
-            <td class="text-body text-center">{{ $row->created_at->format('d M Y, H:i') }}</td>
-            <td>
-              <form action="{{ route('admin.infographics.resident.education.destroy', $row->id) }}" method="POST">
-                <div class="d-flex justify-content-center" style="gap: 18px;">
+            <tr>
+              <td class="text-body text-center">{{ $loop->iteration + $residentEducations->firstItem() - 1 }}</td>
+              {{-- Asumsi relasi 'education' dan kolom 'education_name' --}}
+              <td class="text-body">{{ $row->education->education_name ?? 'N/A' }}</td>
+              <td class="text-body text-center">{{ $row->total }}</td>
+              <td class="text-body text-center">{{ $row->created_at->format('d M Y, H:i') }}</td>
+              <td>
+                <form action="{{ route('admin.infographics.resident.education.destroy', $row->id) }}" method="POST">
+                  <div class="d-flex justify-content-center" style="gap: 18px;">
 
-                  <a href="{{ route('admin.infographics.resident.education.edit', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
-                    <i class="material-symbols-outlined fs-16 fw-normal text-warning">edit</i>
-                  </a>
+                    <a href="{{ route('admin.infographics.resident.education.edit', $row->id) }}" class="bg-transparent p-0 border-0 hover-text-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                      <i class="material-symbols-outlined fs-16 fw-normal text-warning">edit</i>
+                    </a>
 
-                  @csrf @method('DELETE')
-                  <button type="submit" class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                    <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
-                  </button>
-                </div>
-              </form>
-            </td>
-          </tr>
+                    @csrf @method('DELETE')
+                    <button type="submit" class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                      <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                    </button>
+                  </div>
+                </form>
+              </td>
+            </tr>
           @empty
-          <tr>
-            <td colspan="5" class="text-center text-secondary p-20">
-              Tidak ada data yang ditemukan.
-            </td>
-          </tr>
+            <tr>
+              <td colspan="5" class="text-center text-secondary p-20">
+                Tidak ada data yang ditemukan.
+              </td>
+            </tr>
           @endforelse
         </tbody>
       </table>
     </div>
 
-    {!! $residentEducations->links() !!}
+    <div class="pt-15 p-20">
+      {!! $residentEducations->links() !!}
+    </div>
   </div>
 </div>

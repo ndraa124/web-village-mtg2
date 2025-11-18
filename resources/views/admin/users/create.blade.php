@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-lg-12">
     @if ($message = Session::get('error'))
-    <div class="col-12">
-      <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
-        {{ $message }}
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+      <div class="col-12">
+        <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+          {{ $message }}
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
       </div>
-    </div>
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
@@ -21,9 +21,9 @@
                 <input type="text" name="nik" class="form-control" id="nik" value="{{ old('nik') }}" placeholder="NIK">
               </div>
               @error('nik')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -35,9 +35,9 @@
                 <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}" placeholder="Nama">
               </div>
               @error('name')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -49,9 +49,9 @@
                 <input type="password" name="password" class="form-control" id="password" placeholder="Password">
               </div>
               @error('password')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>

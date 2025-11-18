@@ -91,13 +91,21 @@
         <div class="w-24 h-1 bg-red-600 mx-auto mt-4"></div>
       </div>
 
+      @php
+        $colors = ['blue', 'red', 'green', 'indigo', 'purple', 'yellow', 'pink'];
+      @endphp
+
       @forelse($missions as $mission)
+        @php
+          $color = $colors[($loop->iteration - 1) % count($colors)];
+        @endphp
+
         <div class="group relative mb-6">
-          <div class="absolute inset-0 bg-gradient-to-r from-red-400 to-red-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-          <div class="relative bg-gradient-to-r from-white via-gray-50 to-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 hover:border-red-300">
+          <div class="absolute inset-0 bg-gradient-to-r from-{{ $color }}-400 to-{{ $color }}-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+          <div class="relative bg-gradient-to-r from-white via-gray-50 to-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 hover:border-{{ $color }}-300">
             <div class="flex items-stretch">
 
-              <div class="relative bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white flex-shrink-0 overflow-hidden">
+              <div class="relative bg-gradient-to-br from-{{ $color }}-600 via-{{ $color }}-700 to-{{ $color }}-800 text-white flex-shrink-0 overflow-hidden">
                 <div class="absolute inset-0 opacity-20">
                   <i class="fas fa-check text-[100px] transform -rotate-12"></i>
                 </div>
@@ -114,14 +122,14 @@
               <div class="p-6 md:p-8 flex-1 flex items-center">
                 <div class="w-full">
                   @if ($mission->description != null)
-                    <h4 class="font-bold text-lg md:text-xl text-gray-800 mb-3 group-hover:text-red-600 transition-colors flex items-start">
-                      <i class="fas fa-check-circle text-red-600 mr-3 mt-1 flex-shrink-0 group-hover:scale-125 transition-transform"></i>
+                    <h4 class="font-bold text-lg md:text-xl text-gray-800 mb-3 group-hover:text-{{ $color }}-600 transition-colors flex items-start">
+                      <i class="fas fa-check-circle text-{{ $color }}-600 mr-3 mt-1 flex-shrink-0 group-hover:scale-125 transition-transform"></i>
                       <span>{{ $mission->title }}</span>
                     </h4>
                     <p class="text-gray-600 leading-relaxed pl-9">{{ $mission->description }}</p>
                   @else
-                    <h4 class="font-bold text-lg md:text-xl text-gray-800 group-hover:text-red-600 transition-colors flex items-center">
-                      <i class="fas fa-check-circle text-red-600 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></i>
+                    <h4 class="font-bold text-lg md:text-xl text-gray-800 group-hover:text-{{ $color }}-600 transition-colors flex items-center">
+                      <i class="fas fa-check-circle text-{{ $color }}-600 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></i>
                       <span>{{ $mission->title }}</span>
                     </h4>
                   @endif

@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-lg-12">
     @if ($message = Session::get('error'))
-    <div class="col-12">
-      <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
-        {{ $message }}
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+      <div class="col-12">
+        <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+          {{ $message }}
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
       </div>
-    </div>
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
@@ -21,9 +21,9 @@
                 <input type="number" name="year" class="form-control" value="{{ old('year', date('Y')) }}" placeholder="Contoh: 2024" min="1900" max="9999">
               </div>
               @error('year')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -35,16 +35,16 @@
                 <select name="idm_status_id" class="form-select form-control" id="idm-status-id" aria-label="IdmStatus">
                   <option value="">-- Pilih Status --</option>
                   @foreach ($idmStatuses as $status)
-                  <option value="{{ $status->id }}" {{ old('idm_status_id') == $status->id ? 'selected' : '' }}>
-                    {{ $status->status_desc }}
-                  </option>
+                    <option value="{{ $status->id }}" {{ old('idm_status_id') == $status->id ? 'selected' : '' }}>
+                      {{ $status->status_desc }}
+                    </option>
                   @endforeach
                 </select>
               </div>
               @error('idm_status_id')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -56,9 +56,9 @@
                 <input type="number" name="min_score" class="form-control" value="{{ old('min_score', '0.0000') }}" placeholder="0.0000" step="0.0001">
               </div>
               @error('min_score')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -70,9 +70,9 @@
                 <input type="number" name="iks_score" class="form-control" value="{{ old('iks_score', '0.0000') }}" placeholder="0.0000" step="0.0001">
               </div>
               @error('iks_score')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -84,9 +84,9 @@
                 <input type="number" name="ike_score" class="form-control" value="{{ old('ike_score', '0.0000') }}" placeholder="0.0000" step="0.0001">
               </div>
               @error('ike_score')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -98,9 +98,9 @@
                 <input type="number" name="ikl_score" class="form-control" value="{{ old('ikl_score', '0.0000') }}" placeholder="0.0000" step="0.0001">
               </div>
               @error('ikl_score')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -112,9 +112,9 @@
                 <input type="number" name="addition_score" class="form-control" value="{{ old('addition_score', '0.0000') }}" placeholder="0.0000" step="0.0001">
               </div>
               @error('addition_score')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -126,9 +126,9 @@
                 <input type="number" name="total_score" class="form-control" value="{{ old('total_score', '0.0000') }}" placeholder="0.0000" step="0.0001">
               </div>
               @error('total_score')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>

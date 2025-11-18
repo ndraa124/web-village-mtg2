@@ -86,6 +86,8 @@
       </table>
     </div>
 
-    {!! $submissions->appends(['status' => request('status')])->links() !!}
+    <div class="pt-15 p-20">
+      {!! $submissions->appends(['status' => request('status')])->links() !!}
+    </div>
   </div>
 </div>

@@ -3,8 +3,7 @@
     <div class="card bg-white rounded-10 border border-white mb-4">
 
       <div class="text-center p-20 border-bottom">
-        <img src="{{ $slider->image_url }}" alt="{{ $slider->title }}"
-          style="max-width: 100%; height: auto; max-height: 300px; border-radius: 8px;">
+        <img src="{{ $slider->image_url }}" alt="{{ $slider->title }}" style="max-width: 100%; height: auto; max-height: 300px; border-radius: 8px;">
       </div>
 
       <ul class="ps-0 mb-0 list-unstyled">
@@ -12,9 +11,9 @@
           <span class="text-secondary fw-medium">Status</span>
           <span class="fw-bold">
             @if ($slider->is_active)
-            <span class="badge bg-success fs-14">Aktif</span>
+              <span class="badge bg-success fs-14">Aktif</span>
             @else
-            <span class="badge bg-secondary fs-14">Tidak Aktif</span>
+              <span class="badge bg-secondary fs-14">Tidak Aktif</span>
             @endif
           </span>
         </li>

@@ -109,6 +109,8 @@
       </table>
     </div>
 
-    {!! $timelineItems->links() !!}
+    <div class="pt-15 p-20">
+      {!! $timelineItems->links() !!}
+    </div>
   </div>
 </div>

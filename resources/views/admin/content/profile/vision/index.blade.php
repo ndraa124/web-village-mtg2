@@ -3,7 +3,7 @@
     <a class="nav-link active" href="#">Visi</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link {{ $active_tab == 'mission' ? 'active' : '' }}" href="{{ route('admin.content.profile.vision-mission.mission.index') }}">Misi</a>
+    <a class="nav-link" href="{{ route('admin.content.profile.vision-mission.mission.index') }}">Misi</a>
   </li>
 </ul>
 
@@ -92,7 +92,9 @@
           </table>
         </div>
 
-        {!! $visions->links() !!}
+        <div class="pt-15 p-20">
+          {!! $visions->links() !!}
+        </div>
       </div>
     </div>
   </div>

@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-lg-12">
     @if ($message = Session::get('error'))
-    <div class="col-12">
-      <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
-        {{ $message }}
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+      <div class="col-12">
+        <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+          {{ $message }}
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
       </div>
-    </div>
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
@@ -21,9 +21,9 @@
                 <input type="text" name="purpose" class="form-control" value="{{ old('purpose') }}" placeholder="Contoh: Tanpa Kemiskinan">
               </div>
               @error('purpose')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -35,9 +35,9 @@
                 <input type="number" name="value" class="form-control" value="{{ old('value', '0') }}" placeholder="0" min="0" max="99">
               </div>
               @error('value')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -49,9 +49,9 @@
                 <textarea name="icon" class="form-control" rows="4" placeholder="Masukkan kode SVG ikon atau teks lainnya">{{ old('icon') }}</textarea>
               </div>
               @error('icon')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>

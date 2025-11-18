@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-lg-12">
     @if ($message = Session::get('error'))
-    <div class="col-12">
-      <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
-        {{ $message }}
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+      <div class="col-12">
+        <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+          {{ $message }}
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
       </div>
-    </div>
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
@@ -21,7 +21,7 @@
                 <input type="text" name="title" class="form-control" value="{{ old('title') }}" placeholder="Masukkan judul...">
               </div>
               @error('title')
-              <div class="text-danger small mt-2">{{ $message }}</div>
+                <div class="text-danger small mt-2">{{ $message }}</div>
               @enderror
             </div>
           </div>
@@ -33,14 +33,14 @@
                 <select name="category_id" class="form-control">
                   <option value="">-- Pilih Kategori --</option>
                   @foreach ($categories as $category)
-                  <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
-                    {{ $category->name }}
-                  </option>
+                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                      {{ $category->name }}
+                    </option>
                   @endforeach
                 </select>
               </div>
               @error('category_id')
-              <div class="text-danger small mt-2">{{ $message }}</div>
+                <div class="text-danger small mt-2">{{ $message }}</div>
               @enderror
             </div>
           </div>
@@ -52,7 +52,7 @@
                 <input type="number" name="year" class="form-control" value="{{ old('year', date('Y')) }}" placeholder="Contoh: 2024">
               </div>
               @error('year')
-              <div class="text-danger small mt-2">{{ $message }}</div>
+                <div class="text-danger small mt-2">{{ $message }}</div>
               @enderror
             </div>
           </div>
@@ -64,7 +64,7 @@
                 <input type="url" name="link" class="form-control" value="{{ old('link') }}" placeholder="https://example.com/file.pdf">
               </div>
               @error('link')
-              <div class="text-danger small mt-2">{{ $message }}</div>
+                <div class="text-danger small mt-2">{{ $message }}</div>
               @enderror
             </div>
           </div>

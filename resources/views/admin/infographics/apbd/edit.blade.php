@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-lg-12">
     @if ($message = Session::get('error'))
-    <div class="col-12">
-      <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
-        {{ $message }}
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+      <div class="col-12">
+        <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+          {{ $message }}
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
       </div>
-    </div>
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
@@ -21,9 +21,9 @@
                 <input type="number" name="year" class="form-control" value="{{ old('year', $apbd->year) }}" placeholder="Contoh: 2024" min="1900" max="9999">
               </div>
               @error('year')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -35,9 +35,9 @@
                 <input type="number" name="income" class="form-control" value="{{ old('income', $apbd->income) }}" placeholder="0" min="0">
               </div>
               @error('income')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -49,9 +49,9 @@
                 <input type="number" name="shopping" class="form-control" value="{{ old('shopping', $apbd->shopping) }}" placeholder="0" min="0">
               </div>
               @error('shopping')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -63,9 +63,9 @@
                 <input type="number" name="expenditure" class="form-control" value="{{ old('expenditure', $apbd->expenditure) }}" placeholder="0" min="0">
               </div>
               @error('expenditure')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -77,9 +77,9 @@
                 <input type="number" name="financing" class="form-control" value="{{ old('financing', $apbd->financing) }}" placeholder="0" min="0">
               </div>
               @error('financing')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -91,9 +91,9 @@
                 <input type="number" name="surplus_deficit" class="form-control" value="{{ old('surplus_deficit', $apbd->surplus_deficit) }}" placeholder="0">
               </div>
               @error('surplus_deficit')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>

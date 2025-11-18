@@ -21,11 +21,11 @@
           <span class="text-secondary fw-medium">Link / Tautan</span>
           <span class="fw-bold">
             @if ($legalProduct->link)
-            <a href="{{ $legalProduct->link }}" target="_blank" rel="noopener noreferrer">
-              Lihat Dokumen
-            </a>
+              <a href="{{ $legalProduct->link }}" target="_blank" rel="noopener noreferrer">
+                Lihat Dokumen
+              </a>
             @else
-            <span class="text-secondary fst-italic">Tidak ada link</span>
+              <span class="text-secondary fst-italic">Tidak ada link</span>
             @endif
           </span>
         </li>

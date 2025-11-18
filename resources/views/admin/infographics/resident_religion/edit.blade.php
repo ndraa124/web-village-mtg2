@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-lg-12">
     @if ($message = Session::get('error'))
-    <div class="col-12">
-      <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
-        {{ $message }}
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+      <div class="col-12">
+        <div class="alert fs-16 alert-danger alert-dismissible" role="alert">
+          {{ $message }}
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
       </div>
-    </div>
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
@@ -21,17 +21,17 @@
                 <select name="religion_id" class="form-select form-control" id="religion-id" aria-label="Religion">
                   <option value="">-- Pilih Agama --</option>
                   @foreach ($religions as $religion)
-                  <option value="{{ $religion->id }}" {{ old('religion_id', $residentReligion->religion_id) == $religion->id ? 'selected' : '' }}>
-                    {{ $religion->religion_name }}
-                  </option>
+                    <option value="{{ $religion->id }}" {{ old('religion_id', $residentReligion->religion_id) == $religion->id ? 'selected' : '' }}>
+                      {{ $religion->religion_name }}
+                    </option>
                   @endforeach
                 </select>
               </div>
 
               @error('religion_id')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>
@@ -43,9 +43,9 @@
                 <input type="number" name="total" class="form-control" value="{{ old('total', $residentReligion->total) }}" placeholder="0" min="0">
               </div>
               @error('total')
-              <div class="text-danger small mt-2">
-                {{ $message }}
-              </div>
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
               @enderror
             </div>
           </div>

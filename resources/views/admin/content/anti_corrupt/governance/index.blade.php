@@ -70,10 +70,10 @@
         <hr>
 
         <div class="fs-16 text-body news-content" style="line-height: 1.7;">
-          @if ($antiCorrupt->content == "")
-          Tidak ada konten
+          @if ($antiCorrupt->content == '')
+            Tidak ada konten
           @else
-          {!! $antiCorrupt->content !!}
+            {!! $antiCorrupt->content !!}
           @endif
         </div>
       </div>
