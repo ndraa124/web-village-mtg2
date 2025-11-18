@@ -162,7 +162,7 @@
                 </p>
                 <p class="text-xs text-purple-600">
                   <i class="fas fa-stopwatch mr-1"></i>
-                  Estimasi: 30 menit - 1 jam
+                  Estimasi: 30 menit - 1 jam setelah berkas/dokumen diverifikasi
                 </p>
               </div>
             </div>

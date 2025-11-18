@@ -197,7 +197,7 @@
           <i class="fas fa-clock text-blue-600 text-xl"></i>
         </div>
         <h4 class="font-bold text-gray-800 mb-2">Waktu Proses</h4>
-        <p class="text-sm text-gray-600">Estimasi 3-7 hari kerja setelah pengajuan diverifikasi</p>
+        <p class="text-sm text-gray-600">Estimasi 30 menit - 1 jam setelah pengajuan diverifikasi</p>
       </div>
 
       <div class="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-green-500 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">

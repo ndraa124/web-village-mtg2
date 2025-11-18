@@ -182,7 +182,7 @@
             </div>
             <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow border border-gray-100">
               <h4 class="text-xl font-bold text-gray-800 mb-3">Proses & Verifikasi</h4>
-              <p class="text-gray-600 leading-relaxed">Petugas akan memverifikasi data. Dokumen akan diproses dalam waktu 30 menit - 1 jam jika dokumen yang diupload sudah lengkap semua.</p>
+              <p class="text-gray-600 leading-relaxed">Petugas akan memverifikasi data dan akan diproses dalam waktu 30 menit - 1 jam setelah diverifikasi</p>
             </div>
           </div>
         </div>

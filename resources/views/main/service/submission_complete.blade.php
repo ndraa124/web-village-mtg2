@@ -96,7 +96,7 @@
                 </div>
                 <div>
                   <p class="text-sm text-blue-600 mb-1">Estimasi Proses</p>
-                  <p class="text-lg font-bold text-blue-900">30 menit - 1 jam</p>
+                  <p class="text-lg font-bold text-blue-900">30 menit - 1 jam setelah berkas/dokumen diverifikasi</p>
                 </div>
               </div>
             </div>
