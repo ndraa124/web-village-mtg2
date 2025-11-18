@@ -105,18 +105,24 @@
             </div>
 
             <div class="flex items-center gap-3 mb-6">
+              @php
+                $shareUrl = Request::url();
+                $shareTitle = urlencode($news->title);
+                $shareUrlEncoded = urlencode($shareUrl);
+              @endphp
+
               <span class="text-gray-700 font-semibold">Bagikan:</span>
-              <button class="share-button bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700">
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrlEncoded }}" target="_blank" rel="noopener noreferrer" class="share-button bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700">
                 <i class="fab fa-facebook-f"></i>
-              </button>
-              <button class="share-button bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-700">
+              </a>
+              <a href="https://api.whatsapp.com/send?text={{ $shareTitle }}%20{{ $shareUrlEncoded }}" target="_blank" rel="noopener noreferrer" class="share-button bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-700">
                 <i class="fab fa-whatsapp"></i>
-              </button>
-              <button class="share-button bg-blue-400 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-500">
+              </a>
+              <a href="https://twitter.com/intent/tweet?url={{ $shareUrlEncoded }}&text={{ $shareTitle }}" target="_blank" rel="noopener noreferrer" class="share-button bg-blue-400 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-500">
                 <i class="fab fa-twitter"></i>
-              </button>
-              <button class="share-button bg-red-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-700">
-                <i class="fas fa-link"></i>
+              </a>
+              <button id="copy-link-btn" data-url="{{ $shareUrl }}" class="share-button bg-red-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-700">
+                <i id="copy-link-icon" class="fas fa-link"></i>
               </button>
             </div>
 
@@ -147,15 +153,26 @@
                   <h4 class="font-bold text-gray-800">{{ $news->user->name ?? 'Admin Desa' }}</h4>
                   <p class="text-gray-600 text-sm">Pengelola Website Desa Motoling Dua</p>
                   <div class="flex gap-3 mt-2">
-                    <a href="#" class="text-gray-500 hover:text-red-600">
-                      <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="#" class="text-gray-500 hover:text-red-600">
-                      <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="text-gray-500 hover:text-red-600">
-                      <i class="fab fa-instagram"></i>
-                    </a>
+                    @if ($village->facebook)
+                      <a href="{{ $village->facebook }}" class="text-gray-500 hover:text-red-600">
+                        <i class="fab fa-facebook"></i>
+                      </a>
+                    @endif
+                    @if ($village->instagram)
+                      <a href="{{ $village->instagram }}" class="text-gray-500 hover:text-red-600">
+                        <i class="fab fa-instagram"></i>
+                      </a>
+                    @endif
+                    @if ($village->twitter)
+                      <a href="{{ $village->twitter }}" class="text-gray-500 hover:text-red-600">
+                        <i class="fab fa-twitter"></i>
+                      </a>
+                    @endif
+                    @if ($village->youtube)
+                      <a href="{{ $village->youtube }}" class="text-gray-500 hover:text-red-600">
+                        <i class="fab fa-youtube"></i>
+                      </a>
+                    @endif
                   </div>
                 </div>
               </div>
@@ -224,3 +241,30 @@
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const copyButton = document.getElementById('copy-link-btn');
+    const copyIcon = document.getElementById('copy-link-icon');
+
+    if (copyButton) {
+      copyButton.addEventListener('click', function() {
+        const urlToCopy = this.dataset.url;
+
+        navigator.clipboard.writeText(urlToCopy).then(function() {
+          copyIcon.classList.remove('fa-link');
+          copyIcon.classList.add('fa-check');
+
+          setTimeout(function() {
+            copyIcon.classList.remove('fa-check');
+            copyIcon.classList.add('fa-link');
+          }, 2000);
+
+        }).catch(function(err) {
+          console.error('Gagal menyalin link: ', err);
+          alert('Gagal menyalin link.');
+        });
+      });
+    }
+  });
+</script>

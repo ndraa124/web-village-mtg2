@@ -114,7 +114,7 @@ class NewsController extends Controller
       abort(404);
     }
 
-    $news->increment('views_count');
+    News::where('id', $news->id)->increment('views_count');
     $news->load('user', 'category', 'tags');
 
     $relatedNews = News::with('user')
@@ -136,7 +136,7 @@ class NewsController extends Controller
       'main'  => 'main.news.show',
       'header' => [
         'title' => 'Detail Berita & Informasi',
-        'description' => 'Perjalanan dan Perkembangan Desa',
+        'description' => 'Ikuti perkembangan, pengumuman, dan kegiatan terkini yang ada di Desa Motoling Dua',
       ],
       'breadcrumbs' => [
         [
