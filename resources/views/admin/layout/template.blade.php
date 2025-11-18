@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="title" content="Desa Motoling Dua | Login" />
+  <meta name="title" content="Desa Motoling Dua" />
   <meta name="author" content="ID-124" />
   <meta name="description" content="Desa Motoling Dua." />
   <meta name="keywords" content="desa, motoling2, motoling dua, motoling, minahasa selatan, minsel" />
