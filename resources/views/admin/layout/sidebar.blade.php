@@ -12,7 +12,7 @@
         <span class="menu-title-text">MAIN</span>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('admin.dashboard.*') ? 'open' : '' }}">
+      <li class="menu-item {{ request()->routeIs('admin.dashboard') ? 'open' : '' }}">
         <a href="{{ route('admin.dashboard') }}" class="menu-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">dashboard</span>
           <span class="title">Dashboard</span>
