@@ -11,18 +11,18 @@ class AntiCorruptServiceQualityController extends Controller
 {
   public function index()
   {
-    $antiCorrupt = AntiCorruptServiceQuality::find(1);
+    $serviceQuality = AntiCorruptServiceQuality::find(1);
 
-    if (!$antiCorrupt) {
-      $antiCorrupt = new AntiCorruptServiceQuality();
-      $antiCorrupt->id = 1;
-      $antiCorrupt->content = "";
-      $antiCorrupt->user_id = Auth::id();
-      $antiCorrupt->save();
+    if (!$serviceQuality) {
+      $serviceQuality = new AntiCorruptServiceQuality();
+      $serviceQuality->id = 1;
+      $serviceQuality->content = "";
+      $serviceQuality->user_id = Auth::id();
+      $serviceQuality->save();
     }
 
     $data = [
-      'title' => 'Anti Korupsi - Kualitas Pelayanan Publik',
+      'title' => 'Desa Anti Korupsi',
       'main' => 'admin.content.anti_corrupt.service_quality.index',
       'breadcrumbs' => [
         [
@@ -30,19 +30,23 @@ class AntiCorruptServiceQualityController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.content.anti.governance.index',
+          'title' => 'Desa Anti Korupsi'
+        ],
+        [
           'title' => 'Kualitas Pelayanan Publik'
         ],
       ],
-      'antiCorrupt' => $antiCorrupt
+      'serviceQuality' => $serviceQuality
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function edit(AntiCorruptServiceQuality $antiCorrupt)
+  public function edit(AntiCorruptServiceQuality $serviceQuality)
   {
     $data = [
-      'title' => 'Edit Anti Korupsi - Kualitas Pelayanan Publik',
+      'title' => 'Edit Kualitas Pelayanan Publik',
       'main' => 'admin.content.anti_corrupt.service_quality.edit',
       'breadcrumbs' => [
         [
@@ -50,25 +54,29 @@ class AntiCorruptServiceQualityController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.content.anti.service-quality.index',
-          'title' => 'Anti Korupsi - Kualitas Pelayanan Publik'
+          'route' => 'admin.content.anti.governance.index',
+          'title' => 'Desa Anti Korupsi'
         ],
         [
-          'title' => 'Edit'
+          'route' => 'admin.content.anti.service-quality.index',
+          'title' => 'Kualitas Pelayanan Publik'
+        ],
+        [
+          'title' => 'Edit Data'
         ],
       ],
-      'antiCorrupt' => $antiCorrupt
+      'serviceQuality' => $serviceQuality
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function update(StoreAntiCorruptRequest $request, AntiCorruptServiceQuality $antiCorrupt)
+  public function update(StoreAntiCorruptRequest $request, AntiCorruptServiceQuality $serviceQuality)
   {
     $validatedData = $request->validated();
 
     try {
-      $antiCorrupt->update($validatedData);
+      $serviceQuality->update($validatedData);
 
       return redirect()->route('admin.content.anti.service-quality.index')
         ->with('success', 'Kualitas pelayanan publik berhasil diperbarui.');

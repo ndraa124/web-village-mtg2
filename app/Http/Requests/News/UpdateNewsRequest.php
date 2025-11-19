@@ -4,6 +4,8 @@ namespace App\Http\Requests\News;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UpdateNewsRequest extends FormRequest
 {
@@ -41,5 +43,15 @@ class UpdateNewsRequest extends FormRequest
             'category_id.exists' => 'Kategori yang dipilih tidak valid.',
             'tags.*.exists' => 'Salah satu tag yang dipilih tidak valid.',
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            redirect(url()->previous())
+                ->withErrors($validator)
+                ->withInput()
+                ->with('error', 'Mohon periksa kembali data yang Anda masukkan.')
+        );
     }
 }

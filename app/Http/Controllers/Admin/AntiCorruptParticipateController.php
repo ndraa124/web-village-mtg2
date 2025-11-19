@@ -11,18 +11,18 @@ class AntiCorruptParticipateController extends Controller
 {
   public function index()
   {
-    $antiCorrupt = AntiCorruptParticipate::find(1);
+    $participate = AntiCorruptParticipate::find(1);
 
-    if (!$antiCorrupt) {
-      $antiCorrupt = new AntiCorruptParticipate();
-      $antiCorrupt->id = 1;
-      $antiCorrupt->content = "";
-      $antiCorrupt->user_id = Auth::id();
-      $antiCorrupt->save();
+    if (!$participate) {
+      $participate = new AntiCorruptParticipate();
+      $participate->id = 1;
+      $participate->content = "";
+      $participate->user_id = Auth::id();
+      $participate->save();
     }
 
     $data = [
-      'title' => 'Anti Korupsi - Partisipasi Masyarakat',
+      'title' => 'Desa Anti Korupsi',
       'main' => 'admin.content.anti_corrupt.participate.index',
       'breadcrumbs' => [
         [
@@ -30,19 +30,23 @@ class AntiCorruptParticipateController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.content.anti.governance.index',
+          'title' => 'Desa Anti Korupsi'
+        ],
+        [
           'title' => 'Partisipasi Masyarakat'
         ],
       ],
-      'antiCorrupt' => $antiCorrupt
+      'participate' => $participate
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function edit(AntiCorruptParticipate $antiCorrupt)
+  public function edit(AntiCorruptParticipate $participate)
   {
     $data = [
-      'title' => 'Edit Anti Korupsi - Partisipasi Masyarakat',
+      'title' => 'Edit Partisipasi Masyarakat',
       'main' => 'admin.content.anti_corrupt.participate.edit',
       'breadcrumbs' => [
         [
@@ -50,25 +54,29 @@ class AntiCorruptParticipateController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.content.anti.participate.index',
-          'title' => 'Anti Korupsi - Partisipasi Masyarakat'
+          'route' => 'admin.content.anti.governance.index',
+          'title' => 'Desa Anti Korupsi'
         ],
         [
-          'title' => 'Edit'
+          'route' => 'admin.content.anti.participate.index',
+          'title' => 'Partisipasi Masyarakat'
+        ],
+        [
+          'title' => 'Edit Data'
         ],
       ],
-      'antiCorrupt' => $antiCorrupt
+      'participate' => $participate
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function update(StoreAntiCorruptRequest $request, AntiCorruptParticipate $antiCorrupt)
+  public function update(StoreAntiCorruptRequest $request, AntiCorruptParticipate $participate)
   {
     $validatedData = $request->validated();
 
     try {
-      $antiCorrupt->update($validatedData);
+      $participate->update($validatedData);
 
       return redirect()->route('admin.content.anti.participate.index')
         ->with('success', 'Partisipasi masyarakat berhasil diperbarui.');

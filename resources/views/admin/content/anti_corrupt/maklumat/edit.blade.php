@@ -29,25 +29,49 @@
       <div class="d-flex gap-4 fs-14 text-secondary mb-2">
         <span>
           <i class="material-symbols-outlined fs-16" style="vertical-align: middle; margin-top: -3px;">person</i>
-          {{ $localWisdom->user->name ?? 'N/A' }}
+          {{ $maklumat->user->name ?? 'N/A' }}
         </span>
         <span>
           <i class="material-symbols-outlined fs-16" style="vertical-align: middle; margin-top: -3px;">calendar_month</i>
-          Dibuat: {{ $localWisdom->created_at->format('d M Y') }}
+          Dibuat: {{ $maklumat->created_at->format('d M Y') }}
         </span>
       </div>
 
       <hr>
 
-      <form action="{{ route('admin.content.anti.local-wisdom.update', $localWisdom->id) }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('admin.content.anti.maklumat.update', $maklumat->id) }}" method="POST" enctype="multipart/form-data">
         @csrf @method('PUT')
 
         <div class="row">
           <div class="col-lg-12">
             <div class="mb-20">
-              <label class="label fs-16 mb-2">Konten Kearifan Lokal</label>
+              <label class="label fs-16 mb-2">Gambar Saat Ini</label>
+              <div>
+                <img src="{{ $maklumat->image_url }}" alt="{{ $maklumat->caption ?? 'Current Image' }}" id="image-preview" style="width: 200px; height: auto; object-fit: cover; border-radius: 8px;">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="mb-20">
+              <label class="label fs-16 mb-2">Unggah Gambar Baru</label>
               <div class="form-group">
-                <textarea id="ckeditor-editor" name="content" class="form-control" rows="10" placeholder="Masukkan konten...">{{ old('content', $localWisdom->content) }}</textarea>
+                <input type="file" name="image" class="form-control" accept="image/jpeg,image/png,image/jpg,image/webp" onchange="previewImage(event)">
+                <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar.</small>
+              </div>
+              @error('image')
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="mb-20">
+              <label class="label fs-16 mb-2">Konten Maklumat</label>
+              <div class="form-group">
+                <textarea id="ckeditor-editor" name="content" class="form-control" rows="10" placeholder="Masukkan konten...">{{ old('content', $maklumat->content) }}</textarea>
               </div>
               @error('content')
                 <div class="text-danger small mt-2">
@@ -62,7 +86,7 @@
           <div class="col-lg-12">
             <div class="d-flex gap-2">
               <button type="submit" class="btn btn-primary fw-normal text-white">Ubah</button>
-              <a href="{{ route('admin.content.anti.local-wisdom.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('admin.content.anti.maklumat.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>

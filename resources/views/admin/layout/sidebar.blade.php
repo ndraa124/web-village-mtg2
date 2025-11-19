@@ -307,54 +307,6 @@
         </ul>
       </li>
 
-      <li class="menu-item {{ request()->routeIs('admin.content.news.*') ? 'open' : '' }}">
-        <a href="{{ route('admin.content.news.index') }}" class="menu-link {{ request()->routeIs('admin.content.news.*') ? 'active' : '' }}">
-          <span class="material-symbols-outlined menu-icon">feed</span>
-          <span class="title">Berita & Informasi</span>
-        </a>
-      </li>
-
-      <li class="menu-item {{ request()->routeIs('admin.content.legal-product.*') ? 'open' : '' }}">
-        <a href="{{ route('admin.content.legal-product.index') }}" class="menu-link {{ request()->routeIs('admin.content.legal-product.*') ? 'active' : '' }}">
-          <span class="material-symbols-outlined menu-icon">gavel</span>
-          <span class="title">Produk Hukum</span>
-        </a>
-      </li>
-
-      <li class="menu-item {{ request()->routeIs('admin.content.anti.*') ? 'open' : '' }}">
-        <a href="javascript:void(0);" class="menu-link menu-toggle active">
-          <span class="material-symbols-outlined menu-icon">target</span>
-          <span class="title">Desa Anti Korupsi</span>
-        </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="{{ route('admin.content.anti.governance.index') }}" class="menu-link {{ request()->routeIs('admin.content.anti.governance.*') ? 'active' : '' }}">
-              Tata Laksana
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.content.anti.supervision.index') }}" class="menu-link {{ request()->routeIs('admin.content.anti.supervision.*') ? 'active' : '' }}">
-              Pengawasan
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.content.anti.service-quality.index') }}" class="menu-link {{ request()->routeIs('admin.content.anti.service-quality.*') ? 'active' : '' }}">
-              Kualitas Pelayanan Publik
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.content.anti.participate.index') }}" class="menu-link {{ request()->routeIs('admin.content.anti.participate.*') ? 'active' : '' }}">
-              Partisipasi Masyarakat
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.content.anti.local-wisdom.index') }}" class="menu-link {{ request()->routeIs('admin.content.anti.local-wisdom.*') ? 'active' : '' }}">
-              Kearifan Lokal
-            </a>
-          </li>
-        </ul>
-      </li>
-
       <li class="menu-item {{ request()->routeIs('admin.services.*') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle {{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">handshake</span>
@@ -372,6 +324,27 @@
             </a>
           </li>
         </ul>
+      </li>
+
+      <li class="menu-item {{ request()->routeIs('admin.content.news.*') ? 'open' : '' }}">
+        <a href="{{ route('admin.content.news.index') }}" class="menu-link {{ request()->routeIs('admin.content.news.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">feed</span>
+          <span class="title">Berita & Informasi</span>
+        </a>
+      </li>
+
+      <li class="menu-item {{ request()->routeIs('admin.content.legal-product.*') ? 'open' : '' }}">
+        <a href="{{ route('admin.content.legal-product.index') }}" class="menu-link {{ request()->routeIs('admin.content.legal-product.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">gavel</span>
+          <span class="title">Produk Hukum</span>
+        </a>
+      </li>
+
+      <li class="menu-item {{ request()->routeIs('admin.content.anti.*') ? 'open' : '' }}">
+        <a href="{{ route('admin.content.anti.governance.index') }}" class="menu-link {{ request()->routeIs('admin.content.anti.*') ? 'active' : '' }}">
+          <span class="material-symbols-outlined menu-icon">target</span>
+          <span class="title">Desa Anti Korupsi</span>
+        </a>
       </li>
 
       @if (Auth::user()->role == 'superadmin')

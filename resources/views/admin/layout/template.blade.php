@@ -48,7 +48,7 @@
           <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
             @if (count($breadcrumbs) > 2)
               <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-                <a href="{{ route($breadcrumbs[1]['route']) }}" class="d-inline text-decoration-none text-center fs-24" style="height: 30px; line-height: 30px;">
+                <a href="{{ route($breadcrumbs[count($breadcrumbs) - 2]['route']) }}" class="d-inline text-decoration-none text-center fs-24" style="height: 30px; line-height: 30px;">
                   <i class="ri-arrow-left-long-line"></i>
                 </a>
                 <h3 class="d-inline mb-0">{{ $title }}</h3>

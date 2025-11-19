@@ -37,7 +37,7 @@
         <thead>
           <tr>
             <th scope="col" class="fw-medium text-center">#</th>
-            <th scope="col" class="fw-medium text-center">Judul Layanan</th>
+            <th scope="col" class="fw-medium text-center">Nama Layanan</th>
             <th scope="col" class="fw-medium text-center">Deskripsi Singkat</th>
             <th scope="col" class="fw-medium text-center">Ikon</th>
             <th scope="col" class="fw-medium text-center">Aksi</th>

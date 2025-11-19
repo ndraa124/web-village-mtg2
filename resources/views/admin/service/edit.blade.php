@@ -44,7 +44,7 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="mb-20">
-              <label class="label fs-16 mb-2">Judul Layanan <span class="text-danger">*</span></label>
+              <label class="label fs-16 mb-2">Nama Layanan <span class="text-danger">*</span></label>
               <div class="form-group">
                 <input type="text" id="title" name="title" class="form-control" value="{{ old('title', $service->title) }}" placeholder="Contoh: Surat Keterangan Usaha">
               </div>

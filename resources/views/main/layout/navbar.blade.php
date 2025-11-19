@@ -107,6 +107,9 @@
             <a href="{{ route('anti.local-wisdom.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.local-wisdom.index') ? 'text-red-600 font-semibold' : '' }}">
               Kearifan Lokal
             </a>
+            <a href="{{ route('anti.maklumat.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.maklumat.index') ? 'text-red-600 font-semibold' : '' }}">
+              Maklumat Pelayanan
+            </a>
           </div>
         </div>
 
@@ -229,6 +232,9 @@
           </a>
           <a href="{{ route('anti.local-wisdom.index') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.local-wisdom.index') ? 'text-red-600 font-semibold' : '' }}">
             Kearifan Lokal
+          </a>
+          <a href="{{ route('anti.maklumat.index') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.maklumat.index') ? 'text-red-600 font-semibold' : '' }}">
+            Maklumat
           </a>
         </div>
       </div>

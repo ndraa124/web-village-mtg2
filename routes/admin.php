@@ -69,6 +69,7 @@ use App\Http\Controllers\Admin\OrganizationOfficialsController;
 use App\Http\Controllers\Admin\OrganizationFunctionController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ManageLegalProductController;
+use App\Http\Controllers\Admin\AntiCorruptMaklumatController;
 use App\Http\Controllers\Admin\AntiCorruptGovernanceController;
 use App\Http\Controllers\Admin\AntiCorruptSupervisionController;
 use App\Http\Controllers\Admin\AntiCorruptServiceQualityController;
@@ -300,20 +301,19 @@ Route::middleware(['authenticate'])->group(function () {
             Route::prefix('/anti-corruption')
                 ->name('anti.')
                 ->group(function () {
-                    Route::resource('governance', AntiCorruptGovernanceController::class)
-                        ->parameters(['governance' => 'antiCorrupt']);
+                    Route::resource('governance', AntiCorruptGovernanceController::class);
 
-                    Route::resource('supervision', AntiCorruptSupervisionController::class)
-                        ->parameters(['supervision' => 'antiCorrupt']);
+                    Route::resource('supervision', AntiCorruptSupervisionController::class);
 
                     Route::resource('service-quality', AntiCorruptServiceQualityController::class)
-                        ->parameters(['service-quality' => 'antiCorrupt']);
+                        ->parameters(['service-quality' => 'serviceQuality']);
 
-                    Route::resource('participate', AntiCorruptParticipateController::class)
-                        ->parameters(['participate' => 'antiCorrupt']);
+                    Route::resource('participate', AntiCorruptParticipateController::class);
 
                     Route::resource('local-wisdom', AntiCorruptLocalWisdomController::class)
-                        ->parameters(['local-wisdom' => 'antiCorrupt']);
+                        ->parameters(['local-wisdom' => 'localWisdom']);
+
+                    Route::resource('maklumat', AntiCorruptMaklumatController::class);
                 });
         });
 

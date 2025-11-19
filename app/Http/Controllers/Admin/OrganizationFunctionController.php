@@ -22,12 +22,16 @@ class OrganizationFunctionController extends Controller
       ->paginate(10);
 
     $data = [
-      'title' => 'Tupoksi Aparatur Desa',
+      'title' => 'Struktur Organisasi',
       'main' => 'admin.content.profile.organization.function.index',
       'breadcrumbs' => [
         [
           'route' => 'admin.dashboard',
           'title' => 'Dashboard'
+        ],
+        [
+          'route' => 'admin.content.profile.organization.structure.index',
+          'title' => 'Struktur Organisasi'
         ],
         [
           'title' => 'Tupoksi Aparatur Desa'

@@ -55,9 +55,7 @@
                 <tr>
                   <td class="text-body text-center">{{ $loop->iteration + $functions->firstItem() - 1 }}</td>
                   <td class="text-body fw-bold">{{ $row->position_name }}</td>
-                  <td class="text-body">
-                    {{ \Illuminate\Support\Str::limit(strip_tags($row->description), 70) }}
-                  </td>
+                  <td class="text-body">{{ $row->shortDescription }}</td>
                   <td class="text-center">
                     @if ($row->icon_class)
                       <i class="{{ $row->icon_class }}"></i>

@@ -6,7 +6,7 @@
     <a class="nav-link" href="{{ route('admin.content.anti.supervision.index') }}">Pengawasan</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link active" href="#">Kualitas Pelayanan Publik</a>
+    <a class="nav-link" href="{{ route('admin.content.anti.service-quality.index') }}">Kualitas Pelayanan Publik</a>
   </li>
   <li class="nav-item" role="presentation">
     <a class="nav-link" href="{{ route('admin.content.anti.participate.index') }}">Partisipasi Masyarakat</a>
@@ -15,7 +15,7 @@
     <a class="nav-link" href="{{ route('admin.content.anti.local-wisdom.index') }}">Kearifan Lokal</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link" href="{{ route('admin.content.anti.maklumat.index') }}">Maklumat Pelayanan</a>
+    <a class="nav-link active" href="#">Maklumat Pelayanan</a>
   </li>
 </ul>
 
@@ -46,6 +46,7 @@
             <thead>
               <tr>
                 <th scope="col" class="fw-medium text-center">#</th>
+                <th scope="col" class="fw-medium">Gambar</th>
                 <th scope="col" class="fw-medium">Deskripsi</th>
                 <th scope="col" class="fw-medium text-center">Tanggal Dibuat</th>
                 <th scope="col" class="fw-medium text-center">Aksi</th>
@@ -54,11 +55,12 @@
             <tbody>
               <tr>
                 <td class="text-body text-center">1</td>
-                <td class="text-body">{{ $serviceQuality->shortContent ?? 'Deskripsi belum diisi' }}</td>
-                <td class="text-body text-center">{{ $serviceQuality->created_at->format('d M Y, H:i') }}</td>
+                <td><img src="{{ $maklumat->image_url }}" alt="{{ $maklumat->caption ?? 'Maklumat Image' }}" style="width: 100px; height: 70px; object-fit: cover; border-radius: 8px;"></td>
+                <td class="text-body">{{ $maklumat->shortContent ?? 'Deskripsi belum diisi' }}</td>
+                <td class="text-body text-center">{{ $maklumat->created_at->format('d M Y, H:i') }}</td>
                 <td>
                   <div class="d-flex justify-content-center" style="gap: 18px;">
-                    <a href="{{ route('admin.content.anti.service-quality.edit', $serviceQuality->id) }}" class="bg-transparent p-0 border-0 hover-text-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                    <a href="{{ route('admin.content.anti.maklumat.edit', $maklumat->id) }}" class="bg-transparent p-0 border-0 hover-text-warning" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
                       <i class="material-symbols-outlined fs-16 fw-normal text-warning">edit</i>
                     </a>
                   </div>

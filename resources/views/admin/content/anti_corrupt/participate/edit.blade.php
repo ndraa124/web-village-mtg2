@@ -2,6 +2,7 @@
   .card .ck-editor__editable_inline {
     min-height: 300px;
     background: #ffffff !important;
+    padding: 1rem 2rem 1rem 2rem;
   }
 
   .card .ck-content,
@@ -25,16 +26,28 @@
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('admin.content.anti.participate.update', $antiCorrupt->id) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
+      <div class="d-flex gap-4 fs-14 text-secondary mb-2">
+        <span>
+          <i class="material-symbols-outlined fs-16" style="vertical-align: middle; margin-top: -3px;">person</i>
+          {{ $participate->user->name ?? 'N/A' }}
+        </span>
+        <span>
+          <i class="material-symbols-outlined fs-16" style="vertical-align: middle; margin-top: -3px;">calendar_month</i>
+          Dibuat: {{ $participate->created_at->format('d M Y') }}
+        </span>
+      </div>
+
+      <hr>
+
+      <form action="{{ route('admin.content.anti.participate.update', $participate->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf @method('PUT')
 
         <div class="row">
           <div class="col-lg-12">
             <div class="mb-20">
               <label class="label fs-16 mb-2">Konten Partisipasi Masyarakat</label>
               <div class="form-group">
-                <textarea id="ckeditor-editor" name="content" class="form-control" rows="10" placeholder="Masukkan konten...">{{ old('content', $antiCorrupt->content) }}</textarea>
+                <textarea id="ckeditor-editor" name="content" class="form-control" rows="10" placeholder="Masukkan konten...">{{ old('content', $participate->content) }}</textarea>
               </div>
               @error('content')
                 <div class="text-danger small mt-2">

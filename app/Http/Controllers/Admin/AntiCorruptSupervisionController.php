@@ -11,18 +11,18 @@ class AntiCorruptSupervisionController extends Controller
 {
   public function index()
   {
-    $antiCorrupt = AntiCorruptSupervision::find(1);
+    $supervision = AntiCorruptSupervision::find(1);
 
-    if (!$antiCorrupt) {
-      $antiCorrupt = new AntiCorruptSupervision();
-      $antiCorrupt->id = 1;
-      $antiCorrupt->content = "";
-      $antiCorrupt->user_id = Auth::id();
-      $antiCorrupt->save();
+    if (!$supervision) {
+      $supervision = new AntiCorruptSupervision();
+      $supervision->id = 1;
+      $supervision->content = "";
+      $supervision->user_id = Auth::id();
+      $supervision->save();
     }
 
     $data = [
-      'title' => 'Anti Korupsi - Pengawasan',
+      'title' => 'Desa Anti Korupsi',
       'main' => 'admin.content.anti_corrupt.supervision.index',
       'breadcrumbs' => [
         [
@@ -30,19 +30,23 @@ class AntiCorruptSupervisionController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.content.anti.governance.index',
+          'title' => 'Desa Anti Korupsi'
+        ],
+        [
           'title' => 'Pengawasan'
         ],
       ],
-      'antiCorrupt' => $antiCorrupt
+      'supervision' => $supervision
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function edit(AntiCorruptSupervision $antiCorrupt)
+  public function edit(AntiCorruptSupervision $supervision)
   {
     $data = [
-      'title' => 'Edit Anti Korupsi - Pengawasan',
+      'title' => 'Edit Pengawasan',
       'main' => 'admin.content.anti_corrupt.supervision.edit',
       'breadcrumbs' => [
         [
@@ -50,25 +54,29 @@ class AntiCorruptSupervisionController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.content.anti.supervision.index',
-          'title' => 'Anti Korupsi - Pengawasan'
+          'route' => 'admin.content.anti.governance.index',
+          'title' => 'Desa Anti Korupsi'
         ],
         [
-          'title' => 'Edit'
+          'route' => 'admin.content.anti.supervision.index',
+          'title' => 'Pengawasan'
+        ],
+        [
+          'title' => 'Edit Data'
         ],
       ],
-      'antiCorrupt' => $antiCorrupt
+      'supervision' => $supervision
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function update(StoreAntiCorruptRequest $request, AntiCorruptSupervision $antiCorrupt)
+  public function update(StoreAntiCorruptRequest $request, AntiCorruptSupervision $supervision)
   {
     $validatedData = $request->validated();
 
     try {
-      $antiCorrupt->update($validatedData);
+      $supervision->update($validatedData);
 
       return redirect()->route('admin.content.anti.supervision.index')
         ->with('success', 'Pengawasan berhasil diperbarui.');

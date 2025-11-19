@@ -44,7 +44,7 @@ class OrganizationDeliberationController extends Controller
   public function edit(OrganizationDeliberation $deliberation)
   {
     $data = [
-      'title' => 'Edit Struktur Organisasi',
+      'title' => 'Edit Struktur Organisasi BPD',
       'main' => 'admin.content.profile.organization.deliberation.edit',
       'breadcrumbs' => [
         [

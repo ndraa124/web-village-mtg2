@@ -44,7 +44,7 @@ class OrganizationStructureController extends Controller
   public function edit(OrganizationStructure $structure)
   {
     $data = [
-      'title' => 'Edit Struktur Organisasi',
+      'title' => 'Edit Struktur Organisasi Pemerintah Desa',
       'main' => 'admin.content.profile.organization.structure.edit',
       'breadcrumbs' => [
         [

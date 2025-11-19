@@ -16,6 +16,7 @@ use App\Http\Controllers\SupervisionController;
 use App\Http\Controllers\ServiceQualityController;
 use App\Http\Controllers\ParticipateController;
 use App\Http\Controllers\LocalWisdomController;
+use App\Http\Controllers\MaklumatController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/contact/send', [HomeController::class, 'sendContactEmail'])->name('contact.send');
@@ -76,4 +77,5 @@ Route::prefix('/anti-corruption')
         Route::get('/service-quality', [ServiceQualityController::class, 'index'])->name('service-quality.index');
         Route::get('/participate', [ParticipateController::class, 'index'])->name('participate.index');
         Route::get('/local-wisdom', [LocalWisdomController::class, 'index'])->name('local-wisdom.index');
+        Route::get('/maklumat', [MaklumatController::class, 'index'])->name('maklumat.index');
     });

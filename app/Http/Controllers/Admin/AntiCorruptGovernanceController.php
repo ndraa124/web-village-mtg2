@@ -11,18 +11,18 @@ class AntiCorruptGovernanceController extends Controller
 {
   public function index()
   {
-    $antiCorrupt = AntiCorruptGovernance::find(1);
+    $governance = AntiCorruptGovernance::find(1);
 
-    if (!$antiCorrupt) {
-      $antiCorrupt = new AntiCorruptGovernance();
-      $antiCorrupt->id = 1;
-      $antiCorrupt->content = "";
-      $antiCorrupt->user_id = Auth::id();
-      $antiCorrupt->save();
+    if (!$governance) {
+      $governance = new AntiCorruptGovernance();
+      $governance->id = 1;
+      $governance->content = "";
+      $governance->user_id = Auth::id();
+      $governance->save();
     }
 
     $data = [
-      'title' => 'Anti Korupsi - Tata Laksana',
+      'title' => 'Desa Anti Korupsi',
       'main' => 'admin.content.anti_corrupt.governance.index',
       'breadcrumbs' => [
         [
@@ -30,19 +30,23 @@ class AntiCorruptGovernanceController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.content.anti.governance.index',
+          'title' => 'Desa Anti Korupsi'
+        ],
+        [
           'title' => 'Tata Laksana'
         ],
       ],
-      'antiCorrupt' => $antiCorrupt
+      'governance' => $governance
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function edit(AntiCorruptGovernance $antiCorrupt)
+  public function edit(AntiCorruptGovernance $governance)
   {
     $data = [
-      'title' => 'Edit Anti Korupsi - Tata Laksana',
+      'title' => 'Edit Tata Laksana',
       'main' => 'admin.content.anti_corrupt.governance.edit',
       'breadcrumbs' => [
         [
@@ -51,24 +55,28 @@ class AntiCorruptGovernanceController extends Controller
         ],
         [
           'route' => 'admin.content.anti.governance.index',
-          'title' => 'Anti Korupsi - Tata Laksana'
+          'title' => 'Desa Anti Korupsi'
         ],
         [
-          'title' => 'Edit'
+          'route' => 'admin.content.anti.governance.index',
+          'title' => 'Tata Laksana'
+        ],
+        [
+          'title' => 'Edit Data'
         ],
       ],
-      'antiCorrupt' => $antiCorrupt
+      'governance' => $governance
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function update(StoreAntiCorruptRequest $request, AntiCorruptGovernance $antiCorrupt)
+  public function update(StoreAntiCorruptRequest $request, AntiCorruptGovernance $governance)
   {
     $validatedData = $request->validated();
 
     try {
-      $antiCorrupt->update($validatedData);
+      $governance->update($validatedData);
 
       return redirect()->route('admin.content.anti.governance.index')
         ->with('success', 'Tata laksana berhasil diperbarui.');

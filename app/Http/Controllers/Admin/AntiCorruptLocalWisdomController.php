@@ -11,18 +11,18 @@ class AntiCorruptLocalWisdomController extends Controller
 {
   public function index()
   {
-    $antiCorrupt = AntiCorruptLocalWisdom::find(1);
+    $localWisdom = AntiCorruptLocalWisdom::find(1);
 
-    if (!$antiCorrupt) {
-      $antiCorrupt = new AntiCorruptLocalWisdom();
-      $antiCorrupt->id = 1;
-      $antiCorrupt->content = "";
-      $antiCorrupt->user_id = Auth::id();
-      $antiCorrupt->save();
+    if (!$localWisdom) {
+      $localWisdom = new AntiCorruptLocalWisdom();
+      $localWisdom->id = 1;
+      $localWisdom->content = "";
+      $localWisdom->user_id = Auth::id();
+      $localWisdom->save();
     }
 
     $data = [
-      'title' => 'Anti Korupsi - Kearifan Lokal',
+      'title' => 'Desa Anti Korupsi',
       'main' => 'admin.content.anti_corrupt.local_wisdom.index',
       'breadcrumbs' => [
         [
@@ -30,19 +30,23 @@ class AntiCorruptLocalWisdomController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.content.anti.governance.index',
+          'title' => 'Desa Anti Korupsi'
+        ],
+        [
           'title' => 'Kearifan Lokal'
         ],
       ],
-      'antiCorrupt' => $antiCorrupt
+      'localWisdom' => $localWisdom
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function edit(AntiCorruptLocalWisdom $antiCorrupt)
+  public function edit(AntiCorruptLocalWisdom $localWisdom)
   {
     $data = [
-      'title' => 'Edit Anti Korupsi - Kearifan Lokal',
+      'title' => 'Edit Kearifan Lokal',
       'main' => 'admin.content.anti_corrupt.local_wisdom.edit',
       'breadcrumbs' => [
         [
@@ -50,25 +54,29 @@ class AntiCorruptLocalWisdomController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.content.anti.local-wisdom.index',
-          'title' => 'Anti Korupsi - Kearifan Lokal'
+          'route' => 'admin.content.anti.governance.index',
+          'title' => 'Desa Anti Korupsi'
         ],
         [
-          'title' => 'Edit'
+          'route' => 'admin.content.anti.local-wisdom.index',
+          'title' => 'Kearifan Lokal'
+        ],
+        [
+          'title' => 'Edit Data'
         ],
       ],
-      'antiCorrupt' => $antiCorrupt
+      'localWisdom' => $localWisdom
     ];
 
     return view('admin.layout.template', $data);
   }
 
-  public function update(StoreAntiCorruptRequest $request, AntiCorruptLocalWisdom $antiCorrupt)
+  public function update(StoreAntiCorruptRequest $request, AntiCorruptLocalWisdom $localWisdom)
   {
     $validatedData = $request->validated();
 
     try {
-      $antiCorrupt->update($validatedData);
+      $localWisdom->update($validatedData);
 
       return redirect()->route('admin.content.anti.local-wisdom.index')
         ->with('success', 'Kearifan lokal berhasil diperbarui.');
