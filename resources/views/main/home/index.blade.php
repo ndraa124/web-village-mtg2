@@ -6,7 +6,7 @@
           <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
         </div>
       @empty
-        <div class="swiper-slide" style="background-image: url('https://via.placeholder.com/1920x1080'); background-size: cover; background-position: center;">
+        <div class="swiper-slide" style="background-image: url('https://placehold.co/1920x1080'); background-size: cover; background-position: center;">
           <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
         </div>
       @endforelse
@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+  <div class="hidden sm:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
     <div class="w-8 h-12 border-2 border-white rounded-full flex items-start justify-center p-2">
       <div class="w-1.5 h-3 bg-white rounded-full"></div>
     </div>

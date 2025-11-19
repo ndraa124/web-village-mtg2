@@ -18,7 +18,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
       <div class="potensi-card bg-white rounded-3xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
         <div class="relative h-56">
-          <img src="https://via.placeholder.com/400x250.png?text=Wisata+Alam" alt="Wisata Alam" class="w-full h-full object-cover transition-transform duration-300">
+          <img src="https://placehold.co/400x250.png?text=Wisata+Alam" alt="Wisata Alam" class="w-full h-full object-cover transition-transform duration-300">
           <div class="overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <a href="#" class="bg-white text-red-600 px-5 py-2 rounded-2xl font-semibold text-sm hover:bg-red-50 transition">
               Jelajahi Wisata
@@ -41,7 +41,7 @@
 
       <div class="potensi-card bg-white rounded-3xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
         <div class="relative h-56">
-          <img src="https://via.placeholder.com/400x250.png?text=Pertanian" alt="Pertanian" class="w-full h-full object-cover transition-transform duration-300">
+          <img src="https://placehold.co/400x250.png?text=Pertanian" alt="Pertanian" class="w-full h-full object-cover transition-transform duration-300">
           <div class="overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <a href="#" class="bg-white text-red-600 px-5 py-2 rounded-2xl font-semibold text-sm hover:bg-red-50 transition">
               Lihat Komoditas
@@ -64,7 +64,7 @@
 
       <div class="potensi-card bg-white rounded-3xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
         <div class="relative h-56">
-          <img src="https://via.placeholder.com/400x250.png?text=UMKM" alt="UMKM" class="w-full h-full object-cover transition-transform duration-300">
+          <img src="https://placehold.co/400x250.png?text=UMKM" alt="UMKM" class="w-full h-full object-cover transition-transform duration-300">
           <div class="overlay absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <a href="#" class="bg-white text-red-600 px-5 py-2 rounded-2xl font-semibold text-sm hover:bg-red-50 transition">
               Lihat Produk
