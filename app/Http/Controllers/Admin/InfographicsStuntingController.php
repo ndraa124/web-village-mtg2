@@ -29,7 +29,7 @@ class InfographicsStuntingController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Infografis Stunting',
+      'title' => 'Infografis Stunting',
       'main' => 'admin.infographics.stunting.index',
       'breadcrumbs' => [
         [
@@ -37,7 +37,7 @@ class InfographicsStuntingController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Infografis Stunting'
+          'title' => 'Infografis Stunting'
         ],
       ],
       'stuntings' => $stuntings
@@ -51,7 +51,7 @@ class InfographicsStuntingController extends Controller
     $stuntings = Stunting::orderBy('stunting_name', 'asc')->get();
 
     $data = [
-      'title' => 'Tambah Data Infografis Stunting',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.stunting.create',
       'breadcrumbs' => [
         [
@@ -60,9 +60,11 @@ class InfographicsStuntingController extends Controller
         ],
         [
           'route' => 'admin.infographics.stunting.index',
-          'title' => 'Daftar Infografis Stunting'
+          'title' => 'Infografis Stunting'
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'title' => 'Tambah Data'
+        ],
       ],
       'stuntings' => $stuntings
     ];
@@ -89,7 +91,7 @@ class InfographicsStuntingController extends Controller
     $stuntings = Stunting::orderBy('stunting_name', 'asc')->get();
 
     $data = [
-      'title' => 'Edit Data Infografis Stunting',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.stunting.edit',
       'breadcrumbs' => [
         [
@@ -98,7 +100,7 @@ class InfographicsStuntingController extends Controller
         ],
         [
           'route' => 'admin.infographics.stunting.index',
-          'title' => 'Daftar Infografis Stunting'
+          'title' => 'Infografis Stunting'
         ],
         [
           'title' => 'Edit Data'

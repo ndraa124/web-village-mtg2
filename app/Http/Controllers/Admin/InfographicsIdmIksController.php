@@ -26,7 +26,7 @@ class InfographicsIdmIksController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Indikator IKS',
+      'title' => 'Infografis Indeks Desa Membangun (IDM)',
       'main' => 'admin.infographics.idm_iks.index',
       'breadcrumbs' => [
         [
@@ -34,7 +34,7 @@ class InfographicsIdmIksController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Indikator IKS'
+          'title' => 'Indikator IKS'
         ],
       ],
       'idmIksData' => $idmIksData
@@ -46,7 +46,7 @@ class InfographicsIdmIksController extends Controller
   public function create()
   {
     $data = [
-      'title' => 'Tambah Data Indikator IKS',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.idm_iks.create',
       'breadcrumbs' => [
         [
@@ -55,9 +55,11 @@ class InfographicsIdmIksController extends Controller
         ],
         [
           'route' => 'admin.infographics.idm.iks.index',
-          'title' => 'Daftar Indikator IKS'
+          'title' => 'Indikator IKS'
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'title' => 'Tambah Data'
+        ],
       ],
     ];
 
@@ -81,7 +83,7 @@ class InfographicsIdmIksController extends Controller
   public function show(InfographicsIdmIks $idmIks)
   {
     $data = [
-      'title' => 'Detail Data Indikator IKS',
+      'title' => 'Detail Data',
       'main' => 'admin.infographics.idm_iks.show',
       'breadcrumbs' => [
         [
@@ -90,7 +92,7 @@ class InfographicsIdmIksController extends Controller
         ],
         [
           'route' => 'admin.infographics.idm.iks.index',
-          'title' => 'Daftar Indikator IKS'
+          'title' => 'Indikator IKS'
         ],
         [
           'title' => 'Detail Data'
@@ -105,7 +107,7 @@ class InfographicsIdmIksController extends Controller
   public function edit(InfographicsIdmIks $idmIks)
   {
     $data = [
-      'title' => 'Edit Data Indikator IKS',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.idm_iks.edit',
       'breadcrumbs' => [
         [
@@ -114,7 +116,7 @@ class InfographicsIdmIksController extends Controller
         ],
         [
           'route' => 'admin.infographics.idm.iks.index',
-          'title' => 'Daftar Indikator IKS'
+          'title' => 'Indikator IKS'
         ],
         [
           'title' => 'Edit Data'

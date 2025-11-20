@@ -28,7 +28,7 @@ class InfographicsSocialAssistanceController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Bantuan Sosial',
+      'title' => 'Infografis Bantuan Sosial',
       'main' => 'admin.infographics.social_assistance.index',
       'breadcrumbs' => [
         [
@@ -36,7 +36,7 @@ class InfographicsSocialAssistanceController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Bantuan Sosial'
+          'title' => 'Infografis Bantuan Sosial'
         ],
       ],
       'socialAssistances' => $socialAssistances
@@ -54,7 +54,7 @@ class InfographicsSocialAssistanceController extends Controller
       ->get();
 
     $data = [
-      'title' => 'Tambah Data Bantuan Sosial',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.social_assistance.create',
       'breadcrumbs' => [
         [
@@ -63,9 +63,11 @@ class InfographicsSocialAssistanceController extends Controller
         ],
         [
           'route' => 'admin.infographics.social-assistance.index',
-          'title' => 'Daftar Bantuan Sosial'
+          'title' => 'Infografis Bantuan Sosial'
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'title' => 'Tambah Data'
+        ],
       ],
       'socialAssistances' => $socialAssistances
     ];
@@ -97,7 +99,7 @@ class InfographicsSocialAssistanceController extends Controller
       ->get();
 
     $data = [
-      'title' => 'Edit Data Bantuan Sosial',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.social_assistance.edit',
       'breadcrumbs' => [
         [
@@ -106,7 +108,7 @@ class InfographicsSocialAssistanceController extends Controller
         ],
         [
           'route' => 'admin.infographics.social-assistance.index',
-          'title' => 'Daftar Bantuan Sosial'
+          'title' => 'Infografis Bantuan Sosial'
         ],
         [
           'title' => 'Edit Data'

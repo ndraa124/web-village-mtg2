@@ -29,7 +29,7 @@ class InfographicsApbdFinancingController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Pembiayaan APBD',
+      'title' => 'Infografis APBD',
       'main' => 'admin.infographics.apbd_financing.index',
       'breadcrumbs' => [
         [
@@ -37,7 +37,7 @@ class InfographicsApbdFinancingController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Pembiayaan APBD'
+          'title' => 'Pembiayaan'
         ],
       ],
       'apbdFinancings' => $apbdFinancings
@@ -51,7 +51,7 @@ class InfographicsApbdFinancingController extends Controller
     $financings = Financing::orderBy('financing_name', 'asc')->get();
 
     $data = [
-      'title' => 'Tambah Data Pembiayaan APBD',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.apbd_financing.create',
       'breadcrumbs' => [
         [
@@ -59,10 +59,16 @@ class InfographicsApbdFinancingController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.infographics.apbd.financing.index',
-          'title' => 'Daftar Pembiayaan APBD'
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'Infografis APBD'
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'route' => 'admin.infographics.apbd.financing.index',
+          'title' => 'Pembiayaan'
+        ],
+        [
+          'title' => 'Tambah Data'
+        ],
       ],
       'financings' => $financings
     ];
@@ -89,7 +95,7 @@ class InfographicsApbdFinancingController extends Controller
     $financings = Financing::orderBy('financing_name', 'asc')->get();
 
     $data = [
-      'title' => 'Edit Data Pembiayaan APBD',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.apbd_financing.edit',
       'breadcrumbs' => [
         [
@@ -97,8 +103,12 @@ class InfographicsApbdFinancingController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'Infografis APBD'
+        ],
+        [
           'route' => 'admin.infographics.apbd.financing.index',
-          'title' => 'Daftar Pembiayaan APBD'
+          'title' => 'Pembiayaan'
         ],
         [
           'title' => 'Edit Data'

@@ -26,7 +26,7 @@ class InfographicsApbdDevRealizationController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Realisasi Pembangunan',
+      'title' => 'Infografis APBD',
       'main' => 'admin.infographics.apbd_development_realization.index',
       'breadcrumbs' => [
         [
@@ -34,7 +34,7 @@ class InfographicsApbdDevRealizationController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Realisasi Pembangunan'
+          'title' => 'Realisasi Pembangunan'
         ],
       ],
       'apbdRealizations' => $apbdDevRealizations
@@ -46,7 +46,7 @@ class InfographicsApbdDevRealizationController extends Controller
   public function create()
   {
     $data = [
-      'title' => 'Tambah Realisasi Pembangunan',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.apbd_development_realization.create',
       'breadcrumbs' => [
         [
@@ -54,10 +54,16 @@ class InfographicsApbdDevRealizationController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.infographics.apbd.development-realization.index',
-          'title' => 'Daftar Realisasi Pembangunan'
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'Infografis APBD'
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'route' => 'admin.infographics.apbd.development-realization.index',
+          'title' => 'Realisasi Pembangunan'
+        ],
+        [
+          'title' => 'Tambah Data'
+        ],
       ]
     ];
 
@@ -81,7 +87,7 @@ class InfographicsApbdDevRealizationController extends Controller
   public function edit(InfographicsApbdDevRealization $apbdRealization)
   {
     $data = [
-      'title' => 'Edit Realisasi Pembangunan',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.apbd_development_realization.edit',
       'breadcrumbs' => [
         [
@@ -89,8 +95,12 @@ class InfographicsApbdDevRealizationController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'Infografis APBD'
+        ],
+        [
           'route' => 'admin.infographics.apbd.development-realization.index',
-          'title' => 'Daftar Realisasi Pembangunan'
+          'title' => 'Realisasi Pembangunan'
         ],
         [
           'title' => 'Edit Data'

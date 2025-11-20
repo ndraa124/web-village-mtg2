@@ -25,7 +25,7 @@ class InfographicsSdgsController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Infografis SDGs',
+      'title' => 'Infografis Sustainable Development Goals/SDGs)',
       'main' => 'admin.infographics.sdgs.index',
       'breadcrumbs' => [
         [
@@ -33,7 +33,7 @@ class InfographicsSdgsController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Infografis SDGs'
+          'title' => 'Infografis SDGs'
         ],
       ],
       'sdgsData' => $sdgsData
@@ -45,7 +45,7 @@ class InfographicsSdgsController extends Controller
   public function create()
   {
     $data = [
-      'title' => 'Tambah Data Infografis SDGs',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.sdgs.create',
       'breadcrumbs' => [
         [
@@ -54,9 +54,11 @@ class InfographicsSdgsController extends Controller
         ],
         [
           'route' => 'admin.infographics.sdgs.index',
-          'title' => 'Daftar Infografis SDGs'
+          'title' => 'Infografis SDGs'
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'title' => 'Tambah Data'
+        ],
       ],
     ];
 
@@ -80,7 +82,7 @@ class InfographicsSdgsController extends Controller
   public function edit(InfographicsSdgs $sdg)
   {
     $data = [
-      'title' => 'Edit Data Infografis SDGs',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.sdgs.edit',
       'breadcrumbs' => [
         [
@@ -89,7 +91,7 @@ class InfographicsSdgsController extends Controller
         ],
         [
           'route' => 'admin.infographics.sdgs.index',
-          'title' => 'Daftar Infografis SDGs'
+          'title' => 'Infografis SDGs'
         ],
         [
           'title' => 'Edit Data'

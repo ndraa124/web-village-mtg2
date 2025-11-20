@@ -29,7 +29,7 @@ class InfographicsApbdIncomeController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Pendapatan APBD',
+      'title' => 'Infografis APBD',
       'main' => 'admin.infographics.apbd_income.index',
       'breadcrumbs' => [
         [
@@ -37,7 +37,7 @@ class InfographicsApbdIncomeController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Pendapatan APBD'
+          'title' => 'Pendapatan'
         ],
       ],
       'apbdIncomes' => $apbdIncomes
@@ -51,7 +51,7 @@ class InfographicsApbdIncomeController extends Controller
     $incomes = Income::orderBy('income_name', 'asc')->get();
 
     $data = [
-      'title' => 'Tambah Data Pendapatan APBD',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.apbd_income.create',
       'breadcrumbs' => [
         [
@@ -59,8 +59,12 @@ class InfographicsApbdIncomeController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'Infografis APBD'
+        ],
+        [
           'route' => 'admin.infographics.apbd.income.index',
-          'title' => 'Daftar Pendapatan APBD'
+          'title' => 'Pendapatan'
         ],
         [
           'title' => 'Tambah Data'
@@ -91,7 +95,7 @@ class InfographicsApbdIncomeController extends Controller
     $incomes = Income::orderBy('income_name', 'asc')->get();
 
     $data = [
-      'title' => 'Edit Data Pendapatan APBD',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.apbd_income.edit',
       'breadcrumbs' => [
         [
@@ -99,8 +103,12 @@ class InfographicsApbdIncomeController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'Infografis APBD'
+        ],
+        [
           'route' => 'admin.infographics.apbd.income.index',
-          'title' => 'Daftar Pendapatan APBD'
+          'title' => 'Pendapatan'
         ],
         [
           'title' => 'Edit Data'

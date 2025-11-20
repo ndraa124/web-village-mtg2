@@ -1,3 +1,21 @@
+<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.apbd.index') }}">APBD</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.apbd.income.index') }}">Pendapatan</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" href="#">Belanja</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.apbd.financing.index') }}">Pembiayaan</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.apbd.development-realization.index') }}">Realisasi Pembangunan</a>
+  </li>
+</ul>
+
 <div class="card bg-white rounded-10 border border-white mb-4">
   <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
     <form action="{{ route('admin.infographics.apbd.shopping.index') }}" method="GET" class="table-src-form position-relative m-0">

@@ -1,3 +1,18 @@
+<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" href="#">Skor Keseluruhan</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.idm.iks.index') }}">Indikator IKS</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.idm.ike.index') }}">Indikator IKE</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.idm.ikl.index') }}">Indikator IKL</a>
+  </li>
+</ul>
+
 <div class="card bg-white rounded-10 border border-white mb-4">
   <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
     <form action="{{ route('admin.infographics.idm.index') }}" method="GET" class="table-src-form position-relative m-0">

@@ -25,7 +25,7 @@ class InfographicsApbdController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar APBD per Tahun',
+      'title' => 'Infografis APBD',
       'main' => 'admin.infographics.apbd.index',
       'breadcrumbs' => [
         [
@@ -33,7 +33,7 @@ class InfographicsApbdController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar APBD per Tahun'
+          'title' => 'APBD'
         ],
       ],
       'apbds' => $apbds
@@ -45,7 +45,7 @@ class InfographicsApbdController extends Controller
   public function create()
   {
     $data = [
-      'title' => 'Tambah Data APBD',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.apbd.create',
       'breadcrumbs' => [
         [
@@ -54,9 +54,15 @@ class InfographicsApbdController extends Controller
         ],
         [
           'route' => 'admin.infographics.apbd.index',
-          'title' => 'Data APBD per Tahun'
+          'title' => 'Infografis APBD'
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'APBD'
+        ],
+        [
+          'title' => 'Tambah Data'
+        ],
       ],
     ];
 
@@ -80,7 +86,7 @@ class InfographicsApbdController extends Controller
   public function show(InfographicsApbd $apbd)
   {
     $data = [
-      'title' => 'Detail Data APBD',
+      'title' => 'Detail Data',
       'main' => 'admin.infographics.apbd.show',
       'breadcrumbs' => [
         [
@@ -89,7 +95,11 @@ class InfographicsApbdController extends Controller
         ],
         [
           'route' => 'admin.infographics.apbd.index',
-          'title' => 'Data APBD per Tahun'
+          'title' => 'Infografis APBD'
+        ],
+        [
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'APBD'
         ],
         [
           'title' => 'Detail Data'
@@ -104,7 +114,7 @@ class InfographicsApbdController extends Controller
   public function edit(InfographicsApbd $apbd)
   {
     $data = [
-      'title' => 'Edit Data APBD',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.apbd.edit',
       'breadcrumbs' => [
         [
@@ -113,7 +123,11 @@ class InfographicsApbdController extends Controller
         ],
         [
           'route' => 'admin.infographics.apbd.index',
-          'title' => 'Data APBD per Tahun'
+          'title' => 'Infografis APBD'
+        ],
+        [
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'APBD'
         ],
         [
           'title' => 'Edit Data'

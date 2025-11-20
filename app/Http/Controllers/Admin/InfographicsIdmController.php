@@ -29,7 +29,7 @@ class InfographicsIdmController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Skor IDM',
+      'title' => 'Infografis Indeks Desa Membangun (IDM)',
       'main' => 'admin.infographics.idm.index',
       'breadcrumbs' => [
         [
@@ -37,7 +37,7 @@ class InfographicsIdmController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Skor IDM'
+          'title' => 'IDM'
         ],
       ],
       'idms' => $idms
@@ -51,7 +51,7 @@ class InfographicsIdmController extends Controller
     $idmStatuses = IdmStatus::orderBy('status_desc', 'asc')->get();
 
     $data = [
-      'title' => 'Tambah Data Skor IDM',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.idm.create',
       'breadcrumbs' => [
         [
@@ -60,9 +60,11 @@ class InfographicsIdmController extends Controller
         ],
         [
           'route' => 'admin.infographics.idm.index',
-          'title' => 'Daftar Skor IDM'
+          'title' => 'IDM'
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'title' => 'Tambah Data'
+        ],
       ],
       'idmStatuses' => $idmStatuses
     ];
@@ -89,7 +91,7 @@ class InfographicsIdmController extends Controller
     $idm->load('idmStatus');
 
     $data = [
-      'title' => 'Detail Data Skor IDM',
+      'title' => 'Detail Data',
       'main' => 'admin.infographics.idm.show',
       'breadcrumbs' => [
         [
@@ -98,7 +100,7 @@ class InfographicsIdmController extends Controller
         ],
         [
           'route' => 'admin.infographics.idm.index',
-          'title' => 'Daftar Skor IDM'
+          'title' => 'IDM'
         ],
         [
           'title' => 'Detail Data'
@@ -115,7 +117,7 @@ class InfographicsIdmController extends Controller
     $idmStatuses = IdmStatus::orderBy('status_desc', 'asc')->get();
 
     $data = [
-      'title' => 'Edit Data Skor IDM',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.idm.edit',
       'breadcrumbs' => [
         [
@@ -124,7 +126,7 @@ class InfographicsIdmController extends Controller
         ],
         [
           'route' => 'admin.infographics.idm.index',
-          'title' => 'Daftar Skor IDM'
+          'title' => 'IDM'
         ],
         [
           'title' => 'Edit Data'

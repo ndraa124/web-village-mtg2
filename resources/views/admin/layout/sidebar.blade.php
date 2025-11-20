@@ -119,108 +119,38 @@
       </li>
 
       <li class="menu-item {{ request()->routeIs('admin.infographics.apbd.*') ? 'open' : '' }}">
-        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+        <a href="{{ route('admin.infographics.apbd.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">attach_money</span>
           <span class="title">APBD</span>
         </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.apbd.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.index') || request()->routeIs('admin.infographics.apbd.create') || request()->routeIs('admin.infographics.apbd.show') || request()->routeIs('admin.infographics.apbd.edit') ? 'active' : '' }}">
-              APBD per Tahun
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.apbd.income.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.income.*') ? 'active' : '' }}">
-              Pendapatan
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.apbd.shopping.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.shopping.*') ? 'active' : '' }}">
-              Belanja
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.apbd.financing.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.financing.*') ? 'active' : '' }}">
-              Pembiayaan
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.apbd.development-realization.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.apbd.development-realization.*') ? 'active' : '' }}">
-              Realisasi Pembangunan
-            </a>
-          </li>
-        </ul>
       </li>
 
       <li class="menu-item {{ request()->routeIs('admin.infographics.stunting.*') ? 'open' : '' }}">
-        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+        <a href="{{ route('admin.infographics.stunting.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.stunting.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">stacked_bar_chart</span>
           <span class="title">Stunting</span>
         </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.stunting.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.stunting.*') ? 'active' : '' }}">
-              Data Stunting
-            </a>
-          </li>
-        </ul>
       </li>
 
       <li class="menu-item {{ request()->routeIs('admin.infographics.social-assistance.*') ? 'open' : '' }}">
-        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+        <a href="{{ route('admin.infographics.social-assistance.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.social-assistance.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">volunteer_activism</span>
           <span class="title">Bantuan Sosial</span>
         </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.social-assistance.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.social-assistance.*') ? 'active' : '' }}">
-              Penerima Bantual Sosial
-            </a>
-          </li>
-        </ul>
       </li>
 
       <li class="menu-item {{ request()->routeIs('admin.infographics.idm.*') ? 'open' : '' }}">
-        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+        <a href="{{ route('admin.infographics.idm.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.idm.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">leaderboard</span>
           <span class="title">IDM</span>
         </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.idm.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.idm.index') || request()->routeIs('admin.infographics.idm.create') || request()->routeIs('admin.infographics.idm.show') || request()->routeIs('admin.infographics.idm.edit') ? 'active' : '' }}">
-              Skor IDM
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.idm.iks.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.idm.iks.*') ? 'active' : '' }}">
-              Indikator IKS
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.idm.ike.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.idm.ike.*') ? 'active' : '' }}">
-              Indikator IKE
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.idm.ikl.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.idm.ikl.*') ? 'active' : '' }}">
-              Indikator IKL
-            </a>
-          </li>
-        </ul>
       </li>
 
       <li class="menu-item {{ request()->routeIs('admin.infographics.sdgs.*') ? 'open' : '' }}">
-        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+        <a href="{{ route('admin.infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.sdgs.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">target</span>
           <span class="title">SDGs</span>
         </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.sdgs.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.sdgs.*') ? 'active' : '' }}">
-              Jumlah SDGs
-            </a>
-          </li>
-        </ul>
       </li>
 
       <li class="menu-title small text-uppercase">

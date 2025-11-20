@@ -29,7 +29,7 @@ class InfographicsApbdShoppingController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Belanja APBD',
+      'title' => 'Infografis APBD',
       'main' => 'admin.infographics.apbd_shopping.index',
       'breadcrumbs' => [
         [
@@ -37,7 +37,7 @@ class InfographicsApbdShoppingController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Belanja APBD'
+          'title' => 'Belanja'
         ],
       ],
       'apbdShoppings' => $apbdShoppings
@@ -51,7 +51,7 @@ class InfographicsApbdShoppingController extends Controller
     $shoppings = Shopping::orderBy('shopping_name', 'asc')->get();
 
     $data = [
-      'title' => 'Tambah Data Belanja APBD',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.apbd_shopping.create',
       'breadcrumbs' => [
         [
@@ -59,10 +59,16 @@ class InfographicsApbdShoppingController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.infographics.apbd.shopping.index',
-          'title' => 'Daftar Belanja APBD'
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'Infografis APBD'
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'route' => 'admin.infographics.apbd.shopping.index',
+          'title' => 'Belanja'
+        ],
+        [
+          'title' => 'Tambah Data'
+        ],
       ],
       'shoppings' => $shoppings
     ];
@@ -89,7 +95,7 @@ class InfographicsApbdShoppingController extends Controller
     $shoppings = Shopping::orderBy('shopping_name', 'asc')->get();
 
     $data = [
-      'title' => 'Edit Data Belanja APBD',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.apbd_shopping.edit',
       'breadcrumbs' => [
         [
@@ -97,8 +103,12 @@ class InfographicsApbdShoppingController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.infographics.apbd.index',
+          'title' => 'Infografis APBD'
+        ],
+        [
           'route' => 'admin.infographics.apbd.shopping.index',
-          'title' => 'Daftar Belanja APBD'
+          'title' => 'Belanja'
         ],
         [
           'title' => 'Edit Data'
