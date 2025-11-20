@@ -1,11 +1,52 @@
+@if (isset($summaries) && count($summaries) > 0)
+  <div class="card bg-white rounded-10 border border-white mb-4">
+    <div class="p-20">
+      <h5 class="mb-3 fw-medium">Ringkasan Statistik</h5>
+
+      <div class="d-flex flex-column gap-2">
+        @foreach ($summaries as $summary)
+          <div class="alert alert-light-primary border-0 text-body mb-0 fs-16" role="alert">
+            <span class="material-symbols-outlined fs-20 align-middle me-2 text-primary">analytics</span>
+            {!! $summary !!}
+          </div>
+        @endforeach
+      </div>
+    </div>
+  </div>
+@endif
+
 <div class="card bg-white rounded-10 border border-white mb-4">
   <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
-    <form action="{{ route('admin.infographics.resident.age.index') }}" method="GET" class="table-src-form position-relative m-0">
-      <input type="text" name="search" class="form-control w-350" value="{{ request('search') }}" placeholder="Cari kelompok umur atau jenis kelamin...">
+    <form action="{{ route('admin.infographics.resident.age.index') }}" method="GET" class="d-flex align-items-stretch gap-2">
 
-      <button type="submit" class="src-btn position-absolute top-50 start-0 translate-middle-y bg-transparent p-0 border-0">
-        <span class="material-symbols-outlined">search</span>
+      <select name="filter_age" class="form-select form-control w-auto" style="min-width: 150px;">
+        <option value="">Semua Umur</option>
+        @foreach ($agesList as $ageItem)
+          <option value="{{ $ageItem }}" {{ request('filter_age') == $ageItem ? 'selected' : '' }}>
+            {{ $ageItem }}
+          </option>
+        @endforeach
+      </select>
+
+      <select name="filter_gender" class="form-select form-control w-auto" style="min-width: 160px;">
+        <option value="">Semua Gender</option>
+        @foreach ($genders as $gender)
+          <option value="{{ $gender->id }}" {{ request('filter_gender') == $gender->id ? 'selected' : '' }}>
+            {{ $gender->gender_name }}
+          </option>
+        @endforeach
+      </select>
+
+      <button type="submit" class="btn btn-outline-primary d-flex align-items-center px-4 hover-white" data-bs-toggle="tooltip" title="Cari">
+        <span class="material-symbols-outlined fs-22">search</span>
       </button>
+
+      @if (request('filter_age') || request('filter_gender'))
+        <a href="{{ route('admin.infographics.resident.age.index') }}" class="btn btn-outline-secondary d-flex align-items-center px-4 hover-white" data-bs-toggle="tooltip" title="Reset Filter">
+          <span class="material-symbols-outlined fs-22">refresh</span>
+        </a>
+      @endif
+
     </form>
 
     <a href="{{ route('admin.infographics.resident.age.create') }}" class="text-primary fs-16 text-decoration-none">+ Tambah Baru</a>

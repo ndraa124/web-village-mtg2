@@ -12,20 +12,39 @@ class InfographicsResidentAgeController extends Controller
 {
   public function index(Request $request)
   {
-    $search = $request->input('search');
+    $filterAge = $request->input('filter_age');
+    $filterGender = $request->input('filter_gender');
 
     $query = InfographicsResidentAge::with('gender');
 
-    $query->when($search, function ($q, $search) {
-      return $q->where('age', 'like', "%{$search}%")
-        ->orWhereHas('gender', function ($subQ) use ($search) {
-          $subQ->where('gender_name', 'like', "%{$search}%");
-        });
+    $query->when($filterAge, function ($q) use ($filterAge) {
+      return $q->where('age', $filterAge);
     });
 
-    $ages = $query->latest()
+    $query->when($filterGender, function ($q) use ($filterGender) {
+      return $q->where('gender_id', $filterGender);
+    });
+
+    $ages = $query->orderBy('id', 'asc')
       ->paginate(10)
       ->appends($request->query());
+
+    $allStatsData = InfographicsResidentAge::with('gender')->get();
+    $genders = Gender::all();
+    $summaries = [];
+
+    foreach ($genders as $gender) {
+      $genderData = $allStatsData->where('gender_id', $gender->id);
+
+      if ($genderData->count() > 0) {
+        $summaries[] = $this->generateSummaryText($gender->gender_name, $genderData);
+      }
+    }
+
+    $agesList = InfographicsResidentAge::select('age')
+      ->distinct()
+      ->orderBy('age', 'asc')
+      ->pluck('age');
 
     $data = [
       'title' => 'Daftar Kelompok Umur Penduduk',
@@ -39,7 +58,10 @@ class InfographicsResidentAgeController extends Controller
           'title' => 'Kelompok Umur Penduduk',
         ]
       ],
-      'ages' => $ages
+      'ages' => $ages,
+      'agesList' => $agesList,
+      'genders' => $genders,
+      'summaries' => $summaries,
     ];
 
     return view('admin.layout.template', $data);
@@ -126,5 +148,32 @@ class InfographicsResidentAgeController extends Controller
 
     return redirect()->route('admin.infographics.resident.age.index')
       ->with('success', 'Data kelompok umur berhasil dihapus.');
+  }
+
+  private function generateSummaryText($genderName, $collection)
+  {
+    $totalPopulation = $collection->sum('total');
+    if ($totalPopulation == 0) return "";
+
+    $maxVal = $collection->max('total');
+    $maxGroups = $collection->where('total', $maxVal)->pluck('age')->toArray();
+    $maxPercent = number_format(($maxVal / $totalPopulation) * 100, 2);
+    $maxAgeString = $this->naturalJoin($maxGroups);
+
+    $minVal = $collection->min('total');
+    $minGroups = $collection->where('total', $minVal)->pluck('age')->toArray();
+    $minPercent = number_format(($minVal / $totalPopulation) * 100, 2);
+    $minAgeString = $this->naturalJoin($minGroups);
+
+    return "Untuk jenis kelamin <strong>{$genderName}</strong>, kelompok umur <strong>{$maxAgeString}</strong> adalah kelompok umur tertinggi dengan " . (count($maxGroups) > 1 ? "masing-masing " : "") . "berjumlah <strong>{$maxVal} orang</strong> atau <strong>{$maxPercent}%</strong>. Sedangkan, kelompok umur <strong>{$minAgeString}</strong> adalah yang terendah dengan jumlah <strong>{$minVal} orang</strong> atau <strong>{$minPercent}%</strong>.";
+  }
+
+  private function naturalJoin($list)
+  {
+    if (count($list) === 0) return '';
+    if (count($list) === 1) return $list[0];
+
+    $last = array_pop($list);
+    return implode(', ', $list) . ' dan ' . $last;
   }
 }

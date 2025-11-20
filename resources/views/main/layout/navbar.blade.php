@@ -92,22 +92,22 @@
             Desa Anti Korupsi <i class="fas fa-chevron-down ml-1 text-xs"></i>
           </button>
           <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-            <a href="{{ route('anti.governance.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.governance.index') ? 'text-red-600 font-semibold' : '' }}">
+            <a href="{{ route('anti.governance') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.governance') ? 'text-red-600 font-semibold' : '' }}">
               Tata Laksana
             </a>
-            <a href="{{ route('anti.supervision.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.supervision.index') ? 'text-red-600 font-semibold' : '' }}">
+            <a href="{{ route('anti.supervision') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.supervision') ? 'text-red-600 font-semibold' : '' }}">
               Pengawasan
             </a>
-            <a href="{{ route('anti.service-quality.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.service-quality.index') ? 'text-red-600 font-semibold' : '' }}">
+            <a href="{{ route('anti.service-quality') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.service-quality') ? 'text-red-600 font-semibold' : '' }}">
               Kualitas Pelayanan Publik
             </a>
-            <a href="{{ route('anti.participate.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.participate.index') ? 'text-red-600 font-semibold' : '' }}">
+            <a href="{{ route('anti.participate') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.participate') ? 'text-red-600 font-semibold' : '' }}">
               Partisipasi Masyarakat
             </a>
-            <a href="{{ route('anti.local-wisdom.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.local-wisdom.index') ? 'text-red-600 font-semibold' : '' }}">
+            <a href="{{ route('anti.local-wisdom') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.local-wisdom') ? 'text-red-600 font-semibold' : '' }}">
               Kearifan Lokal
             </a>
-            <a href="{{ route('anti.maklumat.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.maklumat.index') ? 'text-red-600 font-semibold' : '' }}">
+            <a href="{{ route('anti.maklumat') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.maklumat') ? 'text-red-600 font-semibold' : '' }}">
               Maklumat Pelayanan
             </a>
           </div>
@@ -218,22 +218,22 @@
           <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
         </button>
         <div class="mobile-dropdown-content hidden bg-gray-50">
-          <a href="{{ route('anti.governance.index') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.governance.index') ? 'text-red-600 font-semibold' : '' }}">
+          <a href="{{ route('anti.governance') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.governance') ? 'text-red-600 font-semibold' : '' }}">
             Tata Laksana
           </a>
-          <a href="{{ route('anti.supervision.index') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.supervision.index') ? 'text-red-600 font-semibold' : '' }}">
+          <a href="{{ route('anti.supervision') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.supervision') ? 'text-red-600 font-semibold' : '' }}">
             Pengawasan
           </a>
-          <a href="{{ route('anti.service-quality.index') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.service-quality.index') ? 'text-red-600 font-semibold' : '' }}">
+          <a href="{{ route('anti.service-quality') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.service-quality') ? 'text-red-600 font-semibold' : '' }}">
             Kualitas Pelayanan Publik
           </a>
-          <a href="{{ route('anti.participate.index') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.participate.index') ? 'text-red-600 font-semibold' : '' }}">
+          <a href="{{ route('anti.participate') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.participate') ? 'text-red-600 font-semibold' : '' }}">
             Partisipasi Masyarakat
           </a>
-          <a href="{{ route('anti.local-wisdom.index') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.local-wisdom.index') ? 'text-red-600 font-semibold' : '' }}">
+          <a href="{{ route('anti.local-wisdom') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.local-wisdom') ? 'text-red-600 font-semibold' : '' }}">
             Kearifan Lokal
           </a>
-          <a href="{{ route('anti.maklumat.index') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.maklumat.index') ? 'text-red-600 font-semibold' : '' }}">
+          <a href="{{ route('anti.maklumat') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('anti.maklumat') ? 'text-red-600 font-semibold' : '' }}">
             Maklumat
           </a>
         </div>

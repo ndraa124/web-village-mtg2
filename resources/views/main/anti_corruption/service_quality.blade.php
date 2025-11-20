@@ -64,22 +64,22 @@
         <div class="flex flex-wrap items-center text-gray-600 text-sm gap-4 mb-6">
           <span>
             <i class="far fa-user mr-2"></i>
-            {{ $antiCorrupt->user->name ?? 'Admin' }}
+            {{ $serviceQuality->user->name ?? 'Admin' }}
           </span>
           <span>
             <i class="far fa-calendar mr-2"></i>
-            {{ $antiCorrupt->created_at->format('d F Y') }}
+            {{ $serviceQuality->created_at->format('d F Y') }}
           </span>
           <span>
             <i class="far fa-clock mr-2"></i>
-            {{ $antiCorrupt->created_at->format('H:i') }} WITA
+            {{ $serviceQuality->created_at->format('H:i') }} WITA
           </span>
         </div>
 
         <div class="flex items-center gap-3 mb-6">
           @php
             $shareUrl = Request::url();
-            $shareTitle = urlencode('Tata Laksana - Desa Ati Korupsi Motoling Dua');
+            $shareTitle = urlencode('Kualitas Pelayanan Publik - Desa Ati Korupsi Motoling Dua');
             $shareUrlEncoded = urlencode($shareUrl);
           @endphp
 
@@ -99,12 +99,12 @@
         </div>
 
         <div class="fs-16 text-body news-content">
-          @if (empty($antiCorrupt) || $antiCorrupt->content == '')
+          @if (empty($serviceQuality) || $serviceQuality->content == '')
             <p class="text-center italic text-gray-500">
               Tidak ada konten untuk ditampilkan.
             </p>
           @else
-            {!! $antiCorrupt->content !!}
+            {!! $serviceQuality->content !!}
           @endif
         </div>
       </article>
