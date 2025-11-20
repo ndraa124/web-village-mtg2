@@ -19,14 +19,8 @@
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <div class="card-header border-bottom-0 p-0 mb-3">
-        <h4 class="mb-0">Edit Data Jumlah Penduduk</h4>
-        <small class="text-secondary">Data ini akan ditampilkan pada halaman depan website.</small>
-      </div>
-
       <form action="{{ route('admin.infographics.resident.update', $resident->id) }}" method="POST">
-        @csrf
-        @method('PUT')
+        @csrf @method('PUT')
 
         <div class="row">
           <div class="col-lg-6">
@@ -115,7 +109,7 @@
 
           <div class="col-lg-12">
             <div class="d-flex gap-2">
-              <button type="submit" class="btn btn-primary fw-normal text-white">Simpan Perubahan</button>
+              <button type="submit" class="btn btn-primary fw-normal text-white">Ubah</button>
               <a href="{{ route('admin.infographics.resident.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>

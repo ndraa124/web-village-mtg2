@@ -1,3 +1,30 @@
+<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" href="#">Penduduk</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.age.index') }}">Umur</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.hamlet.index') }}">Jaga</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.education.index') }}">Pendidikan</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.job.index') }}">Pekerjaan</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.must-select.index') }}">Wajib Pilih</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.marriage.index') }}">Perkawinan</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.religion.index') }}">Agama</a>
+  </li>
+</ul>
+
 <div class="row">
   <div class="col-lg-12">
     <div class="card bg-white rounded-10 border border-white mb-4">

@@ -28,7 +28,7 @@ class InfographicsResidentReligionController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Penduduk (Agama)',
+      'title' => 'Infografis Penduduk',
       'main' => 'admin.infographics.resident_religion.index',
       'breadcrumbs' => [
         [
@@ -36,7 +36,7 @@ class InfographicsResidentReligionController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Penduduk (Agama)'
+          'title' => 'Agama'
         ],
       ],
       'residentReligions' => $residentReligions
@@ -54,7 +54,7 @@ class InfographicsResidentReligionController extends Controller
       ->get();
 
     $data = [
-      'title' => 'Tambah Data Penduduk (Agama)',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.resident_religion.create',
       'breadcrumbs' => [
         [
@@ -62,10 +62,16 @@ class InfographicsResidentReligionController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.infographics.resident.religion.index',
-          'title' => 'Data Penduduk (Agama)'
+          'route' => 'admin.infographics.resident.index',
+          'title' => 'Infografis Penduduk',
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'route' => 'admin.infographics.resident.religion.index',
+          'title' => 'Agama'
+        ],
+        [
+          'title' => 'Tambah Data'
+        ],
       ],
       'religions' => $religions
     ];
@@ -97,7 +103,7 @@ class InfographicsResidentReligionController extends Controller
       ->get();
 
     $data = [
-      'title' => 'Edit Data Agama Penduduk',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.resident_religion.edit',
       'breadcrumbs' => [
         [
@@ -105,8 +111,12 @@ class InfographicsResidentReligionController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.infographics.resident.index',
+          'title' => 'Infografis Penduduk',
+        ],
+        [
           'route' => 'admin.infographics.resident.religion.index',
-          'title' => 'Data Penduduk (Agama)'
+          'title' => 'Agama'
         ],
         [
           'title' => 'Edit Data'

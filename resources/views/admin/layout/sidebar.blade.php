@@ -112,52 +112,10 @@
       </li>
 
       <li class="menu-item {{ request()->routeIs('admin.infographics.resident.*') ? 'open' : '' }}">
-        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+        <a href="{{ route('admin.infographics.resident.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.*') ? 'active' : '' }}">
           <span class="material-symbols-outlined menu-icon">groups</span>
           <span class="title">Penduduk</span>
         </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.resident.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.index') || request()->routeIs('admin.infographics.resident.edit') ? 'active' : '' }}">
-              Jumlah Penduduk
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.resident.age.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.age.*') ? 'active' : '' }}">
-              Jumlah Umur
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.resident.hamlet.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.hamlet.*') ? 'active' : '' }}">
-              Jumlah Jaga
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.resident.education.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.education.*') ? 'active' : '' }}">
-              Jumlah Pendidikan
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.resident.job.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.job.*') ? 'active' : '' }}">
-              Jumlah Pekerjaan
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.resident.must_select.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.must_select.*') ? 'active' : '' }}">
-              Jumlah Wajib Pilih
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.resident.marriage.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.marriage.*') ? 'active' : '' }}">
-              Jumlah Perkawinan
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ route('admin.infographics.resident.religion.index') }}" class="menu-link {{ request()->routeIs('admin.infographics.resident.religion.*') ? 'active' : '' }}">
-              Jumlah Agama
-            </a>
-          </li>
-        </ul>
       </li>
 
       <li class="menu-item {{ request()->routeIs('admin.infographics.apbd.*') ? 'open' : '' }}">

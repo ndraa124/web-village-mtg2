@@ -28,7 +28,7 @@ class InfographicsResidentMarriageController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Penduduk (Perkawinan)',
+      'title' => 'Infografis Penduduk',
       'main' => 'admin.infographics.resident_marriage.index',
       'breadcrumbs' => [
         [
@@ -36,7 +36,7 @@ class InfographicsResidentMarriageController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Penduduk (Perkawinan)'
+          'title' => 'Perkawinan'
         ],
       ],
       'residentMarriages' => $residentMarriages
@@ -54,7 +54,7 @@ class InfographicsResidentMarriageController extends Controller
       ->get();
 
     $data = [
-      'title' => 'Tambah Data Penduduk (Perkawinan)',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.resident_marriage.create',
       'breadcrumbs' => [
         [
@@ -62,10 +62,16 @@ class InfographicsResidentMarriageController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.infographics.resident.marriage.index',
-          'title' => 'Data Penduduk (Perkawinan)'
+          'route' => 'admin.infographics.resident.index',
+          'title' => 'Infografis Penduduk',
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'route' => 'admin.infographics.resident.marriage.index',
+          'title' => 'Perkawinan'
+        ],
+        [
+          'title' => 'Tambah Data'
+        ],
       ],
       'marriages' => $marriages
     ];
@@ -97,7 +103,7 @@ class InfographicsResidentMarriageController extends Controller
       ->get();
 
     $data = [
-      'title' => 'Edit Data Perkawinan Penduduk',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.resident_marriage.edit',
       'breadcrumbs' => [
         [
@@ -105,8 +111,12 @@ class InfographicsResidentMarriageController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.infographics.resident.index',
+          'title' => 'Infografis Penduduk',
+        ],
+        [
           'route' => 'admin.infographics.resident.marriage.index',
-          'title' => 'Data Penduduk (Perkawinan)'
+          'title' => 'Perkawinan'
         ],
         [
           'title' => 'Edit Data'

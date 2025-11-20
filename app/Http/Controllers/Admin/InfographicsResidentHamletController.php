@@ -28,7 +28,7 @@ class InfographicsResidentHamletController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Penduduk per Jaga',
+      'title' => 'Infografis Penduduk',
       'main' => 'admin.infographics.resident_hamlet.index',
       'breadcrumbs' => [
         [
@@ -36,7 +36,7 @@ class InfographicsResidentHamletController extends Controller
           'title' => 'Dashboard',
         ],
         [
-          'title' => 'Penduduk per Jaga',
+          'title' => 'Jaga',
         ]
       ],
       'residentHamlets' => $residentHamlets
@@ -51,7 +51,7 @@ class InfographicsResidentHamletController extends Controller
     $hamlets = Hamlet::whereNotIn('id', $addedHamletIds)->get();
 
     $data = [
-      'title' => 'Tambah Data Jaga',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.resident_hamlet.create',
       'breadcrumbs' => [
         [
@@ -59,8 +59,12 @@ class InfographicsResidentHamletController extends Controller
           'title' => 'Dashboard',
         ],
         [
+          'route' => 'admin.infographics.resident.index',
+          'title' => 'Infografis Penduduk',
+        ],
+        [
           'route' => 'admin.infographics.resident.hamlet.index',
-          'title' => 'Penduduk per Jaga',
+          'title' => 'Jaga',
         ],
         [
           'title' => 'Tambah Data',
@@ -80,7 +84,7 @@ class InfographicsResidentHamletController extends Controller
       InfographicsResidentHamlet::create($validatedData);
 
       return redirect()->route('admin.infographics.resident.hamlet.index')
-        ->with('success', 'Data penduduk per dusun berhasil ditambahkan.');
+        ->with('success', 'Data penduduk per jaga berhasil ditambahkan.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal menyimpan data. Error: ' . $e->getMessage());
     }
@@ -94,7 +98,7 @@ class InfographicsResidentHamletController extends Controller
     $hamlets = Hamlet::whereNotIn('id', $addedHamletIds)->get();
 
     $data = [
-      'title' => 'Edit Penduduk per Jaga',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.resident_hamlet.edit',
       'breadcrumbs' => [
         [
@@ -102,8 +106,12 @@ class InfographicsResidentHamletController extends Controller
           'title' => 'Dashboard',
         ],
         [
+          'route' => 'admin.infographics.resident.index',
+          'title' => 'Infografis Penduduk',
+        ],
+        [
           'route' => 'admin.infographics.resident.hamlet.index',
-          'title' => 'Penduduk per Jaga',
+          'title' => 'Jaga',
         ],
         [
           'title' => 'Edit Data',
@@ -124,7 +132,7 @@ class InfographicsResidentHamletController extends Controller
       $residentHamlet->update($validatedData);
 
       return redirect()->route('admin.infographics.resident.hamlet.index')
-        ->with('success', 'Data penduduk per dusun berhasil diperbarui.');
+        ->with('success', 'Data penduduk per jaga berhasil diperbarui.');
     } catch (\Exception $e) {
       return back()->withInput()->with('error', 'Gagal memperbarui data. Error: ' . $e->getMessage());
     }
@@ -136,7 +144,7 @@ class InfographicsResidentHamletController extends Controller
       $residentHamlet->delete();
 
       return redirect()->route('admin.infographics.resident.hamlet.index')
-        ->with('success', 'Data penduduk per dusun berhasil dihapus.');
+        ->with('success', 'Data penduduk per jaga berhasil dihapus.');
     } catch (\Exception $e) {
       return back()->with('error', 'Gagal menghapus data. Error: ' . $e->getMessage());
     }

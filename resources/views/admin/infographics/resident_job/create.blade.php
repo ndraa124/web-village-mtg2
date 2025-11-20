@@ -29,7 +29,7 @@
                     <option value="">-- Pilih Pekerjaan --</option>
                     @foreach ($jobs as $job)
                       <option value="{{ $job->id }}" {{ old('job_id') == $job->id ? 'selected' : '' }}>
-                        {{ $job->job_name }} {{-- Asumsi 'job_name' --}}
+                        {{ $job->job_name }}
                       </option>
                     @endforeach
                   </select>

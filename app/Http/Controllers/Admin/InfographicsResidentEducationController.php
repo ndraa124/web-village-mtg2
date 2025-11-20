@@ -28,7 +28,7 @@ class InfographicsResidentEducationController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Penduduk (Pendidikan)',
+      'title' => 'Infografis Penduduk',
       'main' => 'admin.infographics.resident_education.index',
       'breadcrumbs' => [
         [
@@ -36,7 +36,7 @@ class InfographicsResidentEducationController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Penduduk (Pendidikan)'
+          'title' => 'Pendidikan'
         ],
       ],
       'residentEducations' => $residentEducations
@@ -54,7 +54,7 @@ class InfographicsResidentEducationController extends Controller
       ->get();
 
     $data = [
-      'title' => 'Tambah Data Penduduk (Pendidikan)',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.resident_education.create',
       'breadcrumbs' => [
         [
@@ -62,10 +62,16 @@ class InfographicsResidentEducationController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.infographics.resident.education.index',
-          'title' => 'Data Penduduk (Pendidikan)'
+          'route' => 'admin.infographics.resident.index',
+          'title' => 'Infografis Penduduk',
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'route' => 'admin.infographics.resident.education.index',
+          'title' => 'Pendidikan'
+        ],
+        [
+          'title' => 'Tambah Data'
+        ],
       ],
       'educations' => $educations
     ];
@@ -95,7 +101,7 @@ class InfographicsResidentEducationController extends Controller
     $educations = Education::whereNotIn('id', $addedEducationIds)->get();
 
     $data = [
-      'title' => 'Edit Data Pendidikan Penduduk',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.resident_education.edit',
       'breadcrumbs' => [
         [
@@ -103,8 +109,12 @@ class InfographicsResidentEducationController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.infographics.resident.index',
+          'title' => 'Infografis Penduduk',
+        ],
+        [
           'route' => 'admin.infographics.resident.education.index',
-          'title' => 'Data Penduduk (Pendidikan)'
+          'title' => 'Pendidikan'
         ],
         [
           'title' => 'Edit Data'

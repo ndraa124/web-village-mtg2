@@ -10,7 +10,7 @@
     @endif
 
     <div class="card bg-white p-20 rounded-10 border border-white mb-4">
-      <form action="{{ route('admin.infographics.resident.must_select.store') }}" method="POST">
+      <form action="{{ route('admin.infographics.resident.must-select.store') }}" method="POST">
         @csrf
 
         <div class="row">
@@ -18,7 +18,6 @@
             <div class="mb-20">
               <label class="label fs-16 mb-2">Tahun</label>
               <div class="form-group">
-                {{-- Input type number, tapi bisa juga 'text' dengan pattern \d{4} --}}
                 <input type="number" name="year" class="form-control" value="{{ old('year') }}" placeholder="Contoh: 2024" min="1900" max="9999">
               </div>
               @error('year')
@@ -48,7 +47,7 @@
           <div class="col-lg-12">
             <div class="d-flex gap-2">
               <button type="submit" class="btn btn-primary fw-normal text-white">Tambah</button>
-              <a href="{{ route('admin.infographics.resident.must_select.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
+              <a href="{{ route('admin.infographics.resident.must-select.index') }}" class="btn btn-danger fw-normal text-white">Batal</a>
             </div>
           </div>
         </div>

@@ -28,7 +28,7 @@ class InfographicsResidentJobController extends Controller
       ->appends($request->query());
 
     $data = [
-      'title' => 'Daftar Penduduk (Pekerjaan)',
+      'title' => 'Infografis Penduduk',
       'main' => 'admin.infographics.resident_job.index',
       'breadcrumbs' => [
         [
@@ -36,7 +36,7 @@ class InfographicsResidentJobController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'title' => 'Daftar Penduduk (Pekerjaan)'
+          'title' => 'Pekerjaan'
         ],
       ],
       'residentJobs' => $residentJobs
@@ -54,7 +54,7 @@ class InfographicsResidentJobController extends Controller
       ->get();
 
     $data = [
-      'title' => 'Tambah Data Penduduk (Pekerjaan)',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.resident_job.create',
       'breadcrumbs' => [
         [
@@ -62,10 +62,16 @@ class InfographicsResidentJobController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.infographics.resident.job.index',
-          'title' => 'Data Penduduk (Pekerjaan)'
+          'route' => 'admin.infographics.resident.index',
+          'title' => 'Infografis Penduduk',
         ],
-        ['title' => 'Tambah Data'],
+        [
+          'route' => 'admin.infographics.resident.job.index',
+          'title' => 'Pekerjaan'
+        ],
+        [
+          'title' => 'Tambah Data'
+        ],
       ],
       'jobs' => $jobs
     ];
@@ -95,7 +101,7 @@ class InfographicsResidentJobController extends Controller
     $jobs = Job::whereNotIn('id', $addedJobIds)->get();
 
     $data = [
-      'title' => 'Edit Data Pekerjaan Penduduk',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.resident_job.edit',
       'breadcrumbs' => [
         [
@@ -103,8 +109,12 @@ class InfographicsResidentJobController extends Controller
           'title' => 'Dashboard'
         ],
         [
+          'route' => 'admin.infographics.resident.index',
+          'title' => 'Infografis Penduduk',
+        ],
+        [
           'route' => 'admin.infographics.resident.job.index',
-          'title' => 'Data Penduduk (Pekerjaan)'
+          'title' => 'Pekerjaan'
         ],
         [
           'title' => 'Edit Data'

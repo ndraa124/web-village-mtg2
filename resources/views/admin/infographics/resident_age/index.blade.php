@@ -1,3 +1,30 @@
+<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.index') }}">Penduduk</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" href="#">Umur</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.hamlet.index') }}">Jaga</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.education.index') }}">Pendidikan</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.job.index') }}">Pekerjaan</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.must-select.index') }}">Wajib Pilih</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.marriage.index') }}">Perkawinan</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.religion.index') }}">Agama</a>
+  </li>
+</ul>
+
 @if (isset($summaries) && count($summaries) > 0)
   <div class="card bg-white rounded-10 border border-white mb-4">
     <div class="p-20">
@@ -16,40 +43,55 @@
 @endif
 
 <div class="card bg-white rounded-10 border border-white mb-4">
-  <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
-    <form action="{{ route('admin.infographics.resident.age.index') }}" method="GET" class="d-flex align-items-stretch gap-2">
+  <div class="row g-3 justify-content-between align-items-center p-20">
+    <div class="col-12 col-md-auto">
+      <form action="{{ route('admin.infographics.resident.age.index') }}" method="GET" class="row g-2 align-items-stretch">
 
-      <select name="filter_age" class="form-select form-control w-auto" style="min-width: 150px;">
-        <option value="">Semua Umur</option>
-        @foreach ($agesList as $ageItem)
-          <option value="{{ $ageItem }}" {{ request('filter_age') == $ageItem ? 'selected' : '' }}>
-            {{ $ageItem }}
-          </option>
-        @endforeach
-      </select>
+        <div class="col-12 col-md-auto">
+          <select name="filter_age" class="form-select form-control h-100" style="min-width: 150px;">
+            <option value="">Semua Umur</option>
+            @foreach ($agesList as $ageItem)
+              <option value="{{ $ageItem }}" {{ request('filter_age') == $ageItem ? 'selected' : '' }}>
+                {{ $ageItem }}
+              </option>
+            @endforeach
+          </select>
+        </div>
 
-      <select name="filter_gender" class="form-select form-control w-auto" style="min-width: 160px;">
-        <option value="">Semua Gender</option>
-        @foreach ($genders as $gender)
-          <option value="{{ $gender->id }}" {{ request('filter_gender') == $gender->id ? 'selected' : '' }}>
-            {{ $gender->gender_name }}
-          </option>
-        @endforeach
-      </select>
+        <div class="col-12 col-md-auto">
+          <select name="filter_gender" class="form-select form-control h-100" style="min-width: 210px;">
+            <option value="">Semua Jenis Kelamin</option>
+            @foreach ($genders as $gender)
+              <option value="{{ $gender->id }}" {{ request('filter_gender') == $gender->id ? 'selected' : '' }}>
+                {{ $gender->gender_name }}
+              </option>
+            @endforeach
+          </select>
+        </div>
 
-      <button type="submit" class="btn btn-outline-primary d-flex align-items-center px-4 hover-white" data-bs-toggle="tooltip" title="Cari">
-        <span class="material-symbols-outlined fs-22">search</span>
-      </button>
+        <div class="col-12 col-md-auto">
+          <button type="submit" class="btn btn-outline-primary w-100 h-100 d-flex align-items-center justify-content-center px-4" data-bs-toggle="tooltip" title="Cari">
+            <span class="material-symbols-outlined fs-22">search</span>
+          </button>
+        </div>
 
-      @if (request('filter_age') || request('filter_gender'))
-        <a href="{{ route('admin.infographics.resident.age.index') }}" class="btn btn-outline-secondary d-flex align-items-center px-4 hover-white" data-bs-toggle="tooltip" title="Reset Filter">
-          <span class="material-symbols-outlined fs-22">refresh</span>
-        </a>
-      @endif
+        @if (request('filter_age') || request('filter_gender'))
+          <div class="col-12 col-md-auto">
+            <a href="{{ route('admin.infographics.resident.age.index') }}" class="btn btn-outline-secondary w-100 h-100 d-flex align-items-center justify-content-center px-4" data-bs-toggle="tooltip" title="Reset Filter">
+              <span class="material-symbols-outlined fs-22">refresh</span>
+            </a>
+          </div>
+        @endif
 
-    </form>
+      </form>
+    </div>
 
-    <a href="{{ route('admin.infographics.resident.age.create') }}" class="text-primary fs-16 text-decoration-none">+ Tambah Baru</a>
+    <div class="col-12 col-md-auto text-md-end">
+      <a href="{{ route('admin.infographics.resident.age.create') }}" class="text-primary fs-16 text-decoration-none text-nowrap">
+        + Tambah Baru
+      </a>
+    </div>
+
   </div>
 
   @if ($message = Session::get('success'))

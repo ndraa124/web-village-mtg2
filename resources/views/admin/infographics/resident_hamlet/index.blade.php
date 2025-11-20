@@ -1,7 +1,34 @@
+<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.index') }}">Penduduk</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.age.index') }}">Umur</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" href="#">Jaga</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.education.index') }}">Pendidikan</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.job.index') }}">Pekerjaan</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.must-select.index') }}">Wajib Pilih</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.marriage.index') }}">Perkawinan</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="{{ route('admin.infographics.resident.religion.index') }}">Agama</a>
+  </li>
+</ul>
+
 <div class="card bg-white rounded-10 border border-white mb-4">
   <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
     <form action="{{ route('admin.infographics.resident.hamlet.index') }}" method="GET" class="table-src-form position-relative m-0">
-      <input type="text" name="search" class="form-control w-350" value="{{ request('search') }}" placeholder="Cari nama dusun...">
+      <input type="text" name="search" class="form-control w-350" value="{{ request('search') }}" placeholder="Cari nama jaga...">
 
       <button type="submit" class="src-btn position-absolute top-50 start-0 translate-middle-y bg-transparent p-0 border-0">
         <span class="material-symbols-outlined">search</span>

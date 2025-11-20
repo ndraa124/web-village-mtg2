@@ -47,7 +47,7 @@ class InfographicsResidentAgeController extends Controller
       ->pluck('age');
 
     $data = [
-      'title' => 'Daftar Kelompok Umur Penduduk',
+      'title' => 'Infografis Penduduk',
       'main' => 'admin.infographics.resident_age.index',
       'breadcrumbs' => [
         [
@@ -55,7 +55,7 @@ class InfographicsResidentAgeController extends Controller
           'title' => 'Dashboard',
         ],
         [
-          'title' => 'Kelompok Umur Penduduk',
+          'title' => 'Umur',
         ]
       ],
       'ages' => $ages,
@@ -70,7 +70,7 @@ class InfographicsResidentAgeController extends Controller
   public function create()
   {
     $data = [
-      'title' => 'Tambah Kelompok Umur',
+      'title' => 'Tambah Data',
       'main' => 'admin.infographics.resident_age.create',
       'breadcrumbs' => [
         [
@@ -78,11 +78,15 @@ class InfographicsResidentAgeController extends Controller
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'admin.infographics.resident.age.index',
-          'title' => 'Kelompok Umur Penduduk',
+          'route' => 'admin.infographics.resident.index',
+          'title' => 'Infografis Penduduk',
         ],
         [
-          'title' => 'Tambah Kelompok Umur',
+          'route' => 'admin.infographics.resident.age.index',
+          'title' => 'Umur',
+        ],
+        [
+          'title' => 'Tambah Data',
         ]
       ],
       'genders' => Gender::all()
@@ -110,7 +114,7 @@ class InfographicsResidentAgeController extends Controller
     $residentAge->load('gender');
 
     $data = [
-      'title' => 'Edit Kelompok Umur',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.resident_age.edit',
       'breadcrumbs' => [
         [
@@ -118,11 +122,15 @@ class InfographicsResidentAgeController extends Controller
           'title' => 'Dashboard',
         ],
         [
-          'route' => 'admin.infographics.resident.age.index',
-          'title' => 'Kelompok Umur Penduduk',
+          'route' => 'admin.infographics.resident.index',
+          'title' => 'Infografis Penduduk',
         ],
         [
-          'title' => 'Edit Kelompok Umur',
+          'route' => 'admin.infographics.resident.age.index',
+          'title' => 'Umur',
+        ],
+        [
+          'title' => 'Edit Data',
         ]
       ],
       'age' => $residentAge,

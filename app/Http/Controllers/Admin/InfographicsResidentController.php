@@ -34,7 +34,7 @@ class InfographicsResidentController extends Controller
           'title' => 'Dashboard',
         ],
         [
-          'title' => 'Infografis Penduduk',
+          'title' => 'Penduduk',
         ]
       ],
       'resident' => $resident
@@ -46,7 +46,7 @@ class InfographicsResidentController extends Controller
   public function edit(InfographicsResident $resident)
   {
     $data = [
-      'title' => 'Edit Infografis Penduduk',
+      'title' => 'Edit Data',
       'main' => 'admin.infographics.resident.edit',
       'breadcrumbs' => [
         [
@@ -58,7 +58,11 @@ class InfographicsResidentController extends Controller
           'title' => 'Infografis Penduduk',
         ],
         [
-          'title' => 'Edit Pekerjaan',
+          'route' => 'admin.infographics.resident.index',
+          'title' => 'Penduduk',
+        ],
+        [
+          'title' => 'Edit Data',
         ]
       ],
       'resident' => $resident

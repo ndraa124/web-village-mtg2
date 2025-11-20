@@ -161,8 +161,8 @@ Route::middleware(['authenticate'])->group(function () {
                         ->parameters(['job' => 'residentJob'])
                         ->except(['show']);
 
-                    Route::resource('must_select', InfographicsResidentMustSelectController::class)
-                        ->parameters(['must_select' => 'residentMustSelect'])
+                    Route::resource('must-select', InfographicsResidentMustSelectController::class)
+                        ->parameters(['must-select' => 'residentMustSelect'])
                         ->except(['show']);
 
                     Route::resource('marriage', InfographicsResidentMarriageController::class)
