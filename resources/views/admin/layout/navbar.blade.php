@@ -4,7 +4,7 @@
       <div class="left-header-content">
         <ul class="d-flex align-items-center ps-0 mb-0 list-unstyled justify-content-center justify-content-md-start">
           <li>
-            <button class="header-burger-menu bg-transparent p-0 border-0 position-relative top-3" id="header-burger-menu">
+            <button class="header-burger-menu bg-transparent p-0 border-0 position-relative top-3 ms-2" id="header-burger-menu">
               <span class="border-1 d-block for-dark-burger" style="border-bottom: 1px solid #475569; height: 1px; width: 25px;"></span>
               <span class="border-1 d-block for-dark-burger" style="border-bottom: 1px solid #475569; height: 1px; width: 25px; margin: 6px 0;"></span>
               <span class="border-1 d-block for-dark-burger" style="border-bottom: 1px solid #475569; height: 1px; width: 25px;"></span>
