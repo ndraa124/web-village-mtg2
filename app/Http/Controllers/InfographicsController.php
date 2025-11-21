@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gender;
 use App\Models\InfographicsResident;
 use App\Models\InfographicsResidentAge;
 use App\Models\InfographicsResidentHamlet;
@@ -34,6 +35,18 @@ class InfographicsController extends Controller
 
       $female = $ageRaw->where('age', $label)->where('gender_id', 2)->first();
       $ageFemale[] = $female ? $female->total : 0;
+    }
+
+    $allStatsData = InfographicsResidentAge::with('gender')->get();
+    $genders = Gender::all();
+    $ageSummaries = [];
+
+    foreach ($genders as $gender) {
+      $genderData = $allStatsData->where('gender_id', $gender->id);
+
+      if ($genderData->count() > 0) {
+        $ageSummaries[] = generateSummaryText($gender->gender_name, $genderData);
+      }
     }
 
     $religions = InfographicsResidentReligion::with('religion')
@@ -97,6 +110,7 @@ class InfographicsController extends Controller
       'ageLabels' => $ageLabels,
       'ageMale'   => $ageMale,
       'ageFemale' => $ageFemale,
+      'ageSummaries' => $ageSummaries,
       'religions' => $religions,
       'religionLabels' => $religionLabels,
       'religionTotals' => $religionTotals,

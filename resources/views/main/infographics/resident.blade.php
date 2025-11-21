@@ -94,6 +94,25 @@
             </div>
           </div>
         </div>
+
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-8 rounded-3xl shadow-xl mb-4 mt-12">
+          <div class="flex items-start">
+            <i class="fas fa-info-circle text-blue-600 text-2xl mr-4 mt-1"></i>
+            <div>
+              <h3 class="font-bold text-lg text-gray-800 mb-2">Ringkasan Statistik</h3>
+              @foreach ($ageSummaries as $ageSummary)
+                @php
+                  $color = $colors[($loop->iteration - 1) % count($colors)];
+                @endphp
+
+                <div class="text-gray-700 leading-relaxed mt-4">
+                  <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
+                  {!! $ageSummary !!}
+                </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

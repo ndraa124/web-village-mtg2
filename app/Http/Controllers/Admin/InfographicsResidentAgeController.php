@@ -37,7 +37,7 @@ class InfographicsResidentAgeController extends Controller
       $genderData = $allStatsData->where('gender_id', $gender->id);
 
       if ($genderData->count() > 0) {
-        $summaries[] = $this->generateSummaryText($gender->gender_name, $genderData);
+        $summaries[] = generateSummaryText($gender->gender_name, $genderData);
       }
     }
 
@@ -158,32 +158,5 @@ class InfographicsResidentAgeController extends Controller
 
     return redirect()->route('admin.infographics.resident.age.index')
       ->with('success', 'Data kelompok umur berhasil dihapus.');
-  }
-
-  private function generateSummaryText($genderName, $collection)
-  {
-    $totalPopulation = $collection->sum('total');
-    if ($totalPopulation == 0) return "";
-
-    $maxVal = $collection->max('total');
-    $maxGroups = $collection->where('total', $maxVal)->pluck('age')->toArray();
-    $maxPercent = number_format(($maxVal / $totalPopulation) * 100, 2);
-    $maxAgeString = $this->naturalJoin($maxGroups);
-
-    $minVal = $collection->min('total');
-    $minGroups = $collection->where('total', $minVal)->pluck('age')->toArray();
-    $minPercent = number_format(($minVal / $totalPopulation) * 100, 2);
-    $minAgeString = $this->naturalJoin($minGroups);
-
-    return "Untuk jenis kelamin <strong>{$genderName}</strong>, kelompok umur <strong>{$maxAgeString}</strong> adalah kelompok umur tertinggi dengan " . (count($maxGroups) > 1 ? "masing-masing " : "") . "berjumlah <strong>{$maxVal} orang</strong> atau <strong>{$maxPercent}%</strong>. Sedangkan, kelompok umur <strong>{$minAgeString}</strong> adalah yang terendah dengan jumlah <strong>{$minVal} orang</strong> atau <strong>{$minPercent}%</strong>.";
-  }
-
-  private function naturalJoin($list)
-  {
-    if (count($list) === 0) return '';
-    if (count($list) === 1) return $list[0];
-
-    $last = array_pop($list);
-    return implode(', ', $list) . ' dan ' . $last;
   }
 }
