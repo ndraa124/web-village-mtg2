@@ -23,7 +23,7 @@ class InfographicsResidentEducationController extends Controller
       });
     });
 
-    $residentEducations = $query->latest()
+    $residentEducations = $query->orderBy('id', 'asc')
       ->paginate(10)
       ->appends($request->query());
 

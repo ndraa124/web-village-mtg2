@@ -20,7 +20,7 @@ class InfographicsResidentMustSelectController extends Controller
       return $q->where('year', 'like', "%{$search}%");
     });
 
-    $residentMustSelects = $query->latest('year')
+    $residentMustSelects = $query->orderBy('id', 'asc')
       ->paginate(10)
       ->appends($request->query());
 

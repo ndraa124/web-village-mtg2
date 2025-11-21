@@ -23,7 +23,7 @@ class InfographicsResidentJobController extends Controller
       });
     });
 
-    $residentJobs = $query->latest()
+    $residentJobs = $query->latest('total')
       ->paginate(10)
       ->appends($request->query());
 
@@ -98,7 +98,9 @@ class InfographicsResidentJobController extends Controller
     $addedJobIds = InfographicsResidentJob::where('id', '!=', $residentJob->id)
       ->pluck('job_id');
 
-    $jobs = Job::whereNotIn('id', $addedJobIds)->get();
+    $jobs = Job::whereNotIn('id', $addedJobIds)
+      ->orderBy('job_name', 'asc')
+      ->get();
 
     $data = [
       'title' => 'Edit Data',

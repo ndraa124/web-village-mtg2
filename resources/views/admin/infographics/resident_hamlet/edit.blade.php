@@ -22,7 +22,7 @@
                   <option value="">-- Pilih Jaga --</option>
                   @foreach ($hamlets as $hamlet)
                     <option value="{{ $hamlet->id }}" {{ old('hamlet_id', $residentHamlet->hamlet_id) == $hamlet->id ? 'selected' : '' }}>
-                      Jaga {{ $hamlet->hamlet_name }}
+                      {{ $hamlet->hamlet_name }}
                     </option>
                   @endforeach
                 </select>

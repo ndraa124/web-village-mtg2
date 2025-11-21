@@ -3,12 +3,76 @@
 namespace App\Http\Controllers;
 
 use App\Models\InfographicsResident;
+use App\Models\InfographicsResidentAge;
+use App\Models\InfographicsResidentHamlet;
+use App\Models\InfographicsResidentEducation;
+use App\Models\InfographicsResidentJob;
+use App\Models\InfographicsResidentMustSelect;
+use App\Models\InfographicsResidentMarriage;
+use App\Models\InfographicsResidentReligion;
 
 class InfographicsController extends Controller
 {
   public function resident()
   {
     $residentStats = InfographicsResident::latest()->first();
+
+    $ageLabels = InfographicsResidentAge::select('age')
+      ->distinct()
+      ->orderBy('age', 'asc')
+      ->pluck('age')
+      ->sort(SORT_NATURAL)
+      ->values();
+    $ageRaw = InfographicsResidentAge::with('gender')->get();
+
+    $ageMale = [];
+    $ageFemale = [];
+
+    foreach ($ageLabels as $label) {
+      $male = $ageRaw->where('age', $label)->where('gender_id', 1)->first();
+      $ageMale[] = $male ? $male->total : 0;
+
+      $female = $ageRaw->where('age', $label)->where('gender_id', 2)->first();
+      $ageFemale[] = $female ? $female->total : 0;
+    }
+
+    $religions = InfographicsResidentReligion::with('religion')
+      ->orderBy('id', 'asc')
+      ->get();
+
+    $religionLabels = $religions->pluck('religion.religion_name');
+    $religionTotals = $religions->pluck('total');
+
+    $jobs = InfographicsResidentJob::with('job')
+      ->latest('total')
+      ->take(10)
+      ->get();
+
+    $marriages = InfographicsResidentMarriage::with('marriage')
+      ->orderBy('id', 'asc')
+      ->get();
+
+    $marriageLabels = $marriages->pluck('marriage.marriage_name');
+    $marriageTotals = $marriages->pluck('total');
+
+    $hamlets = InfographicsResidentHamlet::with('hamlet')
+      ->orderBy('id', 'asc')
+      ->get();
+
+    $hamletLabels = $hamlets->pluck('hamlet.hamlet_name');
+    $hamletTotals = $hamlets->pluck('total');
+
+    $educations = InfographicsResidentEducation::with('education')
+      ->orderBy('id', 'asc')
+      ->get();
+
+    $educationLabels = $educations->pluck('education.education_name');
+    $educationTotals = $educations->pluck('total');
+
+    $mustSelects = InfographicsResidentMustSelect::orderBy('year', 'asc')->get();
+
+    $mustSelectLabels = $mustSelects->pluck('year');
+    $mustSelectTotals = $mustSelects->pluck('total');
 
     $data = [
       'title' => 'Penduduk',
@@ -29,7 +93,26 @@ class InfographicsController extends Controller
           'title' => 'Penduduk',
         ]
       ],
-      'residentStats' => $residentStats
+      'residentStats' => $residentStats,
+      'ageLabels' => $ageLabels,
+      'ageMale'   => $ageMale,
+      'ageFemale' => $ageFemale,
+      'religions' => $religions,
+      'religionLabels' => $religionLabels,
+      'religionTotals' => $religionTotals,
+      'jobs' => $jobs,
+      'marriages' => $marriages,
+      'marriageLabels' => $marriageLabels,
+      'marriageTotals' => $marriageTotals,
+      'hamlets' => $hamlets,
+      'hamletLabels' => $hamletLabels,
+      'hamletTotals' => $hamletTotals,
+      'educations' => $educations,
+      'educationLabels' => $educationLabels,
+      'educationTotals' => $educationTotals,
+      'mustSelects' => $mustSelects,
+      'mustSelectLabels' => $mustSelectLabels,
+      'mustSelectTotals' => $mustSelectTotals,
     ];
 
     return view('main.layout.template', $data);

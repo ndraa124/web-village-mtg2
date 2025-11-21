@@ -23,7 +23,7 @@ class InfographicsResidentMarriageController extends Controller
       });
     });
 
-    $residentMarriages = $query->latest()
+    $residentMarriages = $query->orderBy('id', 'asc')
       ->paginate(10)
       ->appends($request->query());
 

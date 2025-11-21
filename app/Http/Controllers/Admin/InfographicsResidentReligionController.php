@@ -23,7 +23,7 @@ class InfographicsResidentReligionController extends Controller
       });
     });
 
-    $residentReligions = $query->latest()
+    $residentReligions = $query->orderBy('id', 'asc')
       ->paginate(10)
       ->appends($request->query());
 

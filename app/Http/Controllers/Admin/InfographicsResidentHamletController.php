@@ -23,7 +23,7 @@ class InfographicsResidentHamletController extends Controller
       });
     });
 
-    $residentHamlets = $query->latest()
+    $residentHamlets = $query->orderBy('id', 'asc')
       ->paginate(10)
       ->appends($request->query());
 

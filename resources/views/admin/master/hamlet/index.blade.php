@@ -44,7 +44,7 @@
           @forelse ($hamlets as $row)
             <tr>
               <td class="text-body text-center">{{ $loop->iteration }}</td>
-              <td class="text-body">Jaga {{ $row->hamlet_name }}</td>
+              <td class="text-body">{{ $row->hamlet_name }}</td>
               <td class="text-body text-center">{{ $row->created_at->format('d M Y, H:i') }}</td>
               <td>
                 <form action="{{ route('admin.master.hamlet.destroy', $row->id) }}" method="POST">

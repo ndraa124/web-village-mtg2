@@ -1,7 +1,11 @@
+@php
+  $colors = ['blue', 'red', 'green', 'indigo', 'purple', 'yellow', 'pink'];
+@endphp
+
 <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
   <div class="container mx-auto px-4">
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
       <div class="stat-card group bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-500 border-t-4 border-red-600 hover:scale-110 hover:-translate-y-2">
         <div class="relative inline-flex items-center justify-center w-16 h-16 mb-4">
           <div class="absolute inset-0 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity blur-xl"></div>
@@ -63,7 +67,7 @@
       </div>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8 mb-12">
+    <div class="grid grid-cols-1 gap-8 mb-12">
       <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500">
         <div class="flex items-start justify-between mb-6">
           <div>
@@ -82,16 +86,18 @@
           <div class="flex items-center justify-center gap-6 text-sm">
             <div class="flex items-center gap-2">
               <div class="w-4 h-4 bg-blue-500 rounded"></div>
-              <span class="text-gray-600">Laki-Laki (894)</span>
+              <span class="text-gray-600">Laki-Laki ({{ number_format(array_sum($ageMale), 0, ',', '.') }})</span>
             </div>
             <div class="flex items-center gap-2">
               <div class="w-4 h-4 bg-pink-500 rounded"></div>
-              <span class="text-gray-600">Perempuan (780)</span>
+              <span class="text-gray-600">Perempuan ({{ number_format(array_sum($ageFemale), 0, ',', '.') }})</span>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
       <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500">
         <div class="flex items-start justify-between mb-6">
           <div>
@@ -113,27 +119,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b border-gray-200 hover:bg-red-50 transition-colors">
-                <td class="px-4 py-3 font-semibold text-gray-800">
-                  <i class="fas fa-circle text-red-600 text-xs mr-2"></i>
-                  Kristen
-                </td>
-                <td class="px-4 py-3 text-right text-gray-800 font-bold">1.656</td>
-              </tr>
-              <tr class="border-b border-gray-200 hover:bg-green-50 transition-colors">
-                <td class="px-4 py-3 font-semibold text-gray-800">
-                  <i class="fas fa-circle text-green-600 text-xs mr-2"></i>
-                  Islam
-                </td>
-                <td class="px-4 py-3 text-right text-gray-800 font-bold">17</td>
-              </tr>
-              <tr class="hover:bg-blue-50 transition-colors">
-                <td class="px-4 py-3 font-semibold text-gray-800">
-                  <i class="fas fa-circle text-blue-600 text-xs mr-2"></i>
-                  Katolik
-                </td>
-                <td class="px-4 py-3 text-right text-gray-800 font-bold">5</td>
-              </tr>
+              @foreach ($religions as $religion)
+                @php
+                  $color = $colors[($loop->iteration - 1) % count($colors)];
+                @endphp
+
+                <tr class="border-b border-gray-200 hover:bg-{{ $color }}-50 transition-colors">
+                  <td class="px-4 py-3 font-semibold text-gray-800">
+                    <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
+                    {{ $religion->religion->religion_name ?? '-' }}
+                  </td>
+                  <td class="px-4 py-3 text-right text-gray-800 font-bold">{{ number_format($religion->total, 0, ',', '.') }}</td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -142,9 +140,7 @@
           <canvas id="religionChart" class="w-full" style="max-height: 300px;"></canvas>
         </div>
       </div>
-    </div>
 
-    <div class="grid md:grid-cols-2 gap-8 mb-12">
       <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500">
         <div class="mb-6">
           <div class="inline-flex items-center gap-2 bg-orange-50 text-orange-600 px-3 py-1 rounded-full mb-3 text-sm">
@@ -152,9 +148,9 @@
             <span class="font-semibold">Ketenagakerjaan</span>
           </div>
           <h3 class="text-2xl font-bold text-gray-800">Berdasarkan Pekerjaan</h3>
-          <p class="text-gray-600 mt-2">5 pekerjaan teratas di Desa Motoling Dua</p>
+          <p class="text-gray-600 mt-2">10 pekerjaan teratas di Desa Motoling Dua</p>
         </div>
-        <div class="overflow-x-auto" style="max-height: 400px;">
+        <div class="overflow-x-auto" style="max-height: 600px;">
           <table class="w-full">
             <thead class="sticky top-0">
               <tr class="bg-gradient-to-r from-orange-600 to-orange-700 text-white">
@@ -163,88 +159,73 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b border-gray-200 hover:bg-orange-50 transition-colors group">
-                <td class="px-4 py-3">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <i class="fas fa-home text-white text-sm"></i>
+              @foreach ($jobs as $job)
+                @php
+                  $color = $colors[($loop->iteration - 1) % count($colors)];
+                @endphp
+
+                <tr class="border-b border-gray-200 hover:bg-orange-50 transition-colors group">
+                  <td class="px-4 py-3">
+                    <div class="flex items-center gap-3">
+                      <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
+                      <span class="font-semibold text-gray-800">{{ $job->job->job_name ?? 'Lainnya' }}</span>
                     </div>
-                    <span class="font-semibold text-gray-800">Mengurus Rumah Tangga</span>
-                  </div>
-                </td>
-                <td class="px-4 py-3 text-right">
-                  <span class="inline-flex items-center gap-2 bg-orange-100 text-orange-800 px-3 py-1 rounded-full font-bold text-sm">
-                    383
-                    <i class="fas fa-users text-xs"></i>
-                  </span>
-                </td>
-              </tr>
-              <tr class="border-b border-gray-200 hover:bg-blue-50 transition-colors group">
-                <td class="px-4 py-3">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <i class="fas fa-graduation-cap text-white text-sm"></i>
-                    </div>
-                    <span class="font-semibold text-gray-800">Pelajar/Mahasiswa</span>
-                  </div>
-                </td>
-                <td class="px-4 py-3 text-right">
-                  <span class="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-bold text-sm">
-                    344
-                    <i class="fas fa-users text-xs"></i>
-                  </span>
-                </td>
-              </tr>
-              <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors group">
-                <td class="px-4 py-3">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-gray-500 to-gray-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <i class="fas fa-user-clock text-white text-sm"></i>
-                    </div>
-                    <span class="font-semibold text-gray-800">Belum/Tidak Bekerja</span>
-                  </div>
-                </td>
-                <td class="px-4 py-3 text-right">
-                  <span class="inline-flex items-center gap-2 bg-gray-100 text-gray-800 px-3 py-1 rounded-full font-bold text-sm">
-                    318
-                    <i class="fas fa-users text-xs"></i>
-                  </span>
-                </td>
-              </tr>
-              <tr class="border-b border-gray-200 hover:bg-purple-50 transition-colors group">
-                <td class="px-4 py-3">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <i class="fas fa-store text-white text-sm"></i>
-                    </div>
-                    <span class="font-semibold text-gray-800">Wiraswasta</span>
-                  </div>
-                </td>
-                <td class="px-4 py-3 text-right">
-                  <span class="inline-flex items-center gap-2 bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-bold text-sm">
-                    255
-                    <i class="fas fa-users text-xs"></i>
-                  </span>
-                </td>
-              </tr>
-              <tr class="hover:bg-green-50 transition-colors group">
-                <td class="px-4 py-3">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <i class="fas fa-seedling text-white text-sm"></i>
-                    </div>
-                    <span class="font-semibold text-gray-800">Petani/Pekebun</span>
-                  </div>
-                </td>
-                <td class="px-4 py-3 text-right">
-                  <span class="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold text-sm">
-                    208
-                    <i class="fas fa-users text-xs"></i>
-                  </span>
-                </td>
-              </tr>
+                  </td>
+                  <td class="px-4 py-3 text-right">
+                    <span class="inline-flex items-center gap-2 bg-{{ $color }}-100 text-{{ $color }}-800 px-3 py-1 rounded-full font-bold text-sm">
+                      {{ number_format($job->total, 0, ',', '.') }}
+                      <i class="fas fa-users text-xs"></i>
+                    </span>
+                  </td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500">
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <div class="inline-flex items-center gap-2 bg-purple-50 text-purple-600 px-3 py-1 rounded-full mb-3 text-sm">
+              <i class="fas fa-tree text-xs"></i>
+              <span class="font-semibold">Lingkungan</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800">Berdasarkan Jaga</h3>
+            <p class="text-gray-600 mt-2">Jumlah penduduk berdasarkan lingkungan jaga</p>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto mb-6">
+          <table class="w-full">
+            <thead>
+              <tr class="bg-gradient-to-r from-red-600 to-red-700 text-white">
+                <th class="px-4 py-3 text-left rounded-tl-xl">Jaga</th>
+                <th class="px-4 py-3 text-right rounded-tr-xl">Jumlah</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($hamlets as $hamlet)
+                @php
+                  $color = $colors[($loop->iteration - 1) % count($colors)];
+                @endphp
+
+                <tr class="border-b border-gray-200 hover:bg-{{ $color }}-50 transition-colors">
+                  <td class="px-4 py-3 font-semibold text-gray-800">
+                    <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
+                    {{ $hamlet->hamlet->hamlet_name ?? '-' }}
+                  </td>
+                  <td class="px-4 py-3 text-right text-gray-800 font-bold">{{ number_format($hamlet->total, 0, ',', '.') }}</td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+
+        <div class="relative">
+          <canvas id="hamletChart" class="w-full" style="max-height: 300px;"></canvas>
         </div>
       </div>
 
@@ -266,70 +247,26 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b border-gray-200 hover:bg-rose-50 transition-colors group">
-                <td class="px-4 py-3">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-rose-500 to-rose-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <i class="fas fa-user text-white text-sm"></i>
+              @foreach ($marriages as $marriage)
+                @php
+                  $color = $colors[($loop->iteration - 1) % count($colors)];
+                @endphp
+
+                <tr class="border-b border-gray-200 hover:bg-rose-50 transition-colors group">
+                  <td class="px-4 py-3">
+                    <div class="flex items-center gap-3">
+                      <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
+                      <span class="font-semibold text-gray-800">{{ $marriage->marriage->marriage_name ?? 'Status' }}</span>
                     </div>
-                    <span class="font-semibold text-gray-800">Belum Kawin</span>
-                  </div>
-                </td>
-                <td class="px-4 py-3 text-right">
-                  <span class="inline-flex items-center gap-2 bg-rose-100 text-rose-800 px-3 py-1 rounded-full font-bold text-sm">
-                    712
-                    <i class="fas fa-users text-xs"></i>
-                  </span>
-                </td>
-              </tr>
-              <tr class="border-b border-gray-200 hover:bg-green-50 transition-colors group">
-                <td class="px-4 py-3">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <i class="fas fa-heart text-white text-sm"></i>
-                    </div>
-                    <span class="font-semibold text-gray-800">Kawin</span>
-                  </div>
-                </td>
-                <td class="px-4 py-3 text-right">
-                  <span class="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold text-sm">
-                    625
-                    <i class="fas fa-users text-xs"></i>
-                  </span>
-                </td>
-              </tr>
-              <tr class="border-b border-gray-200 hover:bg-blue-50 transition-colors group">
-                <td class="px-4 py-3">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <i class="fas fa-file-contract text-white text-sm"></i>
-                    </div>
-                    <span class="font-semibold text-gray-800">Kawin Tercatat</span>
-                  </div>
-                </td>
-                <td class="px-4 py-3 text-right">
-                  <span class="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-bold text-sm">
-                    231
-                    <i class="fas fa-users text-xs"></i>
-                  </span>
-                </td>
-              </tr>
-              <tr class="hover:bg-gray-50 transition-colors group">
-                <td class="px-4 py-3">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-gray-500 to-gray-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <i class="fas fa-ribbon text-white text-sm"></i>
-                    </div>
-                    <span class="font-semibold text-gray-800">Cerai Mati</span>
-                  </div>
-                </td>
-                <td class="px-4 py-3 text-right">
-                  <span class="inline-flex items-center gap-2 bg-gray-100 text-gray-800 px-3 py-1 rounded-full font-bold text-sm">
-                    72
-                    <i class="fas fa-users text-xs"></i>
-                  </span>
-                </td>
-              </tr>
+                  </td>
+                  <td class="px-4 py-3 text-right">
+                    <span class="inline-flex items-center gap-2 bg-rose-100 text-rose-800 px-3 py-1 rounded-full font-bold text-sm">
+                      {{ number_format($marriage->total, 0, ',', '.') }}
+                      <i class="fas fa-users text-xs"></i>
+                    </span>
+                  </td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -340,18 +277,52 @@
       </div>
     </div>
 
-    <div class="bg-gradient-to-br from-yellow-50 to-orange-50 border-l-4 border-yellow-500 p-8 rounded-2xl shadow-lg">
-      <div class="flex items-start gap-4">
-        <div class="flex-shrink-0">
-          <div class="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center">
-            <i class="fas fa-info-circle text-white text-xl"></i>
+    <div class="grid grid-cols-2 gap-8 mb-12">
+      <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500">
+        <div class="mb-6">
+          <div class="inline-flex items-center gap-2 bg-orange-50 text-orange-600 px-3 py-1 rounded-full mb-3 text-sm">
+            <i class="fas fa-school text-xs"></i>
+            <span class="font-semibold">Pendidikan</span>
           </div>
+          <h3 class="text-2xl font-bold text-gray-800">Berdasarkan Pendidikan</h3>
+          <p class="text-gray-600 mt-2">Jumlah berdasarkan pendidikan penduduk</p>
         </div>
-        <div>
-          <h4 class="text-xl font-bold text-yellow-800 mb-2">Catatan Penting</h4>
-          <p class="text-yellow-700 leading-relaxed">
-            Data berdasarkan <strong>Pendidikan</strong> dan <strong>Wajib Pilih</strong> saat ini sedang dalam proses pemutakhiran dan akan diperbarui secepatnya. Untuk informasi lebih lanjut, silakan hubungi kantor desa.
-          </p>
+        <div class="relative">
+          <canvas id="educationChart" style="max-height: 350px;"></canvas>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500">
+        <div class="mb-6">
+          <div class="inline-flex items-center gap-2 bg-teal-50 text-teal-600 px-3 py-1 rounded-full mb-3 text-sm">
+            <i class="fas fa-vote-yea text-xs"></i>
+            <span class="font-semibold">Demokrasi</span>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-800">Data Wajib Pilih</h3>
+          <p class="text-gray-600 mt-2">Tren jumlah wajib pilih per tahun</p>
+        </div>
+
+        <div class="mb-4 overflow-x-auto">
+          <table class="w-full text-sm text-left">
+            <thead class="text-xs text-gray-700 uppercase bg-teal-50">
+              <tr>
+                <th class="px-4 py-2 rounded-l-lg">Tahun</th>
+                <th class="px-4 py-2 rounded-r-lg text-right">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($mustSelects as $ms)
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="px-4 py-2 font-medium">{{ $ms->year }}</td>
+                  <td class="px-4 py-2 text-right font-bold text-teal-600">{{ number_format($ms->total, 0, ',', '.') }}</td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+
+        <div class="relative">
+          <canvas id="mustSelectChart" style="max-height: 250px;"></canvas>
         </div>
       </div>
     </div>
@@ -362,337 +333,26 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  window.ResidentData = {
+    ageLabels: {!! json_encode($ageLabels) !!},
+    ageMale: {!! json_encode($ageMale) !!},
+    ageFemale: {!! json_encode($ageFemale) !!},
 
-    // ========================================
-    // 1. COUNTER ANIMATION
-    // ========================================
-    const counters = document.querySelectorAll('.counter');
-    const counterSpeed = 200;
+    religionLabels: {!! json_encode($religionLabels) !!},
+    religionTotals: {!! json_encode($religionTotals) !!},
 
-    const animateCounter = (counter) => {
-      const target = +counter.getAttribute('data-target');
-      const increment = target / counterSpeed;
+    marriageLabels: {!! json_encode($marriageLabels) !!},
+    marriageTotals: {!! json_encode($marriageTotals) !!},
 
-      const updateCounter = () => {
-        const current = +counter.innerText;
-        if (current < target) {
-          counter.innerText = Math.ceil(current + increment);
-          setTimeout(updateCounter, 10);
-        } else {
-          counter.innerText = target.toLocaleString('id-ID');
-        }
-      };
-      updateCounter();
-    };
+    hamletLabels: {!! json_encode($hamletLabels) !!},
+    hamletTotals: {!! json_encode($hamletTotals) !!},
 
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          counterObserver.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.5
-    });
+    educationLabels: {!! json_encode($educationLabels) !!},
+    educationTotals: {!! json_encode($educationTotals) !!},
 
-    counters.forEach(counter => counterObserver.observe(counter));
-
-    const percentages = document.querySelectorAll('.counter-percentage');
-    percentages.forEach(pct => {
-      const total = +pct.getAttribute('data-total');
-      const value = +pct.getAttribute('data-value');
-      const percentage = ((value / total) * 100).toFixed(1);
-
-      const animatePercentage = () => {
-        let current = 0;
-        const increment = percentage / 100;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= percentage) {
-            pct.innerText = percentage;
-            clearInterval(timer);
-          } else {
-            pct.innerText = current.toFixed(1);
-          }
-        }, 10);
-      };
-
-      const pctObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animatePercentage();
-            pctObserver.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.5
-      });
-
-      pctObserver.observe(pct);
-    });
-
-    // ========================================
-    // 2. CHART - KELOMPOK UMUR (Bar Chart)
-    // ========================================
-    const ctxAge = document.getElementById('ageGroupChart');
-    if (ctxAge) {
-      new Chart(ctxAge.getContext('2d'), {
-        type: 'bar',
-        data: {
-          labels: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65+'],
-          datasets: [{
-            label: 'Laki-Laki',
-            data: [60, 65, 70, 72, 75, 70, 65, 60, 55, 50, 45, 40, 30, 37],
-            backgroundColor: 'rgba(59, 130, 246, 0.8)',
-            borderColor: 'rgb(59, 130, 246)',
-            borderWidth: 2,
-            borderRadius: 8,
-            borderSkipped: false,
-          }, {
-            label: 'Perempuan',
-            data: [55, 60, 65, 70, 79, 75, 70, 65, 55, 50, 45, 40, 30, 46],
-            backgroundColor: 'rgba(236, 72, 153, 0.8)',
-            borderColor: 'rgb(236, 72, 153)',
-            borderWidth: 2,
-            borderRadius: 8,
-            borderSkipped: false,
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: true,
-          plugins: {
-            legend: {
-              display: false,
-            },
-            tooltip: {
-              backgroundColor: 'rgba(0, 0, 0, 0.8)',
-              padding: 12,
-              cornerRadius: 8,
-              titleFont: {
-                size: 14,
-                weight: 'bold'
-              },
-              bodyFont: {
-                size: 13
-              },
-              callbacks: {
-                label: function(context) {
-                  return context.dataset.label + ': ' + context.parsed.y + ' jiwa';
-                }
-              }
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              title: {
-                display: true,
-                text: 'Jumlah Jiwa',
-                font: {
-                  size: 13,
-                  weight: 'bold'
-                }
-              },
-              grid: {
-                color: 'rgba(0, 0, 0, 0.05)',
-              },
-              ticks: {
-                font: {
-                  size: 12
-                }
-              }
-            },
-            x: {
-              title: {
-                display: true,
-                text: 'Kelompok Umur (Tahun)',
-                font: {
-                  size: 13,
-                  weight: 'bold'
-                }
-              },
-              grid: {
-                display: false
-              },
-              ticks: {
-                font: {
-                  size: 12
-                }
-              }
-            }
-          },
-          interaction: {
-            intersect: false,
-            mode: 'index'
-          },
-          animation: {
-            duration: 2000,
-            easing: 'easeInOutQuart'
-          }
-        }
-      });
-    }
-
-    // ========================================
-    // 3. CHART - AGAMA (Doughnut Chart)
-    // ========================================
-    const ctxReligion = document.getElementById('religionChart');
-    if (ctxReligion) {
-      new Chart(ctxReligion.getContext('2d'), {
-        type: 'doughnut',
-        data: {
-          labels: ['Kristen', 'Islam', 'Katolik'],
-          datasets: [{
-            data: [1656, 17, 5],
-            backgroundColor: [
-              'rgba(220, 38, 38, 0.8)',
-              'rgba(34, 197, 94, 0.8)',
-              'rgba(59, 130, 246, 0.8)'
-            ],
-            borderColor: [
-              'rgb(220, 38, 38)',
-              'rgb(34, 197, 94)',
-              'rgb(59, 130, 246)'
-            ],
-            borderWidth: 3,
-            hoverOffset: 20
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: true,
-          plugins: {
-            legend: {
-              position: 'bottom',
-              labels: {
-                padding: 20,
-                font: {
-                  size: 13,
-                  weight: 'bold'
-                },
-                usePointStyle: true,
-                pointStyle: 'circle'
-              }
-            },
-            tooltip: {
-              backgroundColor: 'rgba(0, 0, 0, 0.8)',
-              padding: 12,
-              cornerRadius: 8,
-              titleFont: {
-                size: 14,
-                weight: 'bold'
-              },
-              bodyFont: {
-                size: 13
-              },
-              callbacks: {
-                label: function(context) {
-                  const label = context.label || '';
-                  const value = context.parsed;
-                  const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                  const percentage = ((value / total) * 100).toFixed(1);
-                  return label + ': ' + value + ' jiwa (' + percentage + '%)';
-                }
-              }
-            }
-          },
-          animation: {
-            duration: 2000,
-            easing: 'easeInOutQuart'
-          }
-        }
-      });
-    }
-
-    // ========================================
-    // 4. CHART - STATUS PERKAWINAN (Horizontal Bar)
-    // ========================================
-    const ctxMarriage = document.getElementById('marriageChart');
-    if (ctxMarriage) {
-      new Chart(ctxMarriage.getContext('2d'), {
-        type: 'bar',
-        data: {
-          labels: ['Belum Kawin', 'Kawin', 'Kawin Tercatat', 'Cerai Mati'],
-          datasets: [{
-            label: 'Jumlah Jiwa',
-            data: [712, 625, 231, 72],
-            backgroundColor: [
-              'rgba(244, 63, 94, 0.8)',
-              'rgba(34, 197, 94, 0.8)',
-              'rgba(59, 130, 246, 0.8)',
-              'rgba(107, 114, 128, 0.8)'
-            ],
-            borderColor: [
-              'rgb(244, 63, 94)',
-              'rgb(34, 197, 94)',
-              'rgb(59, 130, 246)',
-              'rgb(107, 114, 128)'
-            ],
-            borderWidth: 2,
-            borderRadius: 8,
-            borderSkipped: false,
-          }]
-        },
-        options: {
-          indexAxis: 'y',
-          responsive: true,
-          maintainAspectRatio: true,
-          plugins: {
-            legend: {
-              display: false
-            },
-            tooltip: {
-              backgroundColor: 'rgba(0, 0, 0, 0.8)',
-              padding: 12,
-              cornerRadius: 8,
-              titleFont: {
-                size: 14,
-                weight: 'bold'
-              },
-              bodyFont: {
-                size: 13
-              },
-              callbacks: {
-                label: function(context) {
-                  return 'Jumlah: ' + context.parsed.x + ' jiwa';
-                }
-              }
-            }
-          },
-          scales: {
-            x: {
-              beginAtZero: true,
-              grid: {
-                color: 'rgba(0, 0, 0, 0.05)',
-              },
-              ticks: {
-                font: {
-                  size: 12
-                }
-              }
-            },
-            y: {
-              grid: {
-                display: false
-              },
-              ticks: {
-                font: {
-                  size: 12,
-                  weight: 'bold'
-                }
-              }
-            }
-          },
-          animation: {
-            duration: 2000,
-            easing: 'easeInOutQuart'
-          }
-        }
-      });
-    }
-
-  });
+    mustSelectLabels: {!! json_encode($mustSelectLabels) !!},
+    mustSelectTotals: {!! json_encode($mustSelectTotals) !!},
+  };
 </script>
+
+<script src="{{ asset('main/js/script-infographics-resident.js') }}"></script>

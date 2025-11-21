@@ -44,7 +44,9 @@ class InfographicsResidentAgeController extends Controller
     $agesList = InfographicsResidentAge::select('age')
       ->distinct()
       ->orderBy('age', 'asc')
-      ->pluck('age');
+      ->pluck('age')
+      ->sort(SORT_NATURAL)
+      ->values();
 
     $data = [
       'title' => 'Infografis Penduduk',

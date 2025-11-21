@@ -72,7 +72,7 @@
           @forelse ($residentHamlets as $row)
             <tr>
               <td class="text-body text-center">{{ $loop->iteration }}</td>
-              <td class="text-body">Jaga {{ $row->hamlet->hamlet_name ?? 'N/A' }}</td>
+              <td class="text-body">{{ $row->hamlet->hamlet_name ?? 'N/A' }}</td>
               <td class="text-body text-center">{{ $row->total }}</td>
               <td class="text-body text-center">{{ $row->created_at->format('d M Y, H:i') }}</td>
               <td>
