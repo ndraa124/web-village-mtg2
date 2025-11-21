@@ -12,6 +12,12 @@ use App\Models\InfographicsResidentMustSelect;
 use App\Models\InfographicsResidentMarriage;
 use App\Models\InfographicsResidentReligion;
 
+use App\Models\InfographicsApbd;
+use App\Models\InfographicsApbdIncome;
+use App\Models\InfographicsApbdShopping;
+use App\Models\InfographicsApbdFinancing;
+use App\Models\InfographicsApbdDevRealization;
+
 class InfographicsController extends Controller
 {
   public function resident()
@@ -134,6 +140,51 @@ class InfographicsController extends Controller
 
   public function apbdes()
   {
+    $latestData = InfographicsApbd::latest('year')->first();
+    $year = $latestData ? $latestData->year : date('Y');
+
+    $apbdStats = $latestData ?? new InfographicsApbd([
+      'income' => 0,
+      'shopping' => 0,
+      'financing' => 0,
+      'expenditure' => 0,
+      'surplus_deficit' => 0
+    ]);
+
+    $incomes = InfographicsApbdIncome::with('income')
+      ->where('year', $year)
+      ->orderBy('budget', 'desc')
+      ->get();
+
+    $incomeLabels = $incomes->pluck('income.income_name');
+    $incomeTotals = $incomes->pluck('budget');
+
+    $shoppings = InfographicsApbdShopping::with('shopping')
+      ->where('year', $year)
+      ->orderBy('budget', 'desc')
+      ->get();
+
+    $shoppingLabels = $shoppings->pluck('shopping.shopping_name');
+    $shoppingTotals = $shoppings->pluck('budget');
+
+    $financings = InfographicsApbdFinancing::with('financing')
+      ->where('year', $year)
+      ->get();
+
+    $financingLabels = $financings->pluck('financing.financing_name');
+    $financingTotals = $financings->pluck('budget');
+
+    $totalPenerimaan = $apbdStats->income + $apbdStats->financing;
+    $totalPengeluaran = $apbdStats->shopping + $apbdStats->expenditure;
+    $selisih = $totalPenerimaan - $totalPengeluaran;
+
+    $realizations = InfographicsApbdDevRealization::where('year', $year)
+      ->orderBy('percent', 'desc')
+      ->get();
+
+    $realizationLabels = $realizations->pluck('category_name');
+    $realizationValues = $realizations->pluck('percent');
+
     $data = [
       'title' => 'Anggaran Pendapatan dan Belanja Desa',
       'main'  => 'main.infographics.apbdes',
@@ -153,6 +204,27 @@ class InfographicsController extends Controller
           'title' => 'APBDes',
         ]
       ],
+      'year' => $year,
+      'apbdStats' => $apbdStats,
+      'totalPenerimaan' => $totalPenerimaan,
+      'totalPengeluaran' => $totalPengeluaran,
+      'selisih' => $selisih,
+
+      'incomes' => $incomes,
+      'incomeLabels' => $incomeLabels,
+      'incomeTotals' => $incomeTotals,
+
+      'shoppings' => $shoppings,
+      'shoppingLabels' => $shoppingLabels,
+      'shoppingTotals' => $shoppingTotals,
+
+      'financings' => $financings,
+      'financingLabels' => $financingLabels,
+      'financingTotals' => $financingTotals,
+
+      'realizations' => $realizations,
+      'realizationLabels' => $realizationLabels,
+      'realizationValues' => $realizationValues,
     ];
 
     return view('main.layout.template', $data);

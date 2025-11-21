@@ -6,6 +6,25 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    const backgroundColors = [
+        "rgba(220, 38, 38, 0.8)",
+        "rgba(59, 130, 246, 0.8)",
+        "rgba(245, 158, 11, 0.8)",
+        "rgba(34, 197, 94, 0.8)",
+        "rgba(168, 85, 247, 0.8)",
+        "rgba(236, 72, 153, 0.8)",
+        "rgba(20, 184, 166, 0.8)",
+    ];
+    const borderColors = [
+        "rgb(220, 38, 38)",
+        "rgb(59, 130, 246)",
+        "rgb(245, 158, 11)",
+        "rgb(34, 197, 94)",
+        "rgb(168, 85, 247)",
+        "rgb(236, 72, 153)",
+        "rgb(20, 184, 166)",
+    ];
+
     // ========================================
     // 1. COUNTER ANIMATION
     // ========================================
@@ -86,7 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // ========================================
     const ctxAge = document.getElementById("ageGroupChart");
     if (ctxAge) {
-        // MENGAMBIL DATA DARI VARIABEL GLOBAL
         const ageLabels = ResidentData.ageLabels;
         const maleData = ResidentData.ageMale;
         const femaleData = ResidentData.ageFemale;
@@ -161,14 +179,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const religionLabels = ResidentData.religionLabels;
         const religionData = ResidentData.religionTotals;
 
-        const backgroundColors = [
-            "rgba(220, 38, 38, 0.8)",
-            "rgba(34, 197, 94, 0.8)",
-            "rgba(59, 130, 246, 0.8)",
-            "rgba(255, 206, 86, 0.8)",
-            "rgba(153, 102, 255, 0.8)",
-        ];
-
         new Chart(ctxReligion.getContext("2d"), {
             type: "doughnut",
             data: {
@@ -177,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     {
                         data: religionData,
                         backgroundColor: backgroundColors,
-                        borderColor: "#ffffff",
+                        borderColor: borderColors,
                         borderWidth: 3,
                         hoverOffset: 20,
                     },
@@ -226,14 +236,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const marriageLabels = ResidentData.marriageLabels;
         const marriageData = ResidentData.marriageTotals;
 
-        const backgroundColors = [
-            "rgba(220, 38, 38, 0.8)",
-            "rgba(34, 197, 94, 0.8)",
-            "rgba(59, 130, 246, 0.8)",
-            "rgba(255, 206, 86, 0.8)",
-            "rgba(153, 102, 255, 0.8)",
-        ];
-
         new Chart(ctxMarriage.getContext("2d"), {
             type: "bar",
             data: {
@@ -243,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         label: "Jumlah Jiwa",
                         data: marriageData,
                         backgroundColor: backgroundColors,
-                        borderColor: "#ffffff",
+                        borderColor: borderColors,
                         borderWidth: 2,
                         borderRadius: 8,
                         borderSkipped: false,
@@ -272,14 +274,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const hamletLabels = ResidentData.hamletLabels;
         const hamletData = ResidentData.hamletTotals;
 
-        const backgroundColors = [
-            "rgba(220, 38, 38, 0.8)",
-            "rgba(34, 197, 94, 0.8)",
-            "rgba(59, 130, 246, 0.8)",
-            "rgba(255, 206, 86, 0.8)",
-            "rgba(153, 102, 255, 0.8)",
-        ];
-
         new Chart(ctxHamlet.getContext("2d"), {
             type: "doughnut",
             data: {
@@ -288,7 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     {
                         data: hamletData,
                         backgroundColor: backgroundColors,
-                        borderColor: "#ffffff",
+                        borderColor: borderColors,
                         borderWidth: 3,
                         hoverOffset: 20,
                     },
@@ -337,18 +331,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const educationLabels = ResidentData.educationLabels;
         const educationData = ResidentData.educationTotals;
 
-        const backgroundColors = [
-            "rgba(220, 38, 38, 0.8)",
-            "rgba(34, 197, 94, 0.8)",
-            "rgba(59, 130, 246, 0.8)",
-            "rgba(255, 206, 86, 0.8)",
-            "rgba(153, 102, 255, 0.8)",
-            "rgba(239, 68, 68, 0.8)",
-            "rgba(249, 115, 22, 0.8)",
-            "rgba(245, 158, 11, 0.8)",
-            "rgba(251, 191, 36, 0.8)",
-        ];
-
         new Chart(ctxEducation.getContext("2d"), {
             type: "bar",
             data: {
@@ -358,7 +340,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         label: "Jumlah Pendidikan",
                         data: educationData,
                         backgroundColor: backgroundColors,
-                        borderColor: "#ffffff",
+                        borderColor: borderColors,
                         borderWidth: 2,
                         borderRadius: 8,
                         borderSkipped: false,
