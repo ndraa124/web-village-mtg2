@@ -9,7 +9,7 @@
             <i class="fas fa-users text-2xl text-white"></i>
           </div>
         </div>
-        <h3 class="text-4xl font-bold text-gray-800 counter mb-2" data-target="1678">0</h3>
+        <h3 class="text-4xl font-bold text-gray-800 counter mb-2" data-target="{{ $residentStats->t_resident }}">0</h3>
         <p class="text-gray-600 font-semibold">Total Penduduk</p>
         <div class="mt-3 text-xs text-gray-500">
           <i class="fas fa-info-circle mr-1"></i>
@@ -24,11 +24,11 @@
             <i class="fas fa-male text-2xl text-white"></i>
           </div>
         </div>
-        <h3 class="text-4xl font-bold text-gray-800 counter mb-2" data-target="894">0</h3>
+        <h3 class="text-4xl font-bold text-gray-800 counter mb-2" data-target="{{ $residentStats->t_man }}">0</h3>
         <p class="text-gray-600 font-semibold">Laki-Laki</p>
         <div class="mt-3 text-xs text-blue-600 font-semibold">
           <i class="fas fa-chart-line mr-1"></i>
-          <span class="counter-percentage" data-total="1678" data-value="894">0</span>%
+          <span class="counter-percentage" data-total="{{ $residentStats->t_resident }}" data-value="{{ $residentStats->t_man }}">0</span>%
         </div>
       </div>
 
@@ -39,11 +39,11 @@
             <i class="fas fa-female text-2xl text-white"></i>
           </div>
         </div>
-        <h3 class="text-4xl font-bold text-gray-800 counter mb-2" data-target="780">0</h3>
+        <h3 class="text-4xl font-bold text-gray-800 counter mb-2" data-target="{{ $residentStats->t_woman }}">0</h3>
         <p class="text-gray-600 font-semibold">Perempuan</p>
         <div class="mt-3 text-xs text-pink-600 font-semibold">
           <i class="fas fa-chart-line mr-1"></i>
-          <span class="counter-percentage" data-total="1678" data-value="780">0</span>%
+          <span class="counter-percentage" data-total="{{ $residentStats->t_resident }}" data-value="{{ $residentStats->t_woman }}">0</span>%
         </div>
       </div>
 
@@ -54,7 +54,7 @@
             <i class="fas fa-home text-2xl text-white"></i>
           </div>
         </div>
-        <h3 class="text-4xl font-bold text-gray-800 counter mb-2" data-target="522">0</h3>
+        <h3 class="text-4xl font-bold text-gray-800 counter mb-2" data-target="{{ $residentStats->t_head_of_family }}">0</h3>
         <p class="text-gray-600 font-semibold">Kepala Keluarga</p>
         <div class="mt-3 text-xs text-gray-500">
           <i class="fas fa-house-user mr-1"></i>

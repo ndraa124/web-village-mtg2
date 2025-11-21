@@ -14,7 +14,6 @@ class UpdateResidentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            't_resident' => 'required|integer|min:0',
             't_man' => 'required|integer|min:0',
             't_woman' => 'required|integer|min:0',
             't_head_of_family' => 'required|integer|min:0',

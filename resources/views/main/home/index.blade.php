@@ -100,7 +100,7 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <a href="{{ route('public.infographics.index') }}" class="group relative block rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+      <a href="{{ route('infographics.resident') }}" class="group relative block rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
         <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800"></div>
         <i class="fas fa-users absolute right-8 bottom-8 text-[150px] text-white opacity-10 transform -rotate-12 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-0"></i>
         <div class="relative h-64 flex flex-col justify-end p-8 text-white">
@@ -117,7 +117,7 @@
         </div>
       </a>
 
-      <a href="{{ route('public.infographics.apbdes') }}" class="group relative block rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+      <a href="{{ route('infographics.apbdes') }}" class="group relative block rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
         <div class="absolute inset-0 bg-gradient-to-br from-green-600 to-green-800"></div>
         <i class="fas fa-balance-scale absolute right-8 bottom-8 text-[150px] text-white opacity-10 transform -rotate-12 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-0"></i>
         <div class="relative h-64 flex flex-col justify-end p-8 text-white">
@@ -134,7 +134,7 @@
         </div>
       </a>
 
-      <a href="{{ route('public.infographics.idm') }}" class="group relative block rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+      <a href="{{ route('infographics.idm') }}" class="group relative block rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
         <div class="absolute inset-0 bg-gradient-to-br from-red-600 to-red-800"></div>
         <i class="fas fa-chart-line absolute right-8 bottom-8 text-[150px] text-white opacity-10 transform -rotate-12 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-0"></i>
         <div class="relative h-64 flex flex-col justify-end p-8 text-white">

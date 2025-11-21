@@ -25,34 +25,6 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="mb-20">
-              <label class="label fs-16 mb-2">Total Penduduk</label>
-              <div class="form-group">
-                <input type="number" name="t_resident" class="form-control" placeholder="0" value="{{ old('t_resident', $resident->t_resident) }}">
-              </div>
-              @error('t_resident')
-                <div class="text-danger small mt-2">
-                  {{ $message }}
-                </div>
-              @enderror
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="mb-20">
-              <label class="label fs-16 mb-2">Total Kepala Keluarga (KK)</label>
-              <div class="form-group">
-                <input type="number" name="t_head_of_family" class="form-control" placeholder="0" value="{{ old('t_head_of_family', $resident->t_head_of_family) }}">
-              </div>
-              @error('t_head_of_family')
-                <div class="text-danger small mt-2">
-                  {{ $message }}
-                </div>
-              @enderror
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="mb-20">
               <label class="label fs-16 mb-2">Total Laki-laki</label>
               <div class="form-group">
                 <input type="number" name="t_man" class="form-control" placeholder="0" value="{{ old('t_man', $resident->t_man) }}">
@@ -72,6 +44,20 @@
                 <input type="number" name="t_woman" class="form-control" placeholder="0" value="{{ old('t_woman', $resident->t_woman) }}">
               </div>
               @error('t_woman')
+                <div class="text-danger small mt-2">
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="mb-20">
+              <label class="label fs-16 mb-2">Total Kepala Keluarga (KK)</label>
+              <div class="form-group">
+                <input type="number" name="t_head_of_family" class="form-control" placeholder="0" value="{{ old('t_head_of_family', $resident->t_head_of_family) }}">
+              </div>
+              @error('t_head_of_family')
                 <div class="text-danger small mt-2">
                   {{ $message }}
                 </div>

@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InfographicsResident;
+
 class InfographicsController extends Controller
 {
-  public function index()
+  public function resident()
   {
+    $residentStats = InfographicsResident::latest()->first();
+
     $data = [
       'title' => 'Penduduk',
-      'main'  => 'main.infographics.index',
+      'main'  => 'main.infographics.resident',
       'header' => [
         'title' => 'Data Kependudukan Terkini',
         'description' => 'Informasi lengkap mengenai karakteristik demografi penduduk Desa Motoling Dua',
@@ -25,6 +29,7 @@ class InfographicsController extends Controller
           'title' => 'Penduduk',
         ]
       ],
+      'residentStats' => $residentStats
     ];
 
     return view('main.layout.template', $data);

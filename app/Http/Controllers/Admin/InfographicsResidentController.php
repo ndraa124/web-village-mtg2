@@ -78,6 +78,8 @@ class InfographicsResidentController extends Controller
     DB::beginTransaction();
 
     try {
+      $validatedData['t_resident'] = $validatedData['t_man'] + $validatedData['t_woman'];
+
       $resident->update($validatedData);
       DB::commit();
 

@@ -36,26 +36,26 @@
         </div>
 
         <div class="relative group">
-          <button class="text-gray-700 hover:text-red-600 flex items-center {{ request()->routeIs('public.infographics.*') ? 'text-red-600 font-semibold' : '' }}">
+          <button class="text-gray-700 hover:text-red-600 flex items-center {{ request()->routeIs('infographics.*') ? 'text-red-600 font-semibold' : '' }}">
             Infografis <i class="fas fa-chevron-down ml-1 text-xs"></i>
           </button>
           <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-            <a href="{{ route('public.infographics.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('public.infographics.index') ? 'text-red-600 font-semibold' : '' }}">
+            <a href="{{ route('infographics.resident') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('infographics.resident') ? 'text-red-600 font-semibold' : '' }}">
               Penduduk
             </a>
-            <a href="{{ route('public.infographics.apbdes') }}" class="block px-4 py-2 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('public.infographics.apbdes') ? 'text-red-600 font-semibold' : '' }}">
+            <a href="{{ route('infographics.apbdes') }}" class="block px-4 py-2 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('infographics.apbdes') ? 'text-red-600 font-semibold' : '' }}">
               APBDes
             </a>
-            <a href="{{ route('public.infographics.stunting') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('public.infographics.stunting') ? 'text-red-600 font-semibold' : '' }}">
+            <a href="{{ route('infographics.stunting') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('infographics.stunting') ? 'text-red-600 font-semibold' : '' }}">
               Stunting
             </a>
-            <a href="{{ route('public.infographics.social_assistance') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('public.infographics.social_assistance') ? 'text-red-600 font-semibold' : '' }}">
+            <a href="{{ route('infographics.social_assistance') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('infographics.social_assistance') ? 'text-red-600 font-semibold' : '' }}">
               Bansos
             </a>
-            <a href="{{ route('public.infographics.idm') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('public.infographics.idm') ? 'text-red-600 font-semibold' : '' }}">
+            <a href="{{ route('infographics.idm') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('infographics.idm') ? 'text-red-600 font-semibold' : '' }}">
               IDM
             </a>
-            <a href="{{ route('public.infographics.sdgs') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('public.infographics.sdgs') ? 'text-red-600 font-semibold' : '' }}">
+            <a href="{{ route('infographics.sdgs') }}" class="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('infographics.sdgs') ? 'text-red-600 font-semibold' : '' }}">
               SDGs
             </a>
           </div>
@@ -159,27 +159,27 @@
       </div>
 
       <div class="border-b">
-        <button class="mobile-dropdown-btn w-full text-left px-4 py-3 text-gray-700 hover:bg-red-50 flex justify-between items-center {{ request()->routeIs('public.infographics.*') ? 'text-red-600 font-semibold' : '' }}">
+        <button class="mobile-dropdown-btn w-full text-left px-4 py-3 text-gray-700 hover:bg-red-50 flex justify-between items-center {{ request()->routeIs('infographics.*') ? 'text-red-600 font-semibold' : '' }}">
           Infografis
           <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
         </button>
         <div class="mobile-dropdown-content hidden bg-gray-50">
-          <a href="{{ route('public.infographics.index') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('public.infographics.index') ? 'text-red-600 font-semibold' : '' }}">
+          <a href="{{ route('infographics.resident') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('infographics.resident') ? 'text-red-600 font-semibold' : '' }}">
             Penduduk
           </a>
-          <a href="{{ route('public.infographics.apbdes') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('public.infographics.apbdes') ? 'text-red-600 font-semibold' : '' }}">
+          <a href="{{ route('infographics.apbdes') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('infographics.apbdes') ? 'text-red-600 font-semibold' : '' }}">
             APBDes
           </a>
-          <a href="{{ route('public.infographics.stunting') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('public.infographics.stunting') ? 'text-red-600 font-semibold' : '' }}">
+          <a href="{{ route('infographics.stunting') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('infographics.stunting') ? 'text-red-600 font-semibold' : '' }}">
             Stunting
           </a>
-          <a href="{{ route('public.infographics.social_assistance') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('public.infographics.social_assistance') ? 'text-red-600 font-semibold' : '' }}">
+          <a href="{{ route('infographics.social_assistance') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('infographics.social_assistance') ? 'text-red-600 font-semibold' : '' }}">
             Bansos
           </a>
-          <a href="{{ route('public.infographics.idm') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('public.infographics.idm') ? 'text-red-600 font-semibold' : '' }}">
+          <a href="{{ route('infographics.idm') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('infographics.idm') ? 'text-red-600 font-semibold' : '' }}">
             IDM
           </a>
-          <a href="{{ route('public.infographics.sdgs') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('public.infographics.sdgs') ? 'text-red-600 font-semibold' : '' }}">
+          <a href="{{ route('infographics.sdgs') }}" class="block px-8 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 {{ request()->routeIs('infographics.sdgs') ? 'text-red-600 font-semibold' : '' }}">
             SDGs
           </a>
         </div>

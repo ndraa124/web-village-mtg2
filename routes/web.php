@@ -24,11 +24,10 @@ Route::prefix('/profile')
         Route::get('/organization', [OrganizationController::class, 'index'])->name('organization');
     });
 
-Route::prefix('/public/infographics')
-    ->name('public.infographics.')
+Route::prefix('/infographics')
+    ->name('infographics.')
     ->group(function () {
-        Route::get('/', [InfographicsController::class, 'index'])->name('index');
-
+        Route::get('/resident', [InfographicsController::class, 'resident'])->name('resident');
         Route::get('/apbdes', [InfographicsController::class, 'apbdes'])->name('apbdes');
         Route::get('/stunting', [InfographicsController::class, 'stunting'])->name('stunting');
         Route::get('/social-assistance', [InfographicsController::class, 'socialAssistance'])->name('social_assistance');
