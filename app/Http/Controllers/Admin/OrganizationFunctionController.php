@@ -30,10 +30,6 @@ class OrganizationFunctionController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.content.profile.organization.structure.index',
-          'title' => 'Struktur Organisasi'
-        ],
-        [
           'title' => 'Tupoksi Aparatur Desa'
         ],
       ],

@@ -30,10 +30,6 @@ class AntiCorruptParticipateController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.content.anti.governance.index',
-          'title' => 'Desa Anti Korupsi'
-        ],
-        [
           'title' => 'Partisipasi Masyarakat'
         ],
       ],

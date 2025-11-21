@@ -28,10 +28,6 @@ class OrganizationStructureController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.content.profile.organization.structure.index',
-          'title' => 'Struktur Organisasi'
-        ],
-        [
           'title' => 'Struktur Organisasi Pemerintah Desa'
         ],
       ],

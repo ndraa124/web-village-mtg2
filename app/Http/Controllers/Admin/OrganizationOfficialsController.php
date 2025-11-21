@@ -36,10 +36,6 @@ class OrganizationOfficialsController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.content.profile.organization.structure.index',
-          'title' => 'Struktur Organisasi'
-        ],
-        [
           'title' => 'Aparatur Desa'
         ],
       ],

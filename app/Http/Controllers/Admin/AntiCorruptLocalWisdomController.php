@@ -30,10 +30,6 @@ class AntiCorruptLocalWisdomController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.content.anti.governance.index',
-          'title' => 'Desa Anti Korupsi'
-        ],
-        [
           'title' => 'Kearifan Lokal'
         ],
       ],

@@ -31,10 +31,6 @@ class AntiCorruptMaklumatController extends Controller
           'title' => 'Dashboard'
         ],
         [
-          'route' => 'admin.content.anti.governance.index',
-          'title' => 'Desa Anti Korupsi'
-        ],
-        [
           'title' => 'Desa Anti Korupsi BPD'
         ],
       ],
