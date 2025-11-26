@@ -6,6 +6,33 @@
 <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
   <div class="container mx-auto px-4">
 
+    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 border-l-4 border-blue-500 p-8 rounded-3xl shadow-xl mb-16">
+      <div class="flex items-start gap-6">
+        <div class="flex-shrink-0">
+          <div class="w-14 h-14 bg-blue-500 rounded-2xl flex items-center justify-center">
+            <i class="fas fa-lightbulb text-white text-2xl"></i>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-2xl font-bold text-blue-800 mb-3">Informasi Penting</h4>
+          <div class="space-y-2 text-blue-700">
+            <p class="flex items-start gap-2">
+              <i class="fas fa-check-circle text-blue-500 mt-1"></i>
+              <span>Data APBDes ini merupakan anggaran yang telah ditetapkan untuk tahun anggaran {{ $year }}</span>
+            </p>
+            <p class="flex items-start gap-2">
+              <i class="fas fa-check-circle text-blue-500 mt-1"></i>
+              <span>Realisasi anggaran akan dipublikasikan secara berkala setiap triwulan</span>
+            </p>
+            <p class="flex items-start gap-2">
+              <i class="fas fa-check-circle text-blue-500 mt-1"></i>
+              <span>Untuk informasi lebih detail, silakan kunjungi kantor desa atau hubungi perangkat desa</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
       <div class="stat-card group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-t-4 border-red-600 hover:scale-105 hover:-translate-y-2">
         <div class="relative inline-flex items-center justify-center w-16 h-16 mb-4">
@@ -160,23 +187,35 @@
             <p class="text-gray-600 mt-2">Komposisi sumber pendapatan desa tahun {{ $year }}</p>
           </div>
         </div>
-        <div class="relative">
-          <canvas id="pendapatanChart" class="w-full" style="max-height: 350px;"></canvas>
-        </div>
 
-        <div class="mt-6 pt-6 border-t border-gray-200 space-y-3">
-          @foreach ($incomes as $idx => $inc)
-            @php $color = $colors[$idx % count($colors)]; @endphp
+        @if ($incomes->isNotEmpty())
+          <div class="relative">
+            <canvas id="pendapatanChart" class="w-full" style="max-height: 350px;"></canvas>
+          </div>
 
-            <div class="flex items-center justify-between text-sm">
-              <div class="flex items-center gap-2">
-                <div class="w-4 h-4 rounded bg-gray-200 income-legend-dot" data-index="{{ $idx }}"></div>
-                <span class="text-gray-700 font-semibold">{{ $inc->income->income_name ?? 'Lainnya' }}</span>
+          <div class="mt-6 pt-6 border-t border-gray-200 space-y-3">
+            @foreach ($incomes as $idx => $inc)
+              @php $color = $colors[$idx % count($colors)]; @endphp
+
+              <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center gap-2">
+                  <div class="w-4 h-4 rounded bg-gray-200 income-legend-dot" data-index="{{ $idx }}"></div>
+                  <span class="text-gray-700 font-semibold">{{ $inc->income->income_name ?? 'Lainnya' }}</span>
+                </div>
+                <span class="text-gray-800 font-bold">Rp {{ number_format($inc->budget, 0, ',', '.') }}</span>
               </div>
-              <span class="text-gray-800 font-bold">Rp {{ number_format($inc->budget, 0, ',', '.') }}</span>
+            @endforeach
+          </div>
+        @else
+          <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300 rounded-2xl p-8 text-center shadow-lg">
+            <div class="bg-yellow-200 text-yellow-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-info-circle text-3xl"></i>
             </div>
-          @endforeach
-        </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Data</h4>
+            <p class="text-gray-600">Belum ada data rincian pendapatan desa yang dapat ditampilkan.</p>
+          </div>
+        @endif
+
       </div>
 
       <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500">
@@ -227,40 +266,52 @@
         </div>
 
         <div class="overflow-x-auto">
-          <table class="w-full">
-            <thead>
-              <tr class="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white">
-                <th class="px-4 py-3 text-left rounded-tl-xl text-sm">Bidang Belanja</th>
-                <th class="px-4 py-3 text-right rounded-tr-xl text-sm">Anggaran</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($shoppings as $index => $shop)
-                @php
-                  $color = $colors[$index % count($colors)];
-                  $icon = $icons[$index % count($icons)];
-                @endphp
-                <tr class="border-b border-gray-200 hover:bg-{{ $color }}-50 transition-colors group">
-                  <td class="px-4 py-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-10 h-10 bg-gradient-to-br from-{{ $color }}-500 to-{{ $color }}-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-{{ $icon }} text-white text-sm"></i>
-                      </div>
-                      <div>
-                        <p class="font-semibold text-gray-800 text-sm">{{ $shop->shopping->shopping_name ?? 'Belanja Lainnya' }}</p>
-                        <p class="text-xs text-gray-500">{{ number_format($shop->percent, 1) }}% dari total belanja</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-right">
-                    <span class="inline-flex items-center gap-2 bg-{{ $color }}-100 text-{{ $color }}-800 px-3 py-1 rounded-full font-bold text-sm whitespace-nowrap">
-                      {{ number_format($shop->budget / 1000000, 0, ',', '.') }} Jt
-                    </span>
-                  </td>
+
+          @if ($shoppings->isNotEmpty())
+            <table class="w-full">
+              <thead>
+                <tr class="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white">
+                  <th class="px-4 py-3 text-left rounded-tl-xl text-sm">Bidang Belanja</th>
+                  <th class="px-4 py-3 text-right rounded-tr-xl text-sm">Anggaran</th>
                 </tr>
-              @endforeach
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                @foreach ($shoppings as $index => $shop)
+                  @php
+                    $color = $colors[$index % count($colors)];
+                    $icon = $icons[$index % count($icons)];
+                  @endphp
+                  <tr class="border-b border-gray-200 hover:bg-{{ $color }}-50 transition-colors group">
+                    <td class="px-4 py-4">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-{{ $color }}-500 to-{{ $color }}-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                          <i class="fas fa-{{ $icon }} text-white text-sm"></i>
+                        </div>
+                        <div>
+                          <p class="font-semibold text-gray-800 text-sm">{{ $shop->shopping->shopping_name ?? 'Belanja Lainnya' }}</p>
+                          <p class="text-xs text-gray-500">{{ number_format($shop->percent, 1) }}% dari total belanja</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-4 py-4 text-right">
+                      <span class="inline-flex items-center gap-2 bg-{{ $color }}-100 text-{{ $color }}-800 px-3 py-1 rounded-full font-bold text-sm whitespace-nowrap">
+                        {{ number_format($shop->budget / 1000000, 0, ',', '.') }} Jt
+                      </span>
+                    </td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
+          @else
+            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300 rounded-2xl p-8 text-center shadow-lg">
+              <div class="bg-yellow-200 text-yellow-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-info-circle text-3xl"></i>
+              </div>
+              <h4 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Data</h4>
+              <p class="text-gray-600">Belum ada data rincian per bidang yang dapat ditampilkan.</p>
+            </div>
+          @endif
+
         </div>
       </div>
 
@@ -274,28 +325,40 @@
             <h3 class="text-2xl font-bold text-gray-800">Rincian Pembiayaan Desa</h3>
             <p class="text-gray-600 mt-2">Sumber pembiayaan tambahan (Penerimaan)</p>
           </div>
-          <div class="relative">
-            <canvas id="pembiayaanChart" class="w-full" style="max-height: 250px;"></canvas>
-          </div>
 
-          @foreach ($financings as $fin)
-            <div class="mt-4 bg-green-50 rounded-xl p-4 mb-2">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center">
-                    <i class="fas fa-piggy-bank text-white"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm text-gray-600">{{ $fin->financing->financing_name ?? 'Pembiayaan' }}</p>
-                    <p class="text-xs text-gray-500">Sumber penerimaan</p>
-                  </div>
-                </div>
-                <p class="text-lg font-bold text-green-600 whitespace-nowrap">
-                  Rp {{ number_format($fin->budget / 1000000, 0, ',', '.') }} Jt
-                </p>
-              </div>
+          @if ($financings->isNotEmpty())
+            <div class="relative">
+              <canvas id="pembiayaanChart" class="w-full" style="max-height: 250px;"></canvas>
             </div>
-          @endforeach
+
+            @foreach ($financings as $fin)
+              <div class="mt-4 bg-green-50 rounded-xl p-4 mb-2">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center">
+                      <i class="fas fa-piggy-bank text-white"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm text-gray-600">{{ $fin->financing->financing_name ?? 'Pembiayaan' }}</p>
+                      <p class="text-xs text-gray-500">Sumber penerimaan</p>
+                    </div>
+                  </div>
+                  <p class="text-lg font-bold text-green-600 whitespace-nowrap">
+                    Rp {{ number_format($fin->budget / 1000000, 0, ',', '.') }} Jt
+                  </p>
+                </div>
+              </div>
+            @endforeach
+          @else
+            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300 rounded-2xl p-8 text-center shadow-lg">
+              <div class="bg-yellow-200 text-yellow-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-info-circle text-3xl"></i>
+              </div>
+              <h4 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Data</h4>
+              <p class="text-gray-600">Belum ada data rincian pembiayaan desa yang dapat ditampilkan.</p>
+            </div>
+          @endif
+
         </div>
 
         <div class="bg-white rounded-3xl shadow-xl p-8">
@@ -327,32 +390,6 @@
       </div>
     </div>
 
-    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 border-l-4 border-blue-500 p-8 rounded-3xl shadow-xl">
-      <div class="flex items-start gap-6">
-        <div class="flex-shrink-0">
-          <div class="w-14 h-14 bg-blue-500 rounded-2xl flex items-center justify-center">
-            <i class="fas fa-lightbulb text-white text-2xl"></i>
-          </div>
-        </div>
-        <div>
-          <h4 class="text-2xl font-bold text-blue-800 mb-3">Informasi Penting</h4>
-          <div class="space-y-2 text-blue-700">
-            <p class="flex items-start gap-2">
-              <i class="fas fa-check-circle text-blue-500 mt-1"></i>
-              <span>Data APBDes ini merupakan anggaran yang telah ditetapkan untuk tahun anggaran {{ $year }}</span>
-            </p>
-            <p class="flex items-start gap-2">
-              <i class="fas fa-check-circle text-blue-500 mt-1"></i>
-              <span>Realisasi anggaran akan dipublikasikan secara berkala setiap triwulan</span>
-            </p>
-            <p class="flex items-start gap-2">
-              <i class="fas fa-check-circle text-blue-500 mt-1"></i>
-              <span>Untuk informasi lebih detail, silakan kunjungi kantor desa atau hubungi perangkat desa</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 

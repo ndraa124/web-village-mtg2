@@ -137,7 +137,7 @@
         <div class="bg-yellow-200 text-yellow-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
           <i class="fas fa-info-circle text-3xl"></i>
         </div>
-        <h4 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Data Timeline</h4>
+        <h4 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Data</h4>
         <p class="text-gray-600">Belum ada data timeline sejarah desa yang dapat ditampilkan.</p>
       </div>
     @endif

@@ -79,40 +79,54 @@
             <p class="text-gray-600 mt-2">Distribusi penduduk berdasarkan kelompok umur dan jenis kelamin</p>
           </div>
         </div>
-        <div class="relative">
-          <canvas id="ageGroupChart" class="w-full" style="max-height: 400px;"></canvas>
-        </div>
-        <div class="mt-6 pt-6 border-t border-gray-200">
-          <div class="flex items-center justify-center gap-6 text-sm">
-            <div class="flex items-center gap-2">
-              <div class="w-4 h-4 bg-blue-500 rounded"></div>
-              <span class="text-gray-600">Laki-Laki ({{ number_format(array_sum($ageMale), 0, ',', '.') }})</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <div class="w-4 h-4 bg-pink-500 rounded"></div>
-              <span class="text-gray-600">Perempuan ({{ number_format(array_sum($ageFemale), 0, ',', '.') }})</span>
+
+        @if ($ageSummaries)
+          <div class="relative">
+            <canvas id="ageGroupChart" class="w-full" style="max-height: 400px;"></canvas>
+          </div>
+          <div class="mt-6 pt-6 border-t border-gray-200">
+            <div class="flex items-center justify-center gap-6 text-sm">
+              <div class="flex items-center gap-2">
+                <div class="w-4 h-4 bg-blue-500 rounded"></div>
+                <span class="text-gray-600">Laki-Laki ({{ number_format(array_sum($ageMale), 0, ',', '.') }})</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-4 h-4 bg-pink-500 rounded"></div>
+                <span class="text-gray-600">Perempuan ({{ number_format(array_sum($ageFemale), 0, ',', '.') }})</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-8 rounded-3xl shadow-xl mb-4 mt-12">
-          <div class="flex items-start">
-            <i class="fas fa-info-circle text-blue-600 text-2xl mr-4 mt-1"></i>
-            <div>
-              <h3 class="font-bold text-lg text-gray-800 mb-2">Ringkasan Statistik</h3>
-              @foreach ($ageSummaries as $ageSummary)
-                @php
-                  $color = $colors[($loop->iteration - 1) % count($colors)];
-                @endphp
+          <div class="bg-blue-50 border-l-4 border-blue-500 p-8 rounded-3xl shadow-xl mb-4 mt-12">
+            <div class="flex items-start">
+              <i class="fas fa-info-circle text-blue-600 text-2xl mr-4 mt-1"></i>
+              <div>
+                <h3 class="font-bold text-lg text-gray-800 mb-2">Ringkasan Statistik</h3>
+                @foreach ($ageSummaries as $ageSummary)
+                  @php
+                    $color = $colors[($loop->iteration - 1) % count($colors)];
+                  @endphp
 
-                <div class="text-gray-700 leading-relaxed mt-4">
-                  <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
-                  {!! $ageSummary !!}
-                </div>
-              @endforeach
+                  <div class="text-gray-700 leading-relaxed mt-4">
+                    <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
+                    {!! $ageSummary !!}
+                  </div>
+                @endforeach
+              </div>
             </div>
           </div>
-        </div>
+        @else
+          <div class="bg-yellow-50 border-l-4 border-yellow-500 p-8 rounded-3xl shadow-xl mb-4 mt-6">
+            <div class="flex items-start">
+              <i class="fas fa-info-circle text-yellow-600 text-2xl mr-4 mt-1"></i>
+              <div>
+                <h3 class="font-bold text-lg text-gray-800 mb-2">Belum Ada Data</h3>
+                <p class="text-gray-600">Belum ada data ringkasan statistik umur yang dapat ditampilkan.</p>
+              </div>
+            </div>
+          </div>
+        @endif
+
       </div>
     </div>
 
@@ -129,35 +143,46 @@
           </div>
         </div>
 
-        <div class="overflow-x-auto mb-6">
-          <table class="w-full">
-            <thead>
-              <tr class="bg-gradient-to-r from-red-600 to-red-700 text-white">
-                <th class="px-4 py-3 text-left rounded-tl-xl">Agama</th>
-                <th class="px-4 py-3 text-right rounded-tr-xl">Jumlah</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($religions as $religion)
-                @php
-                  $color = $colors[($loop->iteration - 1) % count($colors)];
-                @endphp
-
-                <tr class="border-b border-gray-200 hover:bg-{{ $color }}-50 transition-colors">
-                  <td class="px-4 py-3 font-semibold text-gray-800">
-                    <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
-                    {{ $religion->religion->religion_name ?? '-' }}
-                  </td>
-                  <td class="px-4 py-3 text-right text-gray-800 font-bold">{{ number_format($religion->total, 0, ',', '.') }}</td>
+        @if ($religions->isNotEmpty())
+          <div class="overflow-x-auto mb-6">
+            <table class="w-full">
+              <thead>
+                <tr class="bg-gradient-to-r from-red-600 to-red-700 text-white">
+                  <th class="px-4 py-3 text-left rounded-tl-xl">Agama</th>
+                  <th class="px-4 py-3 text-right rounded-tr-xl">Jumlah</th>
                 </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                @foreach ($religions as $religion)
+                  @php
+                    $color = $colors[($loop->iteration - 1) % count($colors)];
+                  @endphp
 
-        <div class="relative">
-          <canvas id="religionChart" class="w-full" style="max-height: 300px;"></canvas>
-        </div>
+                  <tr class="border-b border-gray-200 hover:bg-{{ $color }}-50 transition-colors">
+                    <td class="px-4 py-3 font-semibold text-gray-800">
+                      <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
+                      {{ $religion->religion->religion_name ?? '-' }}
+                    </td>
+                    <td class="px-4 py-3 text-right text-gray-800 font-bold">{{ number_format($religion->total, 0, ',', '.') }}</td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+
+          <div class="relative">
+            <canvas id="religionChart" class="w-full" style="max-height: 300px;"></canvas>
+          </div>
+        @else
+          <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300 rounded-2xl p-8 text-center shadow-lg">
+            <div class="bg-yellow-200 text-yellow-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-info-circle text-3xl"></i>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Data</h4>
+            <p class="text-gray-600">Belum ada data berdasarkan agama yang dapat ditampilkan.</p>
+          </div>
+        @endif
+
       </div>
 
       <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500">
@@ -170,36 +195,48 @@
           <p class="text-gray-600 mt-2">10 pekerjaan teratas di Desa Motoling Dua</p>
         </div>
         <div class="overflow-x-auto" style="max-height: 600px;">
-          <table class="w-full">
-            <thead class="sticky top-0">
-              <tr class="bg-gradient-to-r from-orange-600 to-orange-700 text-white">
-                <th class="px-4 py-3 text-left rounded-tl-xl">Jenis Pekerjaan</th>
-                <th class="px-4 py-3 text-right rounded-tr-xl">Jumlah</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($jobs as $job)
-                @php
-                  $color = $colors[($loop->iteration - 1) % count($colors)];
-                @endphp
 
-                <tr class="border-b border-gray-200 hover:bg-orange-50 transition-colors group">
-                  <td class="px-4 py-3">
-                    <div class="flex items-center gap-3">
-                      <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
-                      <span class="font-semibold text-gray-800">{{ $job->job->job_name ?? 'Lainnya' }}</span>
-                    </div>
-                  </td>
-                  <td class="px-4 py-3 text-right">
-                    <span class="inline-flex items-center gap-2 bg-{{ $color }}-100 text-{{ $color }}-800 px-3 py-1 rounded-full font-bold text-sm">
-                      {{ number_format($job->total, 0, ',', '.') }}
-                      <i class="fas fa-users text-xs"></i>
-                    </span>
-                  </td>
+          @if ($jobs->isNotEmpty())
+            <table class="w-full">
+              <thead class="sticky top-0">
+                <tr class="bg-gradient-to-r from-orange-600 to-orange-700 text-white">
+                  <th class="px-4 py-3 text-left rounded-tl-xl">Jenis Pekerjaan</th>
+                  <th class="px-4 py-3 text-right rounded-tr-xl">Jumlah</th>
                 </tr>
-              @endforeach
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                @foreach ($jobs as $job)
+                  @php
+                    $color = $colors[($loop->iteration - 1) % count($colors)];
+                  @endphp
+
+                  <tr class="border-b border-gray-200 hover:bg-orange-50 transition-colors group">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center gap-3">
+                        <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
+                        <span class="font-semibold text-gray-800">{{ $job->job->job_name ?? 'Lainnya' }}</span>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 text-right">
+                      <span class="inline-flex items-center gap-2 bg-{{ $color }}-100 text-{{ $color }}-800 px-3 py-1 rounded-full font-bold text-sm">
+                        {{ number_format($job->total, 0, ',', '.') }}
+                        <i class="fas fa-users text-xs"></i>
+                      </span>
+                    </td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
+          @else
+            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300 rounded-2xl p-8 text-center shadow-lg">
+              <div class="bg-yellow-200 text-yellow-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-info-circle text-3xl"></i>
+              </div>
+              <h4 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Data</h4>
+              <p class="text-gray-600">Belum ada data berdasarkan pekerjaan yang dapat ditampilkan.</p>
+            </div>
+          @endif
+
         </div>
       </div>
     </div>
@@ -217,35 +254,46 @@
           </div>
         </div>
 
-        <div class="overflow-x-auto mb-6">
-          <table class="w-full">
-            <thead>
-              <tr class="bg-gradient-to-r from-red-600 to-red-700 text-white">
-                <th class="px-4 py-3 text-left rounded-tl-xl">Jaga</th>
-                <th class="px-4 py-3 text-right rounded-tr-xl">Jumlah</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($hamlets as $hamlet)
-                @php
-                  $color = $colors[($loop->iteration - 1) % count($colors)];
-                @endphp
-
-                <tr class="border-b border-gray-200 hover:bg-{{ $color }}-50 transition-colors">
-                  <td class="px-4 py-3 font-semibold text-gray-800">
-                    <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
-                    {{ $hamlet->hamlet->hamlet_name ?? '-' }}
-                  </td>
-                  <td class="px-4 py-3 text-right text-gray-800 font-bold">{{ number_format($hamlet->total, 0, ',', '.') }}</td>
+        @if ($hamlets->isNotEmpty())
+          <div class="overflow-x-auto mb-6">
+            <table class="w-full">
+              <thead>
+                <tr class="bg-gradient-to-r from-red-600 to-red-700 text-white">
+                  <th class="px-4 py-3 text-left rounded-tl-xl">Jaga</th>
+                  <th class="px-4 py-3 text-right rounded-tr-xl">Jumlah</th>
                 </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                @foreach ($hamlets as $hamlet)
+                  @php
+                    $color = $colors[($loop->iteration - 1) % count($colors)];
+                  @endphp
 
-        <div class="relative">
-          <canvas id="hamletChart" class="w-full" style="max-height: 300px;"></canvas>
-        </div>
+                  <tr class="border-b border-gray-200 hover:bg-{{ $color }}-50 transition-colors">
+                    <td class="px-4 py-3 font-semibold text-gray-800">
+                      <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
+                      {{ $hamlet->hamlet->hamlet_name ?? '-' }}
+                    </td>
+                    <td class="px-4 py-3 text-right text-gray-800 font-bold">{{ number_format($hamlet->total, 0, ',', '.') }}</td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+
+          <div class="relative">
+            <canvas id="hamletChart" class="w-full" style="max-height: 300px;"></canvas>
+          </div>
+        @else
+          <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300 rounded-2xl p-8 text-center shadow-lg">
+            <div class="bg-yellow-200 text-yellow-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-info-circle text-3xl"></i>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Data</h4>
+            <p class="text-gray-600">Belum ada data berdasarkan lingkungan jaga yang dapat ditampilkan.</p>
+          </div>
+        @endif
+
       </div>
 
       <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500">
@@ -257,42 +305,54 @@
           <h3 class="text-2xl font-bold text-gray-800">Berdasarkan Perkawinan</h3>
           <p class="text-gray-600 mt-2">Distribusi status perkawinan penduduk</p>
         </div>
-        <div class="overflow-x-auto" style="max-height: 400px;">
-          <table class="w-full">
-            <thead class="sticky top-0">
-              <tr class="bg-gradient-to-r from-rose-600 to-rose-700 text-white">
-                <th class="px-4 py-3 text-left rounded-tl-xl">Status</th>
-                <th class="px-4 py-3 text-right rounded-tr-xl">Jumlah</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($marriages as $marriage)
-                @php
-                  $color = $colors[($loop->iteration - 1) % count($colors)];
-                @endphp
 
-                <tr class="border-b border-gray-200 hover:bg-rose-50 transition-colors group">
-                  <td class="px-4 py-3">
-                    <div class="flex items-center gap-3">
-                      <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
-                      <span class="font-semibold text-gray-800">{{ $marriage->marriage->marriage_name ?? 'Status' }}</span>
-                    </div>
-                  </td>
-                  <td class="px-4 py-3 text-right">
-                    <span class="inline-flex items-center gap-2 bg-rose-100 text-rose-800 px-3 py-1 rounded-full font-bold text-sm">
-                      {{ number_format($marriage->total, 0, ',', '.') }}
-                      <i class="fas fa-users text-xs"></i>
-                    </span>
-                  </td>
+        @if ($marriages->isNotEmpty())
+          <div class="overflow-x-auto" style="max-height: 400px;">
+            <table class="w-full">
+              <thead class="sticky top-0">
+                <tr class="bg-gradient-to-r from-rose-600 to-rose-700 text-white">
+                  <th class="px-4 py-3 text-left rounded-tl-xl">Status</th>
+                  <th class="px-4 py-3 text-right rounded-tr-xl">Jumlah</th>
                 </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                @foreach ($marriages as $marriage)
+                  @php
+                    $color = $colors[($loop->iteration - 1) % count($colors)];
+                  @endphp
 
-        <div class="mt-8 pt-6 border-t border-gray-200">
-          <canvas id="marriageChart" class="w-full" style="max-height: 250px;"></canvas>
-        </div>
+                  <tr class="border-b border-gray-200 hover:bg-rose-50 transition-colors group">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center gap-3">
+                        <i class="fas fa-circle text-xs mr-2 text-{{ $color }}-600"></i>
+                        <span class="font-semibold text-gray-800">{{ $marriage->marriage->marriage_name ?? 'Status' }}</span>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 text-right">
+                      <span class="inline-flex items-center gap-2 bg-rose-100 text-rose-800 px-3 py-1 rounded-full font-bold text-sm">
+                        {{ number_format($marriage->total, 0, ',', '.') }}
+                        <i class="fas fa-users text-xs"></i>
+                      </span>
+                    </td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-gray-200">
+            <canvas id="marriageChart" class="w-full" style="max-height: 250px;"></canvas>
+          </div>
+        @else
+          <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300 rounded-2xl p-8 text-center shadow-lg">
+            <div class="bg-yellow-200 text-yellow-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-info-circle text-3xl"></i>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Data</h4>
+            <p class="text-gray-600">Belum ada data berdasarkan perkawinan yang dapat ditampilkan.</p>
+          </div>
+        @endif
+
       </div>
     </div>
 
@@ -306,9 +366,20 @@
           <h3 class="text-2xl font-bold text-gray-800">Berdasarkan Pendidikan</h3>
           <p class="text-gray-600 mt-2">Jumlah berdasarkan pendidikan penduduk</p>
         </div>
-        <div class="relative">
-          <canvas id="educationChart" style="max-height: 350px;"></canvas>
-        </div>
+
+        @if ($educationLabels->isNotEmpty())
+          <div class="relative">
+            <canvas id="educationChart" style="max-height: 350px;"></canvas>
+          </div>
+        @else
+          <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300 rounded-2xl p-8 text-center shadow-lg">
+            <div class="bg-yellow-200 text-yellow-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-info-circle text-3xl"></i>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Data</h4>
+            <p class="text-gray-600">Belum ada data berdasarkan pendidikan yang dapat ditampilkan.</p>
+          </div>
+        @endif
       </div>
 
       <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500">
@@ -321,28 +392,19 @@
           <p class="text-gray-600 mt-2">Tren jumlah wajib pilih per tahun</p>
         </div>
 
-        <div class="mb-4 overflow-x-auto">
-          <table class="w-full text-sm text-left">
-            <thead class="text-xs text-gray-700 uppercase bg-teal-50">
-              <tr>
-                <th class="px-4 py-2 rounded-l-lg">Tahun</th>
-                <th class="px-4 py-2 rounded-r-lg text-right">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($mustSelects as $ms)
-                <tr class="border-b hover:bg-gray-50">
-                  <td class="px-4 py-2 font-medium">{{ $ms->year }}</td>
-                  <td class="px-4 py-2 text-right font-bold text-teal-600">{{ number_format($ms->total, 0, ',', '.') }}</td>
-                </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-
-        <div class="relative">
-          <canvas id="mustSelectChart" style="max-height: 250px;"></canvas>
-        </div>
+        @if ($mustSelectLabels->isNotEmpty())
+          <div class="relative">
+            <canvas id="mustSelectChart" style="max-height: 250px;"></canvas>
+          </div>
+        @else
+          <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300 rounded-2xl p-8 text-center shadow-lg">
+            <div class="bg-yellow-200 text-yellow-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-info-circle text-3xl"></i>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Data</h4>
+            <p class="text-gray-600">Belum ada data berdasarkan wajib pilih yang dapat ditampilkan.</p>
+          </div>
+        @endif
       </div>
     </div>
 

@@ -153,8 +153,8 @@
         <p class="text-gray-600">Tim yang melayani masyarakat Desa Motoling Dua</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        @if ($headOfficial)
+      @if ($headOfficial)
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <div class="sm:col-span-2 lg:col-span-3 xl:col-span-4">
             <div class="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl shadow-lg border-2 border-red-200 hover:shadow-2xl transition-all duration-300">
               <div class="flex flex-col md:flex-row items-center gap-6">
@@ -175,39 +175,45 @@
               </div>
             </div>
           </div>
-        @endif
 
-        @foreach ($staffOfficials as $staff)
-          <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:-translate-y-1">
-            <div class="relative mb-4">
-              <img src="{{ $staff->image_url }}" alt="Foto {{ $staff->name }}" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-red-100 shadow-md" loading="lazy">
-              <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-red-600 text-white rounded-full px-4 py-1 text-xs font-semibold shadow-lg whitespace-nowrap">
-                {{ $staff->position->name ?? 'Aparatur' }}
+          @foreach ($staffOfficials as $staff)
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:-translate-y-1">
+              <div class="relative mb-4">
+                <img src="{{ $staff->image_url }}" alt="Foto {{ $staff->name }}" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-red-100 shadow-md" loading="lazy">
+                <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-red-600 text-white rounded-full px-4 py-1 text-xs font-semibold shadow-lg whitespace-nowrap">
+                  {{ $staff->position->name ?? 'Aparatur' }}
+                </div>
+              </div>
+              <div class="text-center mt-6">
+                <h4 class="text-lg font-bold text-gray-800 mb-1">{{ $staff->name }}</h4>
+                <p class="text-red-600 font-semibold text-sm">{{ $staff->position->position_name ?? '-' }}</p>
               </div>
             </div>
-            <div class="text-center mt-6">
-              <h4 class="text-lg font-bold text-gray-800 mb-1">{{ $staff->name }}</h4>
-              <p class="text-red-600 font-semibold text-sm">{{ $staff->position->position_name ?? '-' }}</p>
-            </div>
+          @endforeach
+        </div>
+      @else
+        <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300 rounded-2xl p-8 text-center shadow-lg">
+          <div class="bg-yellow-200 text-yellow-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-info-circle text-3xl"></i>
           </div>
-        @endforeach
-
-      </div>
+          <h4 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Data</h4>
+          <p class="text-gray-600">Belum ada data aparatur desa yang dapat ditampilkan.</p>
+        </div>
+      @endif
     </div>
 
-    @if ($functions->isNotEmpty())
-      <div class="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-xl p-8 md:p-10">
-        <div class="text-center mb-10">
-          <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
-            <i class="fas fa-tasks text-red-600 mr-2"></i>
-            Tugas Pokok dan Fungsi
-          </h3>
-          <p class="text-gray-600">Tupoksi Aparatur Pemerintahan Desa</p>
-          <div class="w-24 h-1 bg-red-600 mx-auto mt-4"></div>
-        </div>
+    <div class="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-xl p-8 md:p-10">
+      <div class="text-center mb-10">
+        <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+          <i class="fas fa-tasks text-red-600 mr-2"></i>
+          Tugas Pokok dan Fungsi
+        </h3>
+        <p class="text-gray-600">Tupoksi Aparatur Pemerintahan Desa</p>
+        <div class="w-24 h-1 bg-red-600 mx-auto mt-4"></div>
+      </div>
 
+      @if ($functions->isNotEmpty())
         <div class="grid md:grid-cols-2 gap-6">
-
           @foreach ($functions as $function)
             <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-shadow duration-300 border-l-4 border-red-600">
               <div class="flex items-start gap-4">
@@ -223,10 +229,17 @@
               </div>
             </div>
           @endforeach
-
         </div>
-      </div>
-    @endif
+      @else
+        <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300 rounded-2xl p-8 text-center shadow-lg">
+          <div class="bg-yellow-200 text-yellow-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-info-circle text-3xl"></i>
+          </div>
+          <h4 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Data</h4>
+          <p class="text-gray-600">Belum ada data tugas pokok dan fungsi desa yang dapat ditampilkan.</p>
+        </div>
+      @endif
+    </div>
   </div>
 </section>
 
