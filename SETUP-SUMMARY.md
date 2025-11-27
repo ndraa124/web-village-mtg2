@@ -5,28 +5,31 @@
 ### ✔️ Yang Sudah Selesai:
 
 1. **SSH Key Generated** ✅
-   - Private key: `~/.ssh/github_actions_web_village`
-   - Public key sudah ditambahkan ke server
+
+    - Private key: `~/.ssh/github_actions_web_village`
+    - Public key sudah ditambahkan ke server
 
 2. **Server Configuration** ✅
-   - Server: 202.155.90.102
-   - User: root
-   - Project Path: /var/www/web-village-mtg2
-   - Git repository sudah ter-update dengan workflow files
+
+    - Server: 202.155.90.102
+    - User: root
+    - Project Path: /var/www/web-village-mtg2
+    - Git repository sudah ter-update dengan workflow files
 
 3. **GitHub Repository** ✅
-   - Workflow file: `.github/workflows/deploy.yml` ✅ 
-   - Documentation: `.github/DEPLOYMENT.md` ✅
-   - Quick Start: `.github/QUICKSTART.md` ✅
-   - Server setup script: `.github/setup-server.sh` ✅
-   - Semua sudah ter-commit dan ter-push ke main branch
+
+    - Workflow file: `.github/workflows/deploy.yml` ✅
+    - Documentation: `.github/DEPLOYMENT.md` ✅
+    - Quick Start: `.github/QUICKSTART.md` ✅
+    - Server setup script: `.github/setup-server.sh` ✅
+    - Semua sudah ter-commit dan ter-push ke main branch
 
 4. **Server Environment** ✅
-   - PHP 8.4.14 ✅
-   - Node.js v22.21.0 ✅
-   - NPM 10.9.4 ✅
-   - Composer 2.8.12 ✅
-   - Nginx ✅
+    - PHP 8.4.14 ✅
+    - Node.js v22.21.0 ✅
+    - NPM 10.9.4 ✅
+    - Composer 2.8.12 ✅
+    - Nginx ✅
 
 ---
 
@@ -37,13 +40,15 @@
 ### Cara Setup:
 
 1. Buka browser dan pergi ke:
-   ```
-   https://github.com/ndraa124/web-village-mtg2/settings/secrets/actions/new
-   ```
+
+    ```
+    https://github.com/ndraa124/web-village-mtg2/settings/secrets/actions/new
+    ```
 
 2. Tambahkan secrets satu per satu:
 
 #### Secret 1: SSH_PRIVATE_KEY
+
 ```
 Name: SSH_PRIVATE_KEY
 Value: (copy dari output di bawah, termasuk BEGIN dan END)
@@ -58,18 +63,21 @@ RYMEVGeP5eKpvEyeSEwkAAAAGmdpdGh1Yi1hY3Rpb25zLXdlYi12aWxsYWdlAQID
 ```
 
 #### Secret 2: SERVER_IP
+
 ```
 Name: SERVER_IP
 Value: 202.155.90.102
 ```
 
 #### Secret 3: SERVER_USER
+
 ```
 Name: SERVER_USER
 Value: root
 ```
 
 #### Secret 4: PROJECT_PATH
+
 ```
 Name: PROJECT_PATH
 Value: /var/www/web-village-mtg2
@@ -80,12 +88,14 @@ Value: /var/www/web-village-mtg2
 ## 🚀 Testing Auto Deployment
 
 ### Opsi 1: Manual Trigger (Recommended untuk test pertama)
+
 1. Setelah setup secrets, buka: https://github.com/ndraa124/web-village-mtg2/actions
 2. Pilih workflow "Deploy to Production Server"
 3. Klik tombol "Run workflow" → "Run workflow"
 4. Monitor progress deployment
 
 ### Opsi 2: Auto Trigger (Push to main)
+
 ```bash
 # Buat perubahan kecil
 echo "# Test auto deploy" >> README.md
@@ -102,17 +112,19 @@ git push origin main
 ## 📊 Monitoring Deployment
 
 **GitHub Actions URL:**
+
 ```
 https://github.com/ndraa124/web-village-mtg2/actions
 ```
 
 **Setiap push ke branch `main` akan:**
+
 1. ✅ Enable maintenance mode
 2. 📥 Pull latest code
 3. 📦 Install dependencies (Composer & NPM)
 4. 🔨 Build assets
-5. ⚙️  Clear & cache config
-6. 🗄️  Run migrations
+5. ⚙️ Clear & cache config
+6. 🗄️ Run migrations
 7. 🔄 Reload PHP-FPM & Nginx
 8. ✅ Disable maintenance mode
 
@@ -143,17 +155,19 @@ ssh -i ~/.ssh/github_actions_web_village root@202.155.90.102 "tail -f /var/log/n
 ⚠️ **PENTING - Lakukan setelah setup berhasil:**
 
 1. **Ubah password SSH server:**
-   ```bash
-   ssh root@202.155.90.102
-   passwd
-   # Masukkan password baru yang kuat
-   ```
+
+    ```bash
+    ssh root@202.155.90.102
+    passwd
+    # Masukkan password baru yang kuat
+    ```
 
 2. **Backup SSH private key:**
-   ```bash
-   cp ~/.ssh/github_actions_web_village ~/backup-github-actions-key
-   # Simpan di tempat aman!
-   ```
+
+    ```bash
+    cp ~/.ssh/github_actions_web_village ~/backup-github-actions-key
+    # Simpan di tempat aman!
+    ```
 
 3. **Enable GitHub 2FA:** https://github.com/settings/security
 
@@ -163,26 +177,29 @@ ssh -i ~/.ssh/github_actions_web_village root@202.155.90.102 "tail -f /var/log/n
 
 ## 📚 Documentation Files
 
-- **Full Guide:** `.github/DEPLOYMENT.md`
-- **Quick Start:** `.github/QUICKSTART.md`
-- **Server Setup:** `.github/setup-server.sh`
-- **Workflow:** `.github/workflows/deploy.yml`
+-   **Full Guide:** `.github/DEPLOYMENT.md`
+-   **Quick Start:** `.github/QUICKSTART.md`
+-   **Server Setup:** `.github/setup-server.sh`
+-   **Workflow:** `.github/workflows/deploy.yml`
 
 ---
 
 ## 🆘 Troubleshooting
 
 ### Error: SSH Connection Failed
-- Pastikan semua 4 secrets sudah ditambahkan dengan benar
-- Cek SSH_PRIVATE_KEY tidak ada extra spasi atau karakter
+
+-   Pastikan semua 4 secrets sudah ditambahkan dengan benar
+-   Cek SSH_PRIVATE_KEY tidak ada extra spasi atau karakter
 
 ### Error: Permission Denied
-- Pastikan www-data memiliki akses ke storage dan bootstrap/cache
-- Jalankan: `ssh root@202.155.90.102 "cd /var/www/web-village-mtg2 && chmod -R 755 storage bootstrap/cache"`
+
+-   Pastikan www-data memiliki akses ke storage dan bootstrap/cache
+-   Jalankan: `ssh root@202.155.90.102 "cd /var/www/web-village-mtg2 && chmod -R 755 storage bootstrap/cache"`
 
 ### Error: Git Pull Failed
-- Cek git status di server: `ssh root@202.155.90.102 "cd /var/www/web-village-mtg2 && git status"`
-- Reset jika ada conflict: `git reset --hard && git pull`
+
+-   Cek git status di server: `ssh root@202.155.90.102 "cd /var/www/web-village-mtg2 && git status"`
+-   Reset jika ada conflict: `git reset --hard && git pull`
 
 ---
 
