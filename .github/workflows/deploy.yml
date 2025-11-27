@@ -86,7 +86,7 @@ jobs:
             
             # Restart services
             echo "🔄 Restarting services..."
-            sudo systemctl reload php8.2-fpm || sudo systemctl reload php8.3-fpm || true
+            sudo systemctl reload php8.4-fpm || sudo systemctl reload php8.3-fpm || sudo systemctl reload php8.2-fpm || true
             sudo systemctl reload nginx
             
             # Disable maintenance mode
