@@ -530,3 +530,27 @@ select:focus {
 #map .leaflet-popup-pane {
     z-index: 20 !important;
 }
+
+/* Hero Background Slider Fix */
+.hero-background-slider {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-background-slider .swiper-wrapper {
+    height: 100%;
+}
+
+.hero-background-slider .swiper-slide {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+/* Pastikan section slider memiliki height yang tepat */
+section.relative.h-\[500px\],
+section.relative.h-\[600px\],
+section.relative.h-\[700px\] {
+    position: relative;
+    overflow: hidden;
+}

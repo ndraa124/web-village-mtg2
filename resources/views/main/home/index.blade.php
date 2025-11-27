@@ -1,17 +1,17 @@
-<section class="relative h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
-  <div class="absolute inset-0 swiper hero-background-slider">
+<section class="relative h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden" style="min-height: 500px;">
+  <div class="absolute inset-0 swiper hero-background-slider" style="z-index: 1;">
     <div class="swiper-wrapper">
       @forelse ($sliders as $slider)
-        <div class="swiper-slide" style="background-image: url('{{ $slider->image_url }}'); background-size: cover; background-position: center;">
-          <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
+        <div class="swiper-slide" style="background-image: url('{{ $slider->image_url }}'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100%; height: 100%;">
         </div>
       @empty
-        <div class="swiper-slide" style="background-image: url('https://placehold.co/1920x1080'); background-size: cover; background-position: center;">
-          <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
+        <div class="swiper-slide" style="background-image: url('https://placehold.co/1920x1080'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100%; height: 100%;">
         </div>
       @endforelse
     </div>
   </div>
+
+  <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" style="z-index: 10;"></div>
 
   <div class="relative z-20 container mx-auto px-4 h-full flex items-center">
     <div class="text-center text-white w-full">
