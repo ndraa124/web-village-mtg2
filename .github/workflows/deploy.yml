@@ -1,0 +1,105 @@
+name: Deploy to Production Server
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Ubuntu Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add server to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 202.155.90.102 >> ~/.ssh/known_hosts
+
+      - name: Deploy to server
+        env:
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
+        run: |
+          ssh $SERVER_USER@$SERVER_IP << 'EOF'
+            set -e
+            
+            echo "🚀 Starting deployment..."
+            
+            # Navigate to project directory
+            cd ${{ secrets.PROJECT_PATH }}
+            
+            # Enable maintenance mode
+            echo "📝 Enabling maintenance mode..."
+            php artisan down || true
+            
+            # Pull latest changes
+            echo "📥 Pulling latest changes from repository..."
+            git pull origin main
+            
+            # Install/Update composer dependencies
+            echo "📦 Installing composer dependencies..."
+            composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
+            
+            # Install/Update npm dependencies
+            echo "📦 Installing npm dependencies..."
+            npm ci
+            
+            # Build assets
+            echo "🔨 Building frontend assets..."
+            npm run build
+            
+            # Clear and cache config
+            echo "⚙️  Optimizing application..."
+            php artisan config:clear
+            php artisan cache:clear
+            php artisan route:clear
+            php artisan view:clear
+            
+            # Run migrations
+            echo "🗄️  Running database migrations..."
+            php artisan migrate --force
+            
+            # Cache optimization
+            echo "⚡ Caching configuration..."
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+            
+            # Storage link (if needed)
+            php artisan storage:link || true
+            
+            # Set permissions
+            echo "🔐 Setting permissions..."
+            chmod -R 755 storage bootstrap/cache
+            chown -R www-data:www-data storage bootstrap/cache
+            
+            # Restart services
+            echo "🔄 Restarting services..."
+            sudo systemctl reload php8.2-fpm || sudo systemctl reload php8.3-fpm || true
+            sudo systemctl reload nginx
+            
+            # Disable maintenance mode
+            echo "✅ Disabling maintenance mode..."
+            php artisan up
+            
+            echo "🎉 Deployment completed successfully!"
+          EOF
+
+      - name: Deployment notification
+        if: success()
+        run: echo "✅ Deployment to production server completed successfully!"
+
+      - name: Deployment failed notification
+        if: failure()
+        run: echo "❌ Deployment failed. Please check the logs."
